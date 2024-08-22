@@ -1,24 +1,31 @@
 import mongoose from "mongoose";
+import bcrypt from "bcryptjs";
+
+const { BCRYPT_WORK_FACTOR } = process.env;
 
 const userSchema = new mongoose.Schema(
   {
     email: {
       type: String,
       required: true,
-      unique: true,
+      unique: [true, "Email already exists"],
     },
-    name: {
+    phone: {
       type: String,
       required: true,
+      unique: [true, "Phone already exists"],
     },
-    image: {
-      type: String,
-      required: false,
+    isPhoneVerified: {
+      type: Boolean,
+      default: false,
     },
-    username: {
+    otpExpiry: {
+      type: Date,
+      // default: () => Date.now() + 10 * 60 * 1000, // 10 minutes from now
+    },
+    password: {
       type: String,
       required: true,
-      unique: [true, "Username already exists"],
     },
     isAdmin: {
       type: Boolean,
@@ -46,6 +53,36 @@ const userSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
+
+userSchema.pre("save", function () {
+  if (this.isModified("password")) {
+    this.password = bcrypt.hashSync(this.password, Number(BCRYPT_WORK_FACTOR));
+  }
+});
+
+userSchema.methods.matchesPassword = function (password) {
+  return bcrypt.compareSync(password, this.password);
+};
+
+userSchema.methods.isOTPExpired = function () {
+  return Date.now() > this.otpExpiry;
+};
+
+userSchema.set("toJSON", {
+  virtuals: true,
+  transform: (_doc, ret) => {
+    delete ret.password;
+    return ret;
+  },
+});
+
+userSchema.set("toObject", {
+  virtuals: true,
+  transform: (_doc, ret) => {
+    delete ret.password;
+    return ret;
+  },
+});
 
 const User = mongoose.models.User || mongoose.model("User", userSchema);
 
