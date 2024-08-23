@@ -59,7 +59,7 @@ export function createCustomTheme(options = {}) {
             },
         },
         typography = {
-            fontFamily: "Montserrat, sans-serif",
+            fontFamily: "Nunito Sans",
             h1: {
                 fontWeight: 700,
                 fontSize: "3rem",
