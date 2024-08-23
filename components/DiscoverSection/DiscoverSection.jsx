@@ -21,7 +21,7 @@ const DiscoverSection = () => {
                 </Grid>
                 <Grid item lg={6}>
                     <Box>
-                        <Image src={discoverImg} style={discoverImageStyles} />
+                        <Image alt="" src={discoverImg} style={discoverImageStyles} />
                     </Box>
                 </Grid>
             </Grid>

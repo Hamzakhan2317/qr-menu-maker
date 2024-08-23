@@ -22,7 +22,7 @@ const OrderScreen = () => {
                             <Typography sx={displaySectionTextHeadingStyles}>
                                 Seamless Ordering, Table Management, and Payments                            </Typography>
                             <Typography sx={displaySectionTextStyles}>
-                                Simplify every aspect of your restaurant's workflow with a complete set of order and payment solutions designed to assist you in delivering a seamless and productive dining experience from the kitchen to the table.
+                                Simplify every aspect of your restaurant&apos;s workflow with a complete set of order and payment solutions designed to assist you in delivering a seamless and productive dining experience from the kitchen to the table.
                             </Typography>
                         </Box>
                         <Box sx={{ width: "100%", display: "flex", flexWrap: "wrap", my: "20px" }}>

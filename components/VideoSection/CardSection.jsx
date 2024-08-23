@@ -26,7 +26,7 @@ const CardSection = () => {
                                     </Box>
                                     <Box sx={{ display: "flex", alignItems: "center" }}>
                                         <Box>
-                                            <Image src={ceoImage} style={{ width: "60px", height: "60px", display: ceoImage ? "block" : "none" }} />
+                                            <Image  alt="" src={ceoImage} style={{ width: "60px", height: "60px", display: ceoImage ? "block" : "none" }} />
                                         </Box>
                                         <Box sx={{ marginLeft: "10px" }}>
                                             <Typography sx={{ fontSize: "14px" }}>

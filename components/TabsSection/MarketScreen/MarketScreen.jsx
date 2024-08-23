@@ -12,10 +12,10 @@ const MarketScreen = () => {
                     <Box sx={{ height: "100%", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column" }}>
                         <Box sx={{ width: "100%", mb: "20px" }}>
                             <Typography sx={displaySectionTextHeadingStyles}>
-                                Boost Your Restaurant's Success with FineDine's Marketing Tools
+                                Boost Your Restaurant&apos;s Success with FineDine&apos;s Marketing Tools
                             </Typography>
                             <Typography sx={displaySectionTextStyles}>
-                                Supercharge your restaurant's growth and customer engagement with a comprehensive suite of marketing tools designed to empower your business and drive success from every angle. Let AI do the heavy lifting for you with FineDine's advanced recommendation engine, or maximize your marketing impact with enticing coupons and discounts.                            </Typography>
+                                Supercharge your restaurant&apos;s growth and customer engagement with a comprehensive suite of marketing tools designed to empower your business and drive success from every angle. Let AI do the heavy lifting for you with FineDine&apos;s advanced recommendation engine, or maximize your marketing impact with enticing coupons and discounts.                            </Typography>
                         </Box>
                         <Box sx={{ width: "100%" }}>
                             <Box sx={{ marginRight: "10px" }}>

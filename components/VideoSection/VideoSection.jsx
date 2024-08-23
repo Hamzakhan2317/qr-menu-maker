@@ -31,7 +31,7 @@ const VideoSection = () => {
                     <Grid item lg={5}>
                         <Box sx={videoTextContainer}>
                             <Typography sx={videoTextStyles}>
-                                Our sales and tips increased by 20%-30% using FineDine. Some days I don't understand how I got through without FineDine.
+                                Our sales and tips increased by 20%-30% using FineDine. Some days I don&apos;t understand how I got through without FineDine.
                             </Typography>
                             <Typography sx={videoCaptionStyles}>
                                 Chris Gia
