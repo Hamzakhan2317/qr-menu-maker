@@ -1,3 +1,4 @@
+'use client'
 const { default: Signuplogo1 } = require("./svg/signuplogo1");
 const { default: Signuplogo2 } = require("./svg/signuplogo2");
 const { default: Signuplogo3 } = require("./svg/signuplogo3");
@@ -37,6 +38,43 @@ import sliderimage3 from "../assets/images/sliderimage3.webp";
 import sliderimage4 from "../assets/images/sliderimage4.webp";
 import sliderimage5 from "../assets/images/sliderimage5.webp";
 import rating from "../assets/images/star.webp";
+
+// export const appfeatureCardDetails = [
+//     {
+//         heading: { t("Title") },
+//         text: "FineDine’s AI powered technology, identifies the most preferred order combinations of items and make smart recommendations to the guests to order more and maximize your revenue.",
+//     },
+//     {
+//         heading: "Fully Customized Menus",
+//         text: "Implement your branding by adjusting colors and adding your logo and fonts. Customize how your menu looks, and use videos and images to tell your story to your customers.",
+//         bgColor: "#D1D5DB",
+//     },
+//     {
+//         heading: "An Upgraded Ordering Process",
+//         text: "Integrating with the world’s leading POS systems to sync the menus when you make a change and send all orders to the POS system, the FineDine dashboard, and your kitchen & bar printers simultaneously.",
+//     },
+
+// ]
+
+export const getAppFeatureCardDetails = (t) => [
+    {
+        heading: t("Title"),
+        text: t("Subtitle"),
+    },
+    {
+        heading: t("Title1"),
+        text: t("Subtitle1"),
+        bgColor: "#D1D5DB",
+    },
+    {
+        heading: t("Title2"),
+        text: t("Subtitle2"),
+    },
+];
+
+
+
+
 
 export const featureCardData = [
     {
@@ -340,37 +378,42 @@ export const servicesCardDetails = [
     },
 
 ]
-export const feedbackCardDetails = [
-    {
-        heading: "Get Feedback",
-        text: "Create custom feedback forms to learn how customers feel about your service. Improve your dining experience with a positive feedback loop."
-    },
-    {
-        heading: "Collect Valuable Data",
-        text: "Design questionnaires to collect valuable data such as emails, phone numbers, and birthdays and surprise your customers with a gift or a discount on their special days."
-    },
-    {
-        heading: "No Unhappy Guests",
-        text: "Satisfy your unhappy guests before they leave."
-    },
+// export const feedbackCardDetails = [
+//     {
+//         heading: "Get Feedback",
+//         text: "Create custom feedback forms to learn how customers feel about your service. Improve your dining experience with a positive feedback loop."
+//     },
+//     {
+//         heading: "Collect Valuable Data",
+//         text: "Design questionnaires to collect valuable data such as emails, phone numbers, and birthdays and surprise your customers with a gift or a discount on their special days."
+//     },
+//     {
+//         heading: "No Unhappy Guests",
+//         text: "Satisfy your unhappy guests before they leave."
+//     },
 
-]
-export const appfeatureCardDetails = [
+// ]
+
+export const getFeedbackCardDetails = (t) => [
     {
-        heading: "Smart Recommendation",
-        text: "FineDine’s AI powered technology, identifies the most preferred order combinations of items and make smart recommendations to the guests to order more and maximize your revenue.",
+        heading: t("GetFeedbackTitle"),
+        text: t("GetFeedbackText"),
     },
     {
-        heading: "Fully Customized Menus",
-        text: "Implement your branding by adjusting colors and adding your logo and fonts. Customize how your menu looks, and use videos and images to tell your story to your customers.",
+        heading: t("CollectDataTitle"),
+        text: t("CollectDataText"),
         bgColor: "#D1D5DB",
     },
     {
-        heading: "An Upgraded Ordering Process",
-        text: "Integrating with the world’s leading POS systems to sync the menus when you make a change and send all orders to the POS system, the FineDine dashboard, and your kitchen & bar printers simultaneously.",
+        heading: t("NoUnhappyGuestsTitle"),
+        text: t("NoUnhappyGuestsText"),
     },
+];
 
-]
+
+
+
+
 
 
 // slider section Static data

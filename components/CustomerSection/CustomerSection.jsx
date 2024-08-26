@@ -1,11 +1,13 @@
 import { customerHeadingStyles, customerSectionWrapper, customerTextStyles } from '@/styles/CustomerSectionStyles/CustomerSectionStyles';
 import { createCustomTheme } from '@/styles/theme';
 import { Box, Container, Grid, Typography } from '@mui/material';
+import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import customerImage from "../../public/assets/images/happyguestimage.webp";
 
 const CustomerSection = () => {
     const theme = createCustomTheme();
+    const t = useTranslations("Home.Customer");
 
     return (
         <Box sx={customerSectionWrapper}>
@@ -26,10 +28,11 @@ const CustomerSection = () => {
                             height: "100%"
                         }}>
                             <Typography sx={customerHeadingStyles}>
-                                Great Design, Happy Guests
+                                {t("Title")}
                             </Typography>
                             <Typography sx={customerTextStyles}>
-                                FineDine Dine-in QR Menu offers a unique experience and easy navigation to your customers. They can easily check out your menu, look at your high-quality visuals and detailed descriptions, and get information such as calories, nutrition, and allergen warnings. A top-notch experience compared to traditional paper menus or low-quality PDF menus guests hate.
+                                {t("Subtitle")}
+
                             </Typography>
                         </Box>
                     </Grid>

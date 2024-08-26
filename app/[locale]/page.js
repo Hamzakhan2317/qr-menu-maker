@@ -12,7 +12,7 @@ import TextSection from "@/components/TextSection/TextSection.jsx";
 import VideoSection from "@/components/VideoSection/VideoSection.jsx";
 import { createCustomTheme } from "@/styles/theme.jsx";
 import { ThemeProvider } from "@mui/material";
-import Navbar from "../components/Navbar/page.jsx";
+import Navbar from "../../components/Navbar/page.jsx";
 
 const Home = () => {
   const theme = createCustomTheme();
@@ -21,6 +21,7 @@ const Home = () => {
     <ThemeProvider theme={theme}>
       <Navbar />
       {/* <MainSection /> */}
+
       <QrSection />
       <BrandSection />
       <CustomerSection />

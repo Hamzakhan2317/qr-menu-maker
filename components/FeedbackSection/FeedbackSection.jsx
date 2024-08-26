@@ -1,17 +1,20 @@
-import { feedbackCardDetails } from "@/public/assets/static";
+import { getFeedbackCardDetails } from "@/public/assets/static";
 import { feedbackIconStyles } from "@/styles/ServicesSectionStyling/ServciesSectionStyling";
 import { FeedbackSectionHeadingStyle, videoHeadingBoxStyles, videoSectionContainer } from "@/styles/VidepSectionStyling/VidepSectionStyling";
 import CheckIcon from '@mui/icons-material/Check';
 import { Box, Container, Grid, Typography } from "@mui/material";
 import feedbackImage from "../../public/assets/images/feedbackImage.webp";
 
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 const FeedBackSection = () => {
+    const t = useTranslations('Home.Feedback');
+    const feedbackCardDetails = getFeedbackCardDetails(t);
     return (
         <Box sx={videoSectionContainer}>
             <Box sx={videoHeadingBoxStyles}>
                 <Typography sx={FeedbackSectionHeadingStyle}>
-                    Leverage Valuable Data
+                    {t("Title")}
                 </Typography>
             </Box>
             <Container maxWidth="xl">

@@ -1,10 +1,13 @@
 import { imageSectionImageStyling, imagesHeadingTextStyles, ImagesSectionWrapper, imageTextStyles, numberTextStyles } from '@/styles/ImageSectionStyles/ImageSectionStyles';
 import { createCustomTheme } from '@/styles/theme';
 import { Box, Container, Grid, Typography } from '@mui/material';
+import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import imgSection1 from "../../public/assets/images/imgSection1.webp";
 const ImagesSection = () => {
     const theme = createCustomTheme()
+    const t = useTranslations('Home.SomeNumbers');
+
     return (
         <Box sx={ImagesSectionWrapper}>
             <Container maxWidth="xl">
@@ -20,7 +23,7 @@ const ImagesSection = () => {
                         <Box sx={{ width: "100%", display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column", height: "100%" }}>
                             <Box sx={{ textAlign: "center" }}>
                                 <Typography sx={imageTextStyles}>
-                                    Some numbers that matter
+                                    {t("Title")}
                                 </Typography>
                             </Box>
                             <Grid container spacing={2}>
@@ -33,7 +36,7 @@ const ImagesSection = () => {
                                             0%
                                         </Typography>
                                         <Typography sx={imagesHeadingTextStyles}>
-                                            Commission Rate
+                                            {t("CommissionRate")}
                                         </Typography>
                                     </Box>
                                 </Grid>
@@ -46,7 +49,7 @@ const ImagesSection = () => {
                                             +30 %
                                         </Typography>
                                         <Typography sx={imagesHeadingTextStyles}>
-                                            Check Size
+                                            {t("CheckSize")}
                                         </Typography>
                                     </Box>
                                 </Grid>
@@ -58,7 +61,7 @@ const ImagesSection = () => {
                                             -25%
                                         </Typography>
                                         <Typography sx={imagesHeadingTextStyles}>
-                                            Labor Costs
+                                            {t("LaborCosts")}
                                         </Typography>
                                     </Box>
                                 </Grid>
@@ -70,7 +73,7 @@ const ImagesSection = () => {
                                             4x
                                         </Typography>
                                         <Typography sx={imagesHeadingTextStyles}>
-                                            Conversion Rate
+                                            {t("ConversionRate")}
                                         </Typography>
                                     </Box>
                                 </Grid>

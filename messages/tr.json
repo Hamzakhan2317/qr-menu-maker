@@ -1,0 +1,43 @@
+{
+  "Home": {
+    "Qr": {
+      "Title": "Basit ve Hızlı Sipariş ve Ödeme için Tek QR Kodu",
+      "Subtitle": "İşinizi Benzersiz Hızla Kolaylaştırın: Menüler Oluşturun, Siparişleri Toplayın ve Ödemeleri Kolayca Yönetin - Başarınız İçin Sorunsuz Bir Çözüm!",
+      "CallToAction": "Ücretsiz Deneyin"
+    },
+    "Customer": {
+      "Title": "Harika Tasarım, Mutlu Misafirler",
+      "Subtitle": "FineDine Dine-in QR Menüsü müşterilerinize benzersiz bir deneyim ve kolay gezinme imkanı sunar. Müşterileriniz menünüzü kolayca inceleyebilir, yüksek kaliteli görsellerinize ve ayrıntılı açıklamalarınıza göz atabilir ve kaloriler, besin değerleri ve alerjen uyarıları gibi bilgileri edinebilir. Geleneksel kağıt menüler veya misafirlerin hoşlanmadığı düşük kaliteli PDF menülerle karşılaştırıldığında üstün bir deneyim sunar."
+    },
+    "Appfeatures": {
+      "Title": "Akıllı Tavsiye",
+      "Subtitle": "FineDine’in yapay zeka destekli teknolojisi, en çok tercih edilen sipariş kombinasyonlarını belirler ve misafirlerin daha fazla sipariş vermesi ve gelirlerinizi maksimize etmesi için akıllı önerilerde bulunur.",
+      "Title1": "Tamamen Özelleştirilebilir Menüler",
+      "Subtitle1": "Markanızı uygulayın; renkleri ayarlayarak, logonuzu ve yazı tiplerinizi ekleyerek. Menünüzün nasıl görüneceğini özelleştirin ve müşterilerinize hikayenizi anlatmak için videolar ve görseller kullanın.",
+      "Title2": "Geliştirilmiş Bir Sipariş Süreci",
+      "Subtitle2": "Menüleri değiştirdiğinizde senkronize etmek ve tüm siparişleri POS sistemine, FineDine kontrol paneline ve mutfak & bar yazıcılarınıza aynı anda göndermek için dünyanın önde gelen POS sistemleriyle entegre edilir."
+    },
+    "Feedback": {
+      "Title": " Değerli Verilerden Yararlanın",
+      "GetFeedbackTitle": "Geri Bildirim Alın",
+      "GetFeedbackText": "Müşterilerinizin hizmetiniz hakkındaki hislerini öğrenmek için özel geri bildirim formları oluşturun. Olumlu bir geri bildirim döngüsü ile yemek deneyiminizi iyileştirin.",
+      "CollectDataTitle": "Değerli Veriler Toplayın",
+      "CollectDataText": "E-posta, telefon numarası ve doğum günleri gibi değerli verileri toplamak için anketler tasarlayın ve müşterilerinizi özel günlerinde bir hediye veya indirimle şaşırtın.",
+      "NoUnhappyGuestsTitle": "Üzgün Misafir Olmasın",
+      "NoUnhappyGuestsText": "Üzgün misafirlerinizi ayrılmadan önce tatmin edin."
+    },
+    "SomeNumbers": {
+      "Title": "Önemli Bazı Sayılar",
+      "CommissionRate": "Komisyon Oranı",
+      "CheckSize": "Fatura Tutarı",
+      "LaborCosts": "İşçilik Maliyetleri",
+      "ConversionRate": "Dönüşüm Oranı"
+    },
+    "VideoSection": {
+      "Title": "FineDine Farkını Keşfedin: Ortaklarımızın Hikayeleri",
+      "VideoText1": "FineDine kullanarak satışlarımız ve bahşişlerimiz %20-%30 arttı. Bazı günler FineDine olmadan nasıl geçtiğimi anlamıyorum.",
+      "OwnerName": "Chris Gia",
+      "CompayName": "Cafe Sanuki, Müdür"
+    }
+  }
+}

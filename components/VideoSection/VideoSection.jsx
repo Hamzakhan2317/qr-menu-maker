@@ -1,13 +1,15 @@
 import { videoCaptionStyles, videoContainer, videoHeadingBoxStyles, videoSectionContainer, videoSectionHeadingStyles, videoTextContainer, videoTextStyles } from "@/styles/VidepSectionStyling/VidepSectionStyling";
 import { Box, Container, Grid, Typography } from "@mui/material";
+import { useTranslations } from "next-intl";
 import CardSection from "./CardSection";
 
 const VideoSection = () => {
+    const t = useTranslations("Home.VideoSection");
     return (
         <Box sx={videoSectionContainer}>
             <Box sx={videoHeadingBoxStyles}>
                 <Typography sx={videoSectionHeadingStyles}>
-                    Discover the FineDine Difference: Stories from Our Partners
+                    {t("Title")}
                 </Typography>
             </Box>
             <Container maxWidth="xl">
@@ -31,13 +33,13 @@ const VideoSection = () => {
                     <Grid item lg={5} md={4}>
                         <Box sx={videoTextContainer}>
                             <Typography sx={videoTextStyles}>
-                                Our sales and tips increased by 20%-30% using FineDine. Some days I don&apos;t understand how I got through without FineDine.
+                                {t("VideoText1")}
                             </Typography>
                             <Typography sx={videoCaptionStyles}>
-                                Chris Gia
+                                {t("OwnerName")}
                             </Typography>
                             <Typography sx={videoCaptionStyles}>
-                                Cafe Sanuki, Manager
+                                {t("CompayName")}
                             </Typography>
                         </Box>
                     </Grid>
