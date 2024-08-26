@@ -27,20 +27,29 @@ export const ButtonGroupStyles = {
     },
 };
 
-export const mainSectionWrapper = {
+export const QrSectionWrapper = {
     [theme.breakpoints.up('xs')]: {
-        minHeight: "65vh"
+        height: "auto",
+        padding: "40px 20px"
     },
     [theme.breakpoints.up('lg')]: {
-        minHeight: "100vh",
+        minHeight: "auto",
         padding: "120px 0px"
+    },
+    [theme.breakpoints.up('md')]: {
+        height: "auto",
+        padding: "150px 0px"
     },
     [theme.breakpoints.up('sm')]: {
         minHeight: "80vh",
-        padding: "50px 0px"
+        padding: "50px 0px 240px 0px"
     },
     [theme.breakpoints.up('xl')]: {
-        minHeight: "75vh",
+        minHeight: "80vh",
+        padding: "75px 0px"
+    },
+    [theme.breakpoints.up('xxl')]: {
+        minHeight: "40vh",
         padding: "75px 0px"
     },
     width: "100%",
@@ -71,11 +80,6 @@ export const mainSectionTextStyle = {
         fontSize: "3.5rem",
         lineHeight: "3.875rem",
     },
-    [theme.breakpoints.up('md')]: {
-        fontSize: "3.5rem",
-        lineHeight: "3.875rem",
-    },
-
 };
 
 export const mainSectionParagraphStyle = {
@@ -86,11 +90,6 @@ export const mainSectionParagraphStyle = {
     [theme.breakpoints.up('xs')]: {
         fontSize: "1.225rem",
         lineHeight: "1.75rem",
-    },
-    [theme.breakpoints.up('md')]: {
-        fontSize: "1.25rem",
-        lineHeight: "1.75rem",
-        opacity: .8,
     },
 };
 

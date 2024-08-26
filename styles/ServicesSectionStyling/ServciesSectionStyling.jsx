@@ -49,6 +49,23 @@ export const iconStyles = {
     width: "35px",
     height: "35px"
 };
+// FeedbackIconStyles
+export const feedbackIconStyles = {
+    display: "flex", justifyContent: "center", alignItems: "center",
+    background: "#8346D8",
+    borderRadius: "8px",
+    width: "28px",
+    height: "38px",
+    minHeight: "43px",
+    minWidth: "28px",
+    [theme.breakpoints.up('xs')]: {
+        width: "35px",
+        height: "35px",
+        minHeight: "35px",
+        minWidth: "35px",
+    },
+    mb: "10px"
+};
 
 export const servicesCardStyles = {
     backgroundColor: 'rgba(255, 255, 255, 0.9)', // White with 80% opacity
@@ -62,7 +79,8 @@ export const servicesCardStyles = {
         sm: "none", lg: "block",
         md: "block",
         xs: "none"
-    }
+    },
+
 
 }
 

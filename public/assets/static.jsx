@@ -7,36 +7,36 @@ const { default: Signuplogo6 } = require("./svg/signuplogo6");
 const { default: Signuplogo7 } = require("./svg/signuplogo7");
 const { default: Signuplogo8 } = require("./svg/signuplogo8");
 export const logoComponents = [
-  Signuplogo1,
-  Signuplogo2,
-  Signuplogo3,
-  Signuplogo4,
-  Signuplogo5,
-  Signuplogo6,
-  Signuplogo7,
-  Signuplogo8,
+    Signuplogo1,
+    Signuplogo2,
+    Signuplogo3,
+    Signuplogo4,
+    Signuplogo5,
+    Signuplogo6,
+    Signuplogo7,
+    Signuplogo8,
 ];
-import blogImgOne from "../assets/images/blogimg1.webp"
-import blogImgTwo from "../assets/images/blogimg2.webp"
-import blogImgThree from "../assets/images/blogimg3.webp"
-import ceo1 from "../assets/images/ceo1.webp"
-import ceo2 from "../assets/images/ceo2.webp"
-import ceo3 from "../assets/images/ceo3.webp"
-import ceo4 from "../assets/images/ceo4.webp"
-import ceo5 from "../assets/images/ceo5.webp"
-import ceo6 from "../assets/images/ceo6.webp"
-import featureOne from "../assets/images/feature1.webp"
-import feebackImg from "../assets/images/feature2.webp"
-import dataCollectioneImg from "../assets/images/feature3.webp"
-import languageImg from "../assets/images/feature4.webp"
-import reservationImg from "../assets/images/feature5.webp"
-import firstFeatureImg from "../assets/images/firstFeatureImg.webp"
-import sliderimage1 from "../assets/images/sliderimage1.webp"
-import sliderimage2 from "../assets/images/sliderimage2.webp"
-import sliderimage3 from "../assets/images/sliderimage3.webp"
-import sliderimage4 from "../assets/images/sliderimage4.webp"
-import sliderimage5 from "../assets/images/sliderimage5.webp"
-import rating from "../assets/images/star.webp"
+import blogImgOne from "../assets/images/blogimg1.webp";
+import blogImgTwo from "../assets/images/blogimg2.webp";
+import blogImgThree from "../assets/images/blogimg3.webp";
+import ceo1 from "../assets/images/ceo1.webp";
+import ceo2 from "../assets/images/ceo2.webp";
+import ceo3 from "../assets/images/ceo3.webp";
+import ceo4 from "../assets/images/ceo4.webp";
+import ceo5 from "../assets/images/ceo5.webp";
+import ceo6 from "../assets/images/ceo6.webp";
+import featureOne from "../assets/images/feature1.webp";
+import feebackImg from "../assets/images/feature2.webp";
+import dataCollectioneImg from "../assets/images/feature3.webp";
+import languageImg from "../assets/images/feature4.webp";
+import reservationImg from "../assets/images/feature5.webp";
+import firstFeatureImg from "../assets/images/firstFeatureImg.webp";
+import sliderimage1 from "../assets/images/sliderimage1.webp";
+import sliderimage2 from "../assets/images/sliderimage2.webp";
+import sliderimage3 from "../assets/images/sliderimage3.webp";
+import sliderimage4 from "../assets/images/sliderimage4.webp";
+import sliderimage5 from "../assets/images/sliderimage5.webp";
+import rating from "../assets/images/star.webp";
 
 export const featureCardData = [
     {
@@ -337,6 +337,37 @@ export const servicesCardDetails = [
     {
         heading: "Personalized Dining Delights",
         text: "Offer smart recommendations to craft unforgettable dining experiences."
+    },
+
+]
+export const feedbackCardDetails = [
+    {
+        heading: "Get Feedback",
+        text: "Create custom feedback forms to learn how customers feel about your service. Improve your dining experience with a positive feedback loop."
+    },
+    {
+        heading: "Collect Valuable Data",
+        text: "Design questionnaires to collect valuable data such as emails, phone numbers, and birthdays and surprise your customers with a gift or a discount on their special days."
+    },
+    {
+        heading: "No Unhappy Guests",
+        text: "Satisfy your unhappy guests before they leave."
+    },
+
+]
+export const appfeatureCardDetails = [
+    {
+        heading: "Smart Recommendation",
+        text: "FineDine’s AI powered technology, identifies the most preferred order combinations of items and make smart recommendations to the guests to order more and maximize your revenue.",
+    },
+    {
+        heading: "Fully Customized Menus",
+        text: "Implement your branding by adjusting colors and adding your logo and fonts. Customize how your menu looks, and use videos and images to tell your story to your customers.",
+        bgColor: "#D1D5DB",
+    },
+    {
+        heading: "An Upgraded Ordering Process",
+        text: "Integrating with the world’s leading POS systems to sync the menus when you make a change and send all orders to the POS system, the FineDine dashboard, and your kitchen & bar printers simultaneously.",
     },
 
 ]

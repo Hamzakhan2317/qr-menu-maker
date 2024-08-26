@@ -13,12 +13,12 @@ const Footer = () => {
         <Box sx={footerContainer}>
             <Grid container spacing={5}>
                 {footerData?.map(({ title, listData }, ind) => (
-                    <Grid item lg={2.4} md={3} sm={4} xs={12} key={ind} >
+                    <Grid item lg={2.4} md={3} sm={6} xs={12} key={ind} >
                         <Typography sx={{ color: "#9ca3af", fontWeight: "600", fontSize: "0.9rem", marginBottom: "8px" }}>
                             {title}
                         </Typography>
                         {listData?.map(({ name }, subInd) => (
-                            <Box sx={{ mb: "16px" }}  key={subInd}>
+                            <Box sx={{ mb: "16px" }} key={subInd}>
                                 <Link href={""} style={listStyles}>
                                     <Box sx={{
                                         '&:hover': {
@@ -34,7 +34,12 @@ const Footer = () => {
                 ))}
             </Grid>
             <Box sx={footerSocialIconsStyles}>
-                <Grid container>
+                <Grid container sx={{
+                    height: "100%", flexDirection: {
+                        sm: "column-reverse",
+                        lg: "row"
+                    },
+                }}>
                     <Grid item lg={6} xs={12} md={6} sm={6}>
                         <Box sx={copyRightTextStyle}>
                             © 2024 Bambulabs Inc. and it’s subsidiaries Bambulabs Yazilim A.S. and FineDine FZE. All rights reserved.
