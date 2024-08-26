@@ -12,7 +12,7 @@ const VideoSection = () => {
             </Box>
             <Container maxWidth="xl">
                 <Grid container spacing={2}>
-                    <Grid item lg={7} sm={12}>
+                    <Grid item lg={7} sm={12} md={8}>
                         <Box sx={videoContainer}>
                             <iframe
                                 allowFullScreen
@@ -28,7 +28,7 @@ const VideoSection = () => {
                             ></iframe>
                         </Box>
                     </Grid>
-                    <Grid item lg={5}>
+                    <Grid item lg={5} md={4}>
                         <Box sx={videoTextContainer}>
                             <Typography sx={videoTextStyles}>
                                 Our sales and tips increased by 20%-30% using FineDine. Some days I don&apos;t understand how I got through without FineDine.
@@ -55,7 +55,7 @@ const VideoSection = () => {
             }}>
                 <CardSection />
             </Box>
-        </Box>
+        </Box >
     );
 };
 

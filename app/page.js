@@ -1,17 +1,17 @@
 "use client";
-import BlogSection from "@/components/BlogSection/BlogSection.jsx";
+import AppFeatureSection from "@/components/AppFeatures/AppFeatures.jsx";
 import BrandSection from "@/components/BrandSection/BrandSection.jsx";
-import CardSliderSection from "@/components/CardSliderSection/CardSliderSection.jsx";
+import CustomerSection from "@/components/CustomerSection/CustomerSection.jsx";
 import DiscoverSection from "@/components/DiscoverSection/DiscoverSection.jsx";
-import FeatureSection from "@/components/FeatureSection/FeatureSection.jsx";
+import FAQSection from "@/components/FAQSection/FAQSection.jsx";
+import FeedBackSection from "@/components/FeedbackSection/FeedbackSection.jsx";
 import Footer from "@/components/Footer/Footer.jsx";
-import ServciesSection from "@/components/ServciesSection/ServciesSection.jsx";
-import TabSection from "@/components/TabsSection/TabsSection.jsx";
+import ImagesSection from "@/components/ImagesSection/ImagesSection.jsx";
+import QrSection from "@/components/QrSection/QrSection.jsx";
 import TextSection from "@/components/TextSection/TextSection.jsx";
 import VideoSection from "@/components/VideoSection/VideoSection.jsx";
 import { createCustomTheme } from "@/styles/theme.jsx";
 import { ThemeProvider } from "@mui/material";
-import MainSection from "../components/MainSection/page.jsx";
 import Navbar from "../components/Navbar/page.jsx";
 
 const Home = () => {
@@ -20,14 +20,20 @@ const Home = () => {
   return (
     <ThemeProvider theme={theme}>
       <Navbar />
-      <MainSection />
+      {/* <MainSection /> */}
+      <QrSection />
       <BrandSection />
-      <TabSection />
-      <FeatureSection />
-      <ServciesSection />
+      <CustomerSection />
+      <AppFeatureSection />
+      <FeedBackSection />
+      <ImagesSection />
+      {/* <TabSection /> */}
+      {/* <FeatureSection /> */}
+      {/* <ServciesSection /> */}
       <VideoSection />
-      <CardSliderSection />
-      <BlogSection />
+      <FAQSection />
+      {/* <CardSliderSection /> */}
+      {/* <BlogSection /> */}
       <DiscoverSection />
       <TextSection />
       <Footer />

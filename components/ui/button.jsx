@@ -19,8 +19,8 @@ const ButtonComp = ({
   hoverBackgroundColor,
   hoverColor,
   hoverBorder,
-  startIcon={icon},
-  ...sx
+  startIcon = { icon },
+  sx
 }) => {
   return (
     <LoadingButton

@@ -25,6 +25,18 @@ export const socialIconListStyles = {
     display: "flex",
     justifyContent: "end",
     alignItems: "center",
+    [theme.breakpoints.up('sm')]: {
+        display: "flex",
+        justifyContent: "start",
+        alignItems: "center",
+        my: "20px"
+    },
+    [theme.breakpoints.up('xs')]: {
+        display: "flex",
+        justifyContent: "start",
+        alignItems: "center",
+        my: "20px"
+    }
 }
 export const socailIconsLinkStyles = {
     color: "#9ca3af",
@@ -35,20 +47,31 @@ export const copyRightTextStyle = {
     fontSize: "1rem",
     fontWeight: "400"
 }
-export const privaryPolicyStyle = {
-
-}
 
 export const privaryPolicyBoxStyle = {
     display: "flex",
     justifyContent: "end",
     alignItems: "center",
-    paddingTop: "10px"
+    paddingTop: "10px",
+    [theme.breakpoints.up('sm')]: {
+        display: "flex",
+        justifyContent: "start",
+        alignItems: "center",
+    },
+    [theme.breakpoints.up('xs')]: {
+        display: "flex",
+        justifyContent: "start",
+        alignItems: "center",
+    }
 
 }
 export const privaryPolicyLinkStyle = {
     color: "#9ca3af",
     fontSize: "0.88rem",
     fontWeight: "400",
-    textDecoration: "none"
+    textDecoration: "none",
+    [theme.breakpoints.up('sm')]: {
+        fontWeight: "800",
+
+    }
 }

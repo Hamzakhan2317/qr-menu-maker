@@ -2,25 +2,24 @@
 import { signIn } from "next-auth/react";
 import NextLink from "next/link";
 import { useRouter } from "next/navigation";
-import { useRef, useState } from "react";
 
 import LogoSvg from "@/public/assets/svg/logoSvg";
+import { loginSchema } from "@/validations/login/loginSchema";
 import AppleIcon from "@mui/icons-material/Apple";
 import GoogleIcon from "@mui/icons-material/Google";
 import {
   Box,
   Checkbox,
+  Container,
   Divider,
   FormControlLabel,
   Grid,
   Link,
   Typography,
-  Container,
 } from "@mui/material";
+import { useFormik } from "formik";
 import InputField from "../ui/InputField";
 import ButtonComp from "../ui/button";
-import { useFormik } from "formik";
-import { loginSchema } from "@/validations/login/loginSchema";
 
 import { toast } from "sonner";
 
@@ -74,9 +73,9 @@ const LoginPage = () => {
       }}
     >
       <Container maxWidth="lg" sx={{ padding: "1rem" }}>
-      <Link component={NextLink} href="/">
-            <LogoSvg />
-          </Link>
+        <Link component={NextLink} href="/">
+          <LogoSvg />
+        </Link>
       </Container>
       <Container maxWidth="sm">
         <Box
@@ -109,7 +108,7 @@ const LoginPage = () => {
                 alignItems: "center",
               }}
             >
-              <Typography sx={{ fontSize: "1.5rem", fontWeight: "700", mb: 2 }}>
+              <Typography sx={{ fontSize: "1.5rem", fontWeight: "700", mb: 2, fontFamily: "Nunito Sans" }}>
                 Log in to your account
               </Typography>
               <Grid container spacing={1} justifyContent="center">
@@ -149,7 +148,7 @@ const LoginPage = () => {
             </Box>
             <Box sx={{ display: "flex", alignItems: "center", mb: 2.5 }}>
               <Divider sx={{ flex: 1 }} />
-              <Typography color="#757575" variant="body2" sx={{ mx: 2 }}>
+              <Typography color="#757575" variant="body2" sx={{ mx: 2, fontFamily: "Nunito Sans" }}>
                 or
               </Typography>
               <Divider sx={{ flex: 1 }} />
@@ -215,8 +214,8 @@ const LoginPage = () => {
                       />
                     }
                     label={
-                      <Typography color="#757575" sx={{ fontSize: "0.875rem" }}>
-                        Keep me logged in
+                      <Typography color="#757575" sx={{ fontSize: "0.875rem", fontFamily: "Nunito Sans" }}>
+                        remember me
                       </Typography>
                     }
                   />
@@ -226,6 +225,7 @@ const LoginPage = () => {
                     href="/forget-password"
                     variant="body2"
                     sx={{
+                      fontFamily: "Nunito Sans",
                       color: "#8338EC",
                       textDecoration: "none",
                       "&:hover": {
@@ -264,7 +264,7 @@ const LoginPage = () => {
                 zIndex: 1,
               }}
             >
-              <Typography variant="body2" color="#605F62">
+              <Typography variant="body2" color="#605F62" sx={{ fontFamily: "Nunito Sans" }}>
                 Don&apos;t have an account?{" "}
                 <Link
                   component={NextLink}
@@ -273,6 +273,7 @@ const LoginPage = () => {
                   sx={{
                     color: "#8338EC",
                     textDecoration: "none",
+                    fontFamily: "Nunito Sans"
                   }}
                 >
                   Sign up
@@ -293,7 +294,7 @@ const LoginPage = () => {
           <Typography
             color="#8338EC"
             variant="body2"
-            sx={{ mx: 2, fontSize: "12px" }}
+            sx={{ mx: 2, fontSize: "12px", fontFamily: "Nunito Sans" }}
           >
             Terms of Service
           </Typography>
@@ -305,7 +306,7 @@ const LoginPage = () => {
           <Typography
             color="#8338EC"
             variant="body2"
-            sx={{ mx: 2, fontSize: "12px" }}
+            sx={{ mx: 2, fontSize: "12px", fontFamily: "Nunito Sans" }}
           >
             Privacy Policy
           </Typography>

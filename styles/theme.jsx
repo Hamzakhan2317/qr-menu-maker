@@ -150,7 +150,7 @@ export function createCustomTheme(options = {}) {
                 sm: 600,
                 md: 992,
                 lg: 1140,
-                xl: 1365,
+                xl: 1440,
                 xxl: 1536,
                 xxxl: 1920,
             },
