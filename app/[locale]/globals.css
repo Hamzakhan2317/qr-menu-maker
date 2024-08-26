@@ -60,3 +60,10 @@ body {
 .swiper-slide:nth-child(3n) {
   width: 20%;
 }
+
+.enter-phone-input-class input {
+  border: none;
+  outline: none;
+  width: 100px; /* Or any width you want */
+  color: black;
+}

@@ -15,10 +15,11 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import Toolbar from "@mui/material/Toolbar";
-import Link from "next/link";
+// import Link from "next/link";
+import { Link, usePathname, useRouter } from "@/navigation";
+// import { useRouter } from "next/navigation";
 import React from "react";
 import ButtonComp from "../../components/ui/button";
-import { useRouter } from "next/navigation";
 
 const navItems = [
   { name: "Home", href: "/" },
@@ -29,6 +30,7 @@ const navItems = [
 function Navbar(props) {
   const theme = createCustomTheme();
   const router = useRouter();
+  const pathname = usePathname()
 
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -80,7 +82,7 @@ function Navbar(props) {
         ))}
         <Box sx={{ padding: "0px 16px" }}>
           <ButtonComp
-            onClick={()=>router.push("/login")}
+            onClick={() => router.push("/login")}
             backgroundColor={"#fff"}
             color="#e6034b"
             border="1px solid #e6034b"
@@ -91,7 +93,7 @@ function Navbar(props) {
             text={"Sign in"}
           />
           <ButtonComp
-            onClick={()=>router.push("/register")}
+            onClick={() => router.push("/register")}
             backgroundColor={"#e6034b"}
             color="#fff"
             borderRadius={".5rem"}
@@ -170,6 +172,12 @@ function Navbar(props) {
                   height: "100%",
                 }}
               >
+                <Link href={pathname} locale="en">
+                  English
+                </Link>
+                <Link href={pathname} locale="tr">
+                  turkish
+                </Link>
                 <Box>
                   {navItems.map((item) => (
                     <Link
@@ -220,7 +228,7 @@ function Navbar(props) {
                   >
                     <Box sx={{ marginRight: "10px" }}>
                       <ButtonComp
-                      onClick={()=>router.push("/login")}
+                        onClick={() => router.push("/login")}
                         marginTop={"0px"}
                         borderRadius={"8px"}
                         fontWeight={"500"}
@@ -235,7 +243,7 @@ function Navbar(props) {
 
                     <Box>
                       <ButtonComp
-                      onClick={()=>router.push("/register")}
+                        onClick={() => router.push("/register")}
                         marginTop={"0px"}
                         borderRadius={"8px"}
                         fontWeight={"500"}

@@ -2,6 +2,7 @@ import { ButtonGroupStyles, mainSectionParagraphStyle, mainSectionTextStyle } fr
 import { QrSectionWrapper } from '@/styles/QrSectionStyles/QrSectionStyles';
 import { createCustomTheme } from '@/styles/theme';
 import { Box, Container, Grid, Typography } from '@mui/material';
+import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import ButtonComp from "../../components/ui/button";
 import qrImage from "../../public/assets/images/qrimage.webp";
@@ -10,6 +11,8 @@ import qrImage from "../../public/assets/images/qrimage.webp";
 
 const QrSection = () => {
     const theme = createCustomTheme()
+    const t = useTranslations("Home.Qr");
+
     return (
         <Box sx={QrSectionWrapper}>
             <Container maxWidth="xl">
@@ -26,12 +29,14 @@ const QrSection = () => {
                             </Box>
                             <Box>
                                 <Typography sx={mainSectionTextStyle}>
-                                    A Single QR Code for Simplified and Fast Order & Pay
+                                    {t("Title")}
+                                    {/* A Single QR Code for Simplified and Fast Order & Pay */}
                                 </Typography>
                             </Box>
                             <Box>
                                 <Typography sx={mainSectionParagraphStyle}>
-                                    Streamline Your Business with Unmatched Speed: Create Menus, Collect Orders, and Manage Payments Effortlessly - A Hassle-Free Solution for Your Success!                                </Typography>
+                                    {t("Subtitle")}
+                                </Typography>
                             </Box>
                             <Box sx={{ display: "flex" }}>
                                 <Box sx={{
@@ -48,7 +53,7 @@ const QrSection = () => {
                                             sm: "0px"
                                         }
 
-                                    }} marginTop={"15px"} borderRadius={"10px"} fontWeight={"500"} fontSize={"16px"} text={"Try for Free"} color='#fff'
+                                    }} marginTop={"15px"} borderRadius={"10px"} fontWeight={"500"} fontSize={"16px"} text={t("Button")} color='#fff'
                                         backgroundColor={theme.palette.secondary.main} padding='28px 45px' />
                                 </Box>
                             </Box>

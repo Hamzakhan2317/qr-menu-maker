@@ -20,6 +20,7 @@
     "mongoose": "^8.5.3",
     "next": "14.2.5",
     "next-auth": "^4.24.7",
+    "next-intl": "^3.17.6",
     "next-themes": "^0.3.0",
     "react": "^18",
     "react-auth-code-input": "^3.2.1",

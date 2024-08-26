@@ -1,11 +1,15 @@
-import { appfeatureCardDetails } from "@/public/assets/static";
+'use client'
 import CheckIcon from '@mui/icons-material/Check';
 import { Box, Container, Grid, Typography } from "@mui/material";
 import appFeatureImg from "../../public/assets/images/appfeatureimg.webp";
 
+import { getAppFeatureCardDetails } from '@/public/assets/static';
 import { appFeatureHeadingStyles, appFeatureIconStyles, AppFeatureSectionContainer, appFeaturesTextStyles } from "@/styles/AppFeatureSectionStyles/AppFeatureSectionStyles";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 const AppFeatureSection = () => {
+    const t = useTranslations('Home.Appfeatures');
+    const appfeatureCardDetails = getAppFeatureCardDetails(t);
     return (
         <Box sx={AppFeatureSectionContainer}>
             <Container maxWidth="xl">
@@ -35,7 +39,6 @@ const AppFeatureSection = () => {
                                     lg: "100%",
                                     sm: "400px",
                                     md: "430px",
-
                                 }
                             }}>
                                 <Image src={appFeatureImg} style={{

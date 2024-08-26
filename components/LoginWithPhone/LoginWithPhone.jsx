@@ -184,38 +184,32 @@
 
 // export default LoginWithPhone;
 
-import { useState } from "react";
-import { signIn } from "next-auth/react";
-import { toast } from "sonner";
-import { useRouter } from "next/navigation";
+import LogoSvg from "@/public/assets/svg/logoSvg";
 import {
   Box,
-  Checkbox,
-  Divider,
-  FormControlLabel,
-  Grid,
-  Link,
-  Typography,
   Container,
+  Divider,
+  Link,
+  Typography
 } from "@mui/material";
-import LogoSvg from "@/public/assets/svg/logoSvg";
-import AppleIcon from "@mui/icons-material/Apple";
-import GoogleIcon from "@mui/icons-material/Google";
-import InputField from "../ui/InputField";
-import ButtonComp from "../ui/button";
 import { useFormik } from "formik";
+import { signIn } from "next-auth/react";
 import NextLink from "next/link";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { toast } from "sonner";
+import ButtonComp from "../ui/button";
 
+import AuthCode from "react-auth-code-input";
 import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
 import "react-phone-number-input/style.css";
-import AuthCode from "react-auth-code-input";
 
 const LoginWithPhone = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [phone, setPhone] = useState("");
   const [otp, setOTP] = useState("");
-  const [isOTPSent, setIsOTPSent] = useState(false);
+  const [isOTPSent, setIsOTPSent] = useState(true);
   const [usePhoneLogin, setUsePhoneLogin] = useState(false);
 
   const [number, setNumber] = useState("");
@@ -425,19 +419,23 @@ const LoginWithPhone = () => {
               </Typography>
             </Box>
 
-            <Box component="form">
+            <Box component="form" >
+              <Typography variant="body2" sx={{ marginBottom: "10px" }}>
+                Enter your phone number:
+              </Typography>
               <PhoneInput
+                className="enter-phone-input-class"
                 onChange={(e) => setNumber(e)}
                 placeholder="Enter phone number"
                 required
                 international
-                defaultCountry="PK"
+                defaultCountry="TR"
                 inputExtraProps={{
                   name: "phone",
                   required: true,
                   autoFocus: true,
                 }}
-                disabled={isOTPSent}
+                // disabled={isOTP /Sent}
                 // error={
                 //   number
                 //     ? isValidPhoneNumber(number)
@@ -450,6 +448,9 @@ const LoginWithPhone = () => {
                   border: "none",
                   outline: "none",
                   color: "black",
+                  border: "1px solid #8338ec",
+                  padding: "10px",
+                  borderRadius: "8px"
                 }}
               />
               <Typography sx={{ color: "red", mb: 1 }}>
@@ -459,13 +460,11 @@ const LoginWithPhone = () => {
                     : "Invalid phone number"
                   : "Phone number required"}
               </Typography>
-
               {isOTPSent && (
                 <>
-                  <Typography variant="body2" my={1}>
-                    Enter otp
+                  <Typography variant="body2" sx={{ marginTop: "20px", marginBottom: "10px" }}>
+                    Enter OTP Here:
                   </Typography>
-
                   <AuthCode
                     allowedCharacters="numeric"
                     onChange={handleOnOtpChange}
@@ -519,7 +518,7 @@ const LoginWithPhone = () => {
               /> */}
               {isOTPSent ? (
                 <ButtonComp
-                  onClick={verifyOTP}
+                  // onClick={verifyOTP}
                   marginTop="0.7rem"
                   backgroundColor="#8338EC"
                   color="#FFF"
@@ -532,7 +531,7 @@ const LoginWithPhone = () => {
                 />
               ) : (
                 <ButtonComp
-                  onClick={sendOTP}
+                  // onClick={sendOTP}
                   marginTop="0.7rem"
                   backgroundColor="#8338EC"
                   color="#FFF"
