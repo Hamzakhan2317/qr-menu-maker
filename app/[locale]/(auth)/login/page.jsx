@@ -3,7 +3,7 @@ import Signin from "@/components/Signin/Signin";
 
 import { getServerSession } from "next-auth";
 import { useSession } from "next-auth/react";
-import { redirect } from "next/navigation";
+import { redirect } from "@/navigation";
 
 const SigninPage = async () => {
   const session = await getServerSession(authOptions);
