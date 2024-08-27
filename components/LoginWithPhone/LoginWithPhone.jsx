@@ -189,27 +189,29 @@ import {
   Box,
   Container,
   Divider,
-  Link,
+  // Link,
   Typography
 } from "@mui/material";
 import { useFormik } from "formik";
 import { signIn } from "next-auth/react";
 import NextLink from "next/link";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "sonner";
 import ButtonComp from "../ui/button";
 
+import { Link, useRouter } from "@/navigation";
 import AuthCode from "react-auth-code-input";
 import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
 import "react-phone-number-input/style.css";
+
 
 const LoginWithPhone = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [phone, setPhone] = useState("");
   const [otp, setOTP] = useState("");
-  const [isOTPSent, setIsOTPSent] = useState(true);
+  const [isOTPSent, setIsOTPSent] = useState(false);
   const [usePhoneLogin, setUsePhoneLogin] = useState(false);
 
   const [number, setNumber] = useState("");
@@ -381,8 +383,9 @@ const LoginWithPhone = () => {
       }}
     >
       <Container maxWidth="lg" sx={{ padding: "1rem" }}>
-        <LogoSvg />
-      </Container>
+        <Link href="/">
+          <LogoSvg />
+        </Link>      </Container>
       <Container maxWidth="sm">
         <Box
           sx={{
@@ -435,7 +438,7 @@ const LoginWithPhone = () => {
                   required: true,
                   autoFocus: true,
                 }}
-                // disabled={isOTP /Sent}
+                disabled={isOTPSent}
                 // error={
                 //   number
                 //     ? isValidPhoneNumber(number)
@@ -518,7 +521,7 @@ const LoginWithPhone = () => {
               /> */}
               {isOTPSent ? (
                 <ButtonComp
-                  // onClick={verifyOTP}
+                  onClick={verifyOTP}
                   marginTop="0.7rem"
                   backgroundColor="#8338EC"
                   color="#FFF"
@@ -531,7 +534,7 @@ const LoginWithPhone = () => {
                 />
               ) : (
                 <ButtonComp
-                  // onClick={sendOTP}
+                  onClick={sendOTP}
                   marginTop="0.7rem"
                   backgroundColor="#8338EC"
                   color="#FFF"
@@ -543,6 +546,13 @@ const LoginWithPhone = () => {
                   marginBottom="2.4rem"
                 />
               )}
+            </Box>
+            <Box sx={{ display: "flex", alignItems: "center", mb: 2.5 }}>
+              <Divider sx={{ flex: 1 }} />
+              <Link href={"/login"} style={{ fontFamily: "Nunito Sans", color: "#8338EC", textDecoration: "none" }}>
+                Login with email
+              </Link>
+              <Divider sx={{ flex: 1 }} />
             </Box>
             <Box
               sx={{

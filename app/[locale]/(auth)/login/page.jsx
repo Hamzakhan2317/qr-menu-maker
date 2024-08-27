@@ -1,23 +1,19 @@
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import Signin from "@/components/Signin/Signin";
 
-import { getServerSession } from "next-auth";
-import { useSession } from "next-auth/react";
-import { redirect } from "@/navigation";
 
 const SigninPage = async () => {
-  const session = await getServerSession(authOptions);
-  console.log("Session>>>>", session)
+  // const session = await getServerSession(authOptions);
+  // console.log("Session>>>>", session)
 
   return (
     <>
-      {session ? (
+      {/* {session ? (
         redirect("/dashboard")
-      ) : (
-        <>
-          <Signin />
-        </>
-      )}
+      ) : ( */}
+      <>
+        <Signin />
+      </>
+      {/* )} */}
     </>
   );
 };

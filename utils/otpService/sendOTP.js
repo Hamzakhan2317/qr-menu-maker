@@ -20,7 +20,7 @@ export async function sendOTP(phone) {
       .services(process.env.TWILIO_SMS_SERVICE)
       .verifications.create({
         channel: "sms",
-        to: `+${phone}`,
+        to: phone,
       });
 
     return verification; // Return the verification object on success

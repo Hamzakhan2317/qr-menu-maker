@@ -38,6 +38,17 @@
       "VideoText1": "FineDine kullanarak satışlarımız ve bahşişlerimiz %20-%30 arttı. Bazı günler FineDine olmadan nasıl geçtiğimi anlamıyorum.",
       "OwnerName": "Chris Gia",
       "CompayName": "Cafe Sanuki, Müdür"
+    },
+    "VideoSectionCardDetails": {
+      "Text1": "FineDine QR Menü, misafirperverliği artırmak için harika bir çözümdür. Çok dilli olarak sunulan tüm bilgiler, yerel misafirlerimizin daha hoş karşılandığını ve değerli olduğunu hissetmesini sağlar. İletişim hatalarını ortadan kaldırır ve restoranlarımızı tüm misafirler için uygun hale getirir.",
+      "CeoName1": "Chris Gia",
+      "CompayName1": "Cafe Sanuki, Müdür",
+      "Text2": "FineDine, ürünlerimizi çapraz satmamıza ve ortalama fiş boyutunu artırmamıza olanak tanıyor. Menü operasyonlarımızı dijitalleştirerek satışlarımız yaklaşık %20 arttı.",
+      "CeoName2": "Begüm Doğru",
+      "CompayName2": "Pokemate Sahibi, İstanbul",
+      "Text3": "Sadece bir yazılım kullanarak ve onu düzgün kullanarak satışlarımızı %15-20 oranında artırdık ve bu büyük bir artış.",
+      "CeoName3": "Spiro's, NYC Yöneticisi",
+      "CompayName3": "Kamal Yürük"
     }
   }
 }

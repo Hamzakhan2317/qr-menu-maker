@@ -18,7 +18,7 @@ export async function verifyOTP(phone, otp) {
     const verificationCheck = await client.verify.v2
       .services(TWILIO_SMS_SERVICE)
       .verificationChecks.create({
-        to: `+${phone}`,
+        to: phone,
         code: otp,
       });
 
@@ -26,18 +26,16 @@ export async function verifyOTP(phone, otp) {
 
     // return verificationCheck?.valid; // Return the verification object on success
 
-    if (verificationCheck.status === 'approved') {
+    if (verificationCheck.status === "approved") {
       // OTP is correct and verified
       // throw new Error("OTP verified successfully.");
-      return true
-
+      return true;
     } else {
       // OTP is incorrect
       throw new Error("Invalid OTP. Please try again.");
-
     }
-
   } catch (error) {
+    console.log("error>>>>>....", error);
     if (error.code === 20404) {
       // Twilio error code for expired OTP
       throw new Error("The OTP has expired. Please request a new one.");
@@ -57,7 +55,9 @@ export async function verifyOTP(phone, otp) {
         "The phone number is invalid or cannot receive SMS messages."
       );
     } else {
-      throw new Error("An error occurred while verifying the OTP.");
+      throw new Error(
+        error?.message || "  An error occurred while verifying the OTP."
+      );
     }
   }
 }

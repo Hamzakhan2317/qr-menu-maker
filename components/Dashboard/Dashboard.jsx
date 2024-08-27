@@ -1,12 +1,18 @@
 "use client";
 
-import { useSession } from "next-auth/react";
-import LogoutButton from "../ui/LogoutButton";
+import { useRouter } from "@/navigation";
+import { signOut, useSession } from "next-auth/react";
 
 
 const Dashboard = () => {
   const { data: session } = useSession();
   console.log("session>>>>", session)
+  const router = useRouter();
+  const logout = async () => {
+    await signOut({ redirect: false });
+    router.push("/login");
+  };
+
 
   return (
     <div>
@@ -14,8 +20,11 @@ const Dashboard = () => {
       <p>Welcome, {session?.user?.email}</p>
 
       {/* Render your protected data here */}
-      <LogoutButton label="logout"/>
-    </div>
+      <button
+        className="bg-red-600 mx-2 px-2 my-2 rounded-md text-white"
+        onClick={logout}
+      >
+        logout      </button>    </div>
   );
 };
 

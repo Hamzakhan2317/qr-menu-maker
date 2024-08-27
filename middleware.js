@@ -66,7 +66,6 @@ export async function middleware(req) {
     req,
     secret: process.env.NEXTAUTH_JWT_SECRET,
   });
-
   // If the token is not available, redirect to the locale-specific login page
   if (!token) {
     const loginUrl = new URL(`/${locale}/login`, origin);

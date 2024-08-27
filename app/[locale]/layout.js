@@ -13,9 +13,11 @@ export default function RootLayout({ children, params: { locale } }) {
   return (
     <html lang={locale}>
       <NextAuthProviders>
-        <NextIntlClientProvider locale={locale} messages={messages}>
-          <body className={inter.className}>{children}</body>
-        </NextIntlClientProvider>
+        <body className={inter.className}>
+          <NextIntlClientProvider locale={locale} messages={messages}>
+            {children}
+          </NextIntlClientProvider>
+        </body>
         <Toaster />
       </NextAuthProviders>
     </html>

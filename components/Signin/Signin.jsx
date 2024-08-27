@@ -1,12 +1,11 @@
 "use client";
+import { useRouter } from "@/navigation";
 import { signIn } from "next-auth/react";
 import NextLink from "next/link";
-import { useRouter } from "next/navigation";
 
+import { Link } from "@/navigation";
 import LogoSvg from "@/public/assets/svg/logoSvg";
 import { loginSchema } from "@/validations/login/loginSchema";
-import AppleIcon from "@mui/icons-material/Apple";
-import GoogleIcon from "@mui/icons-material/Google";
 import {
   Box,
   Checkbox,
@@ -14,16 +13,12 @@ import {
   Divider,
   FormControlLabel,
   Grid,
-  Link,
   Typography,
 } from "@mui/material";
 import { useFormik } from "formik";
+import { toast } from "sonner";
 import InputField from "../ui/InputField";
 import ButtonComp from "../ui/button";
-
-import { toast } from "sonner";
-
-
 const LoginPage = () => {
   const router = useRouter();
 
@@ -111,7 +106,7 @@ const LoginPage = () => {
               <Typography sx={{ fontSize: "1.5rem", fontWeight: "700", mb: 2, fontFamily: "Nunito Sans" }}>
                 Log in to your account
               </Typography>
-              <Grid container spacing={1} justifyContent="center">
+              {/* <Grid container spacing={1} justifyContent="center">
                 <Grid item xs={12}>
                   <ButtonComp
                     backgroundColor="#fff"
@@ -144,15 +139,15 @@ const LoginPage = () => {
                     icon={<AppleIcon />}
                   />
                 </Grid>
-              </Grid>
+              </Grid> */}
             </Box>
-            <Box sx={{ display: "flex", alignItems: "center", mb: 2.5 }}>
+            {/* <Box sx={{ display: "flex", alignItems: "center", mb: 2.5 }}>
               <Divider sx={{ flex: 1 }} />
               <Typography color="#757575" variant="body2" sx={{ mx: 2, fontFamily: "Nunito Sans" }}>
                 or
               </Typography>
               <Divider sx={{ flex: 1 }} />
-            </Box>
+            </Box> */}
             <Box component="form" onSubmit={formik.handleSubmit}>
               <InputField
                 sx={{
@@ -223,11 +218,11 @@ const LoginPage = () => {
                 <Grid item>
                   <Link
                     href="/forget-password"
-                    variant="body2"
-                    sx={{
+                    style={{
                       fontFamily: "Nunito Sans",
                       color: "#8338EC",
                       textDecoration: "none",
+                      fontSize: "13px",
                       "&:hover": {
                         color: "#AE83EA",
                       },
@@ -250,6 +245,13 @@ const LoginPage = () => {
                 marginBottom="2.4rem"
               />
             </Box>
+            <Box sx={{ display: "flex", alignItems: "center", mb: 2.5 }}>
+              <Divider sx={{ flex: 1 }} />
+              <Link href={"/Login-with-phone"} style={{ fontFamily: "Nunito Sans", color: "#8338EC", textDecoration: "none" }}>
+                Login with phone
+              </Link>
+              <Divider sx={{ flex: 1 }} />
+            </Box>
             <Box
               sx={{
                 padding: "0.7rem",
@@ -270,7 +272,7 @@ const LoginPage = () => {
                   component={NextLink}
                   href="/register"
                   variant="bodyS"
-                  sx={{
+                  style={{
                     color: "#8338EC",
                     textDecoration: "none",
                     fontFamily: "Nunito Sans"
