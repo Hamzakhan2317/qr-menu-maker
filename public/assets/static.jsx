@@ -21,7 +21,9 @@ import blogImgOne from "../assets/images/blogimg1.webp";
 import blogImgTwo from "../assets/images/blogimg2.webp";
 import blogImgThree from "../assets/images/blogimg3.webp";
 import ceo1 from "../assets/images/ceo1.webp";
+import ceo2 from "../assets/images/ceo2.webp";
 import ceo3 from "../assets/images/ceo3.webp";
+import ceo4 from "../assets/images/ceo4.webp";
 import featureOne from "../assets/images/feature1.webp";
 import feebackImg from "../assets/images/feature2.webp";
 import dataCollectioneImg from "../assets/images/feature3.webp";
@@ -48,7 +50,7 @@ import rating from "../assets/images/star.webp";
 //     {
 //         heading: "An Upgraded Ordering Process",
 //         text: "Integrating with the world’s leading POS systems to sync the menus when you make a change and send all orders to the POS system, the FineDine dashboard, and your kitchen & bar printers simultaneously.",
-//     },
+//     },   
 
 // ]
 
@@ -88,10 +90,22 @@ export const getMarqueeCardDetails = (t) => [
         companyName: t("CompayName3"),
         ceoName: t("CeoName3"),
     },
+    {
+        text: t("Text4"),
+        starImage: rating,
+        ceoImage: ceo2,
+        companyName: t("CompayName4"),
+        ceoName: t("CeoName4"),
+    },
+    {
+        text: t("Text5"),
+        starImage: rating,
+        ceoImage: ceo4,
+        companyName: t("CompayName5"),
+        ceoName: t("CeoName5"),
+    },
 
 ];
-
-
 
 export const featureCardData = [
     {

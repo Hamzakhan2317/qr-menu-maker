@@ -1,9 +1,11 @@
 import { DiscoverBtnStyles, discoverContainerStyles, discoverImageStyles, discoverTextStyles, discoverTextWrapper } from "@/styles/DiscoverSectionStyling/DiscoverSectionStyling"
 import { Box, Container, Grid, Typography } from "@mui/material"
+import { useTranslations } from "next-intl"
 import Image from "next/image"
 import ButtonComp from "../../components/ui/button"
 import discoverImg from "../../public/assets/images/discoverimage.webp"
 const DiscoverSection = () => {
+    const t = useTranslations("Home.DiscoverSection");
     return (
         <Container maxWidth="xl" sx={discoverContainerStyles}>
             <Grid container>
@@ -11,11 +13,11 @@ const DiscoverSection = () => {
                     <Box sx={discoverTextWrapper}>
                         <Box sx={{ width: "100%" }}>
                             <Typography sx={discoverTextStyles}>
-                                Discover how FineDine fits your business
+                                {t("Title")}
                             </Typography>
                         </Box>
                         <Box sx={DiscoverBtnStyles}>
-                            <ButtonComp fontWeight={"500"} marginTop={"0px"} borderRadius={"12px"} fontSize={"16px"} text={"Try Findine"} color='#fff' backgroundColor={"#E6034B"} padding='25px 30px' />
+                            <ButtonComp fontWeight={"500"} marginTop={"0px"} borderRadius={"12px"} fontSize={"16px"} text={t("ButtonText")} color='#fff' backgroundColor={"#E6034B"} padding='25px 30px' />
                         </Box>
                     </Box>
                 </Grid>

@@ -18,6 +18,7 @@ import Toolbar from "@mui/material/Toolbar";
 // import Link from "next/link";
 import { Link, usePathname, useRouter } from "@/navigation";
 // import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 import React, { useState } from "react";
 import ButtonComp from "../../components/ui/button";
 
@@ -31,6 +32,7 @@ function Navbar(props) {
   const theme = createCustomTheme();
   const router = useRouter();
   const pathname = usePathname()
+  const t = useTranslations('Home.NavSection');
 
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -41,6 +43,7 @@ function Navbar(props) {
   const handleChange = (event) => {
     setColor(event.target.value);
   };
+
   // Set drawer width and anchor based on screen size
   const drawerWidth = isSm ? "100%" : isXs ? "100%" : "defaultWidth"; // Set defaultWidth to fit your design
   const drawerAnchor = isXs ? "top" : "top"; // Use 'right' for medium and larger screens
@@ -75,7 +78,9 @@ function Navbar(props) {
         {navItems.map((item) => (
           <ListItem key={item.name} disablePadding>
             <ListItemButton
-              sx={{ textAlign: "start" }}
+              style={{
+                textAlign: "start", fontFamily: "Nunito Sans",
+              }}
               component={Link}
               href={item.href}
             >
@@ -93,7 +98,7 @@ function Navbar(props) {
             fontWeight="400"
             padding="18px 24px"
             width={"100%"}
-            text={"Sign in"}
+            text={t("SiginButton")}
           />
           <ButtonComp
             onClick={() => router.push("/register")}
@@ -103,7 +108,7 @@ function Navbar(props) {
             fontWeight="400"
             padding="18px 24px"
             width={"100%"}
-            text={"Get Started"}
+            text={t("GetStartedButton")}
           />
         </Box>
       </List>
@@ -154,7 +159,7 @@ function Navbar(props) {
               >
                 <Link
                   href="/"
-                  style={{ display: "flex", alignItems: "center" }}
+                  style={{ display: "flex", alignItems: "center", }}
                 >
                   <LogoSvg width="158px" height="36" />
                 </Link>
@@ -186,6 +191,7 @@ function Navbar(props) {
                         color: "#111827",
                         background: "#fff",
                         margin: "0 10px",
+                        fontFamily: "Nunito Sans",
                       }}
                     >
                       {item.name}
@@ -231,7 +237,7 @@ function Navbar(props) {
                         borderRadius={"8px"}
                         fontWeight={"500"}
                         fontSize={"15px"}
-                        text={"Sign in"}
+                        text={t("SiginButton")}
                         boxShadow={"none"}
                         color="#1f2937"
                         backgroundColor={"#fff"}
@@ -246,7 +252,7 @@ function Navbar(props) {
                         borderRadius={"8px"}
                         fontWeight={"500"}
                         fontSize={"15px"}
-                        text={"Get Started"}
+                        text={t("GetStartedButton")}
                         boxShadow={"none"}
                         color="#fff"
                         backgroundColor={"#e6034b"}
@@ -265,12 +271,16 @@ function Navbar(props) {
                         }}
                       >
                         <MenuItem value={1}>
-                          <Link style={{ textDecoration: "none", fontSize: "14px", color: "#111827" }} href={pathname} locale="en">
+                          <Link style={{
+                            textDecoration: "none", fontSize: "14px", color: "#111827", fontFamily: "Nunito Sans",
+                          }} href={pathname} locale="en">
                             english
                           </Link>
                         </MenuItem>
                         <MenuItem value={2}>
-                          <Link style={{ textDecoration: "none", fontSize: "14px", color: "#111827" }} href={pathname} locale="tr">
+                          <Link style={{
+                            textDecoration: "none", fontSize: "14px", color: "#111827", fontFamily: "Nunito Sans",
+                          }} href={pathname} locale="tr">
                             turkish
                           </Link>
                         </MenuItem>

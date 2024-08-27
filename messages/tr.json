@@ -1,9 +1,16 @@
 {
   "Home": {
+    "NavSection": {
+      "NavItemName": "Ana Sayfa",
+      "NavItemAbout": "Hakkımızda",
+      "NavItemContact": "Bize Ulaşın",
+      "SiginButton": "Giriş Yap",
+      "GetStartedButton": "Başlayın"
+    },
     "Qr": {
       "Title": "Basit ve Hızlı Sipariş ve Ödeme için Tek QR Kodu",
       "Subtitle": "İşinizi Benzersiz Hızla Kolaylaştırın: Menüler Oluşturun, Siparişleri Toplayın ve Ödemeleri Kolayca Yönetin - Başarınız İçin Sorunsuz Bir Çözüm!",
-      "CallToAction": "Ücretsiz Deneyin"
+      "Button": "Ücretsiz dene"
     },
     "Customer": {
       "Title": "Harika Tasarım, Mutlu Misafirler",
@@ -47,8 +54,21 @@
       "CeoName2": "Begüm Doğru",
       "CompayName2": "Pokemate Sahibi, İstanbul",
       "Text3": "Sadece bir yazılım kullanarak ve onu düzgün kullanarak satışlarımızı %15-20 oranında artırdık ve bu büyük bir artış.",
-      "CeoName3": "Spiro's, NYC Yöneticisi",
-      "CompayName3": "Kamal Yürük"
+      "CeoName3": "Kamal Yürük",
+      "CompayName3": "Spiro's, NYC Yöneticisi",
+      "Text4": "FineDine, kafe satışlarını artırdı ve kahvaltı menümüzü başlatmamıza yardımcı oldu. Zaman zaman menümüzü FineDine ile güncelliyoruz ve bu çok kolay!",
+      "CeoName4": "GODIVA Çikolatacısı",
+      "CompayName4": "Spiro's, NYC'de Müdür",
+      "Text5": "FineDine, menülerimizde istediğimiz zaman değişiklik yapma özgürlüğü verdi! Personelimiz FineDine'i çok seviyor, kullanımı çok kolay ve herkes için uygun.",
+      "CeoName5": "Matias Ess",
+      "CompayName5": "Sofitel Otel ve Tatil Köyleri"
+    },
+    "DiscoverSection": {
+      "Title": "FineDine'in işletmenize nasıl uyduğunu keşfedin",
+      "ButtonText": "FineDine'ı Deneyin"
+    },
+    "TextSection": {
+      "Title": "FineDine oteller için hepsi bir arada yönetim platformu. FineDine oteller için hepsi bir arada yönetim platformu. Rezervasyon alın, sipariş ve ödeme işlemlerini gerçekleştirin. FineDine oteller için hepsi bir arada yönetim platformu. FineDine oteller için hepsi bir arada yönetim platformu. Rezervasyon alın, sipariş ve ödeme işlemlerini gerçekleştirin. FineDine oteller için hepsi bir arada yönetim platformu. FineDine oteller için hepsi bir arada yönetim platformu. Rezervasyon alın, sipariş ve ödeme işlemlerini gerçekleştirin."
     }
   }
 }

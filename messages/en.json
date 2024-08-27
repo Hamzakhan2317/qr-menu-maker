@@ -1,5 +1,12 @@
 {
   "Home": {
+    "NavSection": {
+      "NavItemName": "Home",
+      "NavItemAbout": "About",
+      "NavItemContact": "Contact Us",
+      "SiginButton": "Sign in",
+      "GetStartedButton": "Get Started"
+    },
     "Qr": {
       "Title": "A Single QR Code for Simplified and Fast Order & Pay",
       "Subtitle": "Streamline Your Business with Unmatched Speed: Create Menus, Collect Orders, and Manage Payments Effortlessly - A Hassle-Free Solution for Your Success!",
@@ -47,8 +54,25 @@
       "CeoName2": "DogBegum ru",
       "CompayName2": "Owner of Pokemate, Istanbul",
       "Text3": "We increased our sales about 15-20% and that’s a big increase by just using a software and using it properly.",
-      "CeoName3": "Manager at Spiro’s, NYC",
-      "CompayName3": "Kamal Yuruk"
+      "CeoName3": "Kamal Yuruk",
+      "CompayName3": "Manager at Spiro’s, NYC",
+      "Text4": "FineDine improved the cafe sales and helped us to launch our breakfast menu. From time to time, we update our menu with FineDine and it is so easy!",
+      "CeoName4": "GODIVA Chocolatier",
+      "CompayName4": "Manager at Spiro’s, NYC",
+      "Text5": "FineDine has given us the liberty to make changes on our menus anytime! Our staff enjoys FineDine,it’s very easy to use and convenient for everyone.",
+      "CeoName5": "Matias Ess",
+      "CompayName5": "Sofitel Hotel & Resorts"
+    },
+    "DiscoverSection": {
+      "Title": "Discover how FineDine fits your business",
+      "ButtonText": "Try FineDine"
+    },
+    "TextSection": {
+      "Title": " finedine all-in-one management platform for hotels. finedine all-in-one management platform for hotels. take reservations, take orders and payment.finedine all-in-one management platform for hotels. finedine all-in-one management platform for hotels. take reservations, take orders and payment.finedine all-in-one management platform for hotels. finedine all-in-one management platform for hotels. take reservations, take orders and payment."
+    },
+    "FAQSection": {
+      "Heading": "What is a QR code menu for restaurants?",
+      "Detail": "A QR code menu for restaurants is a digital menu accessible via a quick response (QR) code that patrons can scan with their smartphones to view the menu items."
     }
   }
 }
