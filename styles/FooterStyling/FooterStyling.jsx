@@ -68,7 +68,6 @@ export const copyRightTextStyle = {
     fontFamily: "Nunito Sans"
 
 }
-
 export const privaryPolicyBoxStyle = {
     display: "flex",
     justifyContent: "end",
