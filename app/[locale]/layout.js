@@ -1,4 +1,4 @@
-import { NextIntlClientProvider } from "next-intl";
+import { NextIntlClientProvider, useMessages } from "next-intl";
 import { Inter } from "next/font/google";
 import { Toaster } from "sonner";
 import "./globals.css";
@@ -10,13 +10,16 @@ export const metadata = {
 };
 // const messages = require(`@/messages`);
 export default function RootLayout({ children, params: { locale } }) {
-  const messages = require(`@/messages/${locale}.json`);
+  // const messages = require(`@/messages/${locale}.json`);
+  const tryMessage = useMessages();
   return (
     <html lang={locale}>
       <NextAuthProviders>
-        <NextIntlClientProvider locale={locale} messages={messages}>
-          <body className={inter.className}>{children}</body>
-        </NextIntlClientProvider>
+        <body className={inter.className}>
+          <NextIntlClientProvider locale={locale} messages={tryMessage}>
+            {children}
+          </NextIntlClientProvider>
+        </body>
         <Toaster />
       </NextAuthProviders>
     </html>

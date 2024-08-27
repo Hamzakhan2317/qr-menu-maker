@@ -3,7 +3,7 @@ import LogoSvg from "@/public/assets/svg/logoSvg";
 import { createCustomTheme } from "@/styles/theme";
 import CloseIcon from "@mui/icons-material/Close";
 import MenuIcon from "@mui/icons-material/Menu";
-import { Grid, useMediaQuery } from "@mui/material";
+import { Grid, MenuItem, Select, useMediaQuery } from "@mui/material";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -18,7 +18,7 @@ import Toolbar from "@mui/material/Toolbar";
 // import Link from "next/link";
 import { Link, usePathname, useRouter } from "@/navigation";
 // import { useRouter } from "next/navigation";
-import React from "react";
+import React, { useState } from "react";
 import ButtonComp from "../../components/ui/button";
 
 const navItems = [
@@ -37,7 +37,10 @@ function Navbar(props) {
   const handleDrawerToggle = () => setMobileOpen((prevState) => !prevState);
   const isXs = useMediaQuery(theme.breakpoints.down("xs"));
   const isSm = useMediaQuery(theme.breakpoints.down("md"));
-
+  const [color, setColor] = useState("1");
+  const handleChange = (event) => {
+    setColor(event.target.value);
+  };
   // Set drawer width and anchor based on screen size
   const drawerWidth = isSm ? "100%" : isXs ? "100%" : "defaultWidth"; // Set defaultWidth to fit your design
   const drawerAnchor = isXs ? "top" : "top"; // Use 'right' for medium and larger screens
@@ -172,12 +175,7 @@ function Navbar(props) {
                   height: "100%",
                 }}
               >
-                <Link href={pathname} locale="en">
-                  English
-                </Link>
-                <Link href={pathname} locale="tr">
-                  turkish
-                </Link>
+
                 <Box>
                   {navItems.map((item) => (
                     <Link
@@ -254,6 +252,29 @@ function Navbar(props) {
                         backgroundColor={"#e6034b"}
                         padding="22px 26px"
                       />
+                    </Box>
+                    <Box sx={{ ml: "10px" }}>
+                      <Select
+                        value={color}
+                        placeholder="lng"
+                        onChange={handleChange}
+                        sx={{
+                          width: 60,
+                          height: 45,
+
+                        }}
+                      >
+                        <MenuItem value={1}>
+                          <Link style={{ textDecoration: "none", fontSize: "14px", color: "#111827" }} href={pathname} locale="en">
+                            english
+                          </Link>
+                        </MenuItem>
+                        <MenuItem value={2}>
+                          <Link style={{ textDecoration: "none", fontSize: "14px", color: "#111827" }} href={pathname} locale="tr">
+                            turkish
+                          </Link>
+                        </MenuItem>
+                      </Select>
                     </Box>
                   </Box>
                 </Box>

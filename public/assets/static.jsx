@@ -21,11 +21,7 @@ import blogImgOne from "../assets/images/blogimg1.webp";
 import blogImgTwo from "../assets/images/blogimg2.webp";
 import blogImgThree from "../assets/images/blogimg3.webp";
 import ceo1 from "../assets/images/ceo1.webp";
-import ceo2 from "../assets/images/ceo2.webp";
 import ceo3 from "../assets/images/ceo3.webp";
-import ceo4 from "../assets/images/ceo4.webp";
-import ceo5 from "../assets/images/ceo5.webp";
-import ceo6 from "../assets/images/ceo6.webp";
 import featureOne from "../assets/images/feature1.webp";
 import feebackImg from "../assets/images/feature2.webp";
 import dataCollectioneImg from "../assets/images/feature3.webp";
@@ -71,8 +67,29 @@ export const getAppFeatureCardDetails = (t) => [
         text: t("Subtitle2"),
     },
 ];
+export const getMarqueeCardDetails = (t) => [
+    {
+        text: t("Text1"),
+        starImage: rating,
+        ceoImage: ceo1,
+        companyName: t("CompayName1"),
+        ceoName: t("CeoName1"),
+    },
+    {
+        text: t("Text2"),
+        starImage: rating,
+        ceoImage: ceo3,
+        companyName: t("CompayName2"),
+        ceoName: t("CeoName2"),
+    },
+    {
+        text: t("Text3"),
+        starImage: rating,
+        companyName: t("CompayName3"),
+        ceoName: t("CeoName3"),
+    },
 
-
+];
 
 
 
@@ -287,77 +304,77 @@ export const footerData = [
 
 // Marquee cards Static Data
 
-export const marqueeCardDetails = [
-    {
-        text: "FineDine QR Menu is great to improve hospitality. It has all the information available in multiple languages which makes our local guests feel even more welcome and valuable. It eliminates errors in communication and makes our restaurants a place for all guests.",
-        starImage: rating,
-        ceoImage: ceo1,
-        companyName: "Chris Gia",
-        ceoName: "Cafe Sanuki,Manager"
+// export const marqueeCardDetails = [
+//     {
+//         text: "FineDine QR Menu is great to improve hospitality. It has all the information available in multiple languages which makes our local guests feel even more welcome and valuable. It eliminates errors in communication and makes our restaurants a place for all guests.",
+//         starImage: rating,
+//         ceoImage: ceo1,
+//         companyName: "Chris Gia",
+//         ceoName: "Cafe Sanuki,Manager"
 
-    },
-    {
-        text: "FineDine allows us to upsell our products and increase the average ticket size. Just by digitizing our menu operations, our sales increased around 20%.",
-        starImage: rating,
-        ceoImage: ceo3,
-        companyName: "Begum Dogru",
-        ceoName: "Owner of Pokemate, Istanbul"
+//     },
+//     {
+//         text: "FineDine allows us to upsell our products and increase the average ticket size. Just by digitizing our menu operations, our sales increased around 20%.",
+//         starImage: rating,
+//         ceoImage: ceo3,
+//         companyName: "DogBegum ru",
+//         ceoName: "Owner of Pokemate, Istanbul"
 
-    },
-    {
-        text: "We increased our sales about 15-20% and that’s a big increase by just using a software and using it properly.",
-        companyName: "Kamal Yuruk",
-        starImage: rating,
-        ceoName: "Manager at Spiro’s, NYC"
-    },
-    {
-        text: "FineDine improved the cafe sales and helped us to launch our breakfast menu. From time to time, we update our menu with FineDine and it is so easy!",
-        companyName: "Jay Carlo Rivera",
-        ceoName: "GODIVA Chocolatier",
-        ceoImage: ceo2,
-        starImage: rating,
-    },
-    {
-        text: "FineDine has given us the liberty to make changes on our menus anytime! Our staff enjoys FineDine, it’s very easy to use and convenient for everyone.",
-        companyName: "Sofitel Hotel & Resorts",
-        ceoName: "Matias Ess ",
-        ceoImage: ceo4,
-        starImage: rating,
-    },
-    {
-        text: "As our Brand TEN 11 Coffee Boutique is growing, FineDine allowed us to simplify the ordering process and overall menu presentation to our customers. FineDine has been an integral part of TEN 11 Coffee Boutique since our very first outlet in Abu Dhabi.",
-        companyName: "TEN 11 Coffee Boutique",
-        ceoName: "Mohsin Amin",
-        ceoImage: ceo5,
-        starImage: rating,
-    },
-    {
-        text: "FineDine QR Menu is great to improve hospitality. It has all the information available in multiple languages which makes our local guests feel even more welcome and valuable. It eliminates errors in communication and makes our restaurants a place for all guests.",
-        companyName: "Marketing Manager",
-        ceoName: "Nusr-et",
-        starImage: rating,
-    },
-    {
-        text: "Before COVID, we had the menu card printed to deliver to guests. Today, thanks to FineDine, we give the guest a QR code when they arrive at the hotel. This code represents your room number, and all orders you place are charged to the room. We are so happy to use FineDine and recommend it to everyone.",
-        companyName: "DCO Hotels ",
-        ceoName: "Nusr-et",
-        starImage: rating,
-    },
-    {
-        text: "FineDine QR Menu is great to improve hospitality. It has all the information available in multiple languages which makes our local guests feel even more welcome and valuable. It eliminates errors in communication and makes our restaurants a place for all guests.",
-        companyName: "Imperio Ristorante",
-        ceoName: "Laura Benitez ",
-        starImage: rating,
-        ceoImage: ceo6,
+//     },
+//     {
+//         text: "We increased our sales about 15-20% and that’s a big increase by just using a software and using it properly.",
+//         companyName: "Kamal Yuruk",
+//         starImage: rating,
+//         ceoName: "Manager at Spiro’s, NYC"
+//     },
+//     {
+//         text: "FineDine improved the cafe sales and helped us to launch our breakfast menu. From time to time, we update our menu with FineDine and it is so easy!",
+//         companyName: "Jay Carlo Rivera",
+//         ceoName: "GODIVA Chocolatier",
+//         ceoImage: ceo2,
+//         starImage: rating,
+//     },
+//     {
+//         text: "FineDine has given us the liberty to make changes on our menus anytime! Our staff enjoys FineDine, it’s very easy to use and convenient for everyone.",
+//         companyName: "Sofitel Hotel & Resorts",
+//         ceoName: "Matias Ess ",
+//         ceoImage: ceo4,
+//         starImage: rating,
+//     },
+//     {
+//         text: "As our Brand TEN 11 Coffee Boutique is growing, FineDine allowed us to simplify the ordering process and overall menu presentation to our customers. FineDine has been an integral part of TEN 11 Coffee Boutique since our very first outlet in Abu Dhabi.",
+//         companyName: "TEN 11 Coffee Boutique",
+//         ceoName: "Mohsin Amin",
+//         ceoImage: ceo5,
+//         starImage: rating,
+//     },
+//     {
+//         text: "FineDine QR Menu is great to improve hospitality. It has all the information available in multiple languages which makes our local guests feel even more welcome and valuable. It eliminates errors in communication and makes our restaurants a place for all guests.",
+//         companyName: "Marketing Manager",
+//         ceoName: "Nusr-et",
+//         starImage: rating,
+//     },
+//     {
+//         text: "Before COVID, we had the menu card printed to deliver to guests. Today, thanks to FineDine, we give the guest a QR code when they arrive at the hotel. This code represents your room number, and all orders you place are charged to the room. We are so happy to use FineDine and recommend it to everyone.",
+//         companyName: "DCO Hotels ",
+//         ceoName: "Nusr-et",
+//         starImage: rating,
+//     },
+//     {
+//         text: "FineDine QR Menu is great to improve hospitality. It has all the information available in multiple languages which makes our local guests feel even more welcome and valuable. It eliminates errors in communication and makes our restaurants a place for all guests.",
+//         companyName: "Imperio Ristorante",
+//         ceoName: "Laura Benitez ",
+//         starImage: rating,
+//         ceoImage: ceo6,
 
-    },
-    {
-        text: "Before COVID, we had the menu card printed to deliver to guests. Today, thanks to FineDine, we give the guest a QR code when they arrive at the hotel. This code represents your room number, and all orders you place are charged to the room. We are so happy to use FineDine and recommend it to everyone.",
-        companyName: "DCO Hotels",
-        ceoName: "Luis Felipe De la Puente",
-        starImage: rating,
-    },
-]
+//     },
+//     {
+//         text: "Before COVID, we had the menu card printed to deliver to guests. Today, thanks to FineDine, we give the guest a QR code when they arrive at the hotel. This code represents your room number, and all orders you place are charged to the room. We are so happy to use FineDine and recommend it to everyone.",
+//         companyName: "DCO Hotels",
+//         ceoName: "Luis Felipe De la Puente",
+//         starImage: rating,
+//     },
+// ]
 
 
 
