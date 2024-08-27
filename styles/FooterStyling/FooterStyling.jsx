@@ -1,3 +1,4 @@
+"use client";
 import { createCustomTheme } from "../theme";
 
 const theme = createCustomTheme()

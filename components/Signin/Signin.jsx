@@ -2,6 +2,8 @@
 import { useRouter } from "@/navigation";
 import { signIn } from "next-auth/react";
 import NextLink from "next/link";
+import { useRef, useState } from "react";
+
 
 import { Link } from "@/navigation";
 import LogoSvg from "@/public/assets/svg/logoSvg";
@@ -21,6 +23,8 @@ import InputField from "../ui/InputField";
 import ButtonComp from "../ui/button";
 const LoginPage = () => {
   const router = useRouter();
+  const [passwordVisible, setPasswordVisible] = useState(false)
+
 
   const handleLogin = async ({ email, password }) => {
     const toastId = toast.loading("Login user...");
@@ -188,6 +192,10 @@ const LoginPage = () => {
                 type={"password"}
                 icon
                 variant="outlined"
+                type={passwordVisible ? "text" : "password"}
+
+                passwordVisible={passwordVisible}
+          setPasswordVisible={setPasswordVisible}
                 name="password"
                 formik={formik}
               />
@@ -242,12 +250,12 @@ const LoginPage = () => {
                 width="100%"
                 hoverBackgroundColor="#A764FA"
                 text="Login"
-                marginBottom="2.4rem"
+                marginBottom="1.5rem"
               />
             </Box>
             <Box sx={{ display: "flex", alignItems: "center", mb: 2.5 }}>
               <Divider sx={{ flex: 1 }} />
-              <Link href={"/Login-with-phone"} style={{ fontFamily: "Nunito Sans", color: "#8338EC", textDecoration: "none" }}>
+              <Link href={"/Login-with-phone"} style={{ fontFamily: "Nunito Sans", color: "#8338EC", textDecoration: "none", padding:"0 5px" , fontSize:"14px"}}>
                 Login with phone
               </Link>
               <Divider sx={{ flex: 1 }} />

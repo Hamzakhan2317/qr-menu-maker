@@ -23,7 +23,7 @@ import ButtonComp from "../../components/ui/button";
 
 const navItems = [
   { name: "Home", href: "/" },
-  { name: "About", href: "/about" },
+  { name: "About", href: "/about-us" },
   { name: "Contact", href: "/contact-us" },
 ];
 

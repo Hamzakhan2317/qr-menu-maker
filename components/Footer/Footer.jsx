@@ -1,3 +1,4 @@
+"use client";
 import { footerData } from "@/public/assets/static";
 import FBSvg from "@/public/assets/svg/FacebookSvg";
 import InstagramSvg from "@/public/assets/svg/InstagramSvg";

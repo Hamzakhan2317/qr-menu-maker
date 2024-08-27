@@ -35,6 +35,7 @@ import {
 
 const LoginPage = () => {
   const theme = createCustomTheme();
+  const [passwordVisible, setPasswordVisible] = useState(false)
 
   const router = useRouter();
   const handelSignup = async ({ email, phone, password }) => {
@@ -239,6 +240,10 @@ const LoginPage = () => {
                   type={"password"}
                   cols="12"
                   icon
+                  type={passwordVisible ? "text" : "password"}
+
+                  passwordVisible={passwordVisible}
+            setPasswordVisible={setPasswordVisible}
                   variant="outlined"
                   name="password"
                   formik={formik}
@@ -256,7 +261,7 @@ const LoginPage = () => {
                   marginBottom="0.5rem"
                   onClick={formik.handleSubmit}
                 />
-                <Box sx={{ display: "flex", alignItems: "center", mb: 1 }}>
+                {/* <Box sx={{ display: "flex", alignItems: "center", mb: 1 }}>
                   <Divider sx={{ flex: 1 }} />
                   <Typography color="#757575" variant="body2" sx={{ mx: 2 }}>
                     or
@@ -278,7 +283,7 @@ const LoginPage = () => {
                     hoverBorder="#8338EC"
                     icon={<GoogleIcon />}
                   />
-                </Grid>
+                </Grid> */}
               </Box>
               <Box
                 sx={{

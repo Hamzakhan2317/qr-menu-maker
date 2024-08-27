@@ -543,13 +543,13 @@ const LoginWithPhone = () => {
                   width="100%"
                   hoverBackgroundColor="#A764FA"
                   text="Send Otp"
-                  marginBottom="2.4rem"
+                  marginBottom="1.5rem"
                 />
               )}
             </Box>
             <Box sx={{ display: "flex", alignItems: "center", mb: 2.5 }}>
               <Divider sx={{ flex: 1 }} />
-              <Link href={"/login"} style={{ fontFamily: "Nunito Sans", color: "#8338EC", textDecoration: "none" }}>
+              <Link href={"/login"} style={{ fontFamily: "Nunito Sans", color: "#8338EC", textDecoration: "none", padding:"0 5px" , fontSize:"14px"}}>
                 Login with email
               </Link>
               <Divider sx={{ flex: 1 }} />
