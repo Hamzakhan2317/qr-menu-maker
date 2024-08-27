@@ -8,6 +8,7 @@ export const footerContainer = {
 }
 export const listStyles = {
     color: "#d1d5db",
+    fontFamily: "Nunito Sans",
     paddingLeft: "0px",
     textDecoration: "none",
     fontSize: "0.9rem",
@@ -45,7 +46,9 @@ export const socailIconsLinkStyles = {
 export const copyRightTextStyle = {
     color: "#9ca3af",
     fontSize: "1rem",
-    fontWeight: "400"
+    fontWeight: "400",
+    fontFamily: "Nunito Sans"
+
 }
 
 export const privaryPolicyBoxStyle = {
