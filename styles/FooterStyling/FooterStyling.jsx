@@ -37,6 +37,24 @@ export const socialIconListStyles = {
         justifyContent: "start",
         alignItems: "center",
         my: "20px"
+    },
+    [theme.breakpoints.up('lg')]: {
+        display: "flex",
+        justifyContent: "end",
+        alignItems: "center",
+        my: "20px"
+    },
+    [theme.breakpoints.up('xl')]: {
+        display: "flex",
+        justifyContent: "end",
+        alignItems: "center",
+        my: "20px"
+    },
+    [theme.breakpoints.up('xxl')]: {
+        display: "flex",
+        justifyContent: "end",
+        alignItems: "center",
+        my: "20px"
     }
 }
 export const socailIconsLinkStyles = {
@@ -64,6 +82,21 @@ export const privaryPolicyBoxStyle = {
     [theme.breakpoints.up('xs')]: {
         display: "flex",
         justifyContent: "start",
+        alignItems: "center",
+    },
+    [theme.breakpoints.up('lg')]: {
+        display: "flex",
+        justifyContent: "end",
+        alignItems: "center",
+    },
+    [theme.breakpoints.up('xl')]: {
+        display: "flex",
+        justifyContent: "end",
+        alignItems: "center",
+    },
+    [theme.breakpoints.up('xxl')]: {
+        display: "flex",
+        justifyContent: "end",
         alignItems: "center",
     }
 
