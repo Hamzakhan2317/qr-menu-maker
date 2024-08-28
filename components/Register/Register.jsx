@@ -254,6 +254,7 @@ const LoginPage = () => {
           border: `1px solid ${formik.errors.phone ? "red":"#C4C4C4"}` ,
           // border: "1px solid #C4C4C4" ,
           padding: "8px",
+          height:"22px",
           borderRadius: "4px",
           marginBottom:"5px"
         }}
