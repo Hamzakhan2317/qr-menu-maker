@@ -21,7 +21,6 @@ const Home = () => {
     <ThemeProvider theme={theme}>
       <Navbar />
       {/* <MainSection /> */}
-
       <QrSection />
       <BrandSection />
       <CustomerSection />

@@ -1,4 +1,5 @@
 "use client";
+import Footer from "@/components/Footer/Footer";
 import { MapComponent } from "@/components/MapComponent/MapComponent";
 import Navbar from "@/components/Navbar/page";
 import InputField from "@/components/ui/InputField";
@@ -155,13 +156,20 @@ const ContactUs = () => {
                 >
                   <Typography
                     color="#8338EC"
-                    sx={{ fontSize: "1.5rem", fontWeight: "700" }}
+                    sx={{
+                      fontSize: "1.5rem",
+                      fontWeight: "700",
+                      textAlign: "center",
+                    }}
                   >
                     {t("FormHeading.Heading")}
                   </Typography>
                   <Typography
                     color="#E6034B"
-                    sx={{ fontSize: "1.2rem", fontWeight: "500" }}
+                    sx={{
+                      fontSize: "1.2rem",
+                      fontWeight: "500",
+                    }}
                   >
                     {t("FormSubHeading.Heading")}
                   </Typography>
@@ -301,6 +309,7 @@ const ContactUs = () => {
           </Grid>
         </Grid>
       </Container>
+      <Footer />
     </ThemeProvider>
   );
 };

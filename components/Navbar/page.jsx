@@ -1,4 +1,5 @@
 "use client";
+import { Link, usePathname, useRouter } from "@/navigation";
 import LogoSvg from "@/public/assets/svg/logoSvg";
 import { createCustomTheme } from "@/styles/theme";
 import CloseIcon from "@mui/icons-material/Close";
@@ -15,23 +16,19 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import Toolbar from "@mui/material/Toolbar";
-// import Link from "next/link";
-import { Link, usePathname, useRouter } from "@/navigation";
-// import { useRouter } from "next/navigation";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
+import Image from "next/image";
 import React, { useState } from "react";
 import ButtonComp from "../../components/ui/button";
+import trFlag from "../../public/assets/images/turkeyflag.jpg";
+import usaflag from "../../public/assets/images/usaflag.png";
 
-const navItems = [
-  { name: "Home", href: "/" },
-  { name: "About", href: "/about-us" },
-  { name: "Contact", href: "/contact-us" },
-];
 
 function Navbar(props) {
   const theme = createCustomTheme();
   const router = useRouter();
   const pathname = usePathname()
+  const locale = useLocale();
   const t = useTranslations('Home.NavSection');
 
   const { window } = props;
@@ -39,10 +36,15 @@ function Navbar(props) {
   const handleDrawerToggle = () => setMobileOpen((prevState) => !prevState);
   const isXs = useMediaQuery(theme.breakpoints.down("xs"));
   const isSm = useMediaQuery(theme.breakpoints.down("md"));
-  const [color, setColor] = useState("1");
+  const [lang, setLang] = useState(locale);
   const handleChange = (event) => {
-    setColor(event.target.value);
+    setLang(event.target.value);
   };
+  const navItems = [
+    { name: t("NavItemName"), href: "/" },
+    { name: t("NavItemAbout"), href: "/about-us" },
+    { name: t("NavItemContact"), href: "/contact-us" },
+  ];
 
   // Set drawer width and anchor based on screen size
   const drawerWidth = isSm ? "100%" : isXs ? "100%" : "defaultWidth"; // Set defaultWidth to fit your design
@@ -88,6 +90,48 @@ function Navbar(props) {
             </ListItemButton>
           </ListItem>
         ))}
+        <Box sx={{ ml: "10px" }}>
+          <Select
+            value={lang}
+            placeholder="lng"
+            onChange={handleChange}
+            sx={{
+              width: 70,
+              height: 50,
+              ".MuiSvgIcon-root": {
+                display: "none"
+              },
+              "& .MuiOutlinedInput-notchedOutline": {
+                borderColor: "#ccc",
+              },
+              "&:hover .MuiOutlinedInput-notchedOutline": {
+                borderColor: "#ccc",
+              },
+              "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                borderColor: "#ccc",
+              },
+            }}
+          >
+            <MenuItem value={"en"}>
+              <Link style={{
+                textDecoration: "none", fontSize: "14px", color: "#111827", fontFamily: "Nunito Sans",
+              }} href={pathname} locale="en">
+                <Box sx={{ display: "flex", alignItems: "center" }}>
+                  <Image src={usaflag} style={{ width: "15px", height: "15px", marginRight: "3px" }} /> eng
+                </Box>
+              </Link>
+            </MenuItem>
+            <MenuItem value={"tr"}>
+              <Link style={{
+                textDecoration: "none", fontSize: "14px", color: "#111827", fontFamily: "Nunito Sans",
+              }} href={pathname} locale="tr">
+                <Box sx={{ display: "flex", alignItems: "center" }}>
+                  <Image src={trFlag} style={{ width: "15px", height: "15px", marginRight: "3px", objectFit: "contain" }} /> tur
+                </Box>
+              </Link>
+            </MenuItem>
+          </Select>
+        </Box>
         <Box sx={{ padding: "0px 16px" }}>
           <ButtonComp
             onClick={() => router.push("/login")}
@@ -111,6 +155,7 @@ function Navbar(props) {
             text={t("GetStartedButton")}
           />
         </Box>
+
       </List>
     </Box>
   );
@@ -261,27 +306,42 @@ function Navbar(props) {
                     </Box>
                     <Box sx={{ ml: "10px" }}>
                       <Select
-                        value={color}
+                        value={lang}
                         placeholder="lng"
                         onChange={handleChange}
                         sx={{
                           width: 60,
                           height: 45,
-
+                          ".MuiSvgIcon-root": {
+                            display: "none"
+                          },
+                          "& .MuiOutlinedInput-notchedOutline": {
+                            borderColor: "#ccc",
+                          },
+                          "&:hover .MuiOutlinedInput-notchedOutline": {
+                            borderColor: "#ccc",
+                          },
+                          "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                            borderColor: "#ccc",
+                          },
                         }}
                       >
-                        <MenuItem value={1}>
+                        <MenuItem value={"en"}>
                           <Link style={{
                             textDecoration: "none", fontSize: "14px", color: "#111827", fontFamily: "Nunito Sans",
                           }} href={pathname} locale="en">
-                            english
+                            <Box sx={{ display: "flex", alignItems: "center" }}>
+                              <Image alt="usaflag" src={usaflag} style={{ width: "15px", height: "15px", marginRight: "3px" }} /> eng
+                            </Box>
                           </Link>
                         </MenuItem>
-                        <MenuItem value={2}>
+                        <MenuItem value={"tr"}>
                           <Link style={{
                             textDecoration: "none", fontSize: "14px", color: "#111827", fontFamily: "Nunito Sans",
                           }} href={pathname} locale="tr">
-                            turkish
+                            <Box sx={{ display: "flex", alignItems: "center" }}>
+                              <Image alt="trFlag" src={trFlag} style={{ width: "15px", height: "15px", marginRight: "3px", objectFit: "contain" }} /> tur
+                            </Box>
                           </Link>
                         </MenuItem>
                       </Select>
@@ -330,7 +390,8 @@ function Navbar(props) {
           {drawer}
         </Drawer>
       </nav>
-    </Box>
+    </Box >
+
   );
 }
 

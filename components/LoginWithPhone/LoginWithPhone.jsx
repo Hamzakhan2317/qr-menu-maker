@@ -189,6 +189,8 @@ import {
   Box,
   Container,
   Divider,
+  MenuItem,
+  Select,
   // Link,
   Typography
 } from "@mui/material";
@@ -200,11 +202,14 @@ import { useState } from "react";
 import { toast } from "sonner";
 import ButtonComp from "../ui/button";
 
-import { Link, useRouter } from "@/navigation";
+import { Link, usePathname, useRouter } from "@/navigation";
+import { useLocale } from "next-intl";
+import Image from "next/image";
 import AuthCode from "react-auth-code-input";
 import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
 import "react-phone-number-input/style.css";
-
+import trFlag from "../../public/assets/images/turkeyflag.jpg";
+import usaflag from "../../public/assets/images/usaflag.png";
 
 const LoginWithPhone = () => {
   const [email, setEmail] = useState("");
@@ -213,6 +218,12 @@ const LoginWithPhone = () => {
   const [otp, setOTP] = useState("");
   const [isOTPSent, setIsOTPSent] = useState(false);
   const [usePhoneLogin, setUsePhoneLogin] = useState(false);
+  const pathname = usePathname()
+  const locale = useLocale();
+  const [lang, setLang] = useState(locale);
+  const handleChange = (event) => {
+    setLang(event.target.value);
+  };
 
   const [number, setNumber] = useState("");
   console.log("number>>>>>>>", number);
@@ -382,10 +393,53 @@ const LoginWithPhone = () => {
           "linear-gradient(to left, rgba(235, 210, 250, 0.3), rgba(245, 235, 250, 0.2))",
       }}
     >
-      <Container maxWidth="lg" sx={{ padding: "1rem" }}>
-        <Link href="/">
+      <Box sx={{ padding: "15px 35px", display: "flex", justifyContent: "space-between", boxShadow: "rgba(0, 0, 0, 0.05) 0px 0px 0px 1px", background: "#fff" }}>
+        <Link component={NextLink} href="/">
           <LogoSvg />
-        </Link>      </Container>
+        </Link>
+        <Box sx={{ ml: "10px" }}>
+          <Select
+            value={lang}
+            placeholder="lng"
+            onChange={handleChange}
+            sx={{
+              width: 60,
+              height: 45,
+              ".MuiSvgIcon-root": {
+                display: "none"
+              },
+              "& .MuiOutlinedInput-notchedOutline": {
+                borderColor: "#ccc",
+              },
+              "&:hover .MuiOutlinedInput-notchedOutline": {
+                borderColor: "#ccc",
+              },
+              "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                borderColor: "#ccc",
+              },
+            }}
+          >
+            <MenuItem value={"en"}>
+              <Link style={{
+                textDecoration: "none", fontSize: "14px", color: "#111827", fontFamily: "Nunito Sans",
+              }} href={pathname} locale="en">
+                <Box sx={{ display: "flex", alignItems: "center" }}>
+                  <Image alt="usaflag" src={usaflag} style={{ width: "15px", height: "15px", marginRight: "3px" }} /> eng
+                </Box>
+              </Link>
+            </MenuItem>
+            <MenuItem value={"tr"}>
+              <Link style={{
+                textDecoration: "none", fontSize: "14px", color: "#111827", fontFamily: "Nunito Sans",
+              }} href={pathname} locale="tr">
+                <Box sx={{ display: "flex", alignItems: "center" }}>
+                  <Image alt="trFlag" src={trFlag} style={{ width: "15px", height: "15px", marginRight: "3px", objectFit: "contain" }} /> tur
+                </Box>
+              </Link>
+            </MenuItem>
+          </Select>
+        </Box>
+      </Box>
       <Container maxWidth="sm">
         <Box
           sx={{
@@ -417,13 +471,13 @@ const LoginWithPhone = () => {
                 alignItems: "center",
               }}
             >
-              <Typography sx={{ fontSize: "1.5rem", fontWeight: "700", mb: 2 }}>
+              <Typography sx={{ fontSize: "1.5rem", fontWeight: "700", mb: 2, fontFamily: "Nunito Sans", }}>
                 Log in to your account
               </Typography>
             </Box>
 
             <Box component="form" >
-              <Typography variant="body2" sx={{ marginBottom: "10px" }}>
+              <Typography variant="body2" sx={{ marginBottom: "10px", fontFamily: "Nunito Sans", }}>
                 Enter your phone number:
               </Typography>
               <PhoneInput
@@ -453,10 +507,10 @@ const LoginWithPhone = () => {
                   color: "black",
                   border: "1px solid #8338ec",
                   padding: "10px",
-                  borderRadius: "8px"
+                  borderRadius: "5px"
                 }}
               />
-              <Typography sx={{ color: "red", mb: 1 }}>
+              <Typography sx={{ color: "red", mb: 1, mt: 1, fontFamily: "Nunito Sans", fontSize: "12px" }}>
                 {number
                   ? isValidPhoneNumber(number)
                     ? undefined
@@ -549,7 +603,7 @@ const LoginWithPhone = () => {
             </Box>
             <Box sx={{ display: "flex", alignItems: "center", mb: 2.5 }}>
               <Divider sx={{ flex: 1 }} />
-              <Link href={"/login"} style={{ fontFamily: "Nunito Sans", color: "#8338EC", textDecoration: "none", padding:"0 5px" , fontSize:"14px"}}>
+              <Link href={"/login"} style={{ fontFamily: "Nunito Sans", color: "#8338EC", textDecoration: "none", padding: "0 5px", fontSize: "14px" }}>
                 Login with email
               </Link>
               <Divider sx={{ flex: 1 }} />
@@ -568,15 +622,16 @@ const LoginWithPhone = () => {
                 zIndex: 1,
               }}
             >
-              <Typography variant="body2" color="#605F62">
+              <Typography variant="body2" color="#605F62" sx={{ fontFamily: "Nunito Sans", }}>
                 Don&apos;t have an account?{" "}
                 <Link
                   component={NextLink}
                   href="/register"
                   variant="bodyS"
-                  sx={{
+                  style={{
                     color: "#8338EC",
                     textDecoration: "none",
+                    fontFamily: "Nunito Sans",
                   }}
                 >
                   Sign up
@@ -597,7 +652,7 @@ const LoginWithPhone = () => {
           <Typography
             color="#8338EC"
             variant="body2"
-            sx={{ mx: 2, fontSize: "12px" }}
+            sx={{ mx: 2, fontSize: "12px", fontFamily: "Nunito Sans", }}
           >
             Terms of Service
           </Typography>
@@ -609,13 +664,13 @@ const LoginWithPhone = () => {
           <Typography
             color="#8338EC"
             variant="body2"
-            sx={{ mx: 2, fontSize: "12px" }}
+            sx={{ mx: 2, fontSize: "12px", fontFamily: "Nunito Sans", }}
           >
             Privacy Policy
           </Typography>
         </Box>
       </Container>
-    </Box>
+    </Box >
   );
 };
 
