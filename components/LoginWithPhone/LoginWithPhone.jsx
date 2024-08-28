@@ -385,7 +385,8 @@ const LoginWithPhone = () => {
       <Container maxWidth="lg" sx={{ padding: "1rem" }}>
         <Link href="/">
           <LogoSvg />
-        </Link>      </Container>
+        </Link>    
+      </Container>
       <Container maxWidth="sm">
         <Box
           sx={{

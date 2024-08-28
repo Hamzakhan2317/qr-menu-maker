@@ -33,6 +33,10 @@ import {
   termsOfServiceTextStyle,
 } from "@/styles/SignupStyles/SignupStyles";
 
+import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
+import "react-phone-number-input/style.css";
+
+
 const LoginPage = () => {
   const theme = createCustomTheme();
   const [passwordVisible, setPasswordVisible] = useState(false)
@@ -77,7 +81,13 @@ const LoginPage = () => {
     },
     validationSchema: signupSchema,
     onSubmit: async (values) => {
-      handelSignup(values);
+      const isValidPhone = isValidPhoneNumber(values?.phone);
+      if(isValidPhone){
+        handelSignup(values);
+      }else{
+        toast.error("Invalid phone number");
+      }
+
     },
   });
   return (
@@ -200,7 +210,7 @@ const LoginPage = () => {
                   name="email"
                   formik={formik}
                 />
-                <InputField
+                {/* <InputField
                   sx={{
                     marginBottom: "5px",
                     "& .MuiOutlinedInput-root": {
@@ -220,7 +230,38 @@ const LoginPage = () => {
                   variant="outlined"
                   name="phone"
                   formik={formik}
-                />
+                /> */}
+ <PhoneInput
+        className="enter-phone-input-class"
+        value={formik.values.phone}
+        onChange={(value) => {
+          formik.setFieldValue("phone", value);
+          // formik.setFieldTouched("phone", true);
+        }}
+        placeholder="Enter phone number"
+        required
+        international
+        defaultCountry="TR"
+        inputExtraProps={{
+          name: "phone",
+          required: true,
+          autoFocus: true,
+        }}
+        style={{
+          background:"#fff",
+          outline: "none",
+          color: "black",
+          border: `1px solid ${formik.errors.phone ? "red":"#C4C4C4"}` ,
+          // border: "1px solid #C4C4C4" ,
+          padding: "8px",
+          borderRadius: "4px",
+          marginBottom:"5px"
+        }}
+      />
+      { formik.errors.phone && (
+        <Typography sx={{mt:-1, color: "red", fontSize:"12px", ml:2, mb:.5 }}>{formik.errors.phone}</Typography>
+      )}
+
                 <InputField
                   sx={{
                     marginBottom: "15px",
