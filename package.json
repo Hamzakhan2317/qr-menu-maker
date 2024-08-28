@@ -22,6 +22,7 @@
     "next-auth": "^4.24.7",
     "next-intl": "^3.17.6",
     "next-themes": "^0.3.0",
+    "ol": "^10.1.0",
     "react": "^18",
     "react-auth-code-input": "^3.2.1",
     "react-dom": "^18",

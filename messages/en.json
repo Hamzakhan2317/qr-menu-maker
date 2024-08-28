@@ -156,6 +156,42 @@
       "Heading": "Join Now & Start Enjoying The Most Beneficial Platform",
       "SignupButton": "Sign Up"
     }
-   
+  },
+  "ContactUs": {
+    "Mainbanner": {
+      "Heading": "Contact Us"
+    },
+    "HeadquartersCard": {
+      "Heading": "Headquarters",
+      "SubHeading": "27 Division St, New York, NY 10002, USA"
+    },
+    "EmailAddressCard": {
+      "Heading": "Email Address",
+      "SubHeading1": "info@devbeings.com",
+      "SubHeading2": "career@devbeings.com"
+    },
+    "PhoneCard": {
+      "Heading": "Phone Number"
+    },
+    "FormHeading": {
+      "Heading": "Any Questions ?"
+    },
+    "FormSubHeading": {
+      "Heading": "Contact us Today."
+    },
+    "FormFields": {
+      "Name": "Name",
+      "Email": "E-Mail",
+      "Company": "Company",
+      "Phone": "Phone",
+      "Message": "Message"
+    },
+    "FormButton": {
+      "FormBtn": "Submit"
+    },
+    "FormFotter": {
+      "TermsOfService": "Terms of Service",
+      "PrivacyPolicy": "Privacy Policy"
+    }
   }
 }
