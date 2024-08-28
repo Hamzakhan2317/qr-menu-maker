@@ -72,7 +72,9 @@ const QrSection = () => {
                                 sm: "500px",
                             }
                         }}>
-                            <Image src={qrImage} style={{
+                            <Image
+                            alt="qrImage"
+                            src={qrImage} style={{
                                 width: "100%",
                                 height: "100%"
                             }} />

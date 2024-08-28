@@ -189,7 +189,6 @@ const LoginPage = () => {
                 Placeholder="Password"
                 height="2.5rem"
                 backgroundColor="#fff"
-                type={"password"}
                 icon
                 variant="outlined"
                 type={passwordVisible ? "text" : "password"}
