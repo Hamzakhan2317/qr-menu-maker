@@ -251,8 +251,8 @@ const LoginPage = () => {
           background:"#fff",
           outline: "none",
           color: "black",
-          // border: `1px solid ${formik.errors.phone ? "red":"#8338ec"}` ,
-          border: "1px solid #C4C4C4" ,
+          border: `1px solid ${formik.errors.phone ? "red":"#C4C4C4"}` ,
+          // border: "1px solid #C4C4C4" ,
           padding: "8px",
           borderRadius: "4px",
           marginBottom:"5px"
