@@ -157,6 +157,43 @@
       "SignupButton": "Kaydol"
     }
   },
+  "ContactUs": {
+    "Mainbanner": {
+      "Heading": "Bize Ulaşın"
+    },
+    "HeadquartersCard": {
+      "Heading": "Merkez Ofis",
+      "SubHeading": "27 Division St, New York, NY 10002, ABD"
+    },
+    "EmailAddressCard": {
+      "Heading": "E-posta Adresi",
+      "SubHeading1": "info@devbeings.com",
+      "SubHeading2": "career@devbeings.com"
+    },
+    "PhoneCard": {
+      "Heading": "Telefon Numarası"
+    },
+    "FormHeading": {
+      "Heading": "Herhangi Bir Sorunuz Var mı?"
+    },
+    "FormSubHeading": {
+      "Heading": "Bugün Bize Ulaşın."
+    },
+    "FormFields": {
+      "Name": "Ad",
+      "Email": "E-Posta",
+      "Company": "Şirket",
+      "Phone": "Telefon",
+      "Message": "Mesaj"
+    },
+    "FormButton": {
+      "FormBtn": "Gönder"
+    },
+    "FormFotter": {
+      "TermsOfService": "Hizmet Şartları",
+      "PrivacyPolicy": "Gizlilik Politikası"
+    }
+  },
   "Footer": {
     "Title1": "Çözüm",
     "Title2": "Özellikler",

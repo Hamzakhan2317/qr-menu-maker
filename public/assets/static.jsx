@@ -1,4 +1,4 @@
-'use client'
+"use client";
 const { default: Signuplogo1 } = require("./svg/signuplogo1");
 const { default: Signuplogo2 } = require("./svg/signuplogo2");
 const { default: Signuplogo3 } = require("./svg/signuplogo3");
@@ -7,16 +7,9 @@ const { default: Signuplogo5 } = require("./svg/signuplogo5");
 const { default: Signuplogo6 } = require("./svg/signuplogo6");
 const { default: Signuplogo7 } = require("./svg/signuplogo7");
 const { default: Signuplogo8 } = require("./svg/signuplogo8");
-export const logoComponents = [
-    Signuplogo1,
-    Signuplogo2,
-    Signuplogo3,
-    Signuplogo4,
-    Signuplogo5,
-    Signuplogo6,
-    Signuplogo7,
-    Signuplogo8,
-];
+import EmailIcon from "@mui/icons-material/Email";
+import LocationIcon from "@mui/icons-material/LocationOn";
+import PhoneIcon from "@mui/icons-material/Phone";
 import blogImgOne from "../assets/images/blogimg1.webp";
 import blogImgTwo from "../assets/images/blogimg2.webp";
 import blogImgThree from "../assets/images/blogimg3.webp";
@@ -36,6 +29,16 @@ import sliderimage3 from "../assets/images/sliderimage3.webp";
 import sliderimage4 from "../assets/images/sliderimage4.webp";
 import sliderimage5 from "../assets/images/sliderimage5.webp";
 import rating from "../assets/images/star.webp";
+export const logoComponents = [
+  Signuplogo1,
+  Signuplogo2,
+  Signuplogo3,
+  Signuplogo4,
+  Signuplogo5,
+  Signuplogo6,
+  Signuplogo7,
+  Signuplogo8,
+];
 
 // export const appfeatureCardDetails = [
 //     {
@@ -50,152 +53,261 @@ import rating from "../assets/images/star.webp";
 //     {
 //         heading: "An Upgraded Ordering Process",
 //         text: "Integrating with the world’s leading POS systems to sync the menus when you make a change and send all orders to the POS system, the FineDine dashboard, and your kitchen & bar printers simultaneously.",
-//     },   
+//     },
 
 // ]
-
 export const getAppFeatureCardDetails = (t) => [
-    {
-        heading: t("Title"),
-        text: t("Subtitle"),
-    },
-    {
-        heading: t("Title1"),
-        text: t("Subtitle1"),
-        bgColor: "#D1D5DB",
-    },
-    {
-        heading: t("Title2"),
-        text: t("Subtitle2"),
-    },
+  {
+    heading: t("Title"),
+    text: t("Subtitle"),
+  },
+  {
+    heading: t("Title1"),
+    text: t("Subtitle1"),
+    bgColor: "#D1D5DB",
+  },
+  {
+    heading: t("Title2"),
+    text: t("Subtitle2"),
+  },
 ];
 export const getMarqueeCardDetails = (t) => [
-    {
-        text: t("Text1"),
-        starImage: rating,
-        ceoImage: ceo1,
-        companyName: t("CompayName1"),
-        ceoName: t("CeoName1"),
-    },
-    {
-        text: t("Text2"),
-        starImage: rating,
-        ceoImage: ceo3,
-        companyName: t("CompayName2"),
-        ceoName: t("CeoName2"),
-    },
-    {
-        text: t("Text3"),
-        starImage: rating,
-        companyName: t("CompayName3"),
-        ceoName: t("CeoName3"),
-    },
-    {
-        text: t("Text4"),
-        starImage: rating,
-        ceoImage: ceo2,
-        companyName: t("CompayName4"),
-        ceoName: t("CeoName4"),
-    },
-    {
-        text: t("Text5"),
-        starImage: rating,
-        ceoImage: ceo4,
-        companyName: t("CompayName5"),
-        ceoName: t("CeoName5"),
-    },
-
+  {
+    text: t("Text1"),
+    starImage: rating,
+    ceoImage: ceo1,
+    companyName: t("CompayName1"),
+    ceoName: t("CeoName1"),
+  },
+  {
+    text: t("Text2"),
+    starImage: rating,
+    ceoImage: ceo3,
+    companyName: t("CompayName2"),
+    ceoName: t("CeoName2"),
+  },
+  {
+    text: t("Text3"),
+    starImage: rating,
+    companyName: t("CompayName3"),
+    ceoName: t("CeoName3"),
+  },
+  {
+    text: t("Text4"),
+    starImage: rating,
+    ceoImage: ceo2,
+    companyName: t("CompayName4"),
+    ceoName: t("CeoName4"),
+  },
+  {
+    text: t("Text5"),
+    starImage: rating,
+    ceoImage: ceo4,
+    companyName: t("CompayName5"),
+    ceoName: t("CeoName5"),
+  },
 ];
 
 export const featureCardData = [
-    {
-        heading: "Menu Customization",
-        text: "Tailor your menu’s look and feel to perfectly match your restaurant’s brand and ambiance.",
-        columns: 4,
-        cardImage: firstFeatureImg,
-        imageWidth: "100%",
-        imageHeight: "250px",
-        bottom: "0px"
-
-    },
-    {
-        heading: "Smart Recommendations",
-        text: "Leverage AI- driven suggestions to upsell and cross - sell, enhancing customer orders and boosting revenue.",
-        columns: 8,
-        cardImage: featureOne,
-        imageWidth: "100%",
-        imageHeight: "220px",
-        bottom: "-10px"
-    },
-    {
-        heading: "Customer Feedback",
-        text: "Gather valuable insights directly from your guests to continuously enhance their dining experience.",
-        columns: 8,
-        cardImage: feebackImg,
-        imageWidth: "100%",
-        imageHeight: "250px",
-        bottom: "-10px",
-        left: "-20px"
-    },
-    {
-        heading: "Data Collection",
-        text: "Harness the power of data to understand customer preferences and optimize your offerings.",
-        columns: 4,
-        cardImage: dataCollectioneImg,
-        imageWidth: "100%",
-        imageHeight: "250px",
-        left: "-30px",
-        bottom: "0px"
-
-    },
-    {
-        heading: "Multiple Language & Currencies",
-        text: "Cater to a global clientele with diverse language options and multi-currency payment support.",
-        columns: 4,
-        cardImage: languageImg,
-        imageWidth: "120%",
-        imageHeight: "200px",
-        left: "0px",
-        bottom: "0px"
-
-
-    },
-    {
-        heading: "Reservation Management",
-        text: "Streamline table bookings with an intuitive system that maximizes seating and minimizes wait times.",
-        columns: 8,
-        cardImage: reservationImg,
-        imageWidth: "110%",
-        imageHeight: "220px",
-        bottom: "-10px", left: "0px"
-
-    },
-]
+  {
+    heading: "Menu Customization",
+    text: "Tailor your menu’s look and feel to perfectly match your restaurant’s brand and ambiance.",
+    columns: 4,
+    cardImage: firstFeatureImg,
+    imageWidth: "100%",
+    imageHeight: "250px",
+    bottom: "0px",
+  },
+  {
+    heading: "Smart Recommendations",
+    text: "Leverage AI- driven suggestions to upsell and cross - sell, enhancing customer orders and boosting revenue.",
+    columns: 8,
+    cardImage: featureOne,
+    imageWidth: "100%",
+    imageHeight: "220px",
+    bottom: "-10px",
+  },
+  {
+    heading: "Customer Feedback",
+    text: "Gather valuable insights directly from your guests to continuously enhance their dining experience.",
+    columns: 8,
+    cardImage: feebackImg,
+    imageWidth: "100%",
+    imageHeight: "250px",
+    bottom: "-10px",
+    left: "-20px",
+  },
+  {
+    heading: "Data Collection",
+    text: "Harness the power of data to understand customer preferences and optimize your offerings.",
+    columns: 4,
+    cardImage: dataCollectioneImg,
+    imageWidth: "100%",
+    imageHeight: "250px",
+    left: "-30px",
+    bottom: "0px",
+  },
+  {
+    heading: "Multiple Language & Currencies",
+    text: "Cater to a global clientele with diverse language options and multi-currency payment support.",
+    columns: 4,
+    cardImage: languageImg,
+    imageWidth: "120%",
+    imageHeight: "200px",
+    left: "0px",
+    bottom: "0px",
+  },
+  {
+    heading: "Reservation Management",
+    text: "Streamline table bookings with an intuitive system that maximizes seating and minimizes wait times.",
+    columns: 8,
+    cardImage: reservationImg,
+    imageWidth: "110%",
+    imageHeight: "220px",
+    bottom: "-10px",
+    left: "0px",
+  },
+];
 export const blogCardData = [
-    {
-        cardImage: blogImgOne,
-        cardData: "TikTok Guide for Restaurants — How to Take Advantage of TikTok for Your Business",
-        date: "February 27, 2023",
-        time: "5 min read",
-        altText: "blog image one"
-    },
-    {
-        cardImage: blogImgTwo,
-        cardData: "Food Photography Tips for Your Restaurant and Digital Menu",
-        date: "July 31, 2023",
-        time: "5 min read",
-        altText: "blog image two"
-    },
-    {
-        cardImage: blogImgThree,
-        cardData: "SanCarlo Bahrain Improves Efficiency and Increases Revenue with FineDine's Digital Menu Technology",
-        date: "April 27, 2023",
-        time: "5 min read",
-        altText: "blog image three"
-    },
+  {
+    cardImage: blogImgOne,
+    cardData:
+      "TikTok Guide for Restaurants — How to Take Advantage of TikTok for Your Business",
+    date: "February 27, 2023",
+    time: "5 min read",
+    altText: "blog image one",
+  },
+  {
+    cardImage: blogImgTwo,
+    cardData: "Food Photography Tips for Your Restaurant and Digital Menu",
+    date: "July 31, 2023",
+    time: "5 min read",
+    altText: "blog image two",
+  },
+  {
+    cardImage: blogImgThree,
+    cardData:
+      "SanCarlo Bahrain Improves Efficiency and Increases Revenue with FineDine's Digital Menu Technology",
+    date: "April 27, 2023",
+    time: "5 min read",
+    altText: "blog image three",
+  },
+];
 
-]
-
+export const footerData = [
+  {
+    title: "SOLUTIONS",
+    listData: [
+      {
+        name: "Dine-in QW Menu",
+      },
+      {
+        name: "FineDinePOS Lite",
+      },
+      {
+        name: "Reservations",
+      },
+      {
+        name: "Dine-in Tablet Menu",
+      },
+      {
+        name: "Delievery & Pickup Menu",
+      },
+      {
+        name: "Fast Checkout",
+      },
+      {
+        name: "Order & Pay",
+      },
+      {
+        name: "CRM & Loyality",
+      },
+    ],
+  },
+  {
+    title: "Features",
+    listData: [
+      {
+        name: "Allergens Nutrition Info & Calories",
+      },
+      {
+        name: "Multiple Language Display",
+      },
+      {
+        name: "Multiple Currency Display",
+      },
+      {
+        name: "Custom Design and Branding",
+      },
+      {
+        name: "Tip Collection",
+      },
+      {
+        name: "Table Management",
+      },
+      {
+        name: "Feedback Collection",
+      },
+      {
+        name: "Menu Management",
+      },
+      {
+        name: "Campaigns",
+      },
+    ],
+  },
+  {
+    title: "USE CASES",
+    listData: [
+      {
+        name: "Hotels",
+      },
+      {
+        name: "Café & Bakery",
+      },
+      {
+        name: "Coffee Shops",
+      },
+      {
+        name: "Bars and Night Clubs",
+      },
+      {
+        name: "Enterprises",
+      },
+      {
+        name: "Fine Dining",
+      },
+      {
+        name: "Casual Dining",
+      },
+      {
+        name: "Ghost Kitchens",
+      },
+      {
+        name: "Food Trucks",
+      },
+    ],
+  },
+  {
+    title: "Earn More with FineDine",
+    listData: [
+      {
+        name: "Become an Affiliate",
+      },
+      {
+        name: "Become a Reseller",
+      },
+    ],
+  },
+  {
+    title: "Contact Us",
+    listData: [
+      {
+        name: "info@finedinemenu.com",
+      },
+    ],
+  },
+];
 // export const footerData = [
 //     {
 //         title: "SOLUTIONS",
@@ -447,25 +559,22 @@ export const getFooterDetails = (t) => [
 //     },
 // ]
 
-
-
 // Services Section static Data
 
 export const servicesCardDetails = [
-    {
-        heading: "Insights that Inspire",
-        text: "Leverage POS and customer data to build risk- free strategies."
-    },
-    {
-        heading: "Seamless Service, Simplified",
-        text: "Integrate reservations, payments, and POS for a fluid, frictionless operation."
-    },
-    {
-        heading: "Personalized Dining Delights",
-        text: "Offer smart recommendations to craft unforgettable dining experiences."
-    },
-
-]
+  {
+    heading: "Insights that Inspire",
+    text: "Leverage POS and customer data to build risk- free strategies.",
+  },
+  {
+    heading: "Seamless Service, Simplified",
+    text: "Integrate reservations, payments, and POS for a fluid, frictionless operation.",
+  },
+  {
+    heading: "Personalized Dining Delights",
+    text: "Offer smart recommendations to craft unforgettable dining experiences.",
+  },
+];
 // export const feedbackCardDetails = [
 //     {
 //         heading: "Get Feedback",
@@ -483,60 +592,72 @@ export const servicesCardDetails = [
 // ]
 
 export const getFeedbackCardDetails = (t) => [
-    {
-        heading: t("GetFeedbackTitle"),
-        text: t("GetFeedbackText"),
-    },
-    {
-        heading: t("CollectDataTitle"),
-        text: t("CollectDataText"),
-        bgColor: "#D1D5DB",
-    },
-    {
-        heading: t("NoUnhappyGuestsTitle"),
-        text: t("NoUnhappyGuestsText"),
-    },
+  {
+    heading: t("GetFeedbackTitle"),
+    text: t("GetFeedbackText"),
+  },
+  {
+    heading: t("CollectDataTitle"),
+    text: t("CollectDataText"),
+    bgColor: "#D1D5DB",
+  },
+  {
+    heading: t("NoUnhappyGuestsTitle"),
+    text: t("NoUnhappyGuestsText"),
+  },
 ];
-
-
-
-
-
-
 
 // slider section Static data
 export const sliderCardDetails = [
+  {
+    cardImage: sliderimage2,
+    cardData: "Hotel",
+    cardText:
+      "Enhance your Hotel's Guest Experience with Digital Resturant Menus",
+    href: "/about",
+  },
+  {
+    cardImage: sliderimage3,
+    cardData: "Cafe & Bakery",
+    cardText: "Solutions for Cafe & Bakery",
+    href: "",
+  },
+  {
+    cardImage: sliderimage1,
+    cardData: "Bars & Night Clubs",
+    cardText: "An Improved Order and Service Experience",
+    href: "",
+  },
+  {
+    cardImage: sliderimage4,
+    cardData: "Ghost Kitchen",
+    cardText: "Creat New Business Oppurtunies",
+    href: "",
+  },
+  {
+    cardImage: sliderimage5,
+    cardData: "Fine Dining",
+    cardText: "Provide A+ Quality Experience to Your Guests",
+    href: "",
+  },
+];
 
-    {
-        cardImage: sliderimage2,
-        cardData: "Hotel",
-        cardText: "Enhance your Hotel's Guest Experience with Digital Resturant Menus",
-        href: "/about"
-    },
-    {
-        cardImage: sliderimage3,
-        cardData: "Cafe & Bakery",
-        cardText: "Solutions for Cafe & Bakery",
-        href: ""
-    },
-    {
-        cardImage: sliderimage1,
-        cardData: "Bars & Night Clubs",
-        cardText: "An Improved Order and Service Experience",
-        href: ""
-    },
-    {
-        cardImage: sliderimage4,
-        cardData: "Ghost Kitchen",
-        cardText: "Creat New Business Oppurtunies",
-        href: ""
-    },
-    {
-        cardImage: sliderimage5,
-        cardData: "Fine Dining",
-        cardText: "Provide A+ Quality Experience to Your Guests",
-        href: ""
-    },
-
-
-]
+export const contactUsCardsData = (t) => [
+  {
+    icon: LocationIcon,
+    title: t("HeadquartersCard.Heading"),
+    info1: t("HeadquartersCard.SubHeading"),
+  },
+  {
+    icon: EmailIcon,
+    title: t("EmailAddressCard.Heading"),
+    info1: t("EmailAddressCard.SubHeading1"),
+    info2: t("EmailAddressCard.SubHeading2"),
+  },
+  {
+    icon: PhoneIcon,
+    title: t("PhoneCard.Heading"),
+    info1: "+1 800 123 654 987",
+    info2: "+1 900 143 644 987",
+  },
+];
