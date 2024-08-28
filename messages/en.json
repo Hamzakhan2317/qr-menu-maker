@@ -74,5 +74,48 @@
       "Heading": "What is a QR code menu for restaurants?",
       "Detail": "A QR code menu for restaurants is a digital menu accessible via a quick response (QR) code that patrons can scan with their smartphones to view the menu items."
     }
+  },
+  "About": {
+    "Mainbanner": {
+      "Heading": "The World's Most Delicious Cuisine At Your Fingertips!",
+      "SignupButton": "Sign Up"
+    },
+    "BottomHeader": {
+      "Heading": "What is Turkish Restaurant?",
+      "SubHeading": "Turkish Restaurant.com is a technology company that connects people with the best of their neighborhoods across the USA. Which is also the largest Turkish Restaurant portal in the United States. Reach new local customers, and grow your business by offering online ordering with TurkishRestaurant.com"
+    },
+    "CardsSectionHeading": {
+      "Heading": "Who We Serve?"
+    },
+    "CustomerCard": {
+      "Heading": "Customers",
+      "SubHeading": "All of the best Turkish foods at your fingertips, Turkish Restaurant brings the best of your neighborhood on-demand.",
+      "CustomerBtn": "Start Ordering"
+    },
+    "RestaurantOwnersCard": {
+      "Heading": "Restaurant Owners",
+      "SubHeading": "Reach new customers and grow your business by offering Catering, Reservations, Delivery and Pickup with TurkishRestaurant.com",
+      "RestaurantOwnersBtn": "Become a Partner"
+    },
+    "MiddleSection": {
+      "Heading": "All Traditional Flavors Together"
+    },
+    "OthersCardsSectionHeading": {
+      "Heading": "Unique Benefits"
+    },
+    "CateringCard": {
+      "Heading": "Catering",
+      "SubHeading": "You no longer need to use separate platforms for your regular and catering orders. Turkish Restaurant offers this two features together for you.",
+      "CateringBtn": "Start Ordering"
+    },
+    "ReservationsCard": {
+      "Heading": "Reservations",
+      "SubHeading": "Unlike other reservation providers, the Turkish Restaurant reservation system does not charge you any additional fees. As soon as you become a partner, the service becomes active for free.",
+      "ReservationsBtn": "Become a Partner"
+    },
+    "BottomBanner": {
+      "Heading": "Join Now & Start Enjoying The Most Beneficial Platform",
+      "SignupButton": "Sign Up"
+    }
   }
 }

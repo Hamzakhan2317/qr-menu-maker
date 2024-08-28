@@ -70,5 +70,48 @@
     "TextSection": {
       "Title": "FineDine oteller için hepsi bir arada yönetim platformu. FineDine oteller için hepsi bir arada yönetim platformu. Rezervasyon alın, sipariş ve ödeme işlemlerini gerçekleştirin. FineDine oteller için hepsi bir arada yönetim platformu. FineDine oteller için hepsi bir arada yönetim platformu. Rezervasyon alın, sipariş ve ödeme işlemlerini gerçekleştirin. FineDine oteller için hepsi bir arada yönetim platformu. FineDine oteller için hepsi bir arada yönetim platformu. Rezervasyon alın, sipariş ve ödeme işlemlerini gerçekleştirin."
     }
+  },
+  "About": {
+    "Mainbanner": {
+      "Heading": "Dünyanın En Lezzetli Mutfağı Parmaklarınızın Ucunda!",
+      "SignupButton": "Kaydol"
+    },
+    "BottomHeader": {
+      "Heading": "Türk Restoranı Nedir?",
+      "SubHeading": "TurkishRestaurant.com, insanları ABD genelinde mahallelerinin en iyileriyle buluşturan bir teknoloji şirketidir. Aynı zamanda Amerika Birleşik Devletleri'ndeki en büyük Türk Restoranı portalıdır. Yeni yerel müşterilere ulaşın ve TurkishRestaurant.com ile çevrimiçi"
+    },
+    "CardsSectionHeading": {
+      "Heading": "Kime Hizmet Veriyoruz?"
+    },
+    "CustomerCard": {
+      "Heading": "Müşteriler",
+      "SubHeading": "En iyi Türk yemekleri parmaklarınızın ucunda, Turkish Restaurant mahallenizin en iyilerini anında ayağınıza getiriyor.",
+      "CustomerBtn": "Sipariş Vermeye Başla"
+    },
+    "RestaurantOwnersCard": {
+      "Heading": "Restoran Sahipleri",
+      "SubHeading": "Catering, Rezervasyon, Teslimat ve Paket Servis hizmetlerini TurkishRestaurant.com ile sunarak yeni müşterilere ulaşın ve işinizi büyütün.",
+      "RestaurantOwnersBtn": "Partner Ol"
+    },
+    "MiddleSection": {
+      "Heading": "Tüm Geleneksel Tatlar Bir Arada"
+    },
+    "OthersCardsSectionHeading": {
+      "Heading": "Benzersiz Avantajlar"
+    },
+    "CateringCard": {
+      "Heading": "Catering",
+      "SubHeading": "Artık düzenli siparişleriniz ve catering siparişleriniz için ayrı platformlar kullanmanıza gerek yok. Turkish Restaurant, bu iki özelliği sizin için bir arada sunuyor.",
+      "CateringBtn": "Sipariş Vermeye Başla"
+    },
+    "ReservationsCard": {
+      "Heading": "Rezervasyonlar",
+      "SubHeading": "Diğer rezervasyon sağlayıcıların aksine, Turkish Restaurant rezervasyon sistemi sizden ek bir ücret talep etmez. Partner olduğunuz anda, bu hizmet ücretsiz olarak aktif hale gelir.",
+      "ReservationsBtn": "Partner Ol"
+    },
+    "BottomBanner": {
+      "Heading": "Şimdi Katılın ve En Faydalı Platformdan Yararlanmaya Başlayın",
+      "SignupButton": "Kaydol"
+    }
   }
 }
