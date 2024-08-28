@@ -65,6 +65,7 @@ export const termsOfServiceBoxStyle = {
 };
 export const termsOfServiceTextStyle = {
   fontSize: "10px",
+  fontFamily: "Nunito Sans",
   [theme.breakpoints.up("xs")]: {
     fontSize: "12px",
   },

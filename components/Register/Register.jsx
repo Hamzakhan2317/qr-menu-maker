@@ -1,29 +1,7 @@
 "use client";
-import NextLink from "next/link";
-import { useRouter } from "next/navigation";
-import { useRef, useState } from "react";
-import { toast } from "sonner";
-import { createCustomTheme } from "@/styles/theme";
-
-import LogoSvg from "@/public/assets/svg/logoSvg";
-import GoogleIcon from "@mui/icons-material/Google";
-import {
-  Box,
-  Container,
-  Grid,
-  Typography,
-  Rating,
-  Link,
-  Divider,
-} from "@mui/material";
-import Image from "next/image";
-import SignUpLogo from "/public/SignUpImg.webp";
-import InputField from "../ui/InputField";
-import ButtonComp from "../ui/button";
-
-import { useFormik } from "formik";
-import { signupSchema } from "@/validations/signup/signupSchema";
+import { Link, usePathname, useRouter } from "@/navigation";
 import { logoComponents } from "@/public/assets/static";
+import LogoSvg from "@/public/assets/svg/logoSvg";
 import {
   containerFlexStyle,
   formStyle,
@@ -32,15 +10,40 @@ import {
   termsOfServiceBoxStyle,
   termsOfServiceTextStyle,
 } from "@/styles/SignupStyles/SignupStyles";
-
+import { createCustomTheme } from "@/styles/theme";
+import { signupSchema } from "@/validations/signup/signupSchema";
+import {
+  Box,
+  Container,
+  Grid,
+  MenuItem,
+  Rating,
+  Select,
+  Typography
+} from "@mui/material";
+import { useFormik } from "formik";
+import { useLocale } from "next-intl";
+import Image from "next/image";
+import NextLink from "next/link";
+import { useState } from "react";
 import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
 import "react-phone-number-input/style.css";
-
+import { toast } from "sonner";
+import trFlag from "../../public/assets/images/turkeyflag.jpg";
+import usaflag from "../../public/assets/images/usaflag.png";
+import InputField from "../ui/InputField";
+import ButtonComp from "../ui/button";
+import SignUpLogo from "/public/SignUpImg.webp";
 
 const LoginPage = () => {
   const theme = createCustomTheme();
+  const pathname = usePathname()
   const [passwordVisible, setPasswordVisible] = useState(false)
-
+  const locale = useLocale();
+  const [lang, setLang] = useState(locale);
+  const handleChange = (event) => {
+    setLang(event.target.value);
+  };
   const router = useRouter();
   const handelSignup = async ({ email, phone, password }) => {
     const toastId = toast.loading("Registring user...");
@@ -82,9 +85,9 @@ const LoginPage = () => {
     validationSchema: signupSchema,
     onSubmit: async (values) => {
       const isValidPhone = isValidPhoneNumber(values?.phone);
-      if(isValidPhone){
+      if (isValidPhone) {
         handelSignup(values);
-      }else{
+      } else {
         toast.error("Invalid phone number");
       }
 
@@ -99,10 +102,52 @@ const LoginPage = () => {
       }}
     >
       <Container component="main">
-        <Box sx={{ padding: "0.875rem" }}>
+        <Box sx={{ padding: "0.875rem", display: "flex", justifyContent: "space-between" }}>
           <Link component={NextLink} href="/">
             <LogoSvg />
           </Link>
+          <Box sx={{ ml: "10px" }}>
+            <Select
+              value={lang}
+              placeholder="lng"
+              onChange={handleChange}
+              sx={{
+                width: 60,
+                height: 45,
+                ".MuiSvgIcon-root": {
+                  display: "none"
+                },
+                "& .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "#ccc",
+                },
+                "&:hover .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "#ccc",
+                },
+                "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "#ccc",
+                },
+              }}
+            >
+              <MenuItem value={"en"}>
+                <Link style={{
+                  textDecoration: "none", fontSize: "14px", color: "#111827", fontFamily: "Nunito Sans",
+                }} href={pathname} locale="en">
+                  <Box sx={{ display: "flex", alignItems: "center" }}>
+                    <Image alt="usaflag" src={usaflag} style={{ width: "15px", height: "15px", marginRight: "3px" }} /> eng
+                  </Box>
+                </Link>
+              </MenuItem>
+              <MenuItem value={"tr"}>
+                <Link style={{
+                  textDecoration: "none", fontSize: "14px", color: "#111827", fontFamily: "Nunito Sans",
+                }} href={pathname} locale="tr">
+                  <Box sx={{ display: "flex", alignItems: "center" }}>
+                    <Image alt="trFlag" src={trFlag} style={{ width: "15px", height: "15px", marginRight: "3px", objectFit: "contain" }} /> tur
+                  </Box>
+                </Link>
+              </MenuItem>
+            </Select>
+          </Box>
         </Box>
         <Grid container sx={containerFlexStyle}>
           <Grid item xs={12} sm={12} md={6} lg={7}>
@@ -123,6 +168,7 @@ const LoginPage = () => {
                     marginTop: "0.4rem",
                     fontSize: "20px",
                     fontWeight: 400,
+                    fontFamily: "Nunito Sans",
                   }}
                 >
                   “Our sales and tips increased by 20%-30% using FineDine. Some
@@ -134,6 +180,7 @@ const LoginPage = () => {
                   sx={{
                     marginTop: "0.5rem",
                     fontSize: "14px",
+                    fontFamily: "Nunito Sans",
                   }}
                 >
                   CHRIS GIA
@@ -143,6 +190,8 @@ const LoginPage = () => {
                   sx={{
                     fontSize: "14px",
                     color: "#ADADAE",
+                    fontFamily: "Nunito Sans",
+
                   }}
                 >
                   Cafe Sanuki, Manager
@@ -174,6 +223,8 @@ const LoginPage = () => {
                     fontWeight: "700",
                     justifyContent: "center",
                     textAlign: "center",
+                    fontFamily: "Nunito Sans",
+
                   }}
                 >
                   Create Your Free Account
@@ -184,6 +235,7 @@ const LoginPage = () => {
                     justifyContent: "center",
                     textAlign: "center",
                     color: "#757575",
+                    fontFamily: "Nunito Sans",
                     mb: 1,
                   }}
                 >
@@ -231,36 +283,36 @@ const LoginPage = () => {
                   name="phone"
                   formik={formik}
                 /> */}
- <PhoneInput
-        className="enter-phone-input-class"
-        value={formik.values.phone}
-        onChange={(value) => {
-          formik.setFieldValue("phone", value);
-          // formik.setFieldTouched("phone", true);
-        }}
-        placeholder="Enter phone number"
-        required
-        international
-        defaultCountry="TR"
-        inputExtraProps={{
-          name: "phone",
-          required: true,
-          autoFocus: true,
-        }}
-        style={{
-          background:"#fff",
-          outline: "none",
-          color: "black",
-          border: `1px solid ${formik.errors.phone ? "red":"#C4C4C4"}` ,
-          // border: "1px solid #C4C4C4" ,
-          padding: "8px",
-          borderRadius: "4px",
-          marginBottom:"5px"
-        }}
-      />
-      { formik.errors.phone && (
-        <Typography sx={{mt:-1, color: "red", fontSize:"12px", ml:2, mb:.5 }}>{formik.errors.phone}</Typography>
-      )}
+                <PhoneInput
+                  className="enter-phone-input-class"
+                  value={formik.values.phone}
+                  onChange={(value) => {
+                    formik.setFieldValue("phone", value);
+                    // formik.setFieldTouched("phone", true);
+                  }}
+                  placeholder="Enter phone number"
+                  required
+                  international
+                  defaultCountry="TR"
+                  inputExtraProps={{
+                    name: "phone",
+                    required: true,
+                    autoFocus: true,
+                  }}
+                  style={{
+                    background: "#fff",
+                    outline: "none",
+                    color: "black",
+                    border: `1px solid ${formik.errors.phone ? "red" : "#C4C4C4"}`,
+                    // border: "1px solid #C4C4C4" ,
+                    padding: "8px",
+                    borderRadius: "4px",
+                    marginBottom: "5px"
+                  }}
+                />
+                {formik.errors.phone && (
+                  <Typography sx={{ mt: -1, color: "red", fontSize: "12px", ml: 2, mb: .5 }}>{formik.errors.phone}</Typography>
+                )}
 
                 <InputField
                   sx={{
@@ -283,7 +335,7 @@ const LoginPage = () => {
                   type={passwordVisible ? "text" : "password"}
 
                   passwordVisible={passwordVisible}
-            setPasswordVisible={setPasswordVisible}
+                  setPasswordVisible={setPasswordVisible}
                   variant="outlined"
                   name="password"
                   formik={formik}
@@ -335,13 +387,17 @@ const LoginPage = () => {
                   zIndex: 1,
                 }}
               >
-                <Typography variant="body2" color="#605F62">
+                <Typography variant="body2" color="#605F62" sx={{
+                  fontFamily: "Nunito Sans",
+                }}>
                   Already have an account?{" "}
                   <Link
                     component={NextLink}
                     href="/login"
                     variant="bodyS"
-                    sx={{ color: "#8338EC", textDecoration: "none" }}
+                    style={{
+                      color: "#8338EC", textDecoration: "none", fontFamily: "Nunito Sans",
+                    }}
                   >
                     Log in
                   </Link>
@@ -368,7 +424,9 @@ const LoginPage = () => {
                   <Link
                     href="#"
                     variant="bodyS"
-                    sx={{ color: "#8338EC", textDecoration: "none" }}
+                    style={{
+                      color: "#8338EC", textDecoration: "none", fontFamily: "Nunito Sans",
+                    }}
                   >
                     Terms of Service
                   </Link>{" "}
@@ -376,7 +434,9 @@ const LoginPage = () => {
                   <Link
                     href="#"
                     variant="bodyS"
-                    sx={{ color: "#8338EC", textDecoration: "none" }}
+                    style={{
+                      color: "#8338EC", textDecoration: "none", fontFamily: "Nunito Sans",
+                    }}
                   >
                     Privacy Policy
                   </Link>

@@ -196,125 +196,182 @@ export const blogCardData = [
 
 ]
 
-export const footerData = [
-    {
-        title: "SOLUTIONS",
-        listData: [
-            {
-                name: "Dine-in QW Menu",
-            },
-            {
-                name: "FineDinePOS Lite",
-            },
-            {
-                name: "Reservations",
-            },
-            {
-                name: "Dine-in Tablet Menu",
-            },
-            {
-                name: "Delievery & Pickup Menu"
-            },
-            {
-                name: "Fast Checkout"
-            },
-            {
-                name: "Order & Pay"
-            },
-            {
-                name: "CRM & Loyality"
-            },
+// export const footerData = [
+//     {
+//         title: "SOLUTIONS",
+//         listData: [
+//             {
+//                 name: "Dine-in QW Menu",
+//             },
+//             {
+//                 name: "FineDinePOS Lite",
+//             },
+//             {
+//                 name: "Reservations",
+//             },
+//             {
+//                 name: "Dine-in Tablet Menu",
+//             },
+//             {
+//                 name: "Delievery & Pickup Menu"
+//             },
+//             {
+//                 name: "Fast Checkout"
+//             },
+//             {
+//                 name: "Order & Pay"
+//             },
+//             {
+//                 name: "CRM & Loyality"
+//             },
+//         ]
+//     },
+//     {
+//         title: "Features",
+//         listData: [
+//             {
+//                 name: "Allergens Nutrition Info & Calories",
+//             },
+//             {
+//                 name: "Multiple Language Display",
+//             },
+//             {
+//                 name: "Multiple Currency Display",
+//             },
+//             {
+//                 name: "Custom Design and Branding",
+//             },
+//             {
+//                 name: "Tip Collection",
+//             },
+//             {
+//                 name: "Table Management",
+//             },
+//             {
+//                 name: "Feedback Collection",
+//             },
+//             {
+//                 name: "Menu Management",
+//             },
+//             {
+//                 name: "Campaigns",
+//             },
 
-        ]
+
+//         ]
+//     },
+//     {
+//         title: "USE CASES",
+//         listData: [
+//             {
+//                 name: "Hotels",
+//             },
+//             {
+//                 name: "Café & Bakery",
+//             },
+//             {
+//                 name: "Coffee Shops",
+//             },
+//             {
+//                 name: "Bars and Night Clubs",
+//             },
+//             {
+//                 name: "Enterprises",
+//             },
+//             {
+//                 name: "Fine Dining",
+//             },
+//             {
+//                 name: "Casual Dining",
+//             },
+//             {
+//                 name: "Ghost Kitchens",
+//             },
+//             {
+//                 name: "Food Trucks",
+//             },
+
+//         ]
+//     },
+//     {
+//         title: "Earn More with FineDine",
+//         listData: [
+//             {
+//                 name: "Become an Affiliate",
+//             },
+//             {
+//                 name: "Become a Reseller",
+//             },
+//         ]
+//     },
+//     {
+//         title: "Contact Us",
+//         listData: [
+//             {
+//                 name: "info@finedinemenu.com",
+//             },
+//         ]
+//     },
+
+// ]
+export const getFooterDetails = (t) => [
+    {
+        title: t("Title1"),
+        listData: [
+            { name: t("itemOne") },
+            { name: t("itemTwo") },
+            { name: t("itemThree") },
+            { name: t("itemFour") },
+            { name: t("itemFive") },
+            { name: t("itemSix") },
+            { name: t("itemSeven") },
+            { name: t("itemEight") },
+        ],
     },
     {
-        title: "Features",
+        title: t("Title2"),
         listData: [
-            {
-                name: "Allergens Nutrition Info & Calories",
-            },
-            {
-                name: "Multiple Language Display",
-            },
-            {
-                name: "Multiple Currency Display",
-            },
-            {
-                name: "Custom Design and Branding",
-            },
-            {
-                name: "Tip Collection",
-            },
-            {
-                name: "Table Management",
-            },
-            {
-                name: "Feedback Collection",
-            },
-            {
-                name: "Menu Management",
-            },
-            {
-                name: "Campaigns",
-            },
-
-
-        ]
+            { name: t("itemNine") },
+            { name: t("itemTen") },
+            { name: t("itemEleven") },
+            { name: t("itemTwelve") },
+            { name: t("itemThirteen") },
+            { name: t("itemFourteen") },
+            { name: t("itemFifteen") },
+            { name: t("itemSixteen") },
+            { name: t("itemSeventeen") },
+        ],
     },
     {
-        title: "USE CASES",
+        title: t("Title3"),
         listData: [
-            {
-                name: "Hotels",
-            },
-            {
-                name: "Café & Bakery",
-            },
-            {
-                name: "Coffee Shops",
-            },
-            {
-                name: "Bars and Night Clubs",
-            },
-            {
-                name: "Enterprises",
-            },
-            {
-                name: "Fine Dining",
-            },
-            {
-                name: "Casual Dining",
-            },
-            {
-                name: "Ghost Kitchens",
-            },
-            {
-                name: "Food Trucks",
-            },
-
-        ]
+            { name: t("itemEighteen") },
+            { name: t("itemNineteen") },
+            { name: t("itemTwenty") },
+            { name: t("itemTwentyOne") },
+            { name: t("itemTwentyTwo") },
+            { name: t("itemTwentyThree") },
+            { name: t("itemTwentyFour") },
+            { name: t("itemTwentyFive") },
+            { name: t("itemTwentySix") },
+        ],
     },
     {
-        title: "Earn More with FineDine",
+        title: t("Title4"),
         listData: [
-            {
-                name: "Become an Affiliate",
-            },
-            {
-                name: "Become a Reseller",
-            },
-        ]
+            { name: t("itemTwentySeven") },
+            { name: t("itemTwentyEight") },
+        ],
     },
     {
-        title: "Contact Us",
+        title: t("Title5"),
         listData: [
-            {
-                name: "info@finedinemenu.com",
-            },
-        ]
+            { name: t("itemTwentyNine") },
+        ],
     },
+];
 
-]
+
 
 // Marquee cards Static Data
 
