@@ -23,11 +23,12 @@ const VideoSection = () => {
                                 title="Watch How Cafe Sanuki in Las Vegas Digitized Their Menu Operations with FineDine"
                                 width="100%"
                                 height="410"
-                                src="https://www.youtube.com/embed/LrWMfkUypzU?accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;&amp;autoplay=1&amp;playsinline=1&amp;enablejsapi=1&amp;origin=https%3A%2F%2Fwww.finedinemenu.com&amp;widgetid=1"
+                                src="https://www.youtube.com/embed/LrWMfkUypzU?playsinline=1&enablejsapi=1&origin=https%3A%2F%2Fwww.finedinemenu.com&widgetid=1"
                                 id="widget2"
                                 data-gtm-yt-inspected-15="true"
                                 style={{ border: "none" }}
                             ></iframe>
+
                         </Box>
                     </Grid>
                     <Grid item lg={5} md={4}>

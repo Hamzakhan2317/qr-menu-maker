@@ -19,9 +19,11 @@ import Toolbar from "@mui/material/Toolbar";
 import { Link, usePathname, useRouter } from "@/navigation";
 // import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
+import Image from "next/image";
 import React, { useState } from "react";
 import ButtonComp from "../../components/ui/button";
-
+import trFlag from "../../public/assets/images/turkeyflag.jpg";
+import usaflag from "../../public/assets/images/usaflag.png";
 
 
 
@@ -36,7 +38,7 @@ function Navbar(props) {
   const handleDrawerToggle = () => setMobileOpen((prevState) => !prevState);
   const isXs = useMediaQuery(theme.breakpoints.down("xs"));
   const isSm = useMediaQuery(theme.breakpoints.down("md"));
-  const [color, setColor] = useState("1");
+  const [color, setColor] = useState("0");
   const handleChange = (event) => {
     setColor(event.target.value);
   };
@@ -268,21 +270,36 @@ function Navbar(props) {
                         sx={{
                           width: 60,
                           height: 45,
-
+                          ".MuiSvgIcon-root": {
+                            display: "none"
+                          },
+                          "& .MuiOutlinedInput-notchedOutline": {
+                            borderColor: "#ccc",
+                          },
+                          "&:hover .MuiOutlinedInput-notchedOutline": {
+                            borderColor: "#ccc",
+                          },
+                          "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                            borderColor: "#ccc",
+                          },
                         }}
                       >
                         <MenuItem value={1}>
                           <Link style={{
                             textDecoration: "none", fontSize: "14px", color: "#111827", fontFamily: "Nunito Sans",
                           }} href={pathname} locale="en">
-                            english
+                            <Box sx={{ display: "flex", alignItems: "center" }}>
+                              <Image src={usaflag} style={{ width: "15px", height: "15px", marginRight: "3px" }} /> eng
+                            </Box>
                           </Link>
                         </MenuItem>
                         <MenuItem value={2}>
                           <Link style={{
                             textDecoration: "none", fontSize: "14px", color: "#111827", fontFamily: "Nunito Sans",
                           }} href={pathname} locale="tr">
-                            turkish
+                            <Box sx={{ display: "flex", alignItems: "center" }}>
+                              <Image src={trFlag} style={{ width: "15px", height: "15px", marginRight: "3px", objectFit: "contain" }} /> tur
+                            </Box>
                           </Link>
                         </MenuItem>
                       </Select>
@@ -331,7 +348,8 @@ function Navbar(props) {
           {drawer}
         </Drawer>
       </nav>
-    </Box>
+    </Box >
+
   );
 }
 
