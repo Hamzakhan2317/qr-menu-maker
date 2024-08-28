@@ -25,13 +25,10 @@ import usaflag from "../../public/assets/images/usaflag.png";
 
 
 function Navbar(props) {
-  const locale = useLocale();
-
-  console.log(" local>>>>>>>>>>>>>>>>>>>", locale);
-
   const theme = createCustomTheme();
   const router = useRouter();
   const pathname = usePathname()
+  const locale = useLocale();
   const t = useTranslations('Home.NavSection');
 
   const { window } = props;

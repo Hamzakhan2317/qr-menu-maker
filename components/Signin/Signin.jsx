@@ -1,11 +1,5 @@
 "use client";
-import { useRouter } from "@/navigation";
-import { signIn } from "next-auth/react";
-import NextLink from "next/link";
-import { useRef, useState } from "react";
-
-
-import { Link } from "@/navigation";
+import { Link, usePathname, useRouter } from "@/navigation";
 import LogoSvg from "@/public/assets/svg/logoSvg";
 import { loginSchema } from "@/validations/login/loginSchema";
 import {
@@ -15,16 +9,30 @@ import {
   Divider,
   FormControlLabel,
   Grid,
+  MenuItem,
+  Select,
   Typography,
 } from "@mui/material";
 import { useFormik } from "formik";
+import { signIn } from "next-auth/react";
+import { useLocale } from "next-intl";
+import Image from "next/image";
+import NextLink from "next/link";
+import { useState } from "react";
 import { toast } from "sonner";
+import trFlag from "../../public/assets/images/turkeyflag.jpg";
+import usaflag from "../../public/assets/images/usaflag.png";
 import InputField from "../ui/InputField";
 import ButtonComp from "../ui/button";
 const LoginPage = () => {
   const router = useRouter();
   const [passwordVisible, setPasswordVisible] = useState(false)
-
+  const pathname = usePathname()
+  const locale = useLocale();
+  const [lang, setLang] = useState(locale);
+  const handleChange = (event) => {
+    setLang(event.target.value);
+  };
 
   const handleLogin = async ({ email, password }) => {
     const toastId = toast.loading("Login user...");
@@ -71,11 +79,53 @@ const LoginPage = () => {
           "linear-gradient(to left, rgba(235, 210, 250, 0.3), rgba(245, 235, 250, 0.2))",
       }}
     >
-      <Container maxWidth="lg" sx={{ padding: "1rem" }}>
+      <Box sx={{ padding: "15px 35px", display: "flex", justifyContent: "space-between", boxShadow: "rgba(0, 0, 0, 0.05) 0px 0px 0px 1px", background: "#fff" }}>
         <Link component={NextLink} href="/">
           <LogoSvg />
         </Link>
-      </Container>
+        <Box sx={{ ml: "10px" }}>
+          <Select
+            value={lang}
+            placeholder="lng"
+            onChange={handleChange}
+            sx={{
+              width: 60,
+              height: 45,
+              ".MuiSvgIcon-root": {
+                display: "none"
+              },
+              "& .MuiOutlinedInput-notchedOutline": {
+                borderColor: "#ccc",
+              },
+              "&:hover .MuiOutlinedInput-notchedOutline": {
+                borderColor: "#ccc",
+              },
+              "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                borderColor: "#ccc",
+              },
+            }}
+          >
+            <MenuItem value={"en"}>
+              <Link style={{
+                textDecoration: "none", fontSize: "14px", color: "#111827", fontFamily: "Nunito Sans",
+              }} href={pathname} locale="en">
+                <Box sx={{ display: "flex", alignItems: "center" }}>
+                  <Image alt="usaflag" src={usaflag} style={{ width: "15px", height: "15px", marginRight: "3px" }} /> eng
+                </Box>
+              </Link>
+            </MenuItem>
+            <MenuItem value={"tr"}>
+              <Link style={{
+                textDecoration: "none", fontSize: "14px", color: "#111827", fontFamily: "Nunito Sans",
+              }} href={pathname} locale="tr">
+                <Box sx={{ display: "flex", alignItems: "center" }}>
+                  <Image alt="trFlag" src={trFlag} style={{ width: "15px", height: "15px", marginRight: "3px", objectFit: "contain" }} /> tur
+                </Box>
+              </Link>
+            </MenuItem>
+          </Select>
+        </Box>
+      </Box>
       <Container maxWidth="sm">
         <Box
           sx={{
@@ -85,7 +135,6 @@ const LoginPage = () => {
           }}
         >
           <Box
-            component="main"
             sx={{
               marginTop: "1rem",
               marginBottom: "2rem",
@@ -110,48 +159,7 @@ const LoginPage = () => {
               <Typography sx={{ fontSize: "1.5rem", fontWeight: "700", mb: 2, fontFamily: "Nunito Sans" }}>
                 Log in to your account
               </Typography>
-              {/* <Grid container spacing={1} justifyContent="center">
-                <Grid item xs={12}>
-                  <ButtonComp
-                    backgroundColor="#fff"
-                    color="#262626"
-                    border="1px solid #DDDDDD"
-                    borderRadius=".5rem"
-                    fontWeight="300"
-                    width="100%"
-                    padding="5px 12px"
-                    text="Log in with Google"
-                    hoverBackgroundColor="#fff"
-                    hoverColor="#8338EC"
-                    hoverBorder="#8338EC"
-                    icon={<GoogleIcon />}
-                  />
-                </Grid>
-                <Grid item xs={12}>
-                  <ButtonComp
-                    backgroundColor="#fff"
-                    color="#262626"
-                    padding="5px 12px"
-                    border="1px solid #DDDDDD"
-                    borderRadius=".5rem"
-                    fontWeight="300"
-                    width="100%"
-                    text="Log in with Apple"
-                    hoverBackgroundColor="#fff"
-                    hoverColor="#8338EC"
-                    hoverBorder="#8338EC"
-                    icon={<AppleIcon />}
-                  />
-                </Grid>
-              </Grid> */}
             </Box>
-            {/* <Box sx={{ display: "flex", alignItems: "center", mb: 2.5 }}>
-              <Divider sx={{ flex: 1 }} />
-              <Typography color="#757575" variant="body2" sx={{ mx: 2, fontFamily: "Nunito Sans" }}>
-                or
-              </Typography>
-              <Divider sx={{ flex: 1 }} />
-            </Box> */}
             <Box component="form" onSubmit={formik.handleSubmit}>
               <InputField
                 sx={{
@@ -194,7 +202,7 @@ const LoginPage = () => {
                 type={passwordVisible ? "text" : "password"}
 
                 passwordVisible={passwordVisible}
-          setPasswordVisible={setPasswordVisible}
+                setPasswordVisible={setPasswordVisible}
                 name="password"
                 formik={formik}
               />
@@ -254,7 +262,7 @@ const LoginPage = () => {
             </Box>
             <Box sx={{ display: "flex", alignItems: "center", mb: 2.5 }}>
               <Divider sx={{ flex: 1 }} />
-              <Link href={"/Login-with-phone"} style={{ fontFamily: "Nunito Sans", color: "#8338EC", textDecoration: "none", padding:"0 5px" , fontSize:"14px"}}>
+              <Link href={"/Login-with-phone"} style={{ fontFamily: "Nunito Sans", color: "#8338EC", textDecoration: "none", padding: "0 5px", fontSize: "14px" }}>
                 Login with phone
               </Link>
               <Divider sx={{ flex: 1 }} />
@@ -295,9 +303,8 @@ const LoginPage = () => {
           sx={{
             display: "flex",
             justifyContent: "center",
-            alignItems: "center",
             textAlign: "center",
-            paddingBottom: "20px",
+            paddingBottom: "0px",
           }}
         >
           <Typography

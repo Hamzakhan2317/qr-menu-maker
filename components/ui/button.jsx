@@ -25,6 +25,7 @@ const ButtonComp = ({
   return (
     <LoadingButton
       sx={{
+        fontFamily: "Nunito Sans",
         width: width,
         padding: padding,
         color: color,
