@@ -453,7 +453,7 @@ const LoginWithPhone = () => {
                   color: "black",
                   border: "1px solid #8338ec",
                   padding: "10px",
-                  borderRadius: "8px"
+                  borderRadius: "5px"
                 }}
               />
               <Typography sx={{ color: "red", mb: 1 }}>
