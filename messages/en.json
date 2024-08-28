@@ -71,8 +71,47 @@
       "Title": " finedine all-in-one management platform for hotels. finedine all-in-one management platform for hotels. take reservations, take orders and payment.finedine all-in-one management platform for hotels. finedine all-in-one management platform for hotels. take reservations, take orders and payment.finedine all-in-one management platform for hotels. finedine all-in-one management platform for hotels. take reservations, take orders and payment."
     },
     "FAQSection": {
-      "Heading": "What is a QR code menu for restaurants?",
-      "Detail": "A QR code menu for restaurants is a digital menu accessible via a quick response (QR) code that patrons can scan with their smartphones to view the menu items."
+      "MainHeading": "Frequently Asked Questions (FAQ)",
+      "Heading1": {
+        "title": "What is a QR code menu for restaurants?",
+        "content": "A QR code menu for restaurants is a digital menu accessible via a quick response (QR) code that patrons can scan with their smartphones to view the menu items."
+      },
+      "Heading2": {
+        "title": "How do QR code menus work in restaurants?",
+        "content": "QR code menus work by allowing customers to scan a code with their smartphones, instantly accessing the restaurant's digital menu on their screens."
+      },
+      "Heading3": {
+        "title": "Are QR code menus safe and secure?",
+        "content": "Yes, QR code menus are generally safe and secure as they provide contactless access to menus, reducing physical contact with printed materials."
+      },
+      "Heading4": {
+        "title": "How can I create a QR code menu for my restaurant?",
+        "content": "You can create a QR code menu for your restaurant by using FineDine's All-in-one restaurant management platform."
+      },
+      "Heading5": {
+        "title": "What are the benefits of using QR code menus in restaurants?",
+        "content": "The benefits of using QR code menus include contactless ordering, easy menu updates, and enhanced customer engagement through interactive features."
+      },
+      "Heading6": {
+        "title": "Can I integrate a QR code menu with my existing POS system?",
+        "content": "Yes, FineDine offers integrations with existing POS systems, streamlining order processing."
+      },
+      "Heading7": {
+        "title": "Do customers need special apps to access QR code menus?",
+        "content": "No, customers can access QR code menus using their smartphone cameras without the need for special apps, as most devices come equipped with built-in QR code scanning capabilities."
+      },
+      "Heading8": {
+        "title": "Are QR code menus cost-effective for restaurants?",
+        "content": "Yes, QR code menus are cost-effective for restaurants as they eliminate printing costs, reduce paper waste, and provide an efficient digital alternative."
+      },
+      "Heading9": {
+        "title": "What information should be included in a QR code menu?",
+        "content": "A QR code menu should include a comprehensive list of dishes, prices, dietary information, and any promotions, ensuring customers have all the necessary details for informed choices."
+      },
+      "Heading10": {
+        "title": "How do QR code menus enhance the dining experience?",
+        "content": "QR code menus enhance the dining experience by offering a seamless, contactless way for customers to explore the menu, place orders, and access additional information, promoting a modern and efficient dining experience."
+      }
     }
   },
   "About": {
@@ -117,5 +156,6 @@
       "Heading": "Join Now & Start Enjoying The Most Beneficial Platform",
       "SignupButton": "Sign Up"
     }
+   
   }
 }
