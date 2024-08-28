@@ -115,7 +115,9 @@ const FeedBackSection = () => {
                                     md: "100%",
                                 },
                             }}>
-                                <Image src={feedbackImage} style={{
+                                <Image src={feedbackImage}
+                                alt="feedbackImage"
+                                style={{
                                     width: "100%",
                                     height: "100%",
                                     objectFit: "contain"

@@ -10,6 +10,7 @@ export const metadata = {
 };
 export default function RootLayout({ children, params: { locale } }) {
   const messages = useMessages()
+
   return (
     <html lang={locale}>
       <NextAuthProviders>

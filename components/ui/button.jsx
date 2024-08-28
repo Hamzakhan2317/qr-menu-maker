@@ -20,7 +20,7 @@ const ButtonComp = ({
   hoverColor,
   hoverBorder,
   startIcon = { icon },
-  sx
+  ...sx
 }) => {
   return (
     <LoadingButton

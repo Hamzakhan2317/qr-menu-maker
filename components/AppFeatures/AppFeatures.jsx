@@ -41,7 +41,9 @@ const AppFeatureSection = () => {
                                     md: "430px",
                                 }
                             }}>
-                                <Image src={appFeatureImg} style={{
+                                <Image src={appFeatureImg}
+                                alt="appFeatureImg"
+                                style={{
                                     width: "100%",
                                     height: "100%"
                                 }} />

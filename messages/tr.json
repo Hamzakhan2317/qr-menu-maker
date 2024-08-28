@@ -69,6 +69,92 @@
     },
     "TextSection": {
       "Title": "FineDine oteller için hepsi bir arada yönetim platformu. FineDine oteller için hepsi bir arada yönetim platformu. Rezervasyon alın, sipariş ve ödeme işlemlerini gerçekleştirin. FineDine oteller için hepsi bir arada yönetim platformu. FineDine oteller için hepsi bir arada yönetim platformu. Rezervasyon alın, sipariş ve ödeme işlemlerini gerçekleştirin. FineDine oteller için hepsi bir arada yönetim platformu. FineDine oteller için hepsi bir arada yönetim platformu. Rezervasyon alın, sipariş ve ödeme işlemlerini gerçekleştirin."
+    },
+    "FAQSection": {
+      "MainHeading": "Sıkça Sorulan Sorular (SSS)",
+      "Heading1": {
+        "title": "Restoranlar için QR kod menüsü nedir?",
+        "content": "Restoranlar için QR kod menüsü, müşterilerin menü öğelerini görüntülemek için akıllı telefonlarıyla tarayabilecekleri bir hızlı yanıt (QR) kodu aracılığıyla erişilebilen dijital bir menüdür."
+      },
+      "Heading2": {
+        "title": "QR kod menüleri restoranlarda nasıl çalışır?",
+        "content": "QR kod menüleri, müşterilerin akıllı telefonlarıyla bir kod tarayarak restoranın dijital menüsüne anında erişim sağlamalarına olanak tanır."
+      },
+      "Heading3": {
+        "title": "QR kod menüleri güvenli ve emniyetli midir?",
+        "content": "Evet, QR kod menüleri genellikle güvenli ve emniyetlidir çünkü fiziksel menülerle teması azaltarak menülere temassız erişim sağlar."
+      },
+      "Heading4": {
+        "title": "Restoranım için QR kod menüsünü nasıl oluşturabilirim?",
+        "content": "Restoranınız için QR kod menüsünü FineDine'ın Tümleşik restoran yönetim platformunu kullanarak oluşturabilirsiniz."
+      },
+      "Heading5": {
+        "title": "Restoranlarda QR kod menüsü kullanmanın faydaları nelerdir?",
+        "content": "QR kod menüsü kullanmanın faydaları arasında temassız sipariş verme, kolay menü güncellemeleri ve etkileşimli özellikler aracılığıyla artırılmış müşteri etkileşimi bulunur."
+      },
+      "Heading6": {
+        "title": "Mevcut POS sistemimle bir QR kod menüsünü entegre edebilir miyim?",
+        "content": "Evet, FineDine mevcut POS sistemleriyle entegrasyonlar sunarak sipariş işleme sürecini kolaylaştırır."
+      },
+      "Heading7": {
+        "title": "Müşterilerin QR kod menülerine erişmek için özel uygulamalara ihtiyacı var mı?",
+        "content": "Hayır, çoğu cihaz yerleşik QR kod tarama özelliklerine sahip olduğu için müşteriler, özel uygulamalara ihtiyaç duymadan akıllı telefon kameralarını kullanarak QR kod menülerine erişebilir."
+      },
+      "Heading8": {
+        "title": "QR kod menüleri restoranlar için maliyet açısından etkili midir?",
+        "content": "Evet, QR kod menüleri restoranlar için baskı maliyetlerini ortadan kaldırdığı, kağıt israfını azalttığı ve verimli bir dijital alternatif sunduğu için maliyet açısından etkilidir."
+      },
+      "Heading9": {
+        "title": "Bir QR kod menüsünde hangi bilgiler yer almalıdır?",
+        "content": "Bir QR kod menüsünde, müşterilerin bilinçli tercihler yapabilmeleri için yemekler, fiyatlar, diyet bilgileri ve promosyonlar gibi kapsamlı bir bilgi listesi yer almalıdır."
+      },
+      "Heading10": {
+        "title": "QR kod menüleri yemek deneyimini nasıl geliştirir?",
+        "content": "QR kod menüleri, müşterilerin menüyü sorunsuz ve temassız bir şekilde keşfetmelerine, sipariş vermelerine ve ek bilgilere erişmelerine olanak tanıyarak modern ve verimli bir yemek deneyimi sunar."
+      }
+    }
+  },
+  "About": {
+    "Mainbanner": {
+      "Heading": "Dünyanın En Lezzetli Mutfağı Parmaklarınızın Ucunda!",
+      "SignupButton": "Kaydol"
+    },
+    "BottomHeader": {
+      "Heading": "Türk Restoranı Nedir?",
+      "SubHeading": "TurkishRestaurant.com, insanları ABD genelinde mahallelerinin en iyileriyle buluşturan bir teknoloji şirketidir. Aynı zamanda Amerika Birleşik Devletleri'ndeki en büyük Türk Restoranı portalıdır. Yeni yerel müşterilere ulaşın ve TurkishRestaurant.com ile çevrimiçi"
+    },
+    "CardsSectionHeading": {
+      "Heading": "Kime Hizmet Veriyoruz?"
+    },
+    "CustomerCard": {
+      "Heading": "Müşteriler",
+      "SubHeading": "En iyi Türk yemekleri parmaklarınızın ucunda, Turkish Restaurant mahallenizin en iyilerini anında ayağınıza getiriyor.",
+      "CustomerBtn": "Sipariş Vermeye Başla"
+    },
+    "RestaurantOwnersCard": {
+      "Heading": "Restoran Sahipleri",
+      "SubHeading": "Catering, Rezervasyon, Teslimat ve Paket Servis hizmetlerini TurkishRestaurant.com ile sunarak yeni müşterilere ulaşın ve işinizi büyütün.",
+      "RestaurantOwnersBtn": "Partner Ol"
+    },
+    "MiddleSection": {
+      "Heading": "Tüm Geleneksel Tatlar Bir Arada"
+    },
+    "OthersCardsSectionHeading": {
+      "Heading": "Benzersiz Avantajlar"
+    },
+    "CateringCard": {
+      "Heading": "Catering",
+      "SubHeading": "Artık düzenli siparişleriniz ve catering siparişleriniz için ayrı platformlar kullanmanıza gerek yok. Turkish Restaurant, bu iki özelliği sizin için bir arada sunuyor.",
+      "CateringBtn": "Sipariş Vermeye Başla"
+    },
+    "ReservationsCard": {
+      "Heading": "Rezervasyonlar",
+      "SubHeading": "Diğer rezervasyon sağlayıcıların aksine, Turkish Restaurant rezervasyon sistemi sizden ek bir ücret talep etmez. Partner olduğunuz anda, bu hizmet ücretsiz olarak aktif hale gelir.",
+      "ReservationsBtn": "Partner Ol"
+    },
+    "BottomBanner": {
+      "Heading": "Şimdi Katılın ve En Faydalı Platformdan Yararlanmaya Başlayın",
+      "SignupButton": "Kaydol"
     }
   }
 }

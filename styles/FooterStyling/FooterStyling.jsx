@@ -1,3 +1,4 @@
+"use client";
 import { createCustomTheme } from "../theme";
 
 const theme = createCustomTheme()
@@ -68,7 +69,6 @@ export const copyRightTextStyle = {
     fontFamily: "Nunito Sans"
 
 }
-
 export const privaryPolicyBoxStyle = {
     display: "flex",
     justifyContent: "end",

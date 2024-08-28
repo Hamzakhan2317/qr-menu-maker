@@ -27,6 +27,12 @@ import usaflag from "../../public/assets/images/usaflag.png";
 
 
 
+const navItems = [
+  { name: "Home", href: "/" },
+  { name: "About", href: "/about-us" },
+  { name: "Contact", href: "/contact-us" },
+];
+
 function Navbar(props) {
   const theme = createCustomTheme();
   const router = useRouter();
@@ -42,11 +48,7 @@ function Navbar(props) {
   const handleChange = (event) => {
     setColor(event.target.value);
   };
-  const navItems = [
-    { name: t("NavItemName"), href: "/" },
-    { name: t("NavItemAbout"), href: "/about" },
-    { name: t("NavItemContact"), href: "/contact-us" },
-  ];
+
   // Set drawer width and anchor based on screen size
   const drawerWidth = isSm ? "100%" : isXs ? "100%" : "defaultWidth"; // Set defaultWidth to fit your design
   const drawerAnchor = isXs ? "top" : "top"; // Use 'right' for medium and larger screens
