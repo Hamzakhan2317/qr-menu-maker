@@ -1,7 +1,7 @@
 "use client";
 
 import Footer from "@/components/Footer/Footer";
-import Navbar from "@/components/Navbar/page";
+import Navbar from "@/components/Navbar/Navbar";
 import ButtonComp from "@/components/ui/button";
 import bannerSection from "@/public/assets/images/bannerSection.webp";
 import catering from "@/public/assets/images/catering.webp";
@@ -14,7 +14,6 @@ import {
   cardsGridTextStyle,
   mainHeadingStyle,
   middleTextStyle,
-  subHeadingStyle,
 } from "@/styles/AboutStyles/AboutStyles";
 import { Box, Container, Grid, Typography } from "@mui/material";
 import Image from "next/image";
@@ -22,6 +21,7 @@ import { createCustomTheme } from "@/styles/theme";
 import { ThemeProvider } from "@mui/material";
 import { useTranslations } from "next-intl";
 import { useRouter } from "@/navigation";
+import CustomHeading from "@/components/ui/CustomHeading";
 
 const AboutUs = () => {
   const theme = createCustomTheme();
@@ -51,6 +51,7 @@ const AboutUs = () => {
             textAlign="center"
             color="white"
             width="100%"
+            maxWidth="900px"
             padding="0 4%"
           >
             <Typography variant="h1" sx={mainHeadingStyle}>
@@ -62,15 +63,8 @@ const AboutUs = () => {
               sx={{ marginTop: { xs: "1.5rem", md: "2.5rem" } }}
             >
               <ButtonComp
+                variant="blue"
                 onClick={() => router.push("/register")}
-                backgroundColor="#e6034b"
-                color="#FFF"
-                fontSize={{ xs: "0.9rem", md: "1rem" }}
-                padding="10px 15px"
-                height={{ xs: "40px", md: "50px" }}
-                borderRadius=".5rem"
-                fontWeight="600"
-                hoverBackgroundColor="#c40542"
                 text={t("Mainbanner.SignupButton")}
               />
             </Box>
@@ -78,29 +72,29 @@ const AboutUs = () => {
         </Box>
 
         <Box sx={middleTextStyle}>
-          <Box sx={{ maxWidth: "800px" }}>
-            <Typography
-              sx={{
-                fontSize: { xs: "1.9rem", sm: "2rem", md: "2.2rem" },
-                fontWeight: 700,
-              }}
-            >
-              {t("BottomHeader.Heading")}
-            </Typography>
-            <Typography sx={{ fontSize: "1rem", marginTop: "10px" }}>
+          <Box sx={{ maxWidth: "600px" }}>
+            <CustomHeading
+              textAlign="center"
+              text={t("BottomHeader.Heading")}
+            />
+            <Typography sx={{ fontSize: "1rem", textAlign: "center" }}>
               {t("BottomHeader.SubHeading")}
             </Typography>
           </Box>
         </Box>
         <Container
           sx={{
+            my: "3%",
             minHeight: "85vh",
           }}
         >
-          <Typography sx={subHeadingStyle}>
-            {t("CardsSectionHeading.Heading")}
-          </Typography>
-          <Grid container>
+          <CustomHeading
+            textAlign="center"
+            text={t("CardsSectionHeading.Heading")}
+            color="#F30752"
+          />
+
+          <Grid container my="5%">
             <Box
               sx={{
                 display: "flex",
@@ -108,14 +102,8 @@ const AboutUs = () => {
               }}
             >
               <Grid item xs={12} sm={12} md={6} lg={6} sx={cardsGridTextStyle}>
-                <Typography
-                  sx={{
-                    fontSize: { xs: "2.2rem", sm: "2.5", md: "3rem" },
-                    fontWeight: 600,
-                  }}
-                >
-                  {t("CustomerCard.Heading")}
-                </Typography>
+                <CustomHeading text={t("CustomerCard.Heading")} />
+
                 <Typography
                   sx={{
                     fontSize: "1rem",
@@ -125,16 +113,7 @@ const AboutUs = () => {
                 >
                   {t("CustomerCard.SubHeading")}
                 </Typography>
-                <ButtonComp
-                  backgroundColor="#e6034b"
-                  color="#FFF"
-                  padding="10px 10px"
-                  borderRadius=".5rem"
-                  fontWeight="600"
-                  margin="30px 0 0 3px "
-                  hoverBackgroundColor="#c40542"
-                  text={t("CustomerCard.CustomerBtn")}
-                />
+                <ButtonComp text={t("CustomerCard.CustomerBtn")} />
               </Grid>
               <Grid item xs={12} sm={12} md={6} lg={6}>
                 <Image
@@ -170,15 +149,8 @@ const AboutUs = () => {
                   marginTop: { xs: "0", sm: "5rem", md: "0" },
                 }}
               >
-                <Typography
-                  sx={{
-                    fontSize: { xs: "2.2rem", md: "3rem" },
-                    fontWeight: 600,
-                    lineHeight: 1.2,
-                  }}
-                >
-                  {t("RestaurantOwnersCard.Heading")}
-                </Typography>
+                <CustomHeading text={t("RestaurantOwnersCard.Heading")} />
+
                 <Typography
                   sx={{
                     fontSize: "1rem",
@@ -189,13 +161,6 @@ const AboutUs = () => {
                   {t("RestaurantOwnersCard.SubHeading")}
                 </Typography>
                 <ButtonComp
-                  backgroundColor="#e6034b"
-                  color="#FFF"
-                  padding="10px 10px"
-                  borderRadius=".5rem"
-                  fontWeight="600"
-                  margin={{ xs: "15px 0 40px 3px", md: "10px 0 0 3px" }}
-                  hoverBackgroundColor="#c40542"
                   text={t("RestaurantOwnersCard.RestaurantOwnersBtn")}
                 />
               </Box>
@@ -213,7 +178,7 @@ const AboutUs = () => {
             backgroundImage: `url(${TraditionalBackground.src})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
-            borderBottom: "28px solid #e6034b",
+            borderBottom: "15px solid #e6034b",
           }}
         >
           <Box
@@ -226,12 +191,7 @@ const AboutUs = () => {
             width="100%"
             padding="0 2%"
           >
-            <Typography
-              sx={{
-                fontSize: { xs: "2rem", sm: "3rem", md: "3.8rem" },
-                fontWeight: { xs: "700", md: "900" },
-              }}
-            >
+            <Typography sx={mainHeadingStyle}>
               {t("MiddleSection.Heading")}
             </Typography>
           </Box>
@@ -240,12 +200,16 @@ const AboutUs = () => {
         <Container
           sx={{
             minHeight: "85vh",
+            my: "3%",
           }}
         >
-          <Typography sx={subHeadingStyle}>
-            {t("OthersCardsSectionHeading.Heading")}
-          </Typography>
-          <Grid container>
+          <CustomHeading
+            textAlign="center"
+            text={t("OthersCardsSectionHeading.Heading")}
+            color="#F30752"
+          />
+
+          <Grid container my="5%">
             <Box
               sx={{
                 display: "flex",
@@ -265,14 +229,7 @@ const AboutUs = () => {
                   flexDirection: "column",
                 }}
               >
-                <Typography
-                  sx={{
-                    fontSize: { xs: "2.2rem", md: "3rem" },
-                    fontWeight: 600,
-                  }}
-                >
-                  {t("CateringCard.Heading")}
-                </Typography>
+                <CustomHeading text={t("CateringCard.Heading")} />
                 <Typography
                   sx={{
                     fontSize: "1rem",
@@ -282,16 +239,7 @@ const AboutUs = () => {
                 >
                   {t("CateringCard.SubHeading")}
                 </Typography>
-                <ButtonComp
-                  backgroundColor="#e6034b"
-                  color="#FFF"
-                  padding="10px 10px"
-                  borderRadius=".5rem"
-                  fontWeight="600"
-                  margin={{ xs: "15px 0 0px 3px", md: "10px 0 0 3px" }}
-                  hoverBackgroundColor="#c40542"
-                  text={t("CateringCard.CateringBtn")}
-                />
+                <ButtonComp text={t("CateringCard.CateringBtn")} />
               </Grid>
 
               <Grid item xs={12} sm={12} md={6} lg={6}>
@@ -339,14 +287,8 @@ const AboutUs = () => {
                   marginTop: { xs: "0", sm: "4rem", md: "0" },
                 }}
               >
-                <Typography
-                  sx={{
-                    fontSize: { xs: "2rem", sm: "2.5rem", md: "3rem" },
-                    fontWeight: 600,
-                  }}
-                >
-                  {t("ReservationsCard.Heading")}
-                </Typography>
+                <CustomHeading text={t("ReservationsCard.Heading")} />
+
                 <Typography
                   sx={{
                     fontSize: "1rem",
@@ -356,16 +298,7 @@ const AboutUs = () => {
                 >
                   {t("ReservationsCard.SubHeading")}
                 </Typography>
-                <ButtonComp
-                  backgroundColor="#e6034b"
-                  color="#FFF"
-                  padding="10px 10px"
-                  borderRadius=".5rem"
-                  fontWeight="600"
-                  margin={{ xs: "15px 0 40px 3px", md: "10px 0 0 3px" }}
-                  hoverBackgroundColor="#c40542"
-                  text={t("ReservationsCard.ReservationsBtn")}
-                />
+                <ButtonComp text={t("ReservationsCard.ReservationsBtn")} />
               </Box>
             </Grid>
           </Grid>
@@ -380,7 +313,7 @@ const AboutUs = () => {
             backgroundImage: `url(${enjoyingBackground.src})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
-            borderBottom: "28px solid #e6034b",
+            borderBottom: "15px solid #e6034b",
             marginTop: "30px",
           }}
         >
@@ -392,6 +325,7 @@ const AboutUs = () => {
             color="white"
             width="100%"
             padding="0 2%"
+            maxWidth="900px"
           >
             <Typography sx={mainHeadingStyle}>
               {t("BottomBanner.Heading")}
@@ -401,18 +335,7 @@ const AboutUs = () => {
               justifyContent="center"
               sx={{ marginTop: { xs: "1.5rem", md: "2.5rem" } }}
             >
-              <ButtonComp
-                onClick={() => router.push("/register")}
-                backgroundColor="#e6034b"
-                color="#FFF"
-                fontSize={{ xs: "0.9rem", md: "1rem" }}
-                padding="0px 15px"
-                height={{ xs: "40px", md: "50px" }}
-                borderRadius=".5rem"
-                fontWeight="600"
-                hoverBackgroundColor="#c40542"
-                text={t("BottomBanner.SignupButton")}
-              />
+              <ButtonComp text={t("BottomBanner.SignupButton")} />
             </Box>
           </Box>
         </Box>

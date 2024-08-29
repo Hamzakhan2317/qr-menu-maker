@@ -61,15 +61,8 @@ const ManageScreen = () => {
                 {" "}
                 <ButtonComp
                   marginTop={"0px"}
-                  borderRadius={"8px"}
-                  border={"1px solid #e6034b"}
-                  fontWeight={"500"}
-                  fontSize={"16px"}
+                  variant="light"
                   text={"Report & Analytics →"}
-                  boxShadow={"none"}
-                  color="#e6034b"
-                  backgroundColor={"#fff"}
-                  padding="25px 19px"
                 />
               </Box>
               <Box
@@ -86,15 +79,8 @@ const ManageScreen = () => {
                 {" "}
                 <ButtonComp
                   marginTop={"0px"}
-                  borderRadius={"8px"}
-                  border={"1px solid #e6034b"}
-                  fontWeight={"500"}
-                  fontSize={"16px"}
+                  variant="light"
                   text={"Feedback Collection →"}
-                  boxShadow={"none"}
-                  color="#e6034b"
-                  backgroundColor={"#fff"}
-                  padding="25px 19px"
                 />
               </Box>
               <Box
@@ -111,15 +97,8 @@ const ManageScreen = () => {
                 {" "}
                 <ButtonComp
                   marginTop={"0px"}
-                  borderRadius={"8px"}
-                  border={"1px solid #e6034b"}
-                  fontWeight={"500"}
-                  fontSize={"16px"}
+                  variant="light"
                   text={"Reservation →"}
-                  boxShadow={"none"}
-                  color="#e6034b"
-                  backgroundColor={"#fff"}
-                  padding="25px 19px"
                 />
               </Box>
             </Box>

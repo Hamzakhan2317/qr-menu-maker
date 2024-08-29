@@ -3,7 +3,7 @@ import { createCustomTheme } from "../theme";
 
 const theme = createCustomTheme();
 export const mainHeadingStyle = {
-  color:"white",
+  color: "white",
   fontSize: "3.8rem",
   fontWeight: 900,
   lineHeight: 1.2,
@@ -18,16 +18,17 @@ export const mainHeadingStyle = {
   [theme.breakpoints.up("md")]: {
     fontSize: "3.8rem",
   },
+  textShadow: "1px 1px 2px rgba(0, 0, 0, 0.5)",
 };
 export const middleTextStyle = {
   backgroundColor: "#efefef",
-  borderTop: "28px solid #e6034b ",
+  borderTop: "15px solid #e6034b ",
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-  marginTop: "-7px",
-  paddingTop: "60px",
-  paddingBottom: "60px",
+
+  padding: "60px",
+
   [theme.breakpoints.up("xs")]: {
     padding: "1rem 2rem",
   },

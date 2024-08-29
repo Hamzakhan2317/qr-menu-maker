@@ -19,7 +19,7 @@ import {
   MenuItem,
   Rating,
   Select,
-  Typography
+  Typography,
 } from "@mui/material";
 import { useFormik } from "formik";
 import { useLocale } from "next-intl";
@@ -34,11 +34,11 @@ import usaflag from "../../public/assets/images/usaflag.png";
 import InputField from "../ui/InputField";
 import ButtonComp from "../ui/button";
 import SignUpLogo from "/public/SignUpImg.webp";
+import SecondaryNavbar from "../Navbar/SecondaryNavbar";
 
 const LoginPage = () => {
-  const theme = createCustomTheme();
-  const pathname = usePathname()
-  const [passwordVisible, setPasswordVisible] = useState(false)
+  const pathname = usePathname();
+  const [passwordVisible, setPasswordVisible] = useState(false);
   const locale = useLocale();
   const [lang, setLang] = useState(locale);
   const handleChange = (event) => {
@@ -90,7 +90,6 @@ const LoginPage = () => {
       } else {
         toast.error("Invalid phone number");
       }
-
     },
   });
   return (
@@ -101,55 +100,9 @@ const LoginPage = () => {
           "linear-gradient(to left, rgba(255, 255, 255, 0.7), rgba(200, 170, 230, 0.5), rgba(220, 190, 240, 0.9), rgba(255, 255, 255, 0))",
       }}
     >
+      <SecondaryNavbar />
       <Container component="main">
-        <Box sx={{ padding: "0.875rem", display: "flex", justifyContent: "space-between" }}>
-          <Link component={NextLink} href="/">
-            <LogoSvg />
-          </Link>
-          <Box sx={{ ml: "10px" }}>
-            <Select
-              value={lang}
-              placeholder="lng"
-              onChange={handleChange}
-              sx={{
-                width: 60,
-                height: 45,
-                ".MuiSvgIcon-root": {
-                  display: "none"
-                },
-                "& .MuiOutlinedInput-notchedOutline": {
-                  borderColor: "#ccc",
-                },
-                "&:hover .MuiOutlinedInput-notchedOutline": {
-                  borderColor: "#ccc",
-                },
-                "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                  borderColor: "#ccc",
-                },
-              }}
-            >
-              <MenuItem value={"en"}>
-                <Link style={{
-                  textDecoration: "none", fontSize: "14px", color: "#111827", fontFamily: "Nunito Sans",
-                }} href={pathname} locale="en">
-                  <Box sx={{ display: "flex", alignItems: "center" }}>
-                    <Image alt="usaflag" src={usaflag} style={{ width: "15px", height: "15px", marginRight: "3px" }} /> eng
-                  </Box>
-                </Link>
-              </MenuItem>
-              <MenuItem value={"tr"}>
-                <Link style={{
-                  textDecoration: "none", fontSize: "14px", color: "#111827", fontFamily: "Nunito Sans",
-                }} href={pathname} locale="tr">
-                  <Box sx={{ display: "flex", alignItems: "center" }}>
-                    <Image alt="trFlag" src={trFlag} style={{ width: "15px", height: "15px", marginRight: "3px", objectFit: "contain" }} /> tur
-                  </Box>
-                </Link>
-              </MenuItem>
-            </Select>
-          </Box>
-        </Box>
-        <Grid container sx={containerFlexStyle}>
+        <Grid container sx={containerFlexStyle} marginTop="5%">
           <Grid item xs={12} sm={12} md={6} lg={7}>
             <Box sx={imageTextStyle}>
               <Box>
@@ -191,7 +144,6 @@ const LoginPage = () => {
                     fontSize: "14px",
                     color: "#ADADAE",
                     fontFamily: "Nunito Sans",
-
                   }}
                 >
                   Cafe Sanuki, Manager
@@ -224,7 +176,6 @@ const LoginPage = () => {
                     justifyContent: "center",
                     textAlign: "center",
                     fontFamily: "Nunito Sans",
-
                   }}
                 >
                   Create Your Free Account
@@ -262,33 +213,12 @@ const LoginPage = () => {
                   name="email"
                   formik={formik}
                 />
-                {/* <InputField
-                  sx={{
-                    marginBottom: "5px",
-                    "& .MuiOutlinedInput-root": {
-                      "&:hover fieldset": {
-                        borderColor: "#8338EC",
-                      },
-                      "&.Mui-focused fieldset": {
-                        borderColor: "#AE83EA",
-                      },
-                    },
-                  }}
-                  Placeholder="Phone"
-                  height="2.5rem"
-                  backgroundColor="#fff"
-                  type={"text"}
-                  cols="12"
-                  variant="outlined"
-                  name="phone"
-                  formik={formik}
-                /> */}
+
                 <PhoneInput
                   className="enter-phone-input-class"
                   value={formik.values.phone}
                   onChange={(value) => {
                     formik.setFieldValue("phone", value);
-                    // formik.setFieldTouched("phone", true);
                   }}
                   placeholder="Enter phone number"
                   required
@@ -303,15 +233,27 @@ const LoginPage = () => {
                     background: "#fff",
                     outline: "none",
                     color: "black",
-                    border: `1px solid ${formik.errors.phone ? "red" : "#C4C4C4"}`,
+                    border: `1px solid ${
+                      formik.errors.phone ? "red" : "#C4C4C4"
+                    }`,
                     // border: "1px solid #C4C4C4" ,
                     padding: "8px",
                     borderRadius: "4px",
-                    marginBottom: "5px"
+                    marginBottom: "5px",
                   }}
                 />
                 {formik.errors.phone && (
-                  <Typography sx={{ mt: -1, color: "red", fontSize: "12px", ml: 2, mb: .5 }}>{formik.errors.phone}</Typography>
+                  <Typography
+                    sx={{
+                      mt: -1,
+                      color: "red",
+                      fontSize: "12px",
+                      ml: 2,
+                      mb: 0.5,
+                    }}
+                  >
+                    {formik.errors.phone}
+                  </Typography>
                 )}
 
                 <InputField
@@ -333,7 +275,6 @@ const LoginPage = () => {
                   cols="12"
                   icon
                   type={passwordVisible ? "text" : "password"}
-
                   passwordVisible={passwordVisible}
                   setPasswordVisible={setPasswordVisible}
                   variant="outlined"
@@ -342,40 +283,11 @@ const LoginPage = () => {
                 />
 
                 <ButtonComp
-                  marginTop="0.7rem"
-                  backgroundColor="#8338EC"
-                  color="#FFF"
-                  borderRadius=".5rem"
-                  fontWeight="300"
+                  variant="blue"
                   width="100%"
-                  hoverBackgroundColor="#A764FA"
                   text="Create Account"
-                  marginBottom="0.5rem"
                   onClick={formik.handleSubmit}
                 />
-                {/* <Box sx={{ display: "flex", alignItems: "center", mb: 1 }}>
-                  <Divider sx={{ flex: 1 }} />
-                  <Typography color="#757575" variant="body2" sx={{ mx: 2 }}>
-                    or
-                  </Typography>
-                  <Divider sx={{ flex: 1 }} />
-                </Box>
-                <Grid item xs={12}>
-                  <ButtonComp
-                    backgroundColor="#fff"
-                    color="#262626"
-                    border="1px solid #DDDDDD"
-                    borderRadius=".5rem"
-                    fontWeight="300"
-                    width="100%"
-                    padding="5px 12px"
-                    text="Sign up with Google"
-                    hoverBackgroundColor="#fff"
-                    hoverColor="#8338EC"
-                    hoverBorder="#8338EC"
-                    icon={<GoogleIcon />}
-                  />
-                </Grid> */}
               </Box>
               <Box
                 sx={{
@@ -387,16 +299,22 @@ const LoginPage = () => {
                   zIndex: 1,
                 }}
               >
-                <Typography variant="body2" color="#605F62" sx={{
-                  fontFamily: "Nunito Sans",
-                }}>
+                <Typography
+                  variant="body2"
+                  color="#605F62"
+                  sx={{
+                    fontFamily: "Nunito Sans",
+                  }}
+                >
                   Already have an account?{" "}
                   <Link
                     component={NextLink}
                     href="/login"
                     variant="bodyS"
                     style={{
-                      color: "#8338EC", textDecoration: "none", fontFamily: "Nunito Sans",
+                      color: "#8338EC",
+                      textDecoration: "none",
+                      fontFamily: "Nunito Sans",
                     }}
                   >
                     Log in
@@ -425,7 +343,9 @@ const LoginPage = () => {
                     href="#"
                     variant="bodyS"
                     style={{
-                      color: "#8338EC", textDecoration: "none", fontFamily: "Nunito Sans",
+                      color: "#8338EC",
+                      textDecoration: "none",
+                      fontFamily: "Nunito Sans",
                     }}
                   >
                     Terms of Service
@@ -435,7 +355,9 @@ const LoginPage = () => {
                     href="#"
                     variant="bodyS"
                     style={{
-                      color: "#8338EC", textDecoration: "none", fontFamily: "Nunito Sans",
+                      color: "#8338EC",
+                      textDecoration: "none",
+                      fontFamily: "Nunito Sans",
                     }}
                   >
                     Privacy Policy

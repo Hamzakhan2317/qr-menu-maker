@@ -11,7 +11,6 @@ import { useTranslations } from "next-intl";
 import Image from "next/image";
 import imgSection1 from "../../public/assets/images/imgSection1.webp";
 const ImagesSection = () => {
-  const theme = createCustomTheme();
   const t = useTranslations("Home.SomeNumbers");
 
   return (

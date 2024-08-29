@@ -10,7 +10,6 @@ import Image from "next/image";
 import customerImage from "../../public/assets/images/happyguestimage.webp";
 
 const CustomerSection = () => {
-  const theme = createCustomTheme();
   const t = useTranslations("Home.Customer");
 
   return (

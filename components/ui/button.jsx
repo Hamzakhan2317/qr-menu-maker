@@ -1,49 +1,72 @@
-
 import { LoadingButton } from "@mui/lab";
+import PropTypes from "prop-types";
+
 const ButtonComp = ({
   onClick,
   text,
   isLoading = false,
   disabled,
   icon,
-  color = "#000",
-  padding = "8px 12px",
-  backgroundColor,
+  padding = "25px 30px",
   width,
-  borderRadius,
+  borderRadius = "0.5rem",
   border,
-  fontWeight,
-  marginTop,
-  marginBottom,
+  fontWeight = "600",
+  marginTop = "10px",
+  marginBottom = "10px",
   textTransform = "none",
-  hoverBackgroundColor,
   hoverColor,
   hoverBorder,
+  fontSize = "16px",
+  maxHeight = "50px",
+  variant = "red",
   startIcon = { icon },
   ...sx
 }) => {
+  const variants = {
+    red: {
+      backgroundColor: "#E6034B",
+      color: "#fff",
+      "&:hover": {
+        backgroundColor: "#F30752",
+      },
+    },
+    blue: {
+      backgroundColor: "#8338EC",
+      color: "#fff",
+      "&:hover": {
+        backgroundColor: "#A764FA",
+      },
+    },
+    light: {
+      backgroundColor: "#F4F0F9",
+      color: "#8338EC",
+      "&:hover": {
+        backgroundColor: "#F6F5F3",
+        color: "#8338EC",
+      },
+    },
+  };
+
   return (
     <LoadingButton
       sx={{
         fontFamily: "Nunito Sans",
         width: width,
         padding: padding,
-        color: color,
         border: border,
         fontWeight: fontWeight,
-        backgroundColor: backgroundColor,
         borderRadius: borderRadius,
         textTransform: textTransform,
         marginTop: marginTop,
         marginBottom: marginBottom,
-        "&:hover": {
-          backgroundColor: hoverBackgroundColor,
-          color: hoverColor,
-          borderColor: hoverBorder,
-        },
+        fontSize: fontSize,
+        maxHeight: maxHeight,
+        ...variants[variant],
         "& .MuiSvgIcon-root": {
           fontSize: "16px",
         },
+        boxShadow: "none",
         ...sx,
       }}
       onClick={onClick}
@@ -55,54 +78,14 @@ const ButtonComp = ({
     </LoadingButton>
   );
 };
+
+ButtonComp.propTypes = {
+  text: PropTypes.string.isRequired,
+  variant: PropTypes.oneOf(["red", "blue", "light"]),
+};
+
+ButtonComp.defaultProps = {
+  variant: "red",
+};
+
 export default ButtonComp;
-
-// import { LoadingButton } from '@mui/lab';
-
-// const ButtonComp = ({
-//   onClick,
-//   text,
-//   isLoading = false,
-//   disabled,
-//   children,
-//   color = "#000",
-//   padding = "8px 12px",
-//   backgroundColor,
-//   width,
-//   height,
-//   borderRadius,
-//   border,
-//   fontWeight,
-//   fontSize,
-//   marginTop,
-//   boxShadow,
-//   sx
-// }) => {
-
-
-//   return (
-//     <LoadingButton
-//       sx={{
-//         width: width,
-//         height: height,
-//         padding: padding,
-//         color: color,
-//         border: border,
-//         fontSize: fontSize,
-//         fontWeight: fontWeight,
-//         backgroundColor: backgroundColor,
-//         borderRadius: borderRadius,
-//         boxShadow: boxShadow,
-//         marginTop: marginTop,
-//         ...sx,
-//       }}
-//       onClick={onClick}
-//       loading={isLoading}
-//       disabled={disabled || isLoading}
-//     >
-//       {text}
-//     </LoadingButton>
-//   );
-// };
-
-// export default ButtonComp;

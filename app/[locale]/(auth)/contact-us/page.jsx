@@ -1,7 +1,8 @@
 "use client";
 import Footer from "@/components/Footer/Footer";
 import { MapComponent } from "@/components/MapComponent/MapComponent";
-import Navbar from "@/components/Navbar/page";
+import Navbar from "@/components/Navbar/Navbar";
+import CustomHeading from "@/components/ui/CustomHeading";
 import InputField from "@/components/ui/InputField";
 import ButtonComp from "@/components/ui/button";
 import ContactUsBanner from "@/public/assets/images/ContactUsBanner.jpg";
@@ -66,29 +67,35 @@ const ContactUs = () => {
         </Box>
       </Box>
       <Container maxWidth="xl" sx={{ my: 4 }}>
-        <Grid container spacing={4} justifyContent="center">
+        <Grid container spacing={4} justifyContent="center" my={"5%"}>
           {contactUsCardsDataDetail?.map(
             ({ icon: IconComponent, info1, info2, title }, ind) => (
               <Grid item xs={12} sm={6} md={4} lg={4} key={ind}>
-                <Card sx={{ minHeight: 280 }}>
+                <Card
+                  sx={{
+                    minHeight: 280,
+                    boxShadow: "none",
+                    borderRadius: "0rem",
+                    background: "#F6F5F3",
+                  }}
+                >
                   <CardContent sx={{ padding: "40px 70px 20px 30px" }}>
                     <Box
                       sx={{
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "start",
-                        mb: 4,
+                        mb: 5,
                       }}
                     >
-                      <IconComponent
-                        sx={{ fontSize: 40, color: "primary.main" }}
-                      />
+                      <IconComponent sx={{ fontSize: 40, color: "#F30752" }} />
                     </Box>
                     <Typography
                       fontSize="24px"
                       fontWeight="800"
                       align="start"
                       gutterBottom
+                      color="#000"
                     >
                       {title}
                     </Typography>
@@ -96,7 +103,7 @@ const ContactUs = () => {
                       fontSize="18px"
                       fontWeight="600"
                       align="start"
-                      gutterBottom
+                      marginTop="15px"
                     >
                       {info1}
                     </Typography>
@@ -154,125 +161,37 @@ const ContactUs = () => {
                     alignItems: "center",
                   }}
                 >
-                  <Typography
-                    color="#8338EC"
-                    sx={{
-                      fontSize: "1.5rem",
-                      fontWeight: "700",
-                      textAlign: "center",
-                    }}
-                  >
-                    {t("FormHeading.Heading")}
-                  </Typography>
-                  <Typography
-                    color="#E6034B"
-                    sx={{
-                      fontSize: "1.2rem",
-                      fontWeight: "500",
-                    }}
-                  >
-                    {t("FormSubHeading.Heading")}
-                  </Typography>
+                  <CustomHeading text={t("FormHeading.Heading")} />
                 </Box>
 
                 <Grid container spacing={2}>
-                  <Grid item xs={12} sm={12} md={6} lg={6}>
-                    <InputField
-                      sx={{
-                        "& .MuiOutlinedInput-root": {
-                          "&:hover fieldset": { borderColor: "#8338EC" },
-                          "&.Mui-focused fieldset": { borderColor: "#AE83EA" },
-                        },
-                      }}
-                      placeholder={t("FormFields.Name")}
-                      height="2.5rem"
-                      name="name"
-                      cols={12}
-                      paddingLeft="7px"
-                      backgroundColor="#fff"
-                      variant="outlined"
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={6} lg={6}>
-                    <InputField
-                      sx={{
-                        "& .MuiOutlinedInput-root": {
-                          "&:hover fieldset": { borderColor: "#8338EC" },
-                          "&.Mui-focused fieldset": { borderColor: "#AE83EA" },
-                        },
-                      }}
-                      placeholder={t("FormFields.Email")}
-                      height="2.5rem"
-                      name="email"
-                      cols={12}
-                      paddingLeft="7px"
-                      backgroundColor="#fff"
-                      variant="outlined"
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={6} lg={6}>
-                    <InputField
-                      sx={{
-                        "& .MuiOutlinedInput-root": {
-                          "&:hover fieldset": { borderColor: "#8338EC" },
-                          "&.Mui-focused fieldset": { borderColor: "#AE83EA" },
-                        },
-                      }}
-                      placeholder={t("FormFields.Company")}
-                      height="2.5rem"
-                      name="company"
-                      cols={12}
-                      paddingLeft="7px"
-                      backgroundColor="#fff"
-                      variant="outlined"
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={6} lg={6}>
-                    <InputField
-                      sx={{
-                        "& .MuiOutlinedInput-root": {
-                          "&:hover fieldset": { borderColor: "#8338EC" },
-                          "&.Mui-focused fieldset": { borderColor: "#AE83EA" },
-                        },
-                      }}
-                      placeholder={t("FormFields.Phone")}
-                      height="2.5rem"
-                      name="phone"
-                      cols={12}
-                      paddingLeft="7px"
-                      backgroundColor="#fff"
-                      variant="outlined"
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={12} lg={12}>
-                    <InputField
-                      sx={{
-                        "& .MuiOutlinedInput-root": {
-                          "&:hover fieldset": { borderColor: "#8338EC" },
-                          "&.Mui-focused fieldset": { borderColor: "#AE83EA" },
-                        },
-                      }}
-                      placeholder={t("FormFields.Message")}
-                      name="message"
-                      rows={3}
-                      cols={12}
-                      multiline
-                      padding="0"
-                      backgroundColor="#fff"
-                      variant="outlined"
-                    />
-                  </Grid>
+                  <InputField placeholder={t("FormFields.Name")} name="name" />
+
+                  <InputField
+                    placeholder={t("FormFields.Email")}
+                    name="email"
+                  />
+
+                  <InputField
+                    placeholder={t("FormFields.Company")}
+                    name="company"
+                  />
+
+                  <InputField
+                    placeholder={t("FormFields.Phone")}
+                    name="phone"
+                  />
+
+                  <InputField
+                    placeholder={t("FormFields.Message")}
+                    name="message"
+                    rows={3}
+                    cols={12}
+                    multiline
+                  />
                 </Grid>
 
-                <ButtonComp
-                  backgroundColor="#8338EC"
-                  color="#FFF"
-                  borderRadius=".5rem"
-                  fontWeight="300"
-                  width="100%"
-                  hoverBackgroundColor="#A764FA"
-                  text={t("FormButton.FormBtn")}
-                />
+                <ButtonComp marginTop="20px" text={t("FormButton.FormBtn")} />
               </Box>
 
               <Box

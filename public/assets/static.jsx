@@ -369,7 +369,6 @@ export const footerData = [
 //                 name: "Campaigns",
 //             },
 
-
 //         ]
 //     },
 //     {
@@ -427,63 +426,56 @@ export const footerData = [
 
 // ]
 export const getFooterDetails = (t) => [
-    {
-        title: t("Title1"),
-        listData: [
-            { name: t("itemOne") },
-            { name: t("itemTwo") },
-            { name: t("itemThree") },
-            { name: t("itemFour") },
-            { name: t("itemFive") },
-            { name: t("itemSix") },
-            { name: t("itemSeven") },
-            { name: t("itemEight") },
-        ],
-    },
-    {
-        title: t("Title2"),
-        listData: [
-            { name: t("itemNine") },
-            { name: t("itemTen") },
-            { name: t("itemEleven") },
-            { name: t("itemTwelve") },
-            { name: t("itemThirteen") },
-            { name: t("itemFourteen") },
-            { name: t("itemFifteen") },
-            { name: t("itemSixteen") },
-            { name: t("itemSeventeen") },
-        ],
-    },
-    {
-        title: t("Title3"),
-        listData: [
-            { name: t("itemEighteen") },
-            { name: t("itemNineteen") },
-            { name: t("itemTwenty") },
-            { name: t("itemTwentyOne") },
-            { name: t("itemTwentyTwo") },
-            { name: t("itemTwentyThree") },
-            { name: t("itemTwentyFour") },
-            { name: t("itemTwentyFive") },
-            { name: t("itemTwentySix") },
-        ],
-    },
-    {
-        title: t("Title4"),
-        listData: [
-            { name: t("itemTwentySeven") },
-            { name: t("itemTwentyEight") },
-        ],
-    },
-    {
-        title: t("Title5"),
-        listData: [
-            { name: t("itemTwentyNine") },
-        ],
-    },
+  {
+    title: t("Title1"),
+    listData: [
+      { name: t("itemOne") },
+      { name: t("itemTwo") },
+      { name: t("itemThree") },
+      { name: t("itemFour") },
+      { name: t("itemFive") },
+      { name: t("itemSix") },
+      { name: t("itemSeven") },
+      { name: t("itemEight") },
+    ],
+  },
+  {
+    title: t("Title2"),
+    listData: [
+      { name: t("itemNine") },
+      { name: t("itemTen") },
+      { name: t("itemEleven") },
+      { name: t("itemTwelve") },
+      { name: t("itemThirteen") },
+      { name: t("itemFourteen") },
+      { name: t("itemFifteen") },
+      { name: t("itemSixteen") },
+      { name: t("itemSeventeen") },
+    ],
+  },
+  {
+    title: t("Title3"),
+    listData: [
+      { name: t("itemEighteen") },
+      { name: t("itemNineteen") },
+      { name: t("itemTwenty") },
+      { name: t("itemTwentyOne") },
+      { name: t("itemTwentyTwo") },
+      { name: t("itemTwentyThree") },
+      { name: t("itemTwentyFour") },
+      { name: t("itemTwentyFive") },
+      { name: t("itemTwentySix") },
+    ],
+  },
+  {
+    title: t("Title4"),
+    listData: [{ name: t("itemTwentySeven") }, { name: t("itemTwentyEight") }],
+  },
+  {
+    title: t("Title5"),
+    listData: [{ name: t("itemTwentyNine") }],
+  },
 ];
-
-
 
 // Marquee cards Static Data
 

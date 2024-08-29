@@ -24,10 +24,11 @@ import trFlag from "../../public/assets/images/turkeyflag.jpg";
 import usaflag from "../../public/assets/images/usaflag.png";
 import InputField from "../ui/InputField";
 import ButtonComp from "../ui/button";
+import SecondaryNavbar from "../Navbar/SecondaryNavbar";
 const LoginPage = () => {
   const router = useRouter();
-  const [passwordVisible, setPasswordVisible] = useState(false)
-  const pathname = usePathname()
+  const [passwordVisible, setPasswordVisible] = useState(false);
+  const pathname = usePathname();
   const locale = useLocale();
   const [lang, setLang] = useState(locale);
   const handleChange = (event) => {
@@ -79,59 +80,14 @@ const LoginPage = () => {
           "linear-gradient(to left, rgba(235, 210, 250, 0.3), rgba(245, 235, 250, 0.2))",
       }}
     >
-      <Box sx={{ padding: "15px 35px", display: "flex", justifyContent: "space-between", boxShadow: "rgba(0, 0, 0, 0.05) 0px 0px 0px 1px", background: "#fff" }}>
-        <Link component={NextLink} href="/">
-          <LogoSvg />
-        </Link>
-        <Box sx={{ ml: "10px" }}>
-          <Select
-            value={lang}
-            placeholder="lng"
-            onChange={handleChange}
-            sx={{
-              width: 60,
-              height: 45,
-              ".MuiSvgIcon-root": {
-                display: "none"
-              },
-              "& .MuiOutlinedInput-notchedOutline": {
-                borderColor: "#ccc",
-              },
-              "&:hover .MuiOutlinedInput-notchedOutline": {
-                borderColor: "#ccc",
-              },
-              "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                borderColor: "#ccc",
-              },
-            }}
-          >
-            <MenuItem value={"en"}>
-              <Link style={{
-                textDecoration: "none", fontSize: "14px", color: "#111827", fontFamily: "Nunito Sans",
-              }} href={pathname} locale="en">
-                <Box sx={{ display: "flex", alignItems: "center" }}>
-                  <Image alt="usaflag" src={usaflag} style={{ width: "15px", height: "15px", marginRight: "3px" }} /> eng
-                </Box>
-              </Link>
-            </MenuItem>
-            <MenuItem value={"tr"}>
-              <Link style={{
-                textDecoration: "none", fontSize: "14px", color: "#111827", fontFamily: "Nunito Sans",
-              }} href={pathname} locale="tr">
-                <Box sx={{ display: "flex", alignItems: "center" }}>
-                  <Image alt="trFlag" src={trFlag} style={{ width: "15px", height: "15px", marginRight: "3px", objectFit: "contain" }} /> tur
-                </Box>
-              </Link>
-            </MenuItem>
-          </Select>
-        </Box>
-      </Box>
+      <SecondaryNavbar />
       <Container maxWidth="sm">
         <Box
           sx={{
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
+            marginTop: "10%",
           }}
         >
           <Box
@@ -156,7 +112,14 @@ const LoginPage = () => {
                 alignItems: "center",
               }}
             >
-              <Typography sx={{ fontSize: "1.5rem", fontWeight: "700", mb: 2, fontFamily: "Nunito Sans" }}>
+              <Typography
+                sx={{
+                  fontSize: "1.5rem",
+                  fontWeight: "700",
+                  mb: 2,
+                  fontFamily: "Nunito Sans",
+                }}
+              >
                 Log in to your account
               </Typography>
             </Box>
@@ -200,7 +163,6 @@ const LoginPage = () => {
                 icon
                 variant="outlined"
                 type={passwordVisible ? "text" : "password"}
-
                 passwordVisible={passwordVisible}
                 setPasswordVisible={setPasswordVisible}
                 name="password"
@@ -224,7 +186,10 @@ const LoginPage = () => {
                       />
                     }
                     label={
-                      <Typography color="#757575" sx={{ fontSize: "0.875rem", fontFamily: "Nunito Sans" }}>
+                      <Typography
+                        color="#757575"
+                        sx={{ fontSize: "0.875rem", fontFamily: "Nunito Sans" }}
+                      >
                         remember me
                       </Typography>
                     }
@@ -249,20 +214,23 @@ const LoginPage = () => {
               </Grid>
               <ButtonComp
                 onClick={formik.handleSubmit}
-                marginTop="0.7rem"
-                backgroundColor="#8338EC"
-                color="#FFF"
-                borderRadius=".5rem"
-                fontWeight="300"
                 width="100%"
-                hoverBackgroundColor="#A764FA"
                 text="Login"
-                marginBottom="1.5rem"
+                variant="blue"
               />
             </Box>
             <Box sx={{ display: "flex", alignItems: "center", mb: 2.5 }}>
               <Divider sx={{ flex: 1 }} />
-              <Link href={"/Login-with-phone"} style={{ fontFamily: "Nunito Sans", color: "#8338EC", textDecoration: "none", padding: "0 5px", fontSize: "14px" }}>
+              <Link
+                href={"/Login-with-phone"}
+                style={{
+                  fontFamily: "Nunito Sans",
+                  color: "#8338EC",
+                  textDecoration: "none",
+                  padding: "0 5px",
+                  fontSize: "14px",
+                }}
+              >
                 Login with phone
               </Link>
               <Divider sx={{ flex: 1 }} />
@@ -281,7 +249,11 @@ const LoginPage = () => {
                 zIndex: 1,
               }}
             >
-              <Typography variant="body2" color="#605F62" sx={{ fontFamily: "Nunito Sans" }}>
+              <Typography
+                variant="body2"
+                color="#605F62"
+                sx={{ fontFamily: "Nunito Sans" }}
+              >
                 Don&apos;t have an account?{" "}
                 <Link
                   component={NextLink}
@@ -290,7 +262,7 @@ const LoginPage = () => {
                   style={{
                     color: "#8338EC",
                     textDecoration: "none",
-                    fontFamily: "Nunito Sans"
+                    fontFamily: "Nunito Sans",
                   }}
                 >
                   Sign up
