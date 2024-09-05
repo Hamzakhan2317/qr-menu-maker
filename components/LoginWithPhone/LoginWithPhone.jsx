@@ -41,7 +41,6 @@ const LoginWithPhone = () => {
   };
 
   const [number, setNumber] = useState("");
-  console.log("number>>>>>>>", number);
 
   const router = useRouter();
 
@@ -69,7 +68,6 @@ const LoginWithPhone = () => {
         }
         if (errorData.status === "otp_sent") {
           setIsOTPSent(true);
-          console.log(errorData.message);
           toast.success(errorData.message, { id: toastId });
         } else {
           console.error(errorData.message);

@@ -64,7 +64,6 @@ export async function verifyOTP(phone, otp) {
 
   try {
     const user = await User.findOne({ phone });
-    console.log("user>>>>>>>", user)
     if (user?.otpCode !== otp) throw new Error("Invalid OTP. Please try again.");
     const currentTime = Date.now();
     if (currentTime > user?.otpExpiry)
