@@ -94,13 +94,10 @@ const LoginWithPhone = () => {
       otp,
     });
 
-    console.log("result verifyOTP>>>>>>", result);
 
     if (result.error) {
-      console.error(result.error);
       toast.error(result.error, { id: toastId });
     } else {
-      console.log("Logged in successfully!");
       toast.success("OTP varified, Logged in successfully!", { id: toastId });
       router.push("/dashboard");
       // Redirect or show a success message
@@ -197,7 +194,7 @@ const LoginWithPhone = () => {
                   border: "none",
                   outline: "none",
                   color: "black",
-                  border: "1px solid #8338ec",
+                  border: "1px solid #cb6fe5",
                   padding: "10px",
                   borderRadius: "5px",
                 }}
@@ -237,7 +234,6 @@ const LoginWithPhone = () => {
 
               {isOTPSent ? (
                 <ButtonComp
-                  variant="blue"
                   onClick={verifyOTP}
                   width="100%"
                   text="Verify Otp"
@@ -245,7 +241,6 @@ const LoginWithPhone = () => {
                 />
               ) : (
                 <ButtonComp
-                  variant="blue"
                   onClick={sendOTP}
                   width="100%"
                   text="Send Otp"
@@ -259,7 +254,7 @@ const LoginWithPhone = () => {
                 href={"/login"}
                 style={{
                   fontFamily: "Nunito Sans",
-                  color: "#8338EC",
+                  color: "#cb6fe5",
                   textDecoration: "none",
                   padding: "0 5px",
                   fontSize: "14px",
@@ -294,7 +289,7 @@ const LoginWithPhone = () => {
                   href="/register"
                   variant="bodyS"
                   style={{
-                    color: "#8338EC",
+                    color: "#cb6fe5",
                     textDecoration: "none",
                     fontFamily: "Nunito Sans",
                   }}
@@ -315,7 +310,7 @@ const LoginWithPhone = () => {
           }}
         >
           <Typography
-            color="#8338EC"
+            color="#cb6fe5"
             variant="body2"
             sx={{ mx: 2, fontSize: "12px", fontFamily: "Nunito Sans" }}
           >
@@ -327,7 +322,7 @@ const LoginWithPhone = () => {
             sx={{ borderColor: "#ccc", mx: 1 }}
           />
           <Typography
-            color="#8338EC"
+            color="#cb6fe5"
             variant="body2"
             sx={{ mx: 2, fontSize: "12px", fontFamily: "Nunito Sans" }}
           >

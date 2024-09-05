@@ -23,14 +23,14 @@ const Home = () => {
       <Navbar />
       <QrSection />
       <BrandSection />
-      <CustomerSection />
+      {/* <CustomerSection /> */}
       <AppFeatureSection />
       <FeedBackSection />
       <ImagesSection />
       <VideoSection />
       <FAQSection />
-      <DiscoverSection />
-      <TextSection />
+      {/* <DiscoverSection /> */}
+      {/* <TextSection /> */}
       <Footer />
     </ThemeProvider>
   );

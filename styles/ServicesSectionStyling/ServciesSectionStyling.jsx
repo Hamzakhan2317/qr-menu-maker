@@ -52,7 +52,7 @@ export const iconStyles = {
 // FeedbackIconStyles
 export const feedbackIconStyles = {
     display: "flex", justifyContent: "center", alignItems: "center",
-    background: "#8346D8",
+    background: "#cb6fe5",
     borderRadius: "8px",
     width: "28px",
     height: "38px",

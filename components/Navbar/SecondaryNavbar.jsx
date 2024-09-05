@@ -17,6 +17,8 @@ import Image from "next/image";
 import React, { useState } from "react";
 import trFlag from "../../public/assets/images/turkeyflag.jpg";
 import usaflag from "../../public/assets/images/usaflag.png";
+import logo from "../../public/assets/images/logo.png";
+
 
 function SecondaryNavbar(props) {
   const theme = createCustomTheme();
@@ -51,7 +53,15 @@ function SecondaryNavbar(props) {
         }}
       >
         <Link href="/" style={{ width: "100%" }}>
-          <LogoSvg width="140" height="38" />
+          {/* <LogoSvg width="140" height="38" /> */}
+          <Image
+                    alt="logo"
+                    src={logo}
+                    style={{
+                      width: "140px",
+                      height: "38px",
+                    }}
+                  />
         </Link>
         <Box
           sx={{
@@ -192,7 +202,15 @@ function SecondaryNavbar(props) {
                   href="/"
                   style={{ display: "flex", alignItems: "center" }}
                 >
-                  <LogoSvg width="158px" height="36" />
+                  {/* <LogoSvg width="158px" height="36" /> */}
+                  <Image
+                    alt="logo"
+                    src={logo}
+                    style={{
+                      width: "140px",
+                      height: "38px",
+                    }}
+                  />
                 </Link>
               </Box>
             </Grid>

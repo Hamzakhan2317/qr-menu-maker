@@ -44,7 +44,7 @@ const AboutUs = () => {
             height: { xs: "45vh", sm: "55vh", md: "90vh" },
           }}
         >
-          <Box
+          {/* <Box
             display="flex"
             flexDirection="column"
             alignItems="center"
@@ -68,10 +68,10 @@ const AboutUs = () => {
                 text={t("Mainbanner.SignupButton")}
               />
             </Box>
-          </Box>
+          </Box> */}
         </Box>
 
-        <Box sx={middleTextStyle}>
+        {/* <Box sx={middleTextStyle}>
           <Box sx={{ maxWidth: "600px" }}>
             <CustomHeading
               textAlign="center"
@@ -81,7 +81,7 @@ const AboutUs = () => {
               {t("BottomHeader.SubHeading")}
             </Typography>
           </Box>
-        </Box>
+        </Box> */}
         <Container
           sx={{
             my: "3%",
@@ -91,7 +91,7 @@ const AboutUs = () => {
           <CustomHeading
             textAlign="center"
             text={t("CardsSectionHeading.Heading")}
-            color="#F30752"
+            color="#cb6fe5"
           />
 
           <Grid container my="5%">
@@ -206,7 +206,7 @@ const AboutUs = () => {
           <CustomHeading
             textAlign="center"
             text={t("OthersCardsSectionHeading.Heading")}
-            color="#F30752"
+            color="#cb6fe5"
           />
 
           <Grid container my="5%">

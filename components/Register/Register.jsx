@@ -197,10 +197,10 @@ const LoginPage = () => {
                     marginBottom: "5px",
                     "& .MuiOutlinedInput-root": {
                       "&:hover fieldset": {
-                        borderColor: "#8338EC",
+                        borderColor: "#cb6fe5",
                       },
                       "&.Mui-focused fieldset": {
-                        borderColor: "#AE83EA",
+                        borderColor: "#cb6fe5",
                       },
                     },
                   }}
@@ -262,10 +262,10 @@ const LoginPage = () => {
                     paddingLeft: "0px",
                     "& .MuiOutlinedInput-root": {
                       "&:hover fieldset": {
-                        borderColor: "#8338EC",
+                        borderColor: "#cb6fe5",
                       },
                       "&.Mui-focused fieldset": {
-                        borderColor: "#AE83EA",
+                        borderColor: "#cb6fe5",
                       },
                     },
                   }}
@@ -283,7 +283,6 @@ const LoginPage = () => {
                 />
 
                 <ButtonComp
-                  variant="blue"
                   width="100%"
                   text="Create Account"
                   onClick={formik.handleSubmit}
@@ -298,7 +297,7 @@ const LoginPage = () => {
                   borderBottomRightRadius: "8px",
                   zIndex: 1,
                 }}
-              >
+              > 
                 <Typography
                   variant="body2"
                   color="#605F62"
@@ -312,7 +311,7 @@ const LoginPage = () => {
                     href="/login"
                     variant="bodyS"
                     style={{
-                      color: "#8338EC",
+                      color: "#cb6fe5",
                       textDecoration: "none",
                       fontFamily: "Nunito Sans",
                     }}

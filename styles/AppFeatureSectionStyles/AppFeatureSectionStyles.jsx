@@ -16,7 +16,7 @@ export const AppFeatureSectionContainer = {
 };
 export const appFeatureIconStyles = {
     display: "flex", justifyContent: "center", alignItems: "center",
-    background: "#8346D8",
+    background: "#cb6fe5",
     borderRadius: "8px",
     width: "38px",
     height: "38px",

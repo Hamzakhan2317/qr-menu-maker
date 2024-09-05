@@ -88,7 +88,7 @@ const ContactUs = () => {
                         mb: 5,
                       }}
                     >
-                      <IconComponent sx={{ fontSize: 40, color: "#F30752" }} />
+                      <IconComponent sx={{ fontSize: 40, color: "#cb6fe5" }} />
                     </Box>
                     <Typography
                       fontSize="24px"
@@ -205,7 +205,7 @@ const ContactUs = () => {
                 }}
               >
                 <Typography
-                  color="#8338EC"
+                  color="#cb6fe5"
                   variant="body2"
                   sx={{ mx: 2, fontSize: "12px" }}
                 >
@@ -217,7 +217,7 @@ const ContactUs = () => {
                   sx={{ borderColor: "#ccc", mx: 1 }}
                 />
                 <Typography
-                  color="#8338EC"
+                  color="#cb6fe5"
                   variant="body2"
                   sx={{ mx: 2, fontSize: "12px" }}
                 >
