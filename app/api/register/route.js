@@ -4,7 +4,6 @@ import { NextResponse } from "next/server";
 
 export async function POST(req) {
   const { email, phone, password } = await req.json();
-  console.log(">>>>>>>>>.", email, phone, password);
   try {
     await connectDB();
     if (![email, phone, password].every(Boolean))
@@ -44,7 +43,6 @@ export async function POST(req) {
     }
     return NextResponse.json({ message:"User register successfully" }, { status: 201 });
   } catch (error) {
-    console.log("error>>>", error);
     return NextResponse.json(
       { message: error?.message || "Failed to connect to server" },
       { status: 500 }

@@ -4,7 +4,6 @@ import { Box, Card, Container, Grid, Typography } from '@mui/material';
 import Image from 'next/image';
 
 const FeatureSection = () => {
-    console.log("featureCardData", featureCardData);
 
     return (
         <Box sx={featureClassBg}>

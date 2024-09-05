@@ -3,7 +3,6 @@ import { notFound } from "next/navigation";
 // Can be imported from a shared config
 const locales = ["en", "tr"];
 export default getRequestConfig(async ({ locale }) => {
-  console.log("locale>>>>>>>>>>>>", locale);
   // Validate that the incoming `locale` parameter is valid
   if (!locales.includes(locale)) notFound();
   return {

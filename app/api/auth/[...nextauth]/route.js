@@ -266,7 +266,6 @@ export const authOptions = {
               credentials.otp
             );
 
-            console.log("isValidOTP>>>>>>>>>>>", isValidOTP)
 
             if (!isValidOTP) {
               throw new Error("Invalid OTP.");

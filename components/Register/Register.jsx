@@ -72,7 +72,6 @@ const LoginPage = () => {
       toast.error(error.message, {
         id: toastId,
       });
-      console.log(error);
     }
   };
 

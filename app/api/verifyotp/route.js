@@ -38,7 +38,6 @@ export const client = twilio(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN);
 
 export async function POST(req) {
   const { phone, otp } = await req.json();
-  console.log(">>>>>>>>>.", phone, otp);
 
   try {
     await connectDB();
@@ -48,7 +47,6 @@ export async function POST(req) {
         { status: 400 }
       );
     const user = await User.findOne({ phone });
-    console.log("user>>>>", user);
     if (!user) {
       return NextResponse.json(
         { message: "Phone number not found" },
@@ -70,7 +68,6 @@ export async function POST(req) {
         to: `+${phone}`,
       });
 
-    console.log("verificationCheck>>>>>>>", verificationCheck);
     if (!verificationCheck) {
       return NextResponse.json(
         { message: "an error occured while verify otp" },
@@ -84,7 +81,6 @@ export async function POST(req) {
       { status: 201 }
     );
   } catch (error) {
-    console.log("error>>>", error);
     return NextResponse.json(
       { message: error?.message || "Failed to connect to server" },
       { status: 500 }
