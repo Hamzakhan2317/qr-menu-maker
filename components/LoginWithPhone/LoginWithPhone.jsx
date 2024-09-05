@@ -56,7 +56,7 @@ const LoginWithPhone = () => {
 
       const result = await signIn("credentials", {
         redirect: false,
-        phone: number,
+        phone: number.replace("+", ""),
       });
 
       if (result?.error) {
@@ -90,7 +90,7 @@ const LoginWithPhone = () => {
 
     const result = await signIn("credentials", {
       redirect: false,
-      phone: number,
+      phone: number.replace("+", ""),
       otp,
     });
 

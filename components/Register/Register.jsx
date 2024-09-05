@@ -53,7 +53,7 @@ const LoginPage = () => {
         method: "POST",
         body: JSON.stringify({
           email,
-          phone,
+          phone: phone.replace("+", ""),
           password,
         }),
       });
