@@ -56,7 +56,7 @@ export const QrSectionWrapper = {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    backgroundImage: "linear-gradient(to left, rgba(255, 255, 255, 0.7), rgba(200, 170, 230, 0.5), rgba(220, 190, 240, 0.9), rgba(255, 255, 255, 0))",
+    backgroundImage: "linear-gradient(to top, rgba(255, 255, 255, 0.7), rgba(200, 170, 230, 0.5), rgba(220, 190, 240, 0.9), rgba(255, 255, 255, 0))",
 };
 
 export const mainSectionTextStyle = {
