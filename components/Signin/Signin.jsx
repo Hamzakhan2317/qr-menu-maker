@@ -46,8 +46,6 @@ const LoginPage = () => {
         // callbackUrl: process.env.NEXTAUTH_URL
       });
 
-      // const result = await res.json();
-      console.log("res>>>>>>>>>>>>>>>", res);
 
       if (res?.error) {
         toast.error("Invalid email or password", { id: toastId });
@@ -57,7 +55,6 @@ const LoginPage = () => {
         router.push("/dashboard");
       }
     } catch (error) {
-      console.log("error>>>>>>>>>>>>>", error);
       toast.error("Something went wrong", { id: toastId });
     }
   };
@@ -129,10 +126,10 @@ const LoginPage = () => {
                   marginBottom: "15px",
                   "& .MuiOutlinedInput-root": {
                     "&:hover fieldset": {
-                      borderColor: "#8338EC",
+                      borderColor: "#cb6fe5",
                     },
                     "&.Mui-focused fieldset": {
-                      borderColor: "#AE83EA",
+                      borderColor: "#cb6fe5",
                     },
                   },
                 }}
@@ -144,16 +141,17 @@ const LoginPage = () => {
                 name="email"
                 formik={formik}
               />
+
               <InputField
                 sx={{
                   marginBottom: "15px",
                   paddingLeft: "0px",
                   "& .MuiOutlinedInput-root": {
                     "&:hover fieldset": {
-                      borderColor: "#8338EC",
+                      borderColor: "#cb6fe5",
                     },
                     "&.Mui-focused fieldset": {
-                      borderColor: "#AE83EA",
+                      borderColor: "#cb6fe5",
                     },
                   },
                 }}
@@ -200,7 +198,7 @@ const LoginPage = () => {
                     href="/forget-password"
                     style={{
                       fontFamily: "Nunito Sans",
-                      color: "#8338EC",
+                      color: "#cb6fe5",
                       textDecoration: "none",
                       fontSize: "13px",
                       "&:hover": {
@@ -216,7 +214,6 @@ const LoginPage = () => {
                 onClick={formik.handleSubmit}
                 width="100%"
                 text="Login"
-                variant="blue"
               />
             </Box>
             <Box sx={{ display: "flex", alignItems: "center", mb: 2.5 }}>
@@ -225,7 +222,7 @@ const LoginPage = () => {
                 href={"/Login-with-phone"}
                 style={{
                   fontFamily: "Nunito Sans",
-                  color: "#8338EC",
+                  color: "#cb6fe5",
                   textDecoration: "none",
                   padding: "0 5px",
                   fontSize: "14px",
@@ -260,7 +257,7 @@ const LoginPage = () => {
                   href="/register"
                   variant="bodyS"
                   style={{
-                    color: "#8338EC",
+                    color: "#cb6fe5",
                     textDecoration: "none",
                     fontFamily: "Nunito Sans",
                   }}
@@ -280,7 +277,7 @@ const LoginPage = () => {
           }}
         >
           <Typography
-            color="#8338EC"
+            color="#cb6fe5"
             variant="body2"
             sx={{ mx: 2, fontSize: "12px", fontFamily: "Nunito Sans" }}
           >
@@ -292,7 +289,7 @@ const LoginPage = () => {
             sx={{ borderColor: "#ccc", mx: 1 }}
           />
           <Typography
-            color="#8338EC"
+            color="#cb6fe5"
             variant="body2"
             sx={{ mx: 2, fontSize: "12px", fontFamily: "Nunito Sans" }}
           >

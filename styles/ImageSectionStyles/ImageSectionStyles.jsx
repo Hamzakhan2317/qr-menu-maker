@@ -89,7 +89,7 @@ export const numberTextStyles = {
     fontSize: "2.25rem",
     lineHeight: "2.75rem",
     fontWeight: "900",
-    color: "#7632d4",
+    color: "#cb6fe5",
 };
 export const imageSectionImageStyling = {
     width: "100%", height: "100%",

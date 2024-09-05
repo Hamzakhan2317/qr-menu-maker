@@ -12,7 +12,7 @@ const VideoSection = () => {
                     {t("Title")}
                 </Typography>
             </Box>
-            <Container maxWidth="xl">
+            {/* <Container maxWidth="xl">
                 <Grid container spacing={2}>
                     <Grid item lg={7} sm={12} md={8}>
                         <Box sx={videoContainer}>
@@ -45,7 +45,7 @@ const VideoSection = () => {
                         </Box>
                     </Grid>
                 </Grid>
-            </Container>
+            </Container> */}
             <Box sx={{
                 mt: "90px", display: {
                     sm: "none",

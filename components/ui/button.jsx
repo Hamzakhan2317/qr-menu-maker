@@ -19,7 +19,7 @@ const ButtonComp = ({
   hoverBorder,
   fontSize = "16px",
   maxHeight = "50px",
-  variant = "red",
+  variant = "purple",
   startIcon = { icon },
   ...sx
 }) => {
@@ -31,6 +31,13 @@ const ButtonComp = ({
         backgroundColor: "#F30752",
       },
     },
+    purple: {
+      backgroundColor: "#cb6fe5",
+      color: "#fff",
+      "&:hover": {
+        backgroundColor: "#cf84e4",
+      },
+    },
     blue: {
       backgroundColor: "#8338EC",
       color: "#fff",
@@ -40,10 +47,10 @@ const ButtonComp = ({
     },
     light: {
       backgroundColor: "#F4F0F9",
-      color: "#8338EC",
+      color: "#cb6fe5",
       "&:hover": {
         backgroundColor: "#F6F5F3",
-        color: "#8338EC",
+        color: "#cb6fe5",
       },
     },
   };
@@ -81,11 +88,11 @@ const ButtonComp = ({
 
 ButtonComp.propTypes = {
   text: PropTypes.string.isRequired,
-  variant: PropTypes.oneOf(["red", "blue", "light"]),
+  variant: PropTypes.oneOf(["red","purple", "blue", "light"]),
 };
 
 ButtonComp.defaultProps = {
-  variant: "red",
+  variant: "purple",
 };
 
 export default ButtonComp;

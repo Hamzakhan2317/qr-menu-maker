@@ -15,136 +15,41 @@ import brandImageSeven from "../../public/assets/images/7.webp";
 import brandImageEight from "../../public/assets/images/8.webp";
 import brandImageNine from "../../public/assets/images/9.webp";
 const BrandSection = () => {
+  const images = [
+    brandImageOne,
+    brandImageTwo,
+    brandImageThree,
+    brandImageFour,
+    brandImageFive,
+    brandImageSix,
+    brandImageSeven,
+    brandImageEight,
+    brandImageNine,
+    brandImageOne,
+    brandImageTwo,
+    brandImageThree,
+    brandImageFour,
+    brandImageFive,
+    brandImageSix,
+    brandImageSeven,
+    brandImageEight,
+    brandImageNine,
+  ];
   return (
     <Box sx={brandSectionContainer}>
       <marquee direction="left" scrollAmount="5">
         <Box sx={{ display: "flex" }}>
-          <Box sx={branSectionImageBoxStyle}>
-            <Image
-              src={brandImageOne}
-              alt="img1 "
-              style={branSectionImageStyle}
-            />
-          </Box>
-          <Box sx={branSectionImageBoxStyle}>
-            <Image
-              src={brandImageTwo}
-              alt="img2 "
-              style={branSectionImageStyle}
-            />
-          </Box>
-          <Box sx={branSectionImageBoxStyle}>
-            <Image
-              src={brandImageThree}
-              alt="img3 "
-              style={branSectionImageStyle}
-            />
-          </Box>
-          <Box sx={branSectionImageBoxStyle}>
-            <Image
-              src={brandImageFour}
-              alt="img4 "
-              style={branSectionImageStyle}
-            />
-          </Box>
-          <Box sx={branSectionImageBoxStyle}>
-            <Image
-              src={brandImageFive}
-              alt="img5 "
-              style={branSectionImageStyle}
-            />
-          </Box>
-          <Box sx={branSectionImageBoxStyle}>
-            <Image
-              src={brandImageSix}
-              alt="img6 "
-              style={branSectionImageStyle}
-            />
-          </Box>
-          <Box sx={branSectionImageBoxStyle}>
-            <Image
-              src={brandImageSeven}
-              alt="img7 "
-              style={branSectionImageStyle}
-            />
-          </Box>
-          <Box sx={branSectionImageBoxStyle}>
-            <Image
-              src={brandImageEight}
-              alt="img8 "
-              style={branSectionImageStyle}
-            />
-          </Box>
-          <Box sx={branSectionImageBoxStyle}>
-            <Image
-              src={brandImageNine}
-              alt="img9 "
-              style={branSectionImageStyle}
-            />
-          </Box>
-          <Box sx={branSectionImageBoxStyle}>
-            <Image
-              src={brandImageOne}
-              alt="img1 "
-              style={branSectionImageStyle}
-            />
-          </Box>
-          <Box sx={branSectionImageBoxStyle}>
-            <Image
-              src={brandImageTwo}
-              alt="img2 "
-              style={branSectionImageStyle}
-            />
-          </Box>
-          <Box sx={branSectionImageBoxStyle}>
-            <Image
-              src={brandImageThree}
-              alt="img3 "
-              style={branSectionImageStyle}
-            />
-          </Box>
-          <Box sx={branSectionImageBoxStyle}>
-            <Image
-              src={brandImageFour}
-              alt="img4 "
-              style={branSectionImageStyle}
-            />
-          </Box>
-          <Box sx={branSectionImageBoxStyle}>
-            <Image
-              src={brandImageFive}
-              alt="img5 "
-              style={branSectionImageStyle}
-            />
-          </Box>
-          <Box sx={branSectionImageBoxStyle}>
-            <Image
-              src={brandImageSix}
-              alt="img6 "
-              style={branSectionImageStyle}
-            />
-          </Box>
-          <Box sx={branSectionImageBoxStyle}>
-            <Image
-              src={brandImageSeven}
-              alt="img7 "
-              style={branSectionImageStyle}
-            />
-          </Box>
-          <Box sx={branSectionImageBoxStyle}>
-            <Image
-              src={brandImageEight}
-              alt="img8 "
-              style={branSectionImageStyle}
-            />
-          </Box>
-          <Box sx={branSectionImageBoxStyle}>
-            <Image
-              src={brandImageNine}
-              alt="img9 "
-              style={branSectionImageStyle}
-            />
-          </Box>
+
+          {images.map((img, ind)=>(
+          <Box sx={branSectionImageBoxStyle} key={ind}>
+          <Image
+            src={img}
+            alt="img "
+            style={branSectionImageStyle}
+          />
+        </Box>
+          ))}
+         
         </Box>
       </marquee>
     </Box>
