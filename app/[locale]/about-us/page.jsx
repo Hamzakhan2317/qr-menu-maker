@@ -44,7 +44,7 @@ const AboutUs = () => {
             height: { xs: "45vh", sm: "55vh", md: "90vh" },
           }}
         >
-          {/* <Box
+          <Box
             display="flex"
             flexDirection="column"
             alignItems="center"
@@ -57,7 +57,7 @@ const AboutUs = () => {
             <Typography variant="h1" sx={mainHeadingStyle}>
               {t("Mainbanner.Heading")}
             </Typography>
-            <Box
+            {/* <Box
               display="flex"
               justifyContent="center"
               sx={{ marginTop: { xs: "1.5rem", md: "2.5rem" } }}
@@ -67,8 +67,8 @@ const AboutUs = () => {
                 onClick={() => router.push("/register")}
                 text={t("Mainbanner.SignupButton")}
               />
-            </Box>
-          </Box> */}
+            </Box> */}
+          </Box>
         </Box>
 
         {/* <Box sx={middleTextStyle}>
@@ -178,7 +178,7 @@ const AboutUs = () => {
             backgroundImage: `url(${TraditionalBackground.src})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
-            borderBottom: "15px solid #e6034b",
+            borderBottom: "15px solid #cb6fe5",
           }}
         >
           <Box
