@@ -19,6 +19,10 @@ const userSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    otpCode: {
+      type: String,
+      default:null
+    },
     otpExpiry: {
       type: Date,
       // default: () => Date.now() + 10 * 60 * 1000, // 10 minutes from now
