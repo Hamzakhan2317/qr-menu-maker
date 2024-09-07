@@ -88,7 +88,7 @@ const ContactUs = () => {
                         mb: 5,
                       }}
                     >
-                      <IconComponent sx={{ fontSize: 40, color: "#cb6fe5" }} />
+                      <IconComponent sx={{ fontSize: 40, color: "#A327F0" }} />
                     </Box>
                     <Typography
                       fontSize="24px"
