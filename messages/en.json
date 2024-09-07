@@ -14,15 +14,15 @@
     },
     "Customer": {
       "Title": "Great Design, Happy Guests",
-      "Subtitle": "FineDine Dine-in QR Menu offers a unique experience and easy navigation to your customers. They can easily check out your menu, look at your high-quality visuals and detailed descriptions, and get information such as calories, nutrition, and allergen warnings. A top-notch experience compared to traditional paper menus or low-quality PDF menus guests hate."
+      "Subtitle": "Garsonline Dine-in QR Menu offers a unique experience and easy navigation to your customers. They can easily check out your menu, look at your high-quality visuals and detailed descriptions, and get information such as calories, nutrition, and allergen warnings. A top-notch experience compared to traditional paper menus or low-quality PDF menus guests hate."
     },
     "Appfeatures": {
       "Title": "Smart Recommendation",
-      "Subtitle": "FineDine’s AI powered technology, identifies the most preferred order combinations of items and make smart recommendations to the guests to order more and maximize your revenue.",
+      "Subtitle": "Garsonline’s AI powered technology, identifies the most preferred order combinations of items and make smart recommendations to the guests to order more and maximize your revenue.",
       "Title1": "Fully Customized Menus",
       "Subtitle1": "Implement your branding by adjusting colors and adding your logo and fonts. Customize how your menu looks, and use videos and images to tell your story to your customers.",
       "Title2": "An Upgraded Ordering Process",
-      "Subtitle2": "Integrating with the world’s leading POS systems to sync the menus when you make a change and send all orders to the POS system, the FineDine dashboard, and your kitchen & bar printers simultaneously."
+      "Subtitle2": "Integrating with the world’s leading POS systems to sync the menus when you make a change and send all orders to the POS system, the Garsonline dashboard, and your kitchen & bar printers simultaneously."
     },
     "Feedback": {
       "Title": "Leverage Valuable Data",
@@ -41,34 +41,34 @@
       "ConversionRate": "Conversion Rate"
     },
     "VideoSection": {
-      "Title": "Discover the FineDine Difference: Stories from Our Partners",
-      "VideoText1": "Our sales and tips increased by 20%-30% using FineDine. Some days I don&apos;t understand how I got through without FineDine.",
+      "Title": "Discover the Garsonline Difference: Stories from Our Partners",
+      "VideoText1": "Our sales and tips increased by 20%-30% using Garsonline. Some days I don&apos;t understand how I got through without Garsonline.",
       "OwnerName": "Chris Gia",
       "CompayName": "Cafe Sanuki, Manager"
     },
     "VideoSectionCardDetails": {
-      "Text1": "FineDine QR Menu is great to improve hospitality. It has all the information available in multiple languages which makes our local guests feel even more welcome and valuable. It eliminates errors in communication and makes our restaurants a place for all guests.",
+      "Text1": "Garsonline QR Menu is great to improve hospitality. It has all the information available in multiple languages which makes our local guests feel even more welcome and valuable. It eliminates errors in communication and makes our restaurants a place for all guests.",
       "CeoName1": "Chris Gia",
       "CompayName1": "Cafe Sanuki, Manager",
-      "Text2": "FineDine allows us to upsell our products and increase the average ticket size. Just by digitizing our menu operations, our sales increased around 20%.",
+      "Text2": "Garsonline allows us to upsell our products and increase the average ticket size. Just by digitizing our menu operations, our sales increased around 20%.",
       "CeoName2": "DogBegum ru",
       "CompayName2": "Owner of Pokemate, Istanbul",
       "Text3": "We increased our sales about 15-20% and that’s a big increase by just using a software and using it properly.",
       "CeoName3": "Kamal Yuruk",
       "CompayName3": "Manager at Spiro’s, NYC",
-      "Text4": "FineDine improved the cafe sales and helped us to launch our breakfast menu. From time to time, we update our menu with FineDine and it is so easy!",
+      "Text4": "Garsonline improved the cafe sales and helped us to launch our breakfast menu. From time to time, we update our menu with Garsonline and it is so easy!",
       "CeoName4": "GODIVA Chocolatier",
       "CompayName4": "Manager at Spiro’s, NYC",
-      "Text5": "FineDine has given us the liberty to make changes on our menus anytime! Our staff enjoys FineDine,it’s very easy to use and convenient for everyone.",
+      "Text5": "Garsonline has given us the liberty to make changes on our menus anytime! Our staff enjoys Garsonline,it’s very easy to use and convenient for everyone.",
       "CeoName5": "Matias Ess",
       "CompayName5": "Sofitel Hotel & Resorts"
     },
     "DiscoverSection": {
-      "Title": "Discover how FineDine fits your business",
-      "ButtonText": "Try FineDine"
+      "Title": "Discover how Garsonline fits your business",
+      "ButtonText": "Try Garsonline"
     },
     "TextSection": {
-      "Title": " finedine all-in-one management platform for hotels. finedine all-in-one management platform for hotels. take reservations, take orders and payment.finedine all-in-one management platform for hotels. finedine all-in-one management platform for hotels. take reservations, take orders and payment.finedine all-in-one management platform for hotels. finedine all-in-one management platform for hotels. take reservations, take orders and payment."
+      "Title": " Garsonline all-in-one management platform for hotels. Garsonline all-in-one management platform for hotels. take reservations, take orders and payment.Garsonline all-in-one management platform for hotels. Garsonline all-in-one management platform for hotels. take reservations, take orders and payment.Garsonline all-in-one management platform for hotels. Garsonline all-in-one management platform for hotels. take reservations, take orders and payment."
     },
     "FAQSection": {
       "MainHeading": "Frequently Asked Questions (FAQ)",
@@ -86,7 +86,7 @@
       },
       "Heading4": {
         "title": "How can I create a QR code menu for my restaurant?",
-        "content": "You can create a QR code menu for your restaurant by using FineDine's All-in-one restaurant management platform."
+        "content": "You can create a QR code menu for your restaurant by using Garsonline's All-in-one restaurant management platform."
       },
       "Heading5": {
         "title": "What are the benefits of using QR code menus in restaurants?",
@@ -94,7 +94,7 @@
       },
       "Heading6": {
         "title": "Can I integrate a QR code menu with my existing POS system?",
-        "content": "Yes, FineDine offers integrations with existing POS systems, streamlining order processing."
+        "content": "Yes, Garsonline offers integrations with existing POS systems, streamlining order processing."
       },
       "Heading7": {
         "title": "Do customers need special apps to access QR code menus?",
@@ -167,8 +167,8 @@
     },
     "EmailAddressCard": {
       "Heading": "Email Address",
-      "SubHeading1": "info@devbeings.com",
-      "SubHeading2": "career@devbeings.com"
+      "SubHeading1": "info@garsonline.com",
+      "SubHeading2": "career@garsonline.com"
     },
     "PhoneCard": {
       "Heading": "Phone Number"
@@ -198,10 +198,10 @@
     "Title1": "Solution",
     "Title2": "Features",
     "Title3": "USE CASES",
-    "Title4": "Earn More with FineDine",
+    "Title4": "Earn More with Garsonline",
     "Title5": "Contat us",
     "itemOne": "Dine-in QW Menu",
-    "itemTwo": "FineDinePOS Lite",
+    "itemTwo": "GarsonlinePOS Lite",
     "itemThree": "Reservations",
     "itemFour": "Dine-in Tablet Menu",
     "itemFive": "Delievery & Pickup Menu",
@@ -228,8 +228,8 @@
     "itemTwentySix": "Food Trucks",
     "itemTwentySeven": "Become an Affiliate",
     "itemTwentyEight": "Become a Reseller",
-    "itemTwentyNine": "info@finedinemenu.com",
-    "CopyRightText": "© 2024 Bambulabs Inc. and it’s subsidiaries Bambulabs Yazilim A.S. and FineDine FZE. All rights reserved.",
+    "itemTwentyNine": "info@garsonlinemenu.com",
+    "CopyRightText": "© 2024 Garsonline. All rights reserved",
     "PrivacyPolicyText": "Privacy & Terms"
   }
 }

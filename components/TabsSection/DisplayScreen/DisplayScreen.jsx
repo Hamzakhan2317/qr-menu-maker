@@ -52,7 +52,7 @@ const DisplayScreen = () => {
               </Typography>
               <Typography sx={displaySectionTextStyles}>
                 You can take further steps to protect your guests using
-                FineDine. Provide them with allergen, calorie, and nutritional
+                Garsonline. Provide them with allergen, calorie, and nutritional
                 information for each dish to assist them in choosing safely.
                 Combine aesthetics with information to drive up to 40% in order
                 value.

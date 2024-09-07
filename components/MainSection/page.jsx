@@ -55,8 +55,8 @@ const MainSection = () => {
               </Box>
               <Box>
                 <Typography sx={mainSectionParagraphStyle}>
-                  From speedy payments to smooth reservations, FineDine is your
-                  all-in-one restaurant management solution.
+                  From speedy payments to smooth reservations, Garsonline is
+                  your all-in-one restaurant management solution.
                 </Typography>
               </Box>
               <Box sx={{ display: "flex", flexWrap: "wrap" }}>

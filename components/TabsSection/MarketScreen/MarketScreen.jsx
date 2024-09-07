@@ -25,16 +25,16 @@ const MarketScreen = () => {
           >
             <Box sx={{ width: "100%", mb: "20px" }}>
               <Typography sx={displaySectionTextHeadingStyles}>
-                Boost Your Restaurant&apos;s Success with FineDine&apos;s
+                Boost Your Restaurant&apos;s Success with Garsonline&apos;s
                 Marketing Tools
               </Typography>
               <Typography sx={displaySectionTextStyles}>
                 Supercharge your restaurant&apos;s growth and customer
                 engagement with a comprehensive suite of marketing tools
                 designed to empower your business and drive success from every
-                angle. Let AI do the heavy lifting for you with FineDine&apos;s
-                advanced recommendation engine, or maximize your marketing
-                impact with enticing coupons and discounts.{" "}
+                angle. Let AI do the heavy lifting for you with
+                Garsonline&apos;s advanced recommendation engine, or maximize
+                your marketing impact with enticing coupons and discounts.{" "}
               </Typography>
             </Box>
             <Box sx={{ width: "100%" }}>

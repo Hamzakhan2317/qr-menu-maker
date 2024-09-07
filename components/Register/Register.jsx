@@ -123,9 +123,9 @@ const LoginPage = () => {
                     fontFamily: "Nunito Sans",
                   }}
                 >
-                  “Our sales and tips increased by 20%-30% using FineDine. Some
-                  days I don&apos;t understand how I get through without
-                  FineDine...”
+                  “Our sales and tips increased by 20%-30% using Garsonline.
+                  Some days I don&apos;t understand how I get through without
+                  Garsonline...”
                 </Typography>
                 <Typography
                   variant="h6"
@@ -296,7 +296,7 @@ const LoginPage = () => {
                   borderBottomRightRadius: "8px",
                   zIndex: 1,
                 }}
-              > 
+              >
                 <Typography
                   variant="body2"
                   color="#605F62"
@@ -360,7 +360,7 @@ const LoginPage = () => {
                   >
                     Privacy Policy
                   </Link>
-                  . You also agree to receive marketing e-mails from FineDine
+                  . You also agree to receive marketing e-mails from Garsonline
                   which you can unsubscribe anytime.
                 </Typography>
               </Box>

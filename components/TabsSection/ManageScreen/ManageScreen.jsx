@@ -25,8 +25,8 @@ const ManageScreen = () => {
           >
             <Box sx={{ width: "100%", mb: "20px" }}>
               <Typography sx={displaySectionTextHeadingStyles}>
-                Introducing the FineDine Power Management Suite: Take Control of
-                Your Restaurant&apos;s Success
+                Introducing the Garsonline Power Management Suite: Take Control
+                of Your Restaurant&apos;s Success
               </Typography>
               <Typography sx={displaySectionTextStyles}>
                 Give your restaurant a boost with an advanced suite of tools to
