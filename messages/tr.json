@@ -14,7 +14,7 @@
     },
     "Customer": {
       "Title": "Harika Tasarım, Mutlu Misafirler",
-      "Subtitle": "FineDine Dine-in QR Menüsü müşterilerinize benzersiz bir deneyim ve kolay gezinme imkanı sunar. Müşterileriniz menünüzü kolayca inceleyebilir, yüksek kaliteli görsellerinize ve ayrıntılı açıklamalarınıza göz atabilir ve kaloriler, besin değerleri ve alerjen uyarıları gibi bilgileri edinebilir. Geleneksel kağıt menüler veya misafirlerin hoşlanmadığı düşük kaliteli PDF menülerle karşılaştırıldığında üstün bir deneyim sunar."
+      "Subtitle": "Garsonline Dine-in QR Menüsü müşterilerinize benzersiz bir deneyim ve kolay gezinme imkanı sunar. Müşterileriniz menünüzü kolayca inceleyebilir, yüksek kaliteli görsellerinize ve ayrıntılı açıklamalarınıza göz atabilir ve kaloriler, besin değerleri ve alerjen uyarıları gibi bilgileri edinebilir. Geleneksel kağıt menüler veya misafirlerin hoşlanmadığı düşük kaliteli PDF menülerle karşılaştırıldığında üstün bir deneyim sunar."
     },
     "Appfeatures": {
       "Title": "Kolay Menü Oluşturma",
@@ -46,34 +46,28 @@
       "ConversionRate": "Dönüşüm Oranı"
     },
     "VideoSection": {
-      "Title": "FineDine Farkını Keşfedin: Ortaklarımızın Hikayeleri",
-      "VideoText1": "FineDine kullanarak satışlarımız ve bahşişlerimiz %20-%30 arttı. Bazı günler FineDine olmadan nasıl geçtiğimi anlamıyorum.",
+      "Title": "Garsonline Farkını Keşfedin: Ortaklarımızın Hikayeleri",
+      "VideoText1": "Garsonline kullanarak satışlarımız ve bahşişlerimiz %20-%30 arttı. Bazı günler Garsonline olmadan nasıl geçtiğimi anlamıyorum.",
       "OwnerName": "Chris Gia",
       "CompayName": "Cafe Sanuki, Müdür"
     },
     "VideoSectionCardDetails": {
-      "Text1": "FineDine QR Menü, misafirperverliği artırmak için harika bir çözümdür. Çok dilli olarak sunulan tüm bilgiler, yerel misafirlerimizin daha hoş karşılandığını ve değerli olduğunu hissetmesini sağlar. İletişim hatalarını ortadan kaldırır ve restoranlarımızı tüm misafirler için uygun hale getirir.",
-      "CeoName1": "Chris Gia",
-      "CompayName1": "Cafe Sanuki, Müdür",
-      "Text2": "FineDine, ürünlerimizi çapraz satmamıza ve ortalama fiş boyutunu artırmamıza olanak tanıyor. Menü operasyonlarımızı dijitalleştirerek satışlarımız yaklaşık %20 arttı.",
+      "Text2": "Garsonline, ürünlerimizi çapraz satmamıza ve ortalama fiş boyutunu artırmamıza olanak tanıyor. Menü operasyonlarımızı dijitalleştirerek satışlarımız yaklaşık %20 arttı.",
       "CeoName2": "Begüm Doğru",
       "CompayName2": "Pokemate Sahibi, İstanbul",
-      "Text3": "Sadece bir yazılım kullanarak ve onu düzgün kullanarak satışlarımızı %15-20 oranında artırdık ve bu büyük bir artış.",
-      "CeoName3": "Kamal Yürük",
-      "CompayName3": "Spiro's, NYC Yöneticisi",
-      "Text4": "FineDine, kafe satışlarını artırdı ve kahvaltı menümüzü başlatmamıza yardımcı oldu. Zaman zaman menümüzü FineDine ile güncelliyoruz ve bu çok kolay!",
-      "CeoName4": "GODIVA Çikolatacısı",
+      "Text4": "Garsonline, kafe satışlarını artırdı ve kahvaltı menümüzü başlatmamıza yardımcı oldu. Zaman zaman menümüzü Garsonline ile güncelliyoruz ve bu çok kolay!",
+      "CeoName4": "John",
       "CompayName4": "Spiro's, NYC'de Müdür",
-      "Text5": "FineDine, menülerimizde istediğimiz zaman değişiklik yapma özgürlüğü verdi! Personelimiz FineDine'i çok seviyor, kullanımı çok kolay ve herkes için uygun.",
-      "CeoName5": "Matias Ess",
+      "Text5": "Garsonline, menülerimizde istediğimiz zaman değişiklik yapma özgürlüğü verdi! Personelimiz Garsonline'i çok seviyor, kullanımı çok kolay ve herkes için uygun.",
+      "CeoName5": "Jane Doe",
       "CompayName5": "Sofitel Otel ve Tatil Köyleri"
     },
     "DiscoverSection": {
-      "Title": "FineDine'in işletmenize nasıl uyduğunu keşfedin",
-      "ButtonText": "FineDine'ı Deneyin"
+      "Title": "Garsonline'in işletmenize nasıl uyduğunu keşfedin",
+      "ButtonText": "Garsonline'ı Deneyin"
     },
     "TextSection": {
-      "Title": "FineDine oteller için hepsi bir arada yönetim platformu. FineDine oteller için hepsi bir arada yönetim platformu. Rezervasyon alın, sipariş ve ödeme işlemlerini gerçekleştirin. FineDine oteller için hepsi bir arada yönetim platformu. FineDine oteller için hepsi bir arada yönetim platformu. Rezervasyon alın, sipariş ve ödeme işlemlerini gerçekleştirin. FineDine oteller için hepsi bir arada yönetim platformu. FineDine oteller için hepsi bir arada yönetim platformu. Rezervasyon alın, sipariş ve ödeme işlemlerini gerçekleştirin."
+      "Title": "Garsonline oteller için hepsi bir arada yönetim platformu. Garsonline oteller için hepsi bir arada yönetim platformu. Rezervasyon alın, sipariş ve ödeme işlemlerini gerçekleştirin. Garsonline oteller için hepsi bir arada yönetim platformu. Garsonline oteller için hepsi bir arada yönetim platformu. Rezervasyon alın, sipariş ve ödeme işlemlerini gerçekleştirin. Garsonline oteller için hepsi bir arada yönetim platformu. Garsonline oteller için hepsi bir arada yönetim platformu. Rezervasyon alın, sipariş ve ödeme işlemlerini gerçekleştirin."
     },
     "FAQSection": {
       "MainHeading": "Sıkça Sorulan Sorular (SSS)",
@@ -91,7 +85,7 @@
       },
       "Heading4": {
         "title": "Restoranım için QR kod menüsünü nasıl oluşturabilirim?",
-        "content": "Restoranınız için QR kod menüsünü FineDine'ın Tümleşik restoran yönetim platformunu kullanarak oluşturabilirsiniz."
+        "content": "Restoranınız için QR kod menüsünü Garsonline'ın Tümleşik restoran yönetim platformunu kullanarak oluşturabilirsiniz."
       },
       "Heading5": {
         "title": "Restoranlarda QR kod menüsü kullanmanın faydaları nelerdir?",
@@ -99,7 +93,7 @@
       },
       "Heading6": {
         "title": "Mevcut POS sistemimle bir QR kod menüsünü entegre edebilir miyim?",
-        "content": "Evet, FineDine mevcut POS sistemleriyle entegrasyonlar sunarak sipariş işleme sürecini kolaylaştırır."
+        "content": "Evet, Garsonline mevcut POS sistemleriyle entegrasyonlar sunarak sipariş işleme sürecini kolaylaştırır."
       },
       "Heading7": {
         "title": "Müşterilerin QR kod menülerine erişmek için özel uygulamalara ihtiyacı var mı?",
@@ -172,8 +166,8 @@
     },
     "EmailAddressCard": {
       "Heading": "E-posta Adresi",
-      "SubHeading1": "info@devbeings.com",
-      "SubHeading2": "career@devbeings.com"
+      "SubHeading1": "info@garsonline.com",
+      "SubHeading2": "career@garsonline.com"
     },
     "PhoneCard": {
       "Heading": "Telefon Numarası"
@@ -203,16 +197,14 @@
     "Title1": "Çözüm",
     "Title2": "Özellikler",
     "Title3": "KULLANIM ALANLARI",
-    "Title4": "FineDine ile Daha Fazla Kazanın",
+    "Title4": "Garsonline ile Daha Fazla Kazanın",
     "Title5": "Bizimle İletişime Geçin",
-    "itemOne": "Dine-in QR Menüsü",
-    "itemTwo": "FineDinePOS Lite",
+    "itemOne": "Dine-in QR Menüsü", 
     "itemThree": "Rezervasyonlar",
     "itemFour": "Dine-in Tablet Menüsü",
     "itemFive": "Teslimat & Alım Menüsü",
     "itemSix": "Hızlı Ödeme",
-    "itemSeven": "Sipariş & Ödeme",
-    "itemEight": "CRM",
+    "itemSeven": "Sipariş & Ödeme", 
     "itemNine": "Alerjenler Besin Bilgisi & Kaloriler",
     "itemTen": "Birden Fazla Dil Görünümü",
     "itemEleven": "Birden Fazla Para Birimi Görünümü",
@@ -233,8 +225,8 @@
     "itemTwentySix": "Yiyecek Kamyonları",
     "itemTwentySeven": "Ortak Olun",
     "itemTwentyEight": "Yeniden Satıcı Olun",
-    "itemTwentyNine": "info@finedinemenu.com",
-    "CopyRightText": "© 2024 Bambulabs Inc. ve bağlı kuruluşları Bambulabs Yazılım A.Ş. ve FineDine FZE. Tüm hakları saklıdır.",
+    "itemTwentyNine": "info@garsonlinemenu.com",
+    "CopyRightText": "© 2024 Garsonline. Tüm hakları saklıdır ",
     "PrivacyPolicyText": "Gizlilik & Şartlar"
   }
 }

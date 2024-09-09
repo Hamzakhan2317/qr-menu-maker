@@ -3,7 +3,7 @@
 import Footer from "@/components/Footer/Footer";
 import Navbar from "@/components/Navbar/Navbar";
 import ButtonComp from "@/components/ui/button";
-import bannerSection from "@/public/assets/images/bannerSection.webp";
+import bannerSection from "@/public/assets/images/bannerSection.jpeg";
 import catering from "@/public/assets/images/catering.webp";
 import enjoyingBackground from "@/public/assets/images/enjoyingBackground.webp";
 import forCustomers from "@/public/assets/images/forCustomers.webp";
@@ -36,15 +36,16 @@ const AboutUs = () => {
           flexDirection="column"
           justifyContent="center"
           alignItems="center"
-          height="90vh"
           sx={{
             backgroundImage: `url(${bannerSection.src})`,
             backgroundSize: "cover",
-            backgroundPosition: { xs: "center", md: "bottom" },
-            height: { xs: "45vh", sm: "55vh", md: "90vh" },
+            backgroundPosition: "center",
+            width: "100%",  // Ensures 100% width across all screen sizes
+            aspectRatio: "1320 / 250",  // Maintain the aspect ratio of the image
+            height: { xs: "auto", sm: "auto", md: "250px" },  // Responsive height; fixed height on medium screens
           }}
         >
-          <Box
+          {/* <Box
             display="flex"
             flexDirection="column"
             alignItems="center"
@@ -57,7 +58,7 @@ const AboutUs = () => {
             <Typography variant="h1" sx={mainHeadingStyle}>
               {t("Mainbanner.Heading")}
             </Typography>
-            {/* <Box
+            <Box
               display="flex"
               justifyContent="center"
               sx={{ marginTop: { xs: "1.5rem", md: "2.5rem" } }}
@@ -67,8 +68,8 @@ const AboutUs = () => {
                 onClick={() => router.push("/register")}
                 text={t("Mainbanner.SignupButton")}
               />
-            </Box> */}
-          </Box>
+            </Box>
+          </Box> */}
         </Box>
 
         {/* <Box sx={middleTextStyle}>
@@ -99,6 +100,7 @@ const AboutUs = () => {
               sx={{
                 display: "flex",
                 flexDirection: { xs: "column-reverse", sm: "row" },
+                alignItems: "center",
               }}
             >
               <Grid item xs={12} sm={12} md={6} lg={6} sx={cardsGridTextStyle}>
@@ -113,14 +115,17 @@ const AboutUs = () => {
                 >
                   {t("CustomerCard.SubHeading")}
                 </Typography>
-                <ButtonComp text={t("CustomerCard.CustomerBtn")} />
+                <ButtonComp
+                  text={t("CustomerCard.CustomerBtn")}
+                  marginTop="30px"
+                />
               </Grid>
               <Grid item xs={12} sm={12} md={6} lg={6}>
                 <Image
                   src={forCustomers}
                   style={{
                     width: "100%",
-                    height: "55vh",
+                    maxHeight: "400px",
                     objectPosition: "center top",
                     objectFit: "cover",
                   }}
@@ -129,12 +134,12 @@ const AboutUs = () => {
               </Grid>
             </Box>
 
-            <Grid item xs={12} sm={6} md={6} lg={6}>
+            <Grid item xs={12} sm={6} md={6} lg={6} my="5%">
               <Image
                 src={merchantSChef}
                 style={{
                   width: "100%",
-                  height: "55vh",
+                  maxHeight: "400px",
                   objectFit: "cover",
                   marginTop: "50px",
                   objectPosition: "center top",
@@ -162,6 +167,7 @@ const AboutUs = () => {
                 </Typography>
                 <ButtonComp
                   text={t("RestaurantOwnersCard.RestaurantOwnersBtn")}
+                  marginTop="30px"
                 />
               </Box>
             </Grid>
@@ -178,7 +184,6 @@ const AboutUs = () => {
             backgroundImage: `url(${TraditionalBackground.src})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
-            borderBottom: "15px solid #cb6fe5",
           }}
         >
           <Box
@@ -209,7 +214,7 @@ const AboutUs = () => {
             color="#cb6fe5"
           />
 
-          <Grid container my="5%">
+          <Grid container mb="5%">
             <Box
               sx={{
                 display: "flex",
@@ -239,15 +244,18 @@ const AboutUs = () => {
                 >
                   {t("CateringCard.SubHeading")}
                 </Typography>
-                <ButtonComp text={t("CateringCard.CateringBtn")} />
+                <ButtonComp
+                  text={t("CateringCard.CateringBtn")}
+                  marginTop="30px"
+                />
               </Grid>
 
-              <Grid item xs={12} sm={12} md={6} lg={6}>
+              <Grid item xs={12} sm={12} md={6} lg={6} my="5%">
                 <Image
                   src={catering}
                   style={{
                     width: "100%",
-                    height: "55vh",
+                    maxHeight: "400px",
                     objectPosition: "center top",
                     objectFit: "cover",
                   }}
@@ -260,7 +268,7 @@ const AboutUs = () => {
                 src={reservation}
                 style={{
                   width: "100%",
-                  height: "55vh",
+                  maxHeight: "400px",
                   objectFit: "cover",
                   marginTop: "50px",
                   objectPosition: "bottom",
@@ -313,7 +321,6 @@ const AboutUs = () => {
             backgroundImage: `url(${enjoyingBackground.src})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
-            borderBottom: "15px solid #e6034b",
             marginTop: "30px",
           }}
         >

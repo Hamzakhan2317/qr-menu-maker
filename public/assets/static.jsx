@@ -43,7 +43,7 @@ export const logoComponents = [
 // export const appfeatureCardDetails = [
 //     {
 //         heading: { t("Title") },
-//         text: "FineDine’s AI powered technology, identifies the most preferred order combinations of items and make smart recommendations to the guests to order more and maximize your revenue.",
+//         text: "Garsonline’s AI powered technology, identifies the most preferred order combinations of items and make smart recommendations to the guests to order more and maximize your revenue.",
 //     },
 //     {
 //         heading: "Fully Customized Menus",
@@ -52,7 +52,7 @@ export const logoComponents = [
 //     },
 //     {
 //         heading: "An Upgraded Ordering Process",
-//         text: "Integrating with the world’s leading POS systems to sync the menus when you make a change and send all orders to the POS system, the FineDine dashboard, and your kitchen & bar printers simultaneously.",
+//         text: "Integrating with the world’s leading POS systems to sync the menus when you make a change and send all orders to the POS system, the Garsonline dashboard, and your kitchen & bar printers simultaneously.",
 //     },
 
 // ]
@@ -76,13 +76,13 @@ export const getAppFeatureCardDetails = (t) => [
   },
 ];
 export const getMarqueeCardDetails = (t) => [
-  {
-    text: t("Text1"),
-    starImage: rating,
-    ceoImage: ceo1,
-    companyName: t("CompayName1"),
-    ceoName: t("CeoName1"),
-  },
+  // {
+  //   text: t("Text1"),
+  //   starImage: rating,
+  //   ceoImage: ceo1,
+  //   companyName: t("CompayName1"),
+  //   ceoName: t("CeoName1"),
+  // },
   {
     text: t("Text2"),
     starImage: rating,
@@ -90,12 +90,12 @@ export const getMarqueeCardDetails = (t) => [
     companyName: t("CompayName2"),
     ceoName: t("CeoName2"),
   },
-  {
-    text: t("Text3"),
-    starImage: rating,
-    companyName: t("CompayName3"),
-    ceoName: t("CeoName3"),
-  },
+  // {
+  //   text: t("Text3"),
+  //   starImage: rating,
+  //   companyName: t("CompayName3"),
+  //   ceoName: t("CeoName3"),
+  // },
   {
     text: t("Text4"),
     starImage: rating,
@@ -191,7 +191,7 @@ export const blogCardData = [
   {
     cardImage: blogImgThree,
     cardData:
-      "SanCarlo Bahrain Improves Efficiency and Increases Revenue with FineDine's Digital Menu Technology",
+      "SanCarlo Bahrain Improves Efficiency and Increases Revenue with Garsonline's Digital Menu Technology",
     date: "April 27, 2023",
     time: "5 min read",
     altText: "blog image three",
@@ -206,7 +206,7 @@ export const footerData = [
         name: "Dine-in QW Menu",
       },
       {
-        name: "FineDinePOS Lite",
+        name: "GarsonlinePOS Lite",
       },
       {
         name: "Reservations",
@@ -293,7 +293,7 @@ export const footerData = [
     ],
   },
   {
-    title: "Earn More with FineDine",
+    title: "Earn More with Garsonline",
     listData: [
       {
         name: "Become an Affiliate",
@@ -307,7 +307,7 @@ export const footerData = [
     title: "Contact Us",
     listData: [
       {
-        name: "info@finedinemenu.com",
+        name: "info@garsonlinemenu.com",
       },
     ],
   },
@@ -320,7 +320,7 @@ export const footerData = [
 //                 name: "Dine-in QW Menu",
 //             },
 //             {
-//                 name: "FineDinePOS Lite",
+//                 name: "GarsonlinePOS Lite",
 //             },
 //             {
 //                 name: "Reservations",
@@ -409,7 +409,7 @@ export const footerData = [
 //         ]
 //     },
 //     {
-//         title: "Earn More with FineDine",
+//         title: "Earn More with Garsonline",
 //         listData: [
 //             {
 //                 name: "Become an Affiliate",
@@ -423,7 +423,7 @@ export const footerData = [
 //         title: "Contact Us",
 //         listData: [
 //             {
-//                 name: "info@finedinemenu.com",
+//                 name: "info@garsonlinemenu.com",
 //             },
 //         ]
 //     },
@@ -485,7 +485,7 @@ export const getFooterDetails = (t) => [
 
 // export const marqueeCardDetails = [
 //     {
-//         text: "FineDine QR Menu is great to improve hospitality. It has all the information available in multiple languages which makes our local guests feel even more welcome and valuable. It eliminates errors in communication and makes our restaurants a place for all guests.",
+//         text: "Garsonline QR Menu is great to improve hospitality. It has all the information available in multiple languages which makes our local guests feel even more welcome and valuable. It eliminates errors in communication and makes our restaurants a place for all guests.",
 //         starImage: rating,
 //         ceoImage: ceo1,
 //         companyName: "Chris Gia",
@@ -493,7 +493,7 @@ export const getFooterDetails = (t) => [
 
 //     },
 //     {
-//         text: "FineDine allows us to upsell our products and increase the average ticket size. Just by digitizing our menu operations, our sales increased around 20%.",
+//         text: "Garsonline allows us to upsell our products and increase the average ticket size. Just by digitizing our menu operations, our sales increased around 20%.",
 //         starImage: rating,
 //         ceoImage: ceo3,
 //         companyName: "DogBegum ru",
@@ -507,40 +507,40 @@ export const getFooterDetails = (t) => [
 //         ceoName: "Manager at Spiro’s, NYC"
 //     },
 //     {
-//         text: "FineDine improved the cafe sales and helped us to launch our breakfast menu. From time to time, we update our menu with FineDine and it is so easy!",
+//         text: "Garsonline improved the cafe sales and helped us to launch our breakfast menu. From time to time, we update our menu with Garsonline and it is so easy!",
 //         companyName: "Jay Carlo Rivera",
 //         ceoName: "GODIVA Chocolatier",
 //         ceoImage: ceo2,
 //         starImage: rating,
 //     },
 //     {
-//         text: "FineDine has given us the liberty to make changes on our menus anytime! Our staff enjoys FineDine, it’s very easy to use and convenient for everyone.",
+//         text: "Garsonline has given us the liberty to make changes on our menus anytime! Our staff enjoys Garsonline, it’s very easy to use and convenient for everyone.",
 //         companyName: "Sofitel Hotel & Resorts",
 //         ceoName: "Matias Ess ",
 //         ceoImage: ceo4,
 //         starImage: rating,
 //     },
 //     {
-//         text: "As our Brand TEN 11 Coffee Boutique is growing, FineDine allowed us to simplify the ordering process and overall menu presentation to our customers. FineDine has been an integral part of TEN 11 Coffee Boutique since our very first outlet in Abu Dhabi.",
+//         text: "As our Brand TEN 11 Coffee Boutique is growing, Garsonline allowed us to simplify the ordering process and overall menu presentation to our customers. Garsonline has been an integral part of TEN 11 Coffee Boutique since our very first outlet in Abu Dhabi.",
 //         companyName: "TEN 11 Coffee Boutique",
 //         ceoName: "Mohsin Amin",
 //         ceoImage: ceo5,
 //         starImage: rating,
 //     },
 //     {
-//         text: "FineDine QR Menu is great to improve hospitality. It has all the information available in multiple languages which makes our local guests feel even more welcome and valuable. It eliminates errors in communication and makes our restaurants a place for all guests.",
+//         text: "Garsonline QR Menu is great to improve hospitality. It has all the information available in multiple languages which makes our local guests feel even more welcome and valuable. It eliminates errors in communication and makes our restaurants a place for all guests.",
 //         companyName: "Marketing Manager",
 //         ceoName: "Nusr-et",
 //         starImage: rating,
 //     },
 //     {
-//         text: "Before COVID, we had the menu card printed to deliver to guests. Today, thanks to FineDine, we give the guest a QR code when they arrive at the hotel. This code represents your room number, and all orders you place are charged to the room. We are so happy to use FineDine and recommend it to everyone.",
+//         text: "Before COVID, we had the menu card printed to deliver to guests. Today, thanks to Garsonline, we give the guest a QR code when they arrive at the hotel. This code represents your room number, and all orders you place are charged to the room. We are so happy to use Garsonline and recommend it to everyone.",
 //         companyName: "DCO Hotels ",
 //         ceoName: "Nusr-et",
 //         starImage: rating,
 //     },
 //     {
-//         text: "FineDine QR Menu is great to improve hospitality. It has all the information available in multiple languages which makes our local guests feel even more welcome and valuable. It eliminates errors in communication and makes our restaurants a place for all guests.",
+//         text: "Garsonline QR Menu is great to improve hospitality. It has all the information available in multiple languages which makes our local guests feel even more welcome and valuable. It eliminates errors in communication and makes our restaurants a place for all guests.",
 //         companyName: "Imperio Ristorante",
 //         ceoName: "Laura Benitez ",
 //         starImage: rating,
@@ -548,7 +548,7 @@ export const getFooterDetails = (t) => [
 
 //     },
 //     {
-//         text: "Before COVID, we had the menu card printed to deliver to guests. Today, thanks to FineDine, we give the guest a QR code when they arrive at the hotel. This code represents your room number, and all orders you place are charged to the room. We are so happy to use FineDine and recommend it to everyone.",
+//         text: "Before COVID, we had the menu card printed to deliver to guests. Today, thanks to Garsonline, we give the guest a QR code when they arrive at the hotel. This code represents your room number, and all orders you place are charged to the room. We are so happy to use Garsonline and recommend it to everyone.",
 //         companyName: "DCO Hotels",
 //         ceoName: "Luis Felipe De la Puente",
 //         starImage: rating,
