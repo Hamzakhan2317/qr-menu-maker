@@ -70,15 +70,45 @@ export const getAppFeatureCardDetails = (t) => [
     heading: t("Title2"),
     text: t("Subtitle2"),
   },
+  {
+    heading: t("Title3"),
+    text: t("Subtitle3"),
+  },
+];
+export const getwhyChooseDetails = (t) => [
+  {
+    heading: t("Heading1"),
+    text: t("Text1"),
+  },
+  {
+    heading: t("Heading2"),
+    text: t("Text2"),
+  },
+  {
+    heading: t("Heading3"),
+    text: t("Text3"),
+  },
+  {
+    heading: t("Heading4"),
+    text: t("Text4"),
+  },
+  {
+    heading: t("Heading5"),
+    text: t("Text5"),
+  },
+  {
+    heading: t("Heading6"),
+    text: t("Text6"),
+  },
 ];
 export const getMarqueeCardDetails = (t) => [
-  {
-    text: t("Text1"),
-    starImage: rating,
-    ceoImage: ceo1,
-    companyName: t("CompayName1"),
-    ceoName: t("CeoName1"),
-  },
+  // {
+  //   text: t("Text1"),
+  //   starImage: rating,
+  //   ceoImage: ceo1,
+  //   companyName: t("CompayName1"),
+  //   ceoName: t("CeoName1"),
+  // },
   {
     text: t("Text2"),
     starImage: rating,
@@ -86,12 +116,12 @@ export const getMarqueeCardDetails = (t) => [
     companyName: t("CompayName2"),
     ceoName: t("CeoName2"),
   },
-  {
-    text: t("Text3"),
-    starImage: rating,
-    companyName: t("CompayName3"),
-    ceoName: t("CeoName3"),
-  },
+  // {
+  //   text: t("Text3"),
+  //   starImage: rating,
+  //   companyName: t("CompayName3"),
+  //   ceoName: t("CeoName3"),
+  // },
   {
     text: t("Text4"),
     starImage: rating,
@@ -585,18 +615,21 @@ export const servicesCardDetails = [
 
 export const getFeedbackCardDetails = (t) => [
   {
-    heading: t("GetFeedbackTitle"),
-    text: t("GetFeedbackText"),
+    heading: t("Title1"),
+    text: t("Subtitle1"),
   },
   {
-    heading: t("CollectDataTitle"),
-    text: t("CollectDataText"),
-    bgColor: "#D1D5DB",
+    heading: t("Title2"),
+    text: t("Subtitle2"),
   },
   {
-    heading: t("NoUnhappyGuestsTitle"),
-    text: t("NoUnhappyGuestsText"),
+    heading: t("Title3"),
+    text: t("Subtitle3"),
   },
+  {
+    heading: t("Title4"),
+    text: t("Subtitle4"),
+  }, 
 ];
 
 // slider section Static data

@@ -17,21 +17,25 @@
       "Subtitle": "Garsonline Dine-in QR Menüsü müşterilerinize benzersiz bir deneyim ve kolay gezinme imkanı sunar. Müşterileriniz menünüzü kolayca inceleyebilir, yüksek kaliteli görsellerinize ve ayrıntılı açıklamalarınıza göz atabilir ve kaloriler, besin değerleri ve alerjen uyarıları gibi bilgileri edinebilir. Geleneksel kağıt menüler veya misafirlerin hoşlanmadığı düşük kaliteli PDF menülerle karşılaştırıldığında üstün bir deneyim sunar."
     },
     "Appfeatures": {
-      "Title": "Akıllı Tavsiye",
-      "Subtitle": "Garsonline’in yapay zeka destekli teknolojisi, en çok tercih edilen sipariş kombinasyonlarını belirler ve misafirlerin daha fazla sipariş vermesi ve gelirlerinizi maksimize etmesi için akıllı önerilerde bulunur.",
-      "Title1": "Tamamen Özelleştirilebilir Menüler",
-      "Subtitle1": "Markanızı uygulayın; renkleri ayarlayarak, logonuzu ve yazı tiplerinizi ekleyerek. Menünüzün nasıl görüneceğini özelleştirin ve müşterilerinize hikayenizi anlatmak için videolar ve görseller kullanın.",
-      "Title2": "Geliştirilmiş Bir Sipariş Süreci",
-      "Subtitle2": "Menüleri değiştirdiğinizde senkronize etmek ve tüm siparişleri POS sistemine, Garsonline kontrol paneline ve mutfak & bar yazıcılarınıza aynı anda göndermek için dünyanın önde gelen POS sistemleriyle entegre edilir."
+      "Title": "Kolay Menü Oluşturma",
+      "Subtitle": "Müşterilerinize şık ve markanıza uygun, özelleştirilebilir QR kodları sunarak menüye hızlı erişim sağlayın. Farklı tasarım seçenekleriyle restoranınızı öne çıkarın.",
+      "Title1": "Güvenli Ödemeler",
+      "Subtitle1": "Entegre ödeme sistemimiz sayesinde müşterileriniz siparişlerini hızlı ve güvenli bir şekilde tamamlayabilir. Ödeme süreci hem müşteriler hem de restoranlar için sorunsuz bir deneyim sunar.",
+      "Title2": "Satış Raporları & Analizler",
+      "Subtitle2": "Tüm işlemleri takip edin ve satış trendlerinizi analiz edin. En çok satan ürünlerinizi ve gelir kalemlerinizi öğrenerek iş stratejinizi daha verimli hale getirin.",
+      "Title3": "Ön Ödeme Yok",
+      "Subtitle3": "Abonelik ücreti veya ek masraflar olmadan, yalnızca gerçekleşen işlemler üzerinden ücretlendirilirsiniz"
     },
     "Feedback": {
-      "Title": " Değerli Verilerden Yararlanın",
-      "GetFeedbackTitle": "Geri Bildirim Alın",
-      "GetFeedbackText": "Müşterilerinizin hizmetiniz hakkındaki hislerini öğrenmek için özel geri bildirim formları oluşturun. Olumlu bir geri bildirim döngüsü ile yemek deneyiminizi iyileştirin.",
-      "CollectDataTitle": "Değerli Veriler Toplayın",
-      "CollectDataText": "E-posta, telefon numarası ve doğum günleri gibi değerli verileri toplamak için anketler tasarlayın ve müşterilerinizi özel günlerinde bir hediye veya indirimle şaşırtın.",
-      "NoUnhappyGuestsTitle": "Üzgün Misafir Olmasın",
-      "NoUnhappyGuestsText": "Üzgün misafirlerinizi ayrılmadan önce tatmin edin."
+      "Title": "Değerli Verilerden Yararlanın",
+      "Title1": "En Çok Satan Ürünler",
+      "Subtitle1": "Hangi ürünlerin en çok tercih edildiğini öğrenerek menüdeki popüler seçenekleri öne çıkarabilir ve satış stratejilerinizi bu veriler doğrultusunda geliştirebilirsiniz.",
+      "Title2": "Zaman Bazlı Satış Analizi",
+      "Subtitle2": "Günün hangi saatlerinde ve haftanın hangi günlerinde daha fazla satış yaptığınızı görerek, yoğun saatlere özel kampanyalar veya indirimler düzenleyebilirsiniz.",
+      "Title3": "Kârlılık ve Maliyet Yönetimi",
+      "Subtitle3": "Satışlarınızı ve kârlılığınızı takip ederek stok maliyetlerinizi daha iyi yönetebilir, hangi ürünlerin daha fazla gelir sağladığını öğrenebilirsiniz.",
+      "Title4": "Gerçek Zamanlı Veriler",
+      "Subtitle4": "Anlık verilerle işletmenizin performansını anında izleyebilir ve gerektiğinde hızlı kararlar alabilirsiniz."
     },
     "SomeNumbers": {
       "Title": "Önemli Bazı Sayılar",
@@ -47,20 +51,14 @@
       "CompayName": "Cafe Sanuki, Müdür"
     },
     "VideoSectionCardDetails": {
-      "Text1": "Garsonline QR Menü, misafirperverliği artırmak için harika bir çözümdür. Çok dilli olarak sunulan tüm bilgiler, yerel misafirlerimizin daha hoş karşılandığını ve değerli olduğunu hissetmesini sağlar. İletişim hatalarını ortadan kaldırır ve restoranlarımızı tüm misafirler için uygun hale getirir.",
-      "CeoName1": "Chris Gia",
-      "CompayName1": "Cafe Sanuki, Müdür",
       "Text2": "Garsonline, ürünlerimizi çapraz satmamıza ve ortalama fiş boyutunu artırmamıza olanak tanıyor. Menü operasyonlarımızı dijitalleştirerek satışlarımız yaklaşık %20 arttı.",
       "CeoName2": "Begüm Doğru",
       "CompayName2": "Pokemate Sahibi, İstanbul",
-      "Text3": "Sadece bir yazılım kullanarak ve onu düzgün kullanarak satışlarımızı %15-20 oranında artırdık ve bu büyük bir artış.",
-      "CeoName3": "Kamal Yürük",
-      "CompayName3": "Spiro's, NYC Yöneticisi",
       "Text4": "Garsonline, kafe satışlarını artırdı ve kahvaltı menümüzü başlatmamıza yardımcı oldu. Zaman zaman menümüzü Garsonline ile güncelliyoruz ve bu çok kolay!",
-      "CeoName4": "GODIVA Çikolatacısı",
+      "CeoName4": "John",
       "CompayName4": "Spiro's, NYC'de Müdür",
       "Text5": "Garsonline, menülerimizde istediğimiz zaman değişiklik yapma özgürlüğü verdi! Personelimiz Garsonline'i çok seviyor, kullanımı çok kolay ve herkes için uygun.",
-      "CeoName5": "Matias Ess",
+      "CeoName5": "Jane Doe",
       "CompayName5": "Sofitel Otel ve Tatil Köyleri"
     },
     "DiscoverSection": {
@@ -155,6 +153,21 @@
     "BottomBanner": {
       "Heading": "Şimdi Katılın ve En Faydalı Platformdan Yararlanmaya Başlayın",
       "SignupButton": "Kaydol"
+    },
+    "WhyChoose": {
+      "Title": "Neden Garsonline?",
+      "Heading1": "Kolay Kullanım: ",
+      "Text1": "Garsonline, kullanıcı dostu arayüzü sayesinde menü oluşturmayı, masa yönetimini ve rezervasyon almayı basit ve hızlı hale getirir.",
+      "Heading2": "Maliyet Avantajı: ",
+      "Text2": "Sadece gerçekleşen işlemler için ücretlendirilirsiniz, böylece sabit bir abonelik ücreti ödemezsiniz.",
+      "Heading3": "Zamandan Tasarruf:",
+      "Text3": "Dijital menüler ve rezervasyon sistemi, restoran personelinin ve müşterilerin zamandan tasarruf etmesine olanak tanır.",
+      "Heading4": "Esneklik ve Özelleştirme:",
+      "Text4": "Menünüzü dilediğiniz gibi kategorize edebilir ve markanıza uygun QR kod tasarımlarını seçebilirsiniz.",
+      "Heading5": "Rezervasyon Kolaylığı:",
+      "Text5": "Müşterilerinizin rezervasyonlarını zahmetsizce yönetebilir, doluluk durumuna göre düzenleyebilirsiniz.",
+      "Heading6": "Güvenli ve Hızlı Ödeme:",
+      "Text6": "Müşterilerin güvenle ve hızlı bir şekilde ödeme yapmasını sağlayan entegre ödeme sistemimizle müşteri memnuniyetini artırabilirsiniz."
     }
   },
   "ContactUs": {
@@ -201,13 +214,11 @@
     "Title4": "Garsonline ile Daha Fazla Kazanın",
     "Title5": "Bizimle İletişime Geçin",
     "itemOne": "Dine-in QR Menüsü",
-    "itemTwo": "GarsonlinePOS Lite",
     "itemThree": "Rezervasyonlar",
     "itemFour": "Dine-in Tablet Menüsü",
     "itemFive": "Teslimat & Alım Menüsü",
     "itemSix": "Hızlı Ödeme",
     "itemSeven": "Sipariş & Ödeme",
-    "itemEight": "CRM",
     "itemNine": "Alerjenler Besin Bilgisi & Kaloriler",
     "itemTen": "Birden Fazla Dil Görünümü",
     "itemEleven": "Birden Fazla Para Birimi Görünümü",

@@ -5,7 +5,7 @@ import Navbar from "@/components/Navbar/Navbar";
 import CustomHeading from "@/components/ui/CustomHeading";
 import InputField from "@/components/ui/InputField";
 import ButtonComp from "@/components/ui/button";
-import ContactUsBanner from "@/public/assets/images/ContactUsBanner.jpg";
+import ContactUsBanner from "@/public/assets/images/ContactUsBanner.jpeg";
 import { contactUsCardsData } from "@/public/assets/static";
 import { mainHeadingStyle } from "@/styles/AboutStyles/AboutStyles";
 import { createCustomTheme } from "@/styles/theme";
@@ -38,12 +38,13 @@ const ContactUs = () => {
         sx={{
           backgroundImage: `url(${ContactUsBanner.src})`,
           backgroundSize: "cover",
-          backgroundPosition: { xs: "bottom center", md: "bottom" },
-          position: "relative",
-          minHeight: { xs: "45vh", sm: "55vh", md: "95vh" },
+            backgroundPosition: "center",
+            width: "100%",  // Ensures 100% width across all screen sizes
+            aspectRatio: "1320 / 250",  // Maintain the aspect ratio of the image
+            height: { xs: "auto", sm: "auto", md: "250px" },  // Responsive height; fixed height on medium screens
         }}
       >
-        <Box
+        {/* <Box
           sx={{
             backgroundColor: "#000",
             width: "100%",
@@ -64,7 +65,7 @@ const ContactUs = () => {
           <Typography variant="h1" sx={mainHeadingStyle}>
             {t("Mainbanner.Heading")}
           </Typography>
-        </Box>
+        </Box> */}
       </Box>
       <Container maxWidth="xl" sx={{ my: 4 }}>
         <Grid container spacing={4} justifyContent="center" my={"5%"}>
@@ -194,7 +195,7 @@ const ContactUs = () => {
                 <ButtonComp marginTop="20px" text={t("FormButton.FormBtn")} />
               </Box>
 
-              <Box
+              {/* <Box
                 sx={{
                   display: "flex",
                   justifyContent: "center",
@@ -223,7 +224,7 @@ const ContactUs = () => {
                 >
                   {t("FormFotter.PrivacyPolicy")}
                 </Typography>
-              </Box>
+              </Box> */}
             </Box>
           </Grid>
         </Grid>

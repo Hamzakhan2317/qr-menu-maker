@@ -16,24 +16,11 @@ import brandImageEight from "../../public/assets/images/8.webp";
 import brandImageNine from "../../public/assets/images/9.webp";
 const BrandSection = () => {
   const images = [
-    brandImageOne,
-    brandImageTwo,
     brandImageThree,
-    brandImageFour,
     brandImageFive,
     brandImageSix,
     brandImageSeven,
     brandImageEight,
-    brandImageNine,
-    brandImageOne,
-    brandImageTwo,
-    brandImageThree,
-    brandImageFour,
-    brandImageFive,
-    brandImageSix,
-    brandImageSeven,
-    brandImageEight,
-    brandImageNine,
   ];
   return (
     <Box sx={brandSectionContainer}>
