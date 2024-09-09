@@ -34,13 +34,13 @@ const ContactUs = () => {
         flexDirection="column"
         justifyContent="center"
         alignItems="center"
-        minHeight="90vh"
+        // minHeight="90vh"
         sx={{
           backgroundImage: `url(${ContactUsBanner.src})`,
           backgroundSize: "cover",
             backgroundPosition: "center",
             width: "100%",  // Ensures 100% width across all screen sizes
-            aspectRatio: "1320 / 250",  // Maintain the aspect ratio of the image
+            // aspectRatio: "1320 / 250",  // Maintain the aspect ratio of the image
             height: { xs: "auto", sm: "auto", md: "250px" },  // Responsive height; fixed height on medium screens
         }}
       >
