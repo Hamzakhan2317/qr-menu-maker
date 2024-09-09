@@ -70,6 +70,10 @@ export const getAppFeatureCardDetails = (t) => [
     heading: t("Title2"),
     text: t("Subtitle2"),
   },
+  {
+    heading: t("Title3"),
+    text: t("Subtitle3"),
+  },
 ];
 export const getMarqueeCardDetails = (t) => [
   {
@@ -585,18 +589,21 @@ export const servicesCardDetails = [
 
 export const getFeedbackCardDetails = (t) => [
   {
-    heading: t("GetFeedbackTitle"),
-    text: t("GetFeedbackText"),
+    heading: t("Title1"),
+    text: t("Subtitle1"),
   },
   {
-    heading: t("CollectDataTitle"),
-    text: t("CollectDataText"),
-    bgColor: "#D1D5DB",
+    heading: t("Title2"),
+    text: t("Subtitle2"),
   },
   {
-    heading: t("NoUnhappyGuestsTitle"),
-    text: t("NoUnhappyGuestsText"),
+    heading: t("Title3"),
+    text: t("Subtitle3"),
   },
+  {
+    heading: t("Title4"),
+    text: t("Subtitle4"),
+  }, 
 ];
 
 // slider section Static data

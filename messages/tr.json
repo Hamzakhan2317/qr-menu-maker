@@ -17,21 +17,26 @@
       "Subtitle": "FineDine Dine-in QR Menüsü müşterilerinize benzersiz bir deneyim ve kolay gezinme imkanı sunar. Müşterileriniz menünüzü kolayca inceleyebilir, yüksek kaliteli görsellerinize ve ayrıntılı açıklamalarınıza göz atabilir ve kaloriler, besin değerleri ve alerjen uyarıları gibi bilgileri edinebilir. Geleneksel kağıt menüler veya misafirlerin hoşlanmadığı düşük kaliteli PDF menülerle karşılaştırıldığında üstün bir deneyim sunar."
     },
     "Appfeatures": {
-      "Title": "Akıllı Tavsiye",
-      "Subtitle": "FineDine’in yapay zeka destekli teknolojisi, en çok tercih edilen sipariş kombinasyonlarını belirler ve misafirlerin daha fazla sipariş vermesi ve gelirlerinizi maksimize etmesi için akıllı önerilerde bulunur.",
-      "Title1": "Tamamen Özelleştirilebilir Menüler",
-      "Subtitle1": "Markanızı uygulayın; renkleri ayarlayarak, logonuzu ve yazı tiplerinizi ekleyerek. Menünüzün nasıl görüneceğini özelleştirin ve müşterilerinize hikayenizi anlatmak için videolar ve görseller kullanın.",
-      "Title2": "Geliştirilmiş Bir Sipariş Süreci",
-      "Subtitle2": "Menüleri değiştirdiğinizde senkronize etmek ve tüm siparişleri POS sistemine, FineDine kontrol paneline ve mutfak & bar yazıcılarınıza aynı anda göndermek için dünyanın önde gelen POS sistemleriyle entegre edilir."
+      "Title": "Kolay Menü Oluşturma",
+      "Subtitle": "Müşterilerinize şık ve markanıza uygun, özelleştirilebilir QR kodları sunarak menüye hızlı erişim sağlayın. Farklı tasarım seçenekleriyle restoranınızı öne çıkarın.",
+      "Title1": "Güvenli Ödemeler",
+      "Subtitle1": "Entegre ödeme sistemimiz sayesinde müşterileriniz siparişlerini hızlı ve güvenli bir şekilde tamamlayabilir. Ödeme süreci hem müşteriler hem de restoranlar için sorunsuz bir deneyim sunar.",
+      "Title2": "Satış Raporları & Analizler",
+      "Subtitle2": "Tüm işlemleri takip edin ve satış trendlerinizi analiz edin. En çok satan ürünlerinizi ve gelir kalemlerinizi öğrenerek iş stratejinizi daha verimli hale getirin.",
+      "Title3": "Ön Ödeme Yok",
+      "Subtitle3": "Abonelik ücreti veya ek masraflar olmadan, yalnızca gerçekleşen işlemler üzerinden ücretlendirilirsiniz"
     },
     "Feedback": {
-      "Title": " Değerli Verilerden Yararlanın",
-      "GetFeedbackTitle": "Geri Bildirim Alın",
-      "GetFeedbackText": "Müşterilerinizin hizmetiniz hakkındaki hislerini öğrenmek için özel geri bildirim formları oluşturun. Olumlu bir geri bildirim döngüsü ile yemek deneyiminizi iyileştirin.",
-      "CollectDataTitle": "Değerli Veriler Toplayın",
-      "CollectDataText": "E-posta, telefon numarası ve doğum günleri gibi değerli verileri toplamak için anketler tasarlayın ve müşterilerinizi özel günlerinde bir hediye veya indirimle şaşırtın.",
-      "NoUnhappyGuestsTitle": "Üzgün Misafir Olmasın",
-      "NoUnhappyGuestsText": "Üzgün misafirlerinizi ayrılmadan önce tatmin edin."
+      "Title":"Değerli Verilerden Yararlanın",
+      "Title1": "En Çok Satan Ürünler",
+      "Subtitle1": "Hangi ürünlerin en çok tercih edildiğini öğrenerek menüdeki popüler seçenekleri öne çıkarabilir ve satış stratejilerinizi bu veriler doğrultusunda geliştirebilirsiniz.",
+      "Title2": "Zaman Bazlı Satış Analizi",
+      "Subtitle2": "Günün hangi saatlerinde ve haftanın hangi günlerinde daha fazla satış yaptığınızı görerek, yoğun saatlere özel kampanyalar veya indirimler düzenleyebilirsiniz.",
+      "Title3": "Kârlılık ve Maliyet Yönetimi",
+      "Subtitle3": "Satışlarınızı ve kârlılığınızı takip ederek stok maliyetlerinizi daha iyi yönetebilir, hangi ürünlerin daha fazla gelir sağladığını öğrenebilirsiniz.",
+      "Title4": "Gerçek Zamanlı Veriler",
+      "Subtitle4": "Anlık verilerle işletmenizin performansını anında izleyebilir ve gerektiğinde hızlı kararlar alabilirsiniz."
+   
     },
     "SomeNumbers": {
       "Title": "Önemli Bazı Sayılar",

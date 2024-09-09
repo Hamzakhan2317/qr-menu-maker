@@ -17,21 +17,26 @@
       "Subtitle": "FineDine Dine-in QR Menu offers a unique experience and easy navigation to your customers. They can easily check out your menu, look at your high-quality visuals and detailed descriptions, and get information such as calories, nutrition, and allergen warnings. A top-notch experience compared to traditional paper menus or low-quality PDF menus guests hate."
     },
     "Appfeatures": {
-      "Title": "Smart Recommendation",
-      "Subtitle": "FineDine’s AI powered technology, identifies the most preferred order combinations of items and make smart recommendations to the guests to order more and maximize your revenue.",
-      "Title1": "Fully Customized Menus",
-      "Subtitle1": "Implement your branding by adjusting colors and adding your logo and fonts. Customize how your menu looks, and use videos and images to tell your story to your customers.",
-      "Title2": "An Upgraded Ordering Process",
-      "Subtitle2": "Integrating with the world’s leading POS systems to sync the menus when you make a change and send all orders to the POS system, the FineDine dashboard, and your kitchen & bar printers simultaneously."
+      "Title": "Easy Menu Creation",
+      "Subtitle": "Provide your customers with quick access to the menu by offering stylish and customizable QR codes that match your brand. Make your restaurant stand out with different design options.",
+      "Title1": "Secure Payments",
+      "Subtitle1": "Thanks to our integrated payment system, your customers can complete their orders quickly and safely. The payment process provides a seamless experience for both customers and restaurants.",
+      "Title2": "Sales Reports & Analysis",
+      "Subtitle2": "Track all transactions and analyze your sales trends. Make your business strategy more efficient by learning your best-selling products and revenue streams.",
+      "Title3": "No Down Payment",
+      "Subtitle3": "You'll only be charged on transactions that occur, with no subscription fees or additional charges"
     },
     "Feedback": {
-      "Title": "Leverage Valuable Data",
-      "GetFeedbackTitle": "Get Feedback",
-      "GetFeedbackText": "Create custom feedback forms to learn how customers feel about your service. Improve your dining experience with a positive feedback loop.",
-      "CollectDataTitle": "Collect Valuable Data",
-      "CollectDataText": "Design questionnaires to collect valuable data such as emails, phone numbers, and birthdays and surprise your customers with a gift or a discount on their special days.",
-      "NoUnhappyGuestsTitle": "No Unhappy Guests",
-      "NoUnhappyGuestsText": "Satisfy your unhappy guests before they leave."
+      "Title":"Leverage Valuable Data",
+      "Title1": "Best Selling Products",
+      "Subtitle1": "By learning which products are most preferred, you can highlight popular options on the menu and develop your sales strategies in line with this data.",
+      "Title2": "Time Based Sales Analysis",
+      "Subtitle2": "By seeing which hours of the day and days of the week you make more sales, you can organize special campaigns or discounts for busy hours.",
+      "Title3": "Profitability and Cost Management",
+      "Subtitle3": "By tracking your sales and profitability, you can better manage your stock costs and learn which products generate more income.",
+      "Title4": "Real Time Data",
+      "Subtitle4": "You can instantly monitor the performance of your business with real-time data and make quick decisions when necessary."
+   
     },
     "SomeNumbers": {
       "Title": "Some numbers that matters",
