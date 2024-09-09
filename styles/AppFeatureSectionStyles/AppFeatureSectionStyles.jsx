@@ -24,6 +24,33 @@ export const appFeatureIconStyles = {
     minWidth: "38px",
     mb: "15px"
 };
+export const aboutIconStyles = {
+    display: "flex", justifyContent: "center", alignItems: "center",
+    background: "#cb6fe5",
+    borderRadius: "8px",
+    width: "30px",
+    height: "30px",
+    minHeight: "30px",
+    minWidth: "30px",
+    mb: "15px"
+};
+export const bottomParagrphStyles = {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    width: "100%",
+    maxWidth: "650px",
+    margin: "0 auto",
+    padding:"0 10px 50px 10px"
+};
+export const bottomParagrphButtonStyle = {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    margin: "0 auto",
+    paddingBottom:"50px"
+};
+
 
 
 export const appFeatureHeadingStyles = {

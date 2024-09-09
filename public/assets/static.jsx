@@ -75,6 +75,37 @@ export const getAppFeatureCardDetails = (t) => [
     text: t("Subtitle3"),
   },
 ];
+export const getOurServicesDetails = (t) => [
+  {
+    heading: t("ServicesHeading1"),
+    text: t("ServicesText1"),
+  },
+  {
+    heading: t("ServicesHeading2"),
+    text: t("ServicesText2"),
+  },
+  {
+    heading: t("ServicesHeading3"),
+    text: t("ServicesText3"),
+  },
+  {
+    heading: t("ServicesHeading4"),
+    text: t("ServicesText4"),
+  },
+  {
+    heading: t("ServicesHeading5"),
+    text: t("ServicesText5"),
+  },
+  {
+    heading: t("ServicesHeading6"),
+    text: t("ServicesText6"),
+  },
+  {
+    heading: t("ServicesHeading7"),
+    text: t("ServicesText7"),
+  },
+
+];
 export const getwhyChooseDetails = (t) => [
   {
     heading: t("Heading1"),
