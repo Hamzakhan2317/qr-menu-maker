@@ -15,6 +15,8 @@ import {
   mainHeadingStyle,
   middleTextStyle,
 } from "@/styles/AboutStyles/AboutStyles";
+import BrandSection from "@/components/BrandSection/BrandSection.jsx";
+
 import { Box, Container, Grid, Typography } from "@mui/material";
 import Image from "next/image";
 import { createCustomTheme } from "@/styles/theme";
@@ -173,7 +175,7 @@ const AboutUs = () => {
             </Grid>
           </Grid>
         </Container>
-        <Box
+        {/* <Box
           display="flex"
           flexDirection="column"
           justifyContent="center"
@@ -200,7 +202,9 @@ const AboutUs = () => {
               {t("MiddleSection.Heading")}
             </Typography>
           </Box>
-        </Box>
+        </Box> */}
+              <BrandSection />
+
 
         <Container
           sx={{
