@@ -27,7 +27,7 @@
       "Subtitle3": "You'll only be charged on transactions that occur, with no subscription fees or additional charges"
     },
     "Feedback": {
-      "Title":"Leverage Valuable Data",
+      "Title": "Leverage Valuable Data",
       "Title1": "Best Selling Products",
       "Subtitle1": "By learning which products are most preferred, you can highlight popular options on the menu and develop your sales strategies in line with this data.",
       "Title2": "Time Based Sales Analysis",
@@ -36,7 +36,6 @@
       "Subtitle3": "By tracking your sales and profitability, you can better manage your stock costs and learn which products generate more income.",
       "Title4": "Real Time Data",
       "Subtitle4": "You can instantly monitor the performance of your business with real-time data and make quick decisions when necessary."
-   
     },
     "SomeNumbers": {
       "Title": "Some numbers that matters",
@@ -154,6 +153,21 @@
     "BottomBanner": {
       "Heading": "Join Now & Start Enjoying The Most Beneficial Platform",
       "SignupButton": "Sign Up"
+    },
+    "WhyChoose": {
+      "Title": "Why Choose Garsonline?",
+      "Heading1": "Ease of Use: ",
+      "Text1": "Garsonline’s user-friendly interface makes creating menus, managing tables, and handling reservations simple and fast.",
+      "Heading2": "Cost Efficiency:",
+      "Text2": "You only pay for completed transactions, so there are no recurring subscription fees.",
+      "Heading3": "Time Savings:",
+      "Text3": "Digital menus and the reservation system help both staff and customers save time.",
+      "Heading4": "Flexibility and Customization:",
+      "Text4": "Categorize your menu as you wish and choose QR code designs that align with your brand.",
+      "Heading5": "Seamless Reservations:",
+      "Text5": "Easily manage your customers’ reservations and optimize table arrangements based on availability.",
+      "Heading6": "Secure and Fast Payments:",
+      "Text6": "Increase customer satisfaction with our integrated payment system, allowing secure and fast transactions."
     }
   },
   "ContactUs": {
@@ -199,12 +213,12 @@
     "Title3": "USE CASES",
     "Title4": "Earn More with Garsonline",
     "Title5": "Contat us",
-    "itemOne": "Dine-in QW Menu", 
+    "itemOne": "Dine-in QW Menu",
     "itemThree": "Reservations",
     "itemFour": "Dine-in Tablet Menu",
     "itemFive": "Delievery & Pickup Menu",
     "itemSix": "Fast Checkout",
-    "itemSeven": "Order & Pay", 
+    "itemSeven": "Order & Pay",
     "itemNine": "Allergens Nutrition Info & Calories",
     "itemTen": "Multiple Language Display",
     "itemEleven": "Multiple Currency Display",

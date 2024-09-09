@@ -75,6 +75,32 @@ export const getAppFeatureCardDetails = (t) => [
     text: t("Subtitle3"),
   },
 ];
+export const getwhyChooseDetails = (t) => [
+  {
+    heading: t("Heading1"),
+    text: t("Text1"),
+  },
+  {
+    heading: t("Heading2"),
+    text: t("Text2"),
+  },
+  {
+    heading: t("Heading3"),
+    text: t("Text3"),
+  },
+  {
+    heading: t("Heading4"),
+    text: t("Text4"),
+  },
+  {
+    heading: t("Heading5"),
+    text: t("Text5"),
+  },
+  {
+    heading: t("Heading6"),
+    text: t("Text6"),
+  },
+];
 export const getMarqueeCardDetails = (t) => [
   // {
   //   text: t("Text1"),
