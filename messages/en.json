@@ -122,7 +122,7 @@
       "SubHeading": "Turkish Restaurant.com is a technology company that connects people with the best of their neighborhoods across the USA. Which is also the largest Turkish Restaurant portal in the United States. Reach new local customers, and grow your business by offering online ordering with TurkishRestaurant.com"
     },
     "CardsSectionHeading": {
-      "Heading": "Who We Serve?"
+      "Heading": "About Us"
     },
     "CustomerCard": {
       "Heading": "Customers",
@@ -154,6 +154,27 @@
       "Heading": "Join Now & Start Enjoying The Most Beneficial Platform",
       "SignupButton": "Sign Up"
     },
+    "AboutUsParagraphs": {
+      "Paragraph1": "Garsonline is a SaaS-based web application designed for restaurants, offering solutions for menu creation, payment processing, reservations, and table management. Our goal is to help restaurants digitize their menus, streamline the customer experience, and optimize their reservation and table management processes. We provide innovative and user-friendly solutions to restaurants across Turkey, simplifying their operational workflows.",
+      "Paragraph2": "With Garsonline, restaurant owners can easily create and organize their menus into different categories, while offering customers custom-designed QR codes for easy access to the menu. These QR codes allow customers to quickly view the menu and make secure payments. Additionally, restaurants can manage table reservations and view table availability in real time, enhancing operational efficiency. Best of all, restaurants are only charged when transactions occur—no subscription fees or premium plans."
+    },
+    "OurServices": {
+      "Title": "Our Services",
+      "ServicesHeading1": "Digital Menu Creation: ",
+      "ServicesText1": "Restaurants can quickly and easily create digital menus, organized by categories.",
+      "ServicesHeading2": "QR Code Access:",
+      "ServicesText2": "Customers can scan custom-designed QR codes to access the menu effortlessly.",
+      "ServicesHeading3": "Payment Convenience:",
+      "ServicesText3": "Customers can make fast and secure payments directly from the digital menu.",
+      "ServicesHeading4": "Reservation Management:",
+      "ServicesText4": "Restaurants can take reservations through Garsonline and manage their table arrangement and capacity.",
+      "ServicesHeading5": "Table Management:",
+      "ServicesText5": "Restaurant owners can monitor table availability in real time, optimizing their operations.",
+      "ServicesHeading6": "Custom Design Templates:",
+      "ServicesText6": "Customize your QR codes with various design templates that match your brand’s style.",
+      "ServicesHeading7": "Transaction-Based Pricing:",
+      "ServicesText7": "With our transaction-based pricing model, restaurants only pay when a customer makes a payment."
+    },
     "WhyChoose": {
       "Title": "Why Choose Garsonline?",
       "Heading1": "Ease of Use: ",
@@ -168,6 +189,9 @@
       "Text5": "Easily manage your customers’ reservations and optimize table arrangements based on availability.",
       "Heading6": "Secure and Fast Payments:",
       "Text6": "Increase customer satisfaction with our integrated payment system, allowing secure and fast transactions."
+    },
+    "BottomParagraph": {
+      "Paragraph":"Start your restaurant’s digital transformation with Garsonline, enhance table and reservation management, and provide your customers with a modern and seamless dining experience!"
     }
   },
   "ContactUs": {

@@ -122,7 +122,7 @@
       "SubHeading": "TurkishRestaurant.com, insanları ABD genelinde mahallelerinin en iyileriyle buluşturan bir teknoloji şirketidir. Aynı zamanda Amerika Birleşik Devletleri'ndeki en büyük Türk Restoranı portalıdır. Yeni yerel müşterilere ulaşın ve TurkishRestaurant.com ile çevrimiçi"
     },
     "CardsSectionHeading": {
-      "Heading": "Kime Hizmet Veriyoruz?"
+      "Heading": "Hakkımızda"
     },
     "CustomerCard": {
       "Heading": "Müşteriler",
@@ -154,6 +154,27 @@
       "Heading": "Şimdi Katılın ve En Faydalı Platformdan Yararlanmaya Başlayın",
       "SignupButton": "Kaydol"
     },
+    "AboutUsParagraphs": {
+      "Paragraph1": "Garsonline, restoranlar için menü ve ödeme çözümleri sunan, aynı zamanda rezervasyon ve masa yönetimi sağlayan SaaS tabanlı bir web uygulamasıdır. Amacımız, restoranların menülerini dijitalleştirip müşteri deneyimini kolaylaştırırken, masa yönetimi ve rezervasyon süreçlerini de optimize etmektir. Türkiye genelindeki restoranlara yenilikçi ve kullanıcı dostu çözümler sunarak, işletmelerin operasyonel süreçlerini kolaylaştırıyoruz.",
+      "Paragraph2": "Restoran sahipleri, Garsonline ile menülerini kolayca oluşturabilir, farklı kategorilere ayırarak düzenleyebilir ve müşterilere farklı tasarımlarda QR kodlar sunabilirler. Bu QR kodlar sayesinde müşteriler, menüye hızlıca erişebilir ve güvenli bir şekilde ödemelerini gerçekleştirebilirler. Ayrıca restoranlar, masa yönetimi ve rezervasyon özellikleri ile operasyonlarını daha verimli hale getirir. Üstelik restoranlar, yalnızca müşteri işlemi gerçekleştikten sonra ücretlendirilir. Ek bir abonelik veya premium plan zorunluluğu yoktur."
+    },
+    "OurServices": {
+      "Title": "Hizmetlerimiz",
+      "ServicesHeading1": "QR Kod ile Erişim:",
+      "ServicesText1": "Müşteriler, özel tasarımlı QR kodları taratarak menüye zahmetsizce erişebilirler.",
+      "ServicesHeading2": "Ödeme Kolaylığı:",
+      "ServicesText2": "Müşteriler menüden seçtikleri ürünlerin ödemesini hızlı ve güvenli bir şekilde yapabilirler.",
+      "ServicesHeading3": "Rezervasyon Yönetimi:",
+      "ServicesText3": "Restoranlar, Garsonline üzerinden rezervasyon alabilir, masa düzenini ve kapasitesini kolayca yönetebilirler.",
+      "ServicesHeading4": "Masa Yönetimi:",
+      "ServicesText4": "Restoran sahipleri, masalarının doluluk durumunu anlık olarak görüntüleyebilir ve operasyonlarını daha verimli yönetebilirler.",
+      "ServicesHeading5": "Farklı Tasarım Şablonları:",
+      "ServicesText5": "QR kodları farklı tasarım şablonlarıyla özelleştirerek markanıza uygun hale getirebilirsiniz.",
+      "ServicesHeading6": "Sadece İşlem Başına Ücretlendirme:",
+      "ServicesText6": "İşlem başına ücretlendirme modeli sayesinde restoranlar, yalnızca müşteri ödeme yaptığında ücret öder.",
+      "ServicesHeading7": "İşlem Bazlı Fiyatlandırma:",
+      "ServicesText7": "İşlem bazlı fiyatlandırma modelimiz ile restoranlar, yalnızca bir müşteri ödeme yaptığında ödeme yapar."
+    },
     "WhyChoose": {
       "Title": "Neden Garsonline?",
       "Heading1": "Kolay Kullanım: ",
@@ -168,6 +189,9 @@
       "Text5": "Müşterilerinizin rezervasyonlarını zahmetsizce yönetebilir, doluluk durumuna göre düzenleyebilirsiniz.",
       "Heading6": "Güvenli ve Hızlı Ödeme:",
       "Text6": "Müşterilerin güvenle ve hızlı bir şekilde ödeme yapmasını sağlayan entegre ödeme sistemimizle müşteri memnuniyetini artırabilirsiniz."
+    },
+    "BottomParagraph": {
+      "Paragraph":"Garsonline ile restoranınızın dijital dönüşümünü kolayca başlatın, masa ve rezervasyon yönetimini verimli hale getirerek müşterilerinize modern ve sorunsuz bir hizmet sunun!"
     }
   },
   "ContactUs": {
