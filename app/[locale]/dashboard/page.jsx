@@ -1,11 +1,10 @@
-// import { fetchAllSavedNotesByUserId } from "@/services/noteServices";
-// import { fetchUserByEmail } from "@/services/userServices";
-import Dashboard from "@/components/Dashboard/Dashboard";
+import Sidebar from "@/components/Sidebar/Sidebar";
+import { Box } from "@mui/material";
 
 export default async function page() {
   return (
-    <>
-      <Dashboard />
-    </>
+    <Box sx={{ background: "#F0F2F5", height: "100%" }}>
+      <Sidebar />
+    </Box>
   );
 }
