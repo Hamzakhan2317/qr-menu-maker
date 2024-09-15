@@ -9,6 +9,7 @@ import {
 import SearchIcon from "@mui/icons-material/Search";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+
 const InputField = ({
   label,
   name,
@@ -26,22 +27,29 @@ const InputField = ({
   isPhone = false,
   middle = false,
   Placeholder,
+  position = "start",
   multiline,
   searchIcon,
   passwordVisible,
-  backgroundColor = "#FAFAFA",
+  backgroundColor = "transparent",
   setPasswordVisible,
   rows,
   height = "auto",
   paddingLeft = "",
   iconPadding = "",
+  borderRadius = "4px",
+  border = "1px solid #E5E5E5",
+  customHeight = "auto",
+  customBackgroundColor = "transparent",
   ...props
 }) => {
   const togglePasswordIcon = () => {
     setPasswordVisible((prevPasswordVisible) => !prevPasswordVisible);
   };
+
   const fieldError = formik?.errors[name] || errorMessage;
   const fieldTouched = formik?.touched[name] || showError;
+
   const handleChange = (event) => {
     let { value } = event.target;
     if (middle && value.length > 1) {
@@ -67,6 +75,7 @@ const InputField = ({
       return;
     }
   };
+
   const handleKeyPress = (event) => {
     if (isPhone) {
       const pattern = /^\d{0,3}(-\d{0,3}(-\d{0,4})?)?$/;
@@ -76,6 +85,7 @@ const InputField = ({
       }
     }
   };
+
   return (
     <Grid item xs={12} sm={cols} md={cols} lg={cols}>
       {label && (
@@ -89,9 +99,22 @@ const InputField = ({
         error={fieldTouched && fieldError}
         sx={{
           "& .MuiInputBase-root": {
-            backgroundColor: backgroundColor,
-            height: height,
+            backgroundColor: customBackgroundColor,
+            height: customHeight,
             paddingLeft: icon ? iconPadding : paddingLeft,
+            borderRadius: borderRadius,
+            border: border,
+            "& .MuiOutlinedInput-root": {
+              "& fieldset": {
+                border: border, // Default border
+              },
+              "&:hover fieldset": {
+                border: border, // Same border on hover
+              },
+              "&.Mui-focused fieldset": {
+                border: border, // Same border on focus
+              },
+            },
           },
         }}
       >
@@ -106,14 +129,10 @@ const InputField = ({
           InputProps={{
             startAdornment: icon && (
               <InputAdornment
-                position="start"
+                position={position}
                 sx={{
                   cursor: "pointer",
-                  color: "#ccc",
-                  "& svg": {
-                    position: "absolute",
-                    right: "10px",
-                  },
+                  color: "#89879F",
                 }}
                 onClick={togglePasswordIcon}
               >
@@ -152,4 +171,5 @@ const InputField = ({
     </Grid>
   );
 };
+
 export default InputField;

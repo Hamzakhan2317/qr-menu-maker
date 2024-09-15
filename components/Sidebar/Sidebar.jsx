@@ -160,7 +160,13 @@ const Sidebar = () => {
         </AppBar>
 
         <Toolbar />
-        <Box sx={{ padding: "16px", transition: "width 0.3s" }}>
+        <Box
+          sx={{
+            padding: "16px",
+            transition: "width 0.3s",
+            backgroundColor: "#F0F2F5",
+          }}
+        >
           <Dashboard />
         </Box>
       </Box>

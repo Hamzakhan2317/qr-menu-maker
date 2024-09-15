@@ -6,11 +6,139 @@ export const qrcodeWrapper = {
   marginLeft: "20px",
   borderRadius: "8px",
   minHeight: "350px",
+};
+export const qrcodeBoxWrapper = {
+  backgroundColor: "#FAFAFA",
+  padding: "10px",
+  borderRadius: "8px",
+  border: "1px solid #f0f0f0",
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  alignItems: "center",
+  marginTop: "10px",
+};
+export const qrcodeBox = {
+  width: "120px",
+  height: "120px",
+  marginTop: "10px",
+};
+export const qrnote = {
+  backgroundColor: "#FFFBE6",
+  padding: "10px",
+  textAlign: "center",
+  marginTop: "8px",
+  borderRadius: "8px",
+  border: "1px solid #ffe58f",
+};
+export const qrcopyLink = {
+  width: "100%",
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+  flexWrap: "wrap",
+  marginTop: "10px",
+};
+
+// qr.garsonline menu
+
+export const leftMobileViewGarsonline = {
+  width: "100%",
+  maxWidth: "480px",
+  borderRight: "1px solid #ccc",
+  boxSizing: "border-box",
+};
+export const leftViewHeader = {
+  backgroundColor: "#A874F2",
+  display: "flex",
+  justifyContent: "flex-end",
+  alignItems: "center",
+  height: "50px",
+  color: "#ffffff",
+};
+
+export const leftViewGettingReady = {
+  backgroundColor: "#111827",
+  display: "flex",
+  alignItems: "center",
+  height: "55px",
+  color: "#ffffff",
+};
+export const menuWrapper = {
+  height: "80vh",
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
+  flexDirection: "column",
 };
-export const qrcodeBox = {
-  width: "150px",
-  height: "150px",
+export const leftViewHeaderMenu = {
+  backgroundColor: "#A874F2",
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+  height: "45px",
+  color: "#ffffff",
+  boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px",
+};
+export const copyOfSampleMenu = {
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  alignItems: "center",
+};
+export const menuSearch = {
+  marginTop: "20px",
+};
+export const menuFoodTypes = {
+  overflow: "auto",
+  scrollbarWidth: "none",
+  msOverflowStyle: "none",
+  paddingBottom: "10px",
+  "&::-webkit-scrollbar": {
+    display: "none",
+  },
+  "& img": {
+    borderRadius: "8px",
+    marginLeft: "10px",
+    marginRight: "10px",
+  },
+};
+export const menuCardsWrapper = {
+  padding: "10px",
+  backgroundColor: "#F7F7F7",
+};
+export const menuFoodWrapper = {
+  "& .mainImage": {
+    width: "100%",
+    height: "100%",
+    objectFit: "contain",
+    borderRadius: "8px",
+    marginBottom: "10px",
+    marginTop: "20px",
+  },
+};
+export const foodMenuCard = {
+  padding: "10px 10px 10px 20px",
+  backgroundColor: "#fff",
+  borderRadius: "8px",
+  display: "flex",
+  marginTop: "15px",
+  boxShadow:
+    "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.05)",
+  "&:last-child": {
+    marginBottom: "15px",
+  },
+  "& .card-img": {
+    width: "100px",
+    height: "100px",
+    borderRadius: "8px",
+  },
+};
+export const cardLeftside = {
+  display: "flex",
+  justifyContent: "flex-start",
+  alignItems: "stretch",
+  flexGrow: 1,
+  flexDirection: "column",
+  paddingTop: "10px",
 };
