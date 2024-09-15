@@ -168,7 +168,7 @@ const GarsonlineMenu = () => {
             <Box sx={menuCardsWrapper}>
               {foodInfoArray?.map((item, index) => {
                 return (
-                  <Box sx={menuFoodWrapper}>
+                  <Box sx={menuFoodWrapper} key={index}>
                     <Image src={item.src} alt="" className="mainImage" />
                     <Typography
                       textAlign={"center"}

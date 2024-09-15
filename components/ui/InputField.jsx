@@ -9,6 +9,7 @@ import {
 import SearchIcon from "@mui/icons-material/Search";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import { FormLabel } from "@mui/joy";
 
 const InputField = ({
   label,
@@ -37,9 +38,10 @@ const InputField = ({
   height = "auto",
   paddingLeft = "",
   iconPadding = "",
-  borderRadius = "4px",
+  borderRadius = "8px",
   border = "1px solid #E5E5E5",
   customHeight = "auto",
+  fontLabelWeight = 700,
   customBackgroundColor = "transparent",
   ...props
 }) => {
@@ -88,11 +90,6 @@ const InputField = ({
 
   return (
     <Grid item xs={12} sm={cols} md={cols} lg={cols}>
-      {label && (
-        <Typography variant="body2" my={1}>
-          {label} {required && <span style={{ color: "red" }}>*</span>}
-        </Typography>
-      )}
       <FormControl
         fullWidth
         variant="outlined"
@@ -104,20 +101,40 @@ const InputField = ({
             paddingLeft: icon ? iconPadding : paddingLeft,
             borderRadius: borderRadius,
             border: border,
+            "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
+              { border: border },
             "& .MuiOutlinedInput-root": {
+              "&:hover": {
+                border: border,
+              },
+
               "& fieldset": {
-                border: border, // Default border
+                border: border,
+                outline: "none",
               },
               "&:hover fieldset": {
-                border: border, // Same border on hover
+                border: border,
+                outline: "none",
               },
               "&.Mui-focused fieldset": {
-                border: border, // Same border on focus
+                border: border,
+                outline: "none",
               },
             },
           },
         }}
       >
+        {label && (
+          <FormLabel>
+            <Typography
+              variant="body2"
+              fontWeight={fontLabelWeight}
+              marginBottom={"5px"}
+            >
+              {label} {required && <span style={{ color: "red" }}>*</span>}
+            </Typography>
+          </FormLabel>
+        )}
         <TextField
           id={`${name}`}
           autoComplete="off"
