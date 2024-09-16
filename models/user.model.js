@@ -25,7 +25,6 @@ const userSchema = new mongoose.Schema(
     },
     otpExpiry: {
       type: Date,
-      // default: () => Date.now() + 10 * 60 * 1000, // 10 minutes from now
     },
     password: {
       type: String,
@@ -36,24 +35,7 @@ const userSchema = new mongoose.Schema(
       required: true,
       default: false,
     },
-    notes: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Note",
-      },
-    ],
-    bio: {
-      type: String,
-      required: false,
-    },
-    socialLinks: {
-      facebook: { type: String, trim: true },
-      twitter: { type: String, trim: true },
-      instagram: { type: String, trim: true },
-      linkedin: { type: String, trim: true },
-      github: { type: String, trim: true },
-      website: { type: String, trim: true },
-    },
+   
   },
   { timestamps: true }
 );
