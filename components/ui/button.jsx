@@ -40,6 +40,13 @@ const ButtonComp = ({
         backgroundColor: "#cb6fe5",
       },
     },
+    lightPurple: {
+      backgroundColor: "#A874F2",
+      color: "#fff",
+      "&:hover": {
+        backgroundColor: "#cb6fe5",
+      },
+    },
     blue: {
       backgroundColor: "#8338EC",
       color: "#fff",
@@ -53,6 +60,14 @@ const ButtonComp = ({
       "&:hover": {
         backgroundColor: "#F6F5F3",
         color: "#545454",
+      },
+    },
+    transparent: {
+      backgroundColor: "transparent",
+      color: "#8338EC",
+      "&:hover": {
+        backgroundColor: "transparent",
+        color: "#8338EC",
       },
     },
   };
@@ -92,7 +107,14 @@ const ButtonComp = ({
 
 ButtonComp.propTypes = {
   text: PropTypes.string.isRequired,
-  variant: PropTypes.oneOf(["red", "purple", "blue", "light"]),
+  variant: PropTypes.oneOf([
+    "red",
+    "purple",
+    "lightPurple",
+    "blue",
+    "light",
+    "transparent",
+  ]),
 };
 
 ButtonComp.defaultProps = {

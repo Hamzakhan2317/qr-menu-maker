@@ -25,19 +25,25 @@ import {
 import garsLogo from "../../public/assets/images/logo.png";
 import Logo from "../../public/assets/images/8.webp";
 import Image from "next/image";
-import Dashboard from "../Dashboard/Dashboard";
 import MenuDropdown from "../ui/MenuDropdown";
+import { useRouter } from "@/navigation";
+import { sidebarmenu } from "@/public/assets/static";
 
-const Sidebar = () => {
+const Sidebar = ({ children }) => {
   const [isOpen, setIsOpen] = useState(true);
   const [settingsOpen, setSettingsOpen] = useState(false);
+  const { push } = useRouter();
 
   const toggleDrawer = () => {
     setIsOpen(!isOpen);
   };
 
-  const toggleSettings = () => {
-    setSettingsOpen(!settingsOpen);
+  const handleToggle = (item) => {
+    if (item.isCollapsible) {
+      setSettingsOpen(!settingsOpen);
+    } else {
+      push(item.route);
+    }
   };
 
   return (
@@ -83,37 +89,26 @@ const Sidebar = () => {
         <Divider />
 
         <List>
-          <ListItem button onClick={() => "/dashboard"}>
-            <ListItemIcon>
-              <DashboardIcon />
-            </ListItemIcon>
-            {isOpen && <ListItemText primary="Dashboard" />}
-          </ListItem>
-
-          <ListItem button>
-            <ListItemIcon>
-              <MenuIcon />
-            </ListItemIcon>
-            {isOpen && <ListItemText primary="Menu Management" />}
-          </ListItem>
-
-          <ListItem button onClick={toggleSettings}>
-            <ListItemIcon>
-              <SettingsIcon />
-            </ListItemIcon>
-            {isOpen && <ListItemText primary="Settings" />}
-            {isOpen && (settingsOpen ? <ExpandLess /> : <ExpandMore />)}
-          </ListItem>
-          <Collapse in={settingsOpen && isOpen} timeout="auto" unmountOnExit>
-            <List component="div" disablePadding>
-              <ListItem button sx={{ pl: 4 }}>
-                <ListItemText primary="Sublink 1" />
+          {sidebarmenu.map((item, index) => (
+            <div key={index}>
+              <ListItem button onClick={() => handleToggle(item)}>
+                <ListItemIcon>{item.icon}</ListItemIcon>
+                {isOpen && <ListItemText primary={item.title} />}
+                {isOpen && item.isCollapsible && (settingsOpen ? <ExpandLess /> : <ExpandMore />)}
               </ListItem>
-              <ListItem button sx={{ pl: 4 }}>
-                <ListItemText primary="Sublink 2" />
-              </ListItem>
-            </List>
-          </Collapse>
+              {item.isCollapsible && (
+                <Collapse in={settingsOpen && isOpen} timeout="auto" unmountOnExit>
+                  <List component="div" disablePadding>
+                    {item.subItems.map((subItem, subIndex) => (
+                      <ListItem button sx={{ pl: 4 }} onClick={() => push(subItem.route)} key={subIndex}>
+                        <ListItemText primary={subItem.title} />
+                      </ListItem>
+                    ))}
+                  </List>
+                </Collapse>
+              )}
+            </div>
+          ))}
         </List>
       </Drawer>
 
@@ -136,6 +131,8 @@ const Sidebar = () => {
             width: `calc(100% - ${isOpen ? 240 : 80}px)`,
             left: isOpen ? 240 : 80,
             transition: "width 0.3s, left 0.3s",
+            boxShadow: "none",
+            borderBottom: "1px solid #E0E0E0",
           }}
         >
           <Toolbar
@@ -160,8 +157,12 @@ const Sidebar = () => {
         </AppBar>
 
         <Toolbar />
-        <Box sx={{ padding: "16px", transition: "width 0.3s" }}>
-          <Dashboard />
+        <Box
+          sx={{
+            transition: "width 0.3s",
+          }}
+        >
+          {children}
         </Box>
       </Box>
     </Box>

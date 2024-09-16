@@ -9,6 +9,8 @@ import {
 import SearchIcon from "@mui/icons-material/Search";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import { FormLabel } from "@mui/joy";
+
 const InputField = ({
   label,
   name,
@@ -26,22 +28,31 @@ const InputField = ({
   isPhone = false,
   middle = false,
   Placeholder,
+  position = "start",
   multiline,
   searchIcon,
   passwordVisible,
-  backgroundColor = "#FAFAFA",
+  backgroundColor = "transparent",
   setPasswordVisible,
   rows,
   height = "auto",
   paddingLeft = "",
+  padding = "",
   iconPadding = "",
+  borderRadius = "8px",
+  border = "1px solid #E5E5E5",
+  customHeight = "auto",
+  fontLabelWeight = 700,
+  customBackgroundColor = "transparent",
   ...props
 }) => {
   const togglePasswordIcon = () => {
     setPasswordVisible((prevPasswordVisible) => !prevPasswordVisible);
   };
+
   const fieldError = formik?.errors[name] || errorMessage;
   const fieldTouched = formik?.touched[name] || showError;
+
   const handleChange = (event) => {
     let { value } = event.target;
     if (middle && value.length > 1) {
@@ -67,6 +78,7 @@ const InputField = ({
       return;
     }
   };
+
   const handleKeyPress = (event) => {
     if (isPhone) {
       const pattern = /^\d{0,3}(-\d{0,3}(-\d{0,4})?)?$/;
@@ -76,25 +88,56 @@ const InputField = ({
       }
     }
   };
+
   return (
     <Grid item xs={12} sm={cols} md={cols} lg={cols}>
-      {label && (
-        <Typography variant="body2" my={1}>
-          {label} {required && <span style={{ color: "red" }}>*</span>}
-        </Typography>
-      )}
       <FormControl
         fullWidth
         variant="outlined"
         error={fieldTouched && fieldError}
         sx={{
           "& .MuiInputBase-root": {
-            backgroundColor: backgroundColor,
-            height: height,
+            backgroundColor: customBackgroundColor,
+            height: customHeight,
             paddingLeft: icon ? iconPadding : paddingLeft,
+            borderRadius: borderRadius,
+            border: border,
+            "& input": {
+              padding: padding,
+            },
+            "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
+              { border: border },
+            "& .MuiOutlinedInput-root:hover": {
+              border: "1px solid #E5E5E5 !important",
+            },
+            "& .MuiOutlinedInput-root": {
+              "& fieldset": {
+                border: border,
+                outline: "none",
+              },
+              "&:hover fieldset": {
+                border: border,
+                outline: "none",
+              },
+              "&.Mui-focused fieldset": {
+                border: border,
+                outline: "none",
+              },
+            },
           },
         }}
       >
+        {label && (
+          <FormLabel>
+            <Typography
+              variant="body2"
+              fontWeight={fontLabelWeight}
+              marginBottom={"5px"}
+            >
+              {label} {required && <span style={{ color: "red" }}>*</span>}
+            </Typography>
+          </FormLabel>
+        )}
         <TextField
           id={`${name}`}
           autoComplete="off"
@@ -106,14 +149,10 @@ const InputField = ({
           InputProps={{
             startAdornment: icon && (
               <InputAdornment
-                position="start"
+                position={position}
                 sx={{
                   cursor: "pointer",
-                  color: "#ccc",
-                  "& svg": {
-                    position: "absolute",
-                    right: "10px",
-                  },
+                  color: "#89879F",
                 }}
                 onClick={togglePasswordIcon}
               >
@@ -152,4 +191,5 @@ const InputField = ({
     </Grid>
   );
 };
+
 export default InputField;

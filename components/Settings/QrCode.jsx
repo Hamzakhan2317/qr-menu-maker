@@ -1,9 +1,7 @@
 "use client";
-
-import { useRouter } from "@/navigation";
-import { signOut, useSession } from "next-auth/react";
+import { Box, Grid, Typography } from "@mui/material";
+import React, { useState } from "react";
 import QRCode from "react-qr-code";
-import { Box, Grid, IconButton, Typography } from "@mui/material";
 import {
   qrcodeBox,
   qrcodeBoxWrapper,
@@ -11,38 +9,58 @@ import {
   qrcopyLink,
   qrnote,
 } from "@/styles/DashboarStyling";
-import { formatDateTime } from "@/utils/formatDateTime";
 import ButtonComp from "../ui/button";
 import DownloadSvg from "@/public/assets/svg/DownloadSvg";
-import { useEffect, useState } from "react";
+import ColorPicker from "../ui/ColorPicker/ColorPicker";
 
-const Dashboard = () => {
-  const { data: session } = useSession();
-  const router = useRouter();
+const QrCode = () => {
   const [isCopied, setIsCopied] = useState(false);
-  const [currentDateTime, setCurrentDateTime] = useState();
-  const qrCodeLink = "http://localhost:3000/en/garsonline-menu";
-  const logout = async () => {
-    await signOut({ redirect: false });
-    router.push("/login");
-  };
-  useEffect(() => {
-    const now = formatDateTime();
-    setCurrentDateTime(now);
-  }, []);
+  const [qrColor, setQrColor] = useState("#A874F2");
+  const [bgQrColor, setBgQrColor] = useState("#FFFFFF");
+  const qrCodeLink = "https://www.google.com/";
   const handleCopy = () => {
     navigator.clipboard.writeText(qrCodeLink).then(() => {
       setIsCopied(true);
       setTimeout(() => setIsCopied(false), 2000);
     });
   };
-
   return (
     <Box>
-      <p>{currentDateTime}</p>
-      <h3 color="#000000d9">Food , Welcome!</h3>
       <Grid container spacing={2} mt={2}>
-        <Grid item xs={12} sm={12} md={4} sx={qrcodeWrapper}>
+        <Grid item xs={12} sm={12} md={6} sx={qrcodeWrapper}>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              marginBottom: "40px",
+              borderBottom: "1px solid #0000000f",
+              paddingBottom: "40px",
+            }}
+          >
+            <Box>
+              <Typography
+                fontSize={"14px"}
+                color={"#000000d9"}
+                marginBottom={"10px"}
+              >
+                QR Color
+              </Typography>
+              <ColorPicker selectedColor={qrColor} onColorChange={setQrColor} />
+            </Box>
+            <Box sx={{ marginLeft: "15px" }}>
+              <Typography
+                fontSize={"14px"}
+                color={"#000000d9"}
+                marginBottom={"10px"}
+              >
+                Background Color
+              </Typography>
+              <ColorPicker
+                selectedColor={bgQrColor}
+                onColorChange={setBgQrColor}
+              />
+            </Box>
+          </Box>
           <Box>
             <Typography fontSize="16px" fontWeight={600} color="#000000d9">
               QR Code for Menu Display
@@ -51,13 +69,14 @@ const Dashboard = () => {
               <Box sx={qrcodeBox}>
                 <QRCode
                   size={150}
-                  fgColor="#A874F2"
+                  bgColor={bgQrColor}
+                  fgColor={qrColor}
                   style={{
                     height: "auto",
                     maxWidth: "100%",
                     width: "100%",
                   }}
-                  value={qrCodeLink}
+                  value={"https://www.google.com/"}
                   viewBox={`0 0 256 256`}
                 />
               </Box>
@@ -103,4 +122,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default QrCode;
