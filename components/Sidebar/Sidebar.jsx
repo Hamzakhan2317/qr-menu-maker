@@ -27,10 +27,12 @@ import Logo from "../../public/assets/images/8.webp";
 import Image from "next/image";
 import RestaurantMenuIcon from "@mui/icons-material/RestaurantMenu";
 import MenuDropdown from "../ui/MenuDropdown";
+import { useRouter } from "@/navigation";
 
 const Sidebar = ({ children }) => {
   const [isOpen, setIsOpen] = useState(true);
   const [settingsOpen, setSettingsOpen] = useState(false);
+  const { push } = useRouter();
 
   const toggleDrawer = () => {
     setIsOpen(!isOpen);
@@ -90,11 +92,16 @@ const Sidebar = ({ children }) => {
             {isOpen && <ListItemText primary="Dashboard" />}
           </ListItem>
 
-          <ListItem button>
+          <ListItem button onClick={() => push('/venues/menu-management')}>
             <ListItemIcon>
               <RestaurantMenuIcon />
             </ListItemIcon>
-            {isOpen && <ListItemText primary="Menu Management" />}
+            {
+              isOpen &&
+              <ListItemText
+                primary="Menu Management"
+              />
+            }
           </ListItem>
 
           <ListItem button onClick={toggleSettings}>
@@ -106,11 +113,11 @@ const Sidebar = ({ children }) => {
           </ListItem>
           <Collapse in={settingsOpen && isOpen} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
-              <ListItem button sx={{ pl: 4 }}>
-                <ListItemText primary="Sublink 1" />
+              <ListItem button sx={{ pl: 4 }} onClick={() => push('/venues/settings/qrcode')}>
+                <ListItemText primary="QR Code" />
               </ListItem>
-              <ListItem button sx={{ pl: 4 }}>
-                <ListItemText primary="Sublink 2" />
+              <ListItem button sx={{ pl: 4 }} onClick={() => push('/venues/settings/venue-information')}>
+                <ListItemText primary="Venue Information" />
               </ListItem>
             </List>
           </Collapse>
