@@ -21,7 +21,7 @@ const Dashboard = () => {
   const router = useRouter();
   const [isCopied, setIsCopied] = useState(false);
   const [currentDateTime, setCurrentDateTime] = useState();
-  const qrCodeLink = "https://www.google.com/";
+  const qrCodeLink = "http://localhost:3000/en/garsonline-menu";
   const logout = async () => {
     await signOut({ redirect: false });
     router.push("/login");
@@ -57,7 +57,7 @@ const Dashboard = () => {
                     maxWidth: "100%",
                     width: "100%",
                   }}
-                  value={"https://www.google.com/"}
+                  value={qrCodeLink}
                   viewBox={`0 0 256 256`}
                 />
               </Box>

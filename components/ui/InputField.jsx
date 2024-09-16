@@ -37,6 +37,7 @@ const InputField = ({
   rows,
   height = "auto",
   paddingLeft = "",
+  padding = "",
   iconPadding = "",
   borderRadius = "8px",
   border = "1px solid #E5E5E5",
@@ -101,13 +102,15 @@ const InputField = ({
             paddingLeft: icon ? iconPadding : paddingLeft,
             borderRadius: borderRadius,
             border: border,
+            "& input": {
+              padding: padding,
+            },
             "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
               { border: border },
+            "& .MuiOutlinedInput-root:hover": {
+              border: "1px solid #E5E5E5 !important",
+            },
             "& .MuiOutlinedInput-root": {
-              "&:hover": {
-                border: border,
-              },
-
               "& fieldset": {
                 border: border,
                 outline: "none",

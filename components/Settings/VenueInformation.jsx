@@ -6,6 +6,11 @@ import Input from "@mui/joy/Input";
 import FormControl from "@mui/joy/FormControl";
 import FormLabel from "@mui/joy/FormLabel";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
+import CountrySelect from "../ui/CountrySelector/CountrySelector";
+import PhoneInput from "../ui/PhoneInput";
+import ButtonComp from "../ui/button";
+import Dropzone from "react-dropzone";
+import CustomDropzone from "../ui/Dropzone/CustomDropzone";
 
 const VenueInformation = () => {
   return (
@@ -23,7 +28,7 @@ const VenueInformation = () => {
           }}
         >
           <Grid container>
-            <InputField cols={9} customHeight="32px" label={"Venue Name"} />
+            <InputField cols={9} customHeight="36px" label={"Venue Name"} />
           </Grid>
 
           <FormControl
@@ -50,15 +55,42 @@ const VenueInformation = () => {
               }}
             />
           </FormControl>
-          <FormLabel sx={{ marginTop: "10px", marginBottom: "5px" }}>
+          <Box sx={{ marginTop: "10px" }}>
+            <FormLabel sx={{ marginBottom: "10px" }}>Logo</FormLabel>
+            <CustomDropzone />
+          </Box>
+          <FormLabel sx={{ marginTop: "25px", marginBottom: "25px" }}>
             Address{" "}
-            <span style={{ color: "#8338ec", textDecoration: "underline" }}>
+            <span
+              style={{
+                color: "#8338ec",
+                display: "inline-block",
+                textDecoration: "underline",
+                marginLeft: "20px",
+                cursor: "pointer",
+              }}
+            >
               Select from map
             </span>
           </FormLabel>
           <Grid container>
-            <InputField type={"textarea"} rows={4} cols={9} />
+            <InputField type={"textarea"} rows={3} cols={9} multiline />
           </Grid>
+          <Grid container spacing={2} marginTop={"10px"}>
+            <InputField label={"City"} customHeight="37px" padding="6px 15px" />
+            <CountrySelect />
+            <InputField label={"State"} customHeight="37px" />
+            <InputField label={"Zip Code"} customHeight="37px" />
+            {/* <PhoneInput cols={12} /> */}
+          </Grid>
+          <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+            <ButtonComp
+              text={"Save"}
+              variant="blue"
+              padding="4px 15px"
+              marginTop="10px"
+            />
+          </Box>
         </Grid>
       </Grid>
     </Box>

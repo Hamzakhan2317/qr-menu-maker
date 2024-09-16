@@ -25,10 +25,10 @@ import {
 import garsLogo from "../../public/assets/images/logo.png";
 import Logo from "../../public/assets/images/8.webp";
 import Image from "next/image";
-import Dashboard from "../Dashboard/Dashboard";
+import RestaurantMenuIcon from "@mui/icons-material/RestaurantMenu";
 import MenuDropdown from "../ui/MenuDropdown";
 
-const Sidebar = () => {
+const Sidebar = ({ children }) => {
   const [isOpen, setIsOpen] = useState(true);
   const [settingsOpen, setSettingsOpen] = useState(false);
 
@@ -92,7 +92,7 @@ const Sidebar = () => {
 
           <ListItem button>
             <ListItemIcon>
-              <MenuIcon />
+              <RestaurantMenuIcon />
             </ListItemIcon>
             {isOpen && <ListItemText primary="Menu Management" />}
           </ListItem>
@@ -136,6 +136,8 @@ const Sidebar = () => {
             width: `calc(100% - ${isOpen ? 240 : 80}px)`,
             left: isOpen ? 240 : 80,
             transition: "width 0.3s, left 0.3s",
+            boxShadow: "none",
+            borderBottom: "1px solid #E0E0E0",
           }}
         >
           <Toolbar
@@ -162,12 +164,10 @@ const Sidebar = () => {
         <Toolbar />
         <Box
           sx={{
-            padding: "16px",
             transition: "width 0.3s",
-            backgroundColor: "#F0F2F5",
           }}
         >
-          <Dashboard />
+          {children}
         </Box>
       </Box>
     </Box>

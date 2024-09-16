@@ -142,3 +142,21 @@ export const cardLeftside = {
   flexDirection: "column",
   paddingTop: "10px",
 };
+
+// Dropzone styling
+export const doprzoneStyle = {
+  width: "200px",
+  height: "100%",
+  border: "1px dashed rgb(217, 217, 217)",
+  background: "rgb(250, 250, 250)",
+  borderRadius: "8px",
+  padding: "10px 0px",
+  textAlign: "center",
+  cursor: "pointer",
+  transition: "border-color 0.3s",
+};
+export const dropzoneText = {
+  display: "block",
+  color: "#8989AE !important",
+  fontWeight: 300,
+};
