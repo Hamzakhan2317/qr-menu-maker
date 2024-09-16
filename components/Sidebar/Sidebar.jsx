@@ -25,9 +25,9 @@ import {
 import garsLogo from "../../public/assets/images/logo.png";
 import Logo from "../../public/assets/images/8.webp";
 import Image from "next/image";
-import RestaurantMenuIcon from "@mui/icons-material/RestaurantMenu";
 import MenuDropdown from "../ui/MenuDropdown";
 import { useRouter } from "@/navigation";
+import { sidebarmenu } from "@/public/assets/static";
 
 const Sidebar = ({ children }) => {
   const [isOpen, setIsOpen] = useState(true);
@@ -38,8 +38,12 @@ const Sidebar = ({ children }) => {
     setIsOpen(!isOpen);
   };
 
-  const toggleSettings = () => {
-    setSettingsOpen(!settingsOpen);
+  const handleToggle = (item) => {
+    if (item.isCollapsible) {
+      setSettingsOpen(!settingsOpen);
+    } else {
+      push(item.route);
+    }
   };
 
   return (
@@ -85,42 +89,26 @@ const Sidebar = ({ children }) => {
         <Divider />
 
         <List>
-          <ListItem button onClick={() => "/dashboard"}>
-            <ListItemIcon>
-              <DashboardIcon />
-            </ListItemIcon>
-            {isOpen && <ListItemText primary="Dashboard" />}
-          </ListItem>
-
-          <ListItem button onClick={() => push('/venues/menu-management')}>
-            <ListItemIcon>
-              <RestaurantMenuIcon />
-            </ListItemIcon>
-            {
-              isOpen &&
-              <ListItemText
-                primary="Menu Management"
-              />
-            }
-          </ListItem>
-
-          <ListItem button onClick={toggleSettings}>
-            <ListItemIcon>
-              <SettingsIcon />
-            </ListItemIcon>
-            {isOpen && <ListItemText primary="Settings" />}
-            {isOpen && (settingsOpen ? <ExpandLess /> : <ExpandMore />)}
-          </ListItem>
-          <Collapse in={settingsOpen && isOpen} timeout="auto" unmountOnExit>
-            <List component="div" disablePadding>
-              <ListItem button sx={{ pl: 4 }} onClick={() => push('/venues/settings/qrcode')}>
-                <ListItemText primary="QR Code" />
+          {sidebarmenu.map((item, index) => (
+            <div key={index}>
+              <ListItem button onClick={() => handleToggle(item)}>
+                <ListItemIcon>{item.icon}</ListItemIcon>
+                {isOpen && <ListItemText primary={item.title} />}
+                {isOpen && item.isCollapsible && (settingsOpen ? <ExpandLess /> : <ExpandMore />)}
               </ListItem>
-              <ListItem button sx={{ pl: 4 }} onClick={() => push('/venues/settings/venue-information')}>
-                <ListItemText primary="Venue Information" />
-              </ListItem>
-            </List>
-          </Collapse>
+              {item.isCollapsible && (
+                <Collapse in={settingsOpen && isOpen} timeout="auto" unmountOnExit>
+                  <List component="div" disablePadding>
+                    {item.subItems.map((subItem, subIndex) => (
+                      <ListItem button sx={{ pl: 4 }} onClick={() => push(subItem.route)} key={subIndex}>
+                        <ListItemText primary={subItem.title} />
+                      </ListItem>
+                    ))}
+                  </List>
+                </Collapse>
+              )}
+            </div>
+          ))}
         </List>
       </Drawer>
 
