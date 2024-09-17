@@ -18,10 +18,10 @@ import ForkNknife, {
 } from "@/public/assets/svg/ForkNknife";
 import { Tablet } from "@mui/icons-material";
 import CustomizedSwitch from "../ui/CustomizeSwitch";
-import MenuAccordion from "./Menueditor";
+import MenuEditor from "./Menueditor";
 
 const MenuManagement = () => {
-  const [menuCreated, setMenuCreated] = useState(false);
+  const [menuCreated, setMenuCreated] = useState(true);
   const status = "Always";
   const cardLastRow = [
     {
@@ -153,9 +153,11 @@ const MenuManagement = () => {
               setMenuCreated(true);
             }}
           />
-          <MenuAccordion name={"Salads"} />
         </Box>
       )}
+      <Box sx={{ padding: "10px 24px" }}>
+        <MenuEditor />
+      </Box>
     </Box>
   );
 };

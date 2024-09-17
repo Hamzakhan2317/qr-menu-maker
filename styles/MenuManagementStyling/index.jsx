@@ -6,6 +6,14 @@ export const MenuManagementHeader = {
   alignItems: "center",
   Padding: "0px 10px",
 };
+export const OperatingHoursHeader = {
+  backgroundColor: "#ffffff",
+  padding: "0px 24px",
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+  Padding: "0px 10px",
+};
 
 export const emptyPageWrapper = {
   display: "flex",

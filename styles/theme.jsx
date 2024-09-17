@@ -216,6 +216,10 @@ export function createCustomTheme(options = {}) {
               width: "100% !important",
               fontSize: "16px",
               fontWeight: "400",
+              "&:hover .MuiOutlinedInput-notchedOutline": {
+                outline: "none",
+                borderColor: "#E1E1E1 !important",
+              },
               "& fieldset": {
                 borderColor: "transparent",
                 border: "0",
