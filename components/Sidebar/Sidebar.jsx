@@ -1,6 +1,6 @@
 "use client";
 
-import React, { Children, useState } from "react";
+import React, { Children, useEffect, useState } from "react";
 import {
   AppBar,
   Toolbar,
@@ -45,6 +45,22 @@ const Sidebar = ({ children }) => {
       push(item.route);
     }
   };
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 992) {
+        setIsOpen(false);
+      } else {
+        setIsOpen(isOpen);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    handleResize(); // Call on mount to set initial state
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [isOpen]);
 
   return (
     <Box
@@ -66,6 +82,9 @@ const Sidebar = ({ children }) => {
             height: "100vh",
             top: 0,
             left: 0,
+          },
+          "& .MuiListItemIcon-root svg": {
+            flex: 1,
           },
         }}
       >
@@ -92,17 +111,41 @@ const Sidebar = ({ children }) => {
           {sidebarmenu.map((item, index) => (
             <div key={index}>
               <ListItem
-                sx={sidebarHoverStyling} button onClick={() => handleToggle(item)}>
-                <ListItemIcon sx={{ minWidth: '30px' }}>{item.icon}</ListItemIcon>
-                {isOpen && <ListItemText primary={item.title} primaryTypographyProps={{ fontSize: 14 }} />}
-                {isOpen && item.isCollapsible && (settingsOpen ? <ExpandLess /> : <ExpandMore />)}
+                sx={sidebarHoverStyling}
+                button
+                onClick={() => handleToggle(item)}
+              >
+                <ListItemIcon sx={{ minWidth: "30px" }}>
+                  {item.icon}
+                </ListItemIcon>
+                {isOpen && (
+                  <ListItemText
+                    primary={item.title}
+                    primaryTypographyProps={{ fontSize: 14 }}
+                  />
+                )}
+                {isOpen &&
+                  item.isCollapsible &&
+                  (settingsOpen ? <ExpandLess /> : <ExpandMore />)}
               </ListItem>
               {item.isCollapsible && (
-                <Collapse in={settingsOpen && isOpen} timeout="auto" unmountOnExit>
+                <Collapse
+                  in={settingsOpen && isOpen}
+                  timeout="auto"
+                  unmountOnExit
+                >
                   <List component="div" disablePadding>
                     {item.subItems.map((subItem, subIndex) => (
-                      <ListItem sx={sidebarHoverStyling} button  onClick={() => push(subItem.route)} key={subIndex}>
-                        <ListItemText primaryTypographyProps={{ fontSize: 14 }} primary={subItem.title} />
+                      <ListItem
+                        sx={sidebarHoverStyling}
+                        button
+                        onClick={() => push(subItem.route)}
+                        key={subIndex}
+                      >
+                        <ListItemText
+                          primaryTypographyProps={{ fontSize: 14 }}
+                          primary={subItem.title}
+                        />
                       </ListItem>
                     ))}
                   </List>

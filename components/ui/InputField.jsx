@@ -40,9 +40,10 @@ const InputField = ({
   padding = "",
   iconPadding = "",
   borderRadius = "8px",
-  border = "1px solid #E5E5E5",
+  border = "",
   customHeight = "auto",
-  fontLabelWeight = 700,
+  fontLabelWeight = 600,
+  labelFontSize = "14px",
   customBackgroundColor = "transparent",
   ...props
 }) => {
@@ -106,9 +107,10 @@ const InputField = ({
               padding: padding,
             },
             "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
-              { border: border },
-            "& .MuiOutlinedInput-root:hover": {
-              border: "1px solid #E5E5E5 !important",
+              { border: border, outline: "none" },
+            "&.MuiOutlinedInput-root:hover  .MuiOutlinedInput-notchedOutline": {
+              outline: "none",
+              borderColor: "#E1E1E1 !important",
             },
             "& .MuiOutlinedInput-root": {
               "& fieldset": {
@@ -132,6 +134,7 @@ const InputField = ({
             <Typography
               variant="body2"
               fontWeight={fontLabelWeight}
+              fontSize={labelFontSize}
               marginBottom={"5px"}
             >
               {label} {required && <span style={{ color: "red" }}>*</span>}
