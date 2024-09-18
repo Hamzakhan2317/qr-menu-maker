@@ -29,6 +29,28 @@ import sliderimage3 from "../assets/images/sliderimage3.webp";
 import sliderimage4 from "../assets/images/sliderimage4.webp";
 import sliderimage5 from "../assets/images/sliderimage5.webp";
 import rating from "../assets/images/star.webp";
+import mainCourse from "/public/assets/images/main-course.webp";
+import Deserts from "/public/assets/images/deserts.webp";
+import Salads from "/public/assets/images/salads.webp";
+import starters from "/public/assets/images/starters.webp";
+import mainCourseFullWidth from "/public/assets/images/main-course-fullimg.webp";
+import chickenWraps from "/public/assets/images/chickenwraps.webp";
+import desertsFullwidth from "/public/assets/images/deserts-fullwidth.webp";
+import desertCardimg from "/public/assets/images/desert-cardimg.webp";
+import saladsfullwidth from "/public/assets/images/saladsfullwidth.webp";
+import specialSalad from "/public/assets/images/special-salad.webp";
+import gazpacho from "/public/assets/images/gazpacho.webp";
+import startersfullwidth from "/public/assets/images/startersfullwidth.webp";
+import EggSvg, { sugarSvg, PineSvg } from "./svg/Egg";
+import RestaurantMenuIcon from "@mui/icons-material/RestaurantMenu";
+import {
+  Dashboard as DashboardIcon,
+  Menu as MenuIcon,
+  Settings as SettingsIcon,
+  ExpandLess,
+  ExpandMore,
+  ExitToApp as LogoutIcon,
+} from "@mui/icons-material";
 export const logoComponents = [
   Signuplogo1,
   Signuplogo2,
@@ -104,7 +126,30 @@ export const getOurServicesDetails = (t) => [
     heading: t("ServicesHeading7"),
     text: t("ServicesText7"),
   },
-
+];
+export const sidebarmenu = [
+  {
+    title: "Dashboard",
+    icon: <DashboardIcon />,
+    route: "/venues/dashboard",
+    isCollapsible: false,
+  },
+  {
+    title: "Menu Management",
+    icon: <RestaurantMenuIcon />,
+    route: "/venues/menu-management",
+    isCollapsible: false,
+  },
+  {
+    title: "Settings",
+    icon: <SettingsIcon />,
+    isCollapsible: true,
+    subItems: [
+      { title: "QR Code", route: "/venues/settings/qrcode" },
+      { title: "Venue Information", route: "/venues/settings/venue-information" },
+      { title: "Operating Hours", route: "/venues/settings/operating-hours" },
+    ],
+  },
 ];
 export const getwhyChooseDetails = (t) => [
   {
@@ -660,7 +705,7 @@ export const getFeedbackCardDetails = (t) => [
   {
     heading: t("Title4"),
     text: t("Subtitle4"),
-  }, 
+  },
 ];
 
 // slider section Static data
@@ -717,3 +762,213 @@ export const contactUsCardsData = (t) => [
     info2: "+1 900 143 644 987",
   },
 ];
+export const foodInfoArray = [
+  {
+    src: mainCourseFullWidth,
+    textHeading: "Main Courses",
+    infoText: "From the best chefs in the world",
+    accordionData: [
+      {
+        accordionHeading: "Wraps",
+        accordionTxtInfo: "Fresh ingredients wrapped in warm tortillas",
+        accordionCardHead: "Veggie Wrap",
+        accordionCardtxt:
+          "Lettuce, carrots, tomatoes, arugula, avocado puree and ranch dressing on tortilla ",
+        accordionPic: chickenWraps,
+        accordionFoodPrice: "$14.00 - $19.00",
+        icon1: <EggSvg />,
+        icon2: <PineSvg />,
+        icon3: <sugarSvg />,
+      },
+      {
+        accordionHeading: "Chicken",
+        accordionTxtInfo: "Fresh ingredients wrapped in warm tortillas",
+        accordionCardHead: "Veggie Wrap",
+        accordionCardtxt:
+          "Lettuce, carrots, tomatoes, arugula, avocado puree and ranch dressing on tortilla ",
+        accordionPic: chickenWraps,
+        accordionFoodPrice: "$14.00 - $19.00",
+        icon1: <EggSvg />,
+        icon2: <PineSvg />,
+        icon3: <sugarSvg />,
+      },
+      {
+        accordionHeading: "Burgers",
+        accordionTxtInfo: "Fresh ingredients wrapped in warm tortillas",
+        accordionCardHead: "Veggie Wrap",
+        accordionCardtxt:
+          "Lettuce, carrots, tomatoes, arugula, avocado puree and ranch dressing on tortilla ",
+        accordionPic: chickenWraps,
+        accordionFoodPrice: "$14.00 - $19.00",
+        icon1: <EggSvg />,
+        icon2: <PineSvg />,
+        icon3: <sugarSvg />,
+      },
+      {
+        accordionHeading: "Red Meats",
+        accordionTxtInfo: "Fresh ingredients wrapped in warm tortillas",
+        accordionCardHead: "Veggie Wrap",
+        accordionCardtxt:
+          "Lettuce, carrots, tomatoes, arugula, avocado puree and ranch dressing on tortilla ",
+        accordionPic: chickenWraps,
+        accordionFoodPrice: "$14.00 - $19.00",
+        icon1: <EggSvg />,
+        icon2: <PineSvg />,
+        icon3: <sugarSvg />,
+      },
+    ],
+  },
+  {
+    src: desertsFullwidth,
+    textHeading: "Deserts",
+    infoText: "Daily made desserts with fresh ingredients",
+    cardData: [
+      {
+        cardHeading: "Lemon Cheesecake",
+        cardtxt: "Vanilla cream, cookie crumble and homemade lemon drizlle",
+        cardPic: desertCardimg,
+        price: "$12.00 slice",
+        icon1: <EggSvg />,
+        icon2: <PineSvg />,
+        icon3: <sugarSvg />,
+      },
+      {
+        cardHeading: "Lemon Cheesecake",
+        cardtxt: "Vanilla cream, cookie crumble and homemade lemon drizlle",
+        cardPic: desertCardimg,
+        price: "$12.00 slice",
+        icon1: <EggSvg />,
+        icon2: <PineSvg />,
+        icon3: <sugarSvg />,
+      },
+      {
+        cardHeading: "Lemon Cheesecake",
+        cardtxt: "Vanilla cream, cookie crumble and homemade lemon drizlle",
+        cardPic: desertCardimg,
+        price: "$12.00 slice",
+        icon1: <EggSvg />,
+        icon2: <PineSvg />,
+        icon3: <sugarSvg />,
+      },
+      {
+        cardHeading: "Lemon Cheesecake",
+        cardtxt: "Vanilla cream, cookie crumble and homemade lemon drizlle",
+        cardPic: desertCardimg,
+        price: "$12.00 slice",
+        icon1: <EggSvg />,
+        icon2: <PineSvg />,
+        icon3: <sugarSvg />,
+      },
+    ],
+  },
+  {
+    src: saladsfullwidth,
+    textHeading: "Salads",
+    infoText: "Fresh and organic ingredients",
+    cardData: [
+      {
+        cardHeading: "Chef's Special Salad ",
+        cardtxt:
+          "Fresh beetroot salad served with crumbled goat cheese, walnuts, and tomatoes",
+        cardPic: specialSalad,
+        price: "$12.00",
+        icon1: <EggSvg />,
+        icon2: <PineSvg />,
+        icon3: <sugarSvg />,
+      },
+      {
+        cardHeading: "Chef's Special Salad ",
+        cardtxt:
+          "Fresh beetroot salad served with crumbled goat cheese, walnuts, and tomatoes",
+        cardPic: specialSalad,
+        price: "$12.00",
+        icon1: <EggSvg />,
+        icon2: <PineSvg />,
+        icon3: <sugarSvg />,
+      },
+      {
+        cardHeading: "Chef's Special Salad ",
+        cardtxt:
+          "Fresh beetroot salad served with crumbled goat cheese, walnuts, and tomatoes",
+        cardPic: specialSalad,
+        price: "$12.00",
+        icon1: <EggSvg />,
+        icon2: <PineSvg />,
+        icon3: <sugarSvg />,
+      },
+      {
+        cardHeading: "Chef's Special Salad ",
+        cardtxt:
+          "Fresh beetroot salad served with crumbled goat cheese, walnuts, and tomatoes",
+        cardPic: specialSalad,
+        price: "$12.00",
+        icon1: <EggSvg />,
+        icon2: <PineSvg />,
+        icon3: <sugarSvg />,
+      },
+    ],
+  },
+  {
+    src: startersfullwidth,
+    textHeading: "Starters",
+    infoText: "Soups & Tapas",
+    cardData: [
+      {
+        cardHeading: "Gazpacho",
+        cardtxt: "Rich gazpacho with herbs and spices",
+        cardPic: gazpacho,
+        price: "$13.50 - $16.00",
+        icon1: <EggSvg />,
+        icon2: <PineSvg />,
+        icon3: <sugarSvg />,
+      },
+      {
+        cardHeading: "Gazpacho",
+        cardtxt: "Rich gazpacho with herbs and spices",
+        cardPic: gazpacho,
+        price: "$13.50 - $16.00",
+        icon1: <EggSvg />,
+        icon2: <PineSvg />,
+        icon3: <sugarSvg />,
+      },
+      {
+        cardHeading: "Gazpacho",
+        cardtxt: "Rich gazpacho with herbs and spices",
+        cardPic: gazpacho,
+        price: "$13.50 - $16.00",
+        icon1: <EggSvg />,
+        icon2: <PineSvg />,
+        icon3: <sugarSvg />,
+      },
+      {
+        cardHeading: "Gazpacho",
+        cardtxt: "Rich gazpacho with herbs and spices",
+        cardPic: gazpacho,
+        price: "$13.50 - $16.00",
+        icon1: <EggSvg />,
+        icon2: <PineSvg />,
+        icon3: <sugarSvg />,
+      },
+    ],
+  },
+];
+
+const FoodTypeArray = [
+  {
+    src: mainCourse,
+    txt: "Main Courses",
+  },
+  {
+    src: Deserts,
+    txt: "Desserts",
+  },
+  {
+    src: Salads,
+    txt: "Salads",
+  },
+  {
+    src: starters,
+    txt: "Starters",
+  },
+];
+export default FoodTypeArray;

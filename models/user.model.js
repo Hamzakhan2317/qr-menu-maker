@@ -35,6 +35,9 @@ const userSchema = new mongoose.Schema(
       required: true,
       default: false,
     },
+
+    restaurants: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Restaurant' }] // Referencing restaurants created by the user
+
    
   },
   { timestamps: true }

@@ -2,15 +2,10 @@ import mongoose from "mongoose";
 
 const restaurantSchema = new mongoose.Schema(
   {
-    name: {
-      type: String,
-      required: true,
-    },
-    owner: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
-      required: true,
-    },
+    name: { type: String, required: true },
+    address: { type: String },
+    owner: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true }, // Reference to the user who owns the restaurant
+    menus: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Menu' }] // Referencing menus in the restaurant
   },
   { timestamps: true }
 );

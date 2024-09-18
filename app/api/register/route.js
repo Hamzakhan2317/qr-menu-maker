@@ -4,6 +4,9 @@ import { NextResponse } from "next/server";
 
 export async function POST(req) {
   const { email, phone, password } = await req.json();
+console.log("email>>>>", email)
+
+
   try {
     await connectDB();
     if (![email, phone, password].every(Boolean))
