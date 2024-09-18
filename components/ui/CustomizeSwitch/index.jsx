@@ -6,7 +6,7 @@ import Switch from "@mui/material/Switch";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 
-const IOSSwitch = styled((props) => (
+const CustomSwitch = styled((props) => (
   <Switch focusVisibleClassName=".Mui-focusVisible" disableRipple {...props} />
 ))(({ theme }) => ({
   width: 44,
@@ -71,7 +71,9 @@ const IOSSwitch = styled((props) => (
 export default function CustomizedSwitch() {
   return (
     <FormGroup>
-      <FormControlLabel control={<IOSSwitch sx={{ m: 1 }} defaultChecked />} />
+      <FormControlLabel
+        control={<CustomSwitch sx={{ m: 1 }} defaultChecked />}
+      />
     </FormGroup>
   );
 }

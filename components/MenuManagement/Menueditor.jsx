@@ -3,13 +3,20 @@ import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import Switch from "@mui/material/Switch";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import CustomizedSwitch from "../ui/CustomizeSwitch";
+import Image from "next/image";
+import Salads from "/public/assets/images/salads.webp";
+import deserts from "/public/assets/images/deserts.webp";
+import starters from "/public/assets/images/starters.webp";
+import mainCourse from "/public/assets/images/main-course.webp";
 
 const MenuEditor = () => {
   const [items, setItems] = useState([
-    { id: "1", name: "Salads", available: true, children: [] },
+    { id: "1", src: Salads, name: "Salads", available: true, children: [] },
     {
       id: "2",
       name: "Main Course",
+      src: mainCourse,
       available: false,
       children: [
         { id: "2-1", name: "Sub Item 1", available: true },
@@ -19,6 +26,7 @@ const MenuEditor = () => {
     {
       id: "3",
       name: "Starters",
+      src: starters,
       available: true,
       children: [
         { id: "3-1", name: "Sub Item 1", available: true },
@@ -27,6 +35,7 @@ const MenuEditor = () => {
     },
     {
       id: "4",
+      src: deserts,
       name: "Desserts",
       available: true,
       children: [
@@ -79,8 +88,8 @@ const MenuEditor = () => {
                         justifyContent: "space-between",
                         alignItems: "center",
                         padding: "10px",
-                        marginBottom: "1px 10px",
-                        border: "1px solid #ddd",
+                        marginBottom: "10px",
+                        boxShadow: "rgba(0, 0, 0, 0.16) 0px 1px 4px",
                         transition: "transform 0.2s ease",
                         transform: "scale(1)",
                       }}
@@ -92,15 +101,15 @@ const MenuEditor = () => {
                       }}
                     >
                       <div style={{ display: "flex", alignItems: "center" }}>
-                        {/* Picture */}
-                        <div
+                        <Image
                           style={{
                             width: "40px",
                             height: "40px",
-                            backgroundColor: "#f0f0f0",
                             marginRight: "10px",
-                            borderRadius: "50%",
+                            borderRadius: "8%",
                           }}
+                          src={item?.src}
+                          alt=""
                         />
                         {/* Status Icon */}
                         <div
@@ -117,7 +126,7 @@ const MenuEditor = () => {
                       </div>
 
                       <div style={{ display: "flex", alignItems: "center" }}>
-                        <Switch defaultChecked={item.available} />
+                        <CustomizedSwitch />
                         {item.children.length > 0 && (
                           <span
                             style={{ marginLeft: "10px", cursor: "pointer" }}

@@ -1,3 +1,19 @@
+export const PlusIcon = () => {
+  return (
+    <svg
+      viewBox="64 64 896 896"
+      focusable="false"
+      data-icon="plus"
+      width="1em"
+      height="1em"
+      fill="currentColor"
+      aria-hidden="true"
+    >
+      <path d="M482 152h60q8 0 8 8v704q0 8-8 8h-60q-8 0-8-8V160q0-8 8-8z"></path>
+      <path d="M192 474h672q8 0 8 8v60q0 8-8 8H160q-8 0-8-8v-60q0-8 8-8z"></path>
+    </svg>
+  );
+};
 export const SettingSvg = () => {
   return (
     <svg
@@ -44,8 +60,6 @@ export const Tablet = ({ marginRight = "" }) => {
       xmlns="http://www.w3.org/2000/svg"
       style={{
         fontSize: "14px",
-        marginRight: marginRight,
-        transform: "rotate(90deg)",
       }}
     >
       <path d="M800 64H224c-35.3 0-64 28.7-64 64v768c0 35.3 28.7 64 64 64h576c35.3 0 64-28.7 64-64V128c0-35.3-28.7-64-64-64zm-8 824H232V136h560v752zM472 784a40 40 0 1 0 80 0 40 40 0 1 0-80 0z"></path>

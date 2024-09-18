@@ -1,6 +1,6 @@
 "use client";
 
-import React, { Children, useState } from "react";
+import React, { Children, useEffect, useState } from "react";
 import {
   AppBar,
   Toolbar,
@@ -25,20 +25,42 @@ import {
 import garsLogo from "../../public/assets/images/logo.png";
 import Logo from "../../public/assets/images/8.webp";
 import Image from "next/image";
-import RestaurantMenuIcon from "@mui/icons-material/RestaurantMenu";
 import MenuDropdown from "../ui/MenuDropdown";
+import { useRouter } from "@/navigation";
+import { sidebarmenu } from "@/public/assets/static";
 
 const Sidebar = ({ children }) => {
   const [isOpen, setIsOpen] = useState(true);
   const [settingsOpen, setSettingsOpen] = useState(false);
+  const { push } = useRouter();
 
   const toggleDrawer = () => {
     setIsOpen(!isOpen);
   };
 
-  const toggleSettings = () => {
-    setSettingsOpen(!settingsOpen);
+  const handleToggle = (item) => {
+    if (item.isCollapsible) {
+      setSettingsOpen(!settingsOpen);
+    } else {
+      push(item.route);
+    }
   };
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 992) {
+        setIsOpen(false);
+      } else {
+        setIsOpen(isOpen);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    handleResize(); // Call on mount to set initial state
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [isOpen]);
 
   return (
     <Box
@@ -60,6 +82,9 @@ const Sidebar = ({ children }) => {
             height: "100vh",
             top: 0,
             left: 0,
+          },
+          "& .MuiListItemIcon-root svg": {
+            flex: 1,
           },
         }}
       >
@@ -83,37 +108,37 @@ const Sidebar = ({ children }) => {
         <Divider />
 
         <List>
-          <ListItem button onClick={() => "/dashboard"}>
-            <ListItemIcon>
-              <DashboardIcon />
-            </ListItemIcon>
-            {isOpen && <ListItemText primary="Dashboard" />}
-          </ListItem>
-
-          <ListItem button>
-            <ListItemIcon>
-              <RestaurantMenuIcon />
-            </ListItemIcon>
-            {isOpen && <ListItemText primary="Menu Management" />}
-          </ListItem>
-
-          <ListItem button onClick={toggleSettings}>
-            <ListItemIcon>
-              <SettingsIcon />
-            </ListItemIcon>
-            {isOpen && <ListItemText primary="Settings" />}
-            {isOpen && (settingsOpen ? <ExpandLess /> : <ExpandMore />)}
-          </ListItem>
-          <Collapse in={settingsOpen && isOpen} timeout="auto" unmountOnExit>
-            <List component="div" disablePadding>
-              <ListItem button sx={{ pl: 4 }}>
-                <ListItemText primary="Sublink 1" />
+          {sidebarmenu.map((item, index) => (
+            <div key={index}>
+              <ListItem button onClick={() => handleToggle(item)}>
+                <ListItemIcon>{item.icon}</ListItemIcon>
+                {isOpen && <ListItemText primary={item.title} />}
+                {isOpen &&
+                  item.isCollapsible &&
+                  (settingsOpen ? <ExpandLess /> : <ExpandMore />)}
               </ListItem>
-              <ListItem button sx={{ pl: 4 }}>
-                <ListItemText primary="Sublink 2" />
-              </ListItem>
-            </List>
-          </Collapse>
+              {item.isCollapsible && (
+                <Collapse
+                  in={settingsOpen && isOpen}
+                  timeout="auto"
+                  unmountOnExit
+                >
+                  <List component="div" disablePadding>
+                    {item.subItems.map((subItem, subIndex) => (
+                      <ListItem
+                        button
+                        sx={{ pl: 4 }}
+                        onClick={() => push(subItem.route)}
+                        key={subIndex}
+                      >
+                        <ListItemText primary={subItem.title} />
+                      </ListItem>
+                    ))}
+                  </List>
+                </Collapse>
+              )}
+            </div>
+          ))}
         </List>
       </Drawer>
 

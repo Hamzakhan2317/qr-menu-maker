@@ -33,3 +33,14 @@ export const datepickrInput = {
     color: "#5E615E",
   },
 };
+
+export const sectionsList = {
+  backgroundColor: "#ffffff",
+  marginTop: "40px",
+  padding: "10px",
+  width: "206px",
+  overflow: "hidden",
+  height: "445px",
+  borderRadius: "0px 8px 8px 0px",
+  transition: " width 300ms ease-in-out",
+};

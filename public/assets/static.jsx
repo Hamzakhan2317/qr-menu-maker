@@ -42,6 +42,15 @@ import specialSalad from "/public/assets/images/special-salad.webp";
 import gazpacho from "/public/assets/images/gazpacho.webp";
 import startersfullwidth from "/public/assets/images/startersfullwidth.webp";
 import EggSvg, { sugarSvg, PineSvg } from "./svg/Egg";
+import RestaurantMenuIcon from "@mui/icons-material/RestaurantMenu";
+import {
+  Dashboard as DashboardIcon,
+  Menu as MenuIcon,
+  Settings as SettingsIcon,
+  ExpandLess,
+  ExpandMore,
+  ExitToApp as LogoutIcon,
+} from "@mui/icons-material";
 export const logoComponents = [
   Signuplogo1,
   Signuplogo2,
@@ -116,6 +125,30 @@ export const getOurServicesDetails = (t) => [
   {
     heading: t("ServicesHeading7"),
     text: t("ServicesText7"),
+  },
+];
+export const sidebarmenu = [
+  {
+    title: "Dashboard",
+    icon: <DashboardIcon />,
+    route: "/venues/dashboard",
+    isCollapsible: false,
+  },
+  {
+    title: "Menu Management",
+    icon: <RestaurantMenuIcon />,
+    route: "/venues/menu-management",
+    isCollapsible: false,
+  },
+  {
+    title: "Settings",
+    icon: <SettingsIcon />,
+    isCollapsible: true,
+    subItems: [
+      { title: "QR Code", route: "/venues/settings/qrcode" },
+      { title: "Venue Information", route: "/venues/settings/venue-information" },
+      { title: "Operating Hours", route: "/venues/settings/operating-hours" },
+    ],
   },
 ];
 export const getwhyChooseDetails = (t) => [
