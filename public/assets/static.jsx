@@ -43,9 +43,9 @@ import gazpacho from "/public/assets/images/gazpacho.webp";
 import startersfullwidth from "/public/assets/images/startersfullwidth.webp";
 import EggSvg, { sugarSvg, PineSvg } from "./svg/Egg";
 import RestaurantMenuIcon from "@mui/icons-material/RestaurantMenu";
-import DashboardIcon from "./svg/dashboard";
-import MenuManagementIcon from "./svg/menu-management";
-import SettingsIcon from "./svg/settings";
+import DashboardIcon from "@/public/assets/svg/dashboard";
+import MenuManagementIcon from "@/public/assets/svg/menu-management";
+import SettingsIcon from "@/public/assets/svg/settings";
 export const logoComponents = [
   Signuplogo1,
   Signuplogo2,
