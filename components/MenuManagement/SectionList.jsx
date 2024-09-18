@@ -9,7 +9,7 @@ import {
   AccordionSummary,
   AccordionDetails,
 } from "@mui/material";
-import ArrowForwardIosSharpIcon from "@mui/icons-material/ArrowForwardIosSharp";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import React, { useState } from "react";
@@ -18,6 +18,8 @@ import { styled } from "@mui/material/styles";
 import MuiAccordion from "@mui/material/Accordion";
 import MuiAccordionSummary from "@mui/material/AccordionSummary";
 import MuiAccordionDetails from "@mui/material/AccordionDetails";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import { PlusIconFine } from "@/public/assets/svg/ForkNknife";
 
 const initialMenuData = [
   { id: "1", name: "Salads", subItems: [] },
@@ -45,14 +47,14 @@ const CustomAccordion = styled((props) => (
 
 const CustomAccordionSummary = styled((props) => (
   <MuiAccordionSummary
-    expandIcon={<ArrowForwardIosSharpIcon sx={{ fontSize: "0.9rem" }} />}
+    expandIcon={<ArrowForwardIosIcon sx={{ fontSize: "0.9rem" }} />}
     {...props}
   />
 ))(({ theme }) => ({
   backgroundColor: "#fff",
   flexDirection: "row-reverse",
   "& .MuiAccordionSummary-expandIconWrapper.Mui-expanded": {
-    transform: "rotate(90deg)",
+    transform: "rotate(-90deg)",
   },
   "& .MuiAccordionSummary-content": {
     marginLeft: theme.spacing(1),
@@ -62,7 +64,7 @@ const CustomAccordionSummary = styled((props) => (
   }),
 }));
 
-const SectionList = () => {
+const SectionList = ({ onAddClick }) => {
   const [activeTab, setActiveTab] = useState(0);
   const [expanded, setExpanded] = useState(false);
   const [menuData, setMenuData] = useState(initialMenuData);
@@ -140,7 +142,16 @@ const SectionList = () => {
                   alignItems: "center",
                 }}
               >
-                <Typography fontSize={"12px"} fontWeight={400}>
+                <Box
+                  style={{
+                    width: "8px",
+                    height: "8px",
+                    backgroundColor: "#52c41a",
+                    borderRadius: "50%",
+                    marginRight: "10px",
+                  }}
+                />
+                <Typography fontSize={"12px"} fontWeight={400} flex={1}>
                   {subItem}
                 </Typography>
               </Box>
@@ -148,9 +159,20 @@ const SectionList = () => {
           </AccordionDetails>
         </CustomAccordion>
       ) : (
-        <Typography fontSize={"12px"} fontWeight={400}>
-          {item.name}
-        </Typography>
+        <Box sx={{ display: "flex", alignItems: "center" }}>
+          <Box
+            style={{
+              width: "8px",
+              height: "8px",
+              backgroundColor: "#52c41a",
+              borderRadius: "50%",
+              marginRight: "10px",
+            }}
+          />
+          <Typography fontSize={"12px"} fontWeight={400}>
+            {item.name}
+          </Typography>
+        </Box>
       )}
     </Box>
   );
@@ -167,8 +189,8 @@ const SectionList = () => {
         }}
       >
         <Typography fontSize="14px">Section</Typography>
-        <Box sx={{ cursor: "pointer" }}>
-          <AddIcon />
+        <Box sx={{ cursor: "pointer" }} onClick={onAddClick}>
+          <PlusIconFine sx={{ "&:hover": { color: "#8338ec" } }} />
         </Box>
       </Box>
       <Box>
@@ -176,14 +198,14 @@ const SectionList = () => {
           value={activeTab}
           onChange={handleTabChange}
           sx={{
-            minHeight: "32px",
+            minHeight: "23px",
             "& .MuiTabs-flexContainer": {
               border: "1px solid #d9d9d9",
               borderRadius: "30px",
-              minHeight: "32px",
+              minHeight: "23px",
               "& .MuiButtonBase-root": {
-                minHeight: "32px",
-                height: "32px",
+                minHeight: "23px",
+                height: "23px",
                 fontSize: "12px",
                 minWidth: "60px",
                 flex: 1,
@@ -203,7 +225,7 @@ const SectionList = () => {
             sx={{
               border: activeTab === 0 ? "1px solid #8338ec" : "",
               color: activeTab === 0 ? "#8338ec" : "black",
-              borderRadius: "30px 0 0 30px",
+              borderRadius: "8px 0 0 8px",
               padding: "1px 5px",
             }}
           />
@@ -221,7 +243,7 @@ const SectionList = () => {
             sx={{
               border: activeTab === 2 ? "1px solid #8338ec" : "",
               color: activeTab === 2 ? "#8338ec" : "black",
-              borderRadius: "0 30px 30px 0",
+              borderRadius: "0 8px 8px 0",
               padding: "1px 5px",
             }}
           />

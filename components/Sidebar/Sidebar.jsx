@@ -27,7 +27,7 @@ import Logo from "../../public/assets/images/8.webp";
 import Image from "next/image";
 import MenuDropdown from "../ui/MenuDropdown";
 import { useRouter } from "@/navigation";
-import { sidebarmenu } from "@/public/assets/static";
+import { sidebarHoverStyling, sidebarmenu } from "@/public/assets/static";
 
 const Sidebar = ({ children }) => {
   const [isOpen, setIsOpen] = useState(true);
@@ -66,7 +66,7 @@ const Sidebar = ({ children }) => {
     <Box
       sx={{
         display: "grid",
-        gridTemplateColumns: isOpen ? "240px auto" : "80px auto",
+        gridTemplateColumns: isOpen ? "200px auto" : "60px auto",
         transition: "grid-template-columns 0.3s ease",
       }}
     >
@@ -74,9 +74,9 @@ const Sidebar = ({ children }) => {
         variant="permanent"
         open={isOpen}
         sx={{
-          width: isOpen ? 240 : 80,
+          width: isOpen ? 200 : 60,
           "& .MuiDrawer-paper": {
-            width: isOpen ? 240 : 80,
+            width: isOpen ? 200 : 60,
             transition: "width 0.3s",
             position: "fixed",
             height: "100vh",
@@ -110,9 +110,20 @@ const Sidebar = ({ children }) => {
         <List>
           {sidebarmenu.map((item, index) => (
             <div key={index}>
-              <ListItem button onClick={() => handleToggle(item)}>
-                <ListItemIcon>{item.icon}</ListItemIcon>
-                {isOpen && <ListItemText primary={item.title} />}
+              <ListItem
+                sx={sidebarHoverStyling}
+                button
+                onClick={() => handleToggle(item)}
+              >
+                <ListItemIcon sx={{ minWidth: "30px" }}>
+                  {item.icon}
+                </ListItemIcon>
+                {isOpen && (
+                  <ListItemText
+                    primary={item.title}
+                    primaryTypographyProps={{ fontSize: 14 }}
+                  />
+                )}
                 {isOpen &&
                   item.isCollapsible &&
                   (settingsOpen ? <ExpandLess /> : <ExpandMore />)}
@@ -126,12 +137,15 @@ const Sidebar = ({ children }) => {
                   <List component="div" disablePadding>
                     {item.subItems.map((subItem, subIndex) => (
                       <ListItem
+                        sx={sidebarHoverStyling}
                         button
-                        sx={{ pl: 4 }}
                         onClick={() => push(subItem.route)}
                         key={subIndex}
                       >
-                        <ListItemText primary={subItem.title} />
+                        <ListItemText
+                          primaryTypographyProps={{ fontSize: 14 }}
+                          primary={subItem.title}
+                        />
                       </ListItem>
                     ))}
                   </List>
@@ -158,8 +172,8 @@ const Sidebar = ({ children }) => {
             backgroundColor: "#ffffff",
             minHeight: "48px !important",
             height: "48px",
-            width: `calc(100% - ${isOpen ? 240 : 80}px)`,
-            left: isOpen ? 240 : 80,
+            width: `calc(100% - ${isOpen ? 200 : 60}px)`,
+            left: isOpen ? 200 : 60,
             transition: "width 0.3s, left 0.3s",
             boxShadow: "none",
             borderBottom: "1px solid #E0E0E0",

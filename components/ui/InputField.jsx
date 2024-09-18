@@ -42,7 +42,8 @@ const InputField = ({
   borderRadius = "8px",
   border = "",
   customHeight = "auto",
-  fontLabelWeight = 700,
+  fontLabelWeight = 600,
+  labelFontSize = "14px",
   customBackgroundColor = "transparent",
   ...props
 }) => {
@@ -133,6 +134,7 @@ const InputField = ({
             <Typography
               variant="body2"
               fontWeight={fontLabelWeight}
+              fontSize={labelFontSize}
               marginBottom={"5px"}
             >
               {label} {required && <span style={{ color: "red" }}>*</span>}
