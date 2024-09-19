@@ -16,13 +16,10 @@ export async function POST(req) {
         { status: 400 }
       );
 
-      const user = await User.findById(userId);
-      if (!user) {
-        return NextResponse.json(
-          { message: "User not found" },
-          { status: 404 }
-        );
-      }
+    const user = await User.findById(userId);
+    if (!user) {
+      return NextResponse.json({ message: "User not found" }, { status: 404 });
+    }
 
     const newRestaurent = new Restaurent({
       name: restaurantName,
@@ -39,7 +36,10 @@ export async function POST(req) {
     }
     user.restaurants.push(savedRestaurent._id);
     await user.save();
-    return NextResponse.json({ message:"Restaurent Created successfully" }, { status: 201 });
+    return NextResponse.json(
+      { message: "Restaurent Created successfully" },
+      { status: 201 }
+    );
   } catch (error) {
     return NextResponse.json(
       { message: error?.message || "Failed to connect to server" },
@@ -49,10 +49,35 @@ export async function POST(req) {
 }
 
 export async function GET(req) {
-  return NextResponse.json({ message:"Restaurent Created successfully" }, { status: 201 });
   // Your code
-}
+  try {
+    await connectDB();
 
+    // Extract the userId from the query string
+    const userId = req.nextUrl.searchParams.get("userId");
+    console.log("userId>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", userId);
+    if (!userId) {
+      return NextResponse.json(
+        { message: "User ID is required" },
+        { status: 400 }
+      );
+    }
+    // const restaurants = await Restaurant.find({ owner: req.params.userId }).populate('menus');
+    const restaurants = await Restaurent.find({ owner: userId });
+    // res.status(200).json({ restaurants });
+    console.log("restaurants>>>>", restaurants);
+
+    return NextResponse.json(
+      { message: "Restaurent fetching successfully", data: restaurants },
+      { status: 200 }
+    );
+  } catch (error) {
+    return NextResponse.json(
+      { message: error?.message || "Failed to connect to server" },
+      { status: 500 }
+    );
+  }
+}
 
 // Get all restaurants for a user
 // exports.getUserRestaurants = async (req, res) => {

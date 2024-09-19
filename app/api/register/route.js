@@ -1,5 +1,6 @@
 import connectDB from "@/db/mongodb";
 import User from "@/models/user.model";
+import Restaurent from "@/models/restaurent.model";
 import { NextResponse } from "next/server";
 
 export async function POST(req) {
@@ -44,6 +45,15 @@ console.log("email>>>>", email)
         { status: 400 }
       );
     }
+    const newRestaurent = new Restaurent({
+      name: "FineDine",
+      owner: savedUser._id,
+    });
+
+    const savedRestaurent =  await newRestaurent.save();
+     savedUser.restaurants.push(savedRestaurent._id);
+     await savedUser.save();
+    
     return NextResponse.json({ message:"User register successfully" }, { status: 201 });
   } catch (error) {
     return NextResponse.json(

@@ -1,5 +1,5 @@
 "use client";
-import { Box, Typography } from "@mui/material";
+import { Box, Drawer, Grid, IconButton, Typography } from "@mui/material";
 import React, { useState } from "react";
 import ButtonComp from "../ui/button";
 import EmptyPageSvg from "@/public/assets/svg/EmptyPageSvg";
@@ -14,14 +14,28 @@ import ForkNknife, {
   Delievery,
   EditSvg,
   Pickup,
+  PlusIcon,
   SettingSvg,
 } from "@/public/assets/svg/ForkNknife";
 import { Tablet } from "@mui/icons-material";
 import CustomizedSwitch from "../ui/CustomizeSwitch";
-import MenuAccordion from "./Menueditor";
+import MenuEditor from "./Menueditor";
+import SectionList from "./SectionList";
+import CloseIcon from "@mui/icons-material/Close";
+import InputField from "../ui/InputField";
+import RightDrawerContent from "./RightDrawerContent";
 
 const MenuManagement = () => {
-  const [menuCreated, setMenuCreated] = useState(false);
+  const [menuCreated, setMenuCreated] = useState(true);
+  const [menuEdit, setMenuEdit] = useState(true);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+  const handleDrawerToggle = () => {
+    setIsDrawerOpen((prevOpen) => !prevOpen);
+  };
+  const toggleDrawer = (open) => () => {
+    setIsDrawerOpen(open);
+  };
   const status = "Always";
   const cardLastRow = [
     {
@@ -73,87 +87,140 @@ const MenuManagement = () => {
           />
         </Box>
       </Box>
-      {menuCreated ? (
-        <Box sx={menuManagementCardWrapper}>
-          <Box sx={menuManagementCard}>
-            <Box>
-              <Typography color="#00000073">Copy of Sample Menu</Typography>
-              <Typography color="#00000073" fontSize={"14px"}>
-                Your happy place!
+      {!menuEdit ? (
+        <>
+          {menuCreated ? (
+            <Box sx={menuManagementCardWrapper}>
+              <Box sx={menuManagementCard}>
+                <Box>
+                  <Typography color="#00000073">Copy of Sample Menu</Typography>
+                  <Typography color="#00000073" fontSize={"14px"}>
+                    Your happy place!
+                  </Typography>
+                  <Typography
+                    color="#00000073"
+                    fontSize={"14px"}
+                    marginTop={"10px"}
+                  >
+                    Availability:{status}
+                  </Typography>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      flexWrap: "wrap",
+                      justifyContent: "flex-start",
+                      color: "#00000073",
+                      fontSize: "14px",
+                    }}
+                  >
+                    {cardLastRow?.map((item, index) => {
+                      return (
+                        <span
+                          style={{
+                            display: "flex",
+
+                            alignItems: "center",
+                          }}
+                          key={index}
+                        >
+                          <span
+                            style={{
+                              display: "inline-block",
+                              marginRight: "5px",
+                              "& svg": {
+                                transform: "rotate(90deg) !important",
+                              },
+                            }}
+                          >
+                            {item.img}
+                          </span>
+
+                          <span
+                            style={{
+                              display: "inline-block",
+                              marginRight: "5px",
+                            }}
+                          >
+                            {item.text}
+                          </span>
+                        </span>
+                      );
+                    })}
+                  </Box>
+                </Box>
+                <Box display="flex" alignItems="center" flexWrap="wrap">
+                  <CustomizedSwitch />
+                  <ButtonComp
+                    text={"Edit Menu"}
+                    variant="blue"
+                    startIcon={<EditSvg />}
+                    padding="4px 15px"
+                    marginRight="20px"
+                  />
+                  <SettingSvg />
+                </Box>
+              </Box>
+            </Box>
+          ) : (
+            <Box sx={emptyPageWrapper}>
+              <Box sx={emptyPageWrapperSvg}>
+                <EmptyPageSvg />
+              </Box>
+              <Typography sx={{ fontSize: "14px", marginTop: "10px" }}>
+                You don’t have any menu yet. Start creating one.
               </Typography>
-              <Typography
-                color="#00000073"
-                fontSize={"14px"}
-                marginTop={"10px"}
-              >
-                Availability:{status}
-              </Typography>
+              <ButtonComp
+                text="Create a Menu"
+                variants="purple"
+                padding="4px 15px"
+                marginTop="10px"
+                sx={{ height: "32px" }}
+                onClick={() => {
+                  setMenuCreated(true);
+                }}
+              />
+            </Box>
+          )}
+        </>
+      ) : (
+        <Box sx={{ display: "flex", height: "100vh" }}>
+          <SectionList onAddClick={handleDrawerToggle} />
+          <Box sx={{ padding: "20px 40px", maxWidth: "850px", flex: 1 }}>
+            <MenuEditor />
+            <Drawer
+              anchor="right"
+              open={isDrawerOpen}
+              onClose={toggleDrawer(false)}
+              sx={{
+                width: 456,
+                flexShrink: 0,
+                "& .MuiDrawer-paper": {
+                  width: 456,
+                  boxSizing: "border-box",
+                },
+              }}
+              variant="persistent"
+            >
               <Box
                 sx={{
                   display: "flex",
                   alignItems: "center",
-                  color: "#00000073",
-                  fontSize: "14px",
+                  padding: "10px",
+                  flexDirection: "row-reverse",
+                  justifyContent: "flex-end",
+                  borderBottom: "1px solid #ddd",
                 }}
               >
-                {cardLastRow?.map((item, index) => {
-                  return (
-                    <span
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        marginLeft: "5px",
-                      }}
-                      key={index}
-                    >
-                      <span
-                        style={{ display: "inline-block", marginRight: "5px" }}
-                      >
-                        {item.img}
-                      </span>
-
-                      <span
-                        style={{ display: "inline-block", marginRight: "5px" }}
-                      >
-                        {item.text}
-                      </span>
-                    </span>
-                  );
-                })}
+                <h3>Add New Section</h3>
+                <IconButton onClick={toggleDrawer(false)} marginRight="5px">
+                  <CloseIcon />
+                </IconButton>
               </Box>
-            </Box>
-            <Box display="flex" alignItems="center">
-              <CustomizedSwitch />
-              <ButtonComp
-                text={"Edit Menu"}
-                variant="blue"
-                startIcon={<EditSvg />}
-                padding="4px 15px"
-                marginRight="20px"
-              />
-              <SettingSvg />
-            </Box>
+
+              <RightDrawerContent />
+            </Drawer>
           </Box>
-        </Box>
-      ) : (
-        <Box sx={emptyPageWrapper}>
-          <Box sx={emptyPageWrapperSvg}>
-            <EmptyPageSvg />
-          </Box>
-          <Typography sx={{ fontSize: "14px", marginTop: "10px" }}>
-            You don’t have any menu yet. Start creating one.
-          </Typography>
-          <ButtonComp
-            text="Create a Menu"
-            variants="purple"
-            padding="4px 15px"
-            marginTop="10px"
-            sx={{ height: "32px" }}
-            onClick={() => {
-              setMenuCreated(true);
-            }}
-          />
-          <MenuAccordion name={"Salads"} />
         </Box>
       )}
     </Box>

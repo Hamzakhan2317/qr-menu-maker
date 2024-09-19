@@ -6,8 +6,16 @@ const restaurentApis = api.injectEndpoints({
     registerRestaurent: builder.mutation({
       query: (data) => ({ url: `/restaurent`, method: "POST", body: data }),
     }),
-    
+
+    getAllRestaurents: builder.query({
+      query: (userId) => ({
+        url: `/restaurent`,
+        method: "GET",
+        params: { userId }, // Adds userId as a query parameter
+      }),
+    }),
   }),
 });
 
-export const { useRegisterRestaurentMutation } = restaurentApis;
+export const { useRegisterRestaurentMutation, useGetAllRestaurentsQuery } =
+  restaurentApis;

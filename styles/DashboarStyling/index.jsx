@@ -146,7 +146,7 @@ export const cardLeftside = {
 // Dropzone styling
 export const doprzoneStyle = {
   width: "200px",
-  height: "100%",
+  minHeight: "155px",
   border: "1px dashed rgb(217, 217, 217)",
   background: "rgb(250, 250, 250)",
   borderRadius: "8px",
@@ -159,4 +159,5 @@ export const dropzoneText = {
   display: "block",
   color: "#8989AE !important",
   fontWeight: 300,
+  marginTop: "5px",
 };
