@@ -52,7 +52,7 @@ const LoginPage = () => {
       }
       if (res?.ok) {
         toast.success("Login successfully", { id: toastId });
-        router.push("/dashboard");
+        router.push("/venues/dashboard");
       }
     } catch (error) {
       toast.error("Something went wrong", { id: toastId });

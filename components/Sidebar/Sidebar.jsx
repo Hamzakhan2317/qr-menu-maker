@@ -28,11 +28,18 @@ import Image from "next/image";
 import MenuDropdown from "../ui/MenuDropdown";
 import { useRouter } from "@/navigation";
 import { sidebarHoverStyling, sidebarmenu } from "@/public/assets/static";
+import { useGetAllRestaurentsQuery } from "@/redux/services/api/restaurentApis";
 
 const Sidebar = ({ children }) => {
   const [isOpen, setIsOpen] = useState(true);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const { push } = useRouter();
+
+const userId = "66ebc27fca4cb5c1debc4d9e"
+  const { data, error, isLoading } = useGetAllRestaurentsQuery(userId);
+
+
+  console.log("dat>>>>>", data?.data[0]?.name)
 
   const toggleDrawer = () => {
     setIsOpen(!isOpen);
@@ -106,6 +113,8 @@ const Sidebar = ({ children }) => {
         </div>
 
         <Divider />
+        {data?.data && data?.data[0]?.name}
+
 
         <List>
           {sidebarmenu.map((item, index) => (
