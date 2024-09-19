@@ -38,7 +38,7 @@ const Dashboard = () => {
   };
 
   return (
-    <Box>
+    <Box sx={{ paddingLeft: "24px", marginTop: "20px", minHeight: "90vh" }}>
       <p>{currentDateTime}</p>
       <h3 color="#000000d9">Food , Welcome!</h3>
       <Grid container spacing={2} mt={2}>

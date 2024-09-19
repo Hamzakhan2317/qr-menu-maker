@@ -54,8 +54,8 @@ export default function RightDrawerContent() {
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
-          // position: "fixed",
-          // bottom: "0",
+          position: "sticky",
+          bottom: "0",
           backgroundColor: "#fff",
           height: "60px",
           borderTop: "1px solid #E5E5E5",
@@ -65,8 +65,21 @@ export default function RightDrawerContent() {
           <CustomCheckbox label="Save and add more" />
         </Box>
         <Box>
-          <ButtonComp text="Cancel" padding="4px 11px" />
-          <ButtonComp text="Save" padding="4px 11px" />
+          <ButtonComp
+            text="Cancel"
+            padding="4px 20px"
+            marginRight="10px"
+            variant="transparent"
+            hoverBorder="1px solid #8338EC"
+            border="1px solid #d9d9d9"
+          />
+          <ButtonComp
+            text="Save"
+            padding="4px 20px"
+            variant="transparent"
+            hoverBorder="1px solid #8338EC"
+            border="1px solid #d9d9d9"
+          />
         </Box>
       </Box>
     </Box>

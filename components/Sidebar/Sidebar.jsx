@@ -13,6 +13,8 @@ import {
   IconButton,
   Divider,
   Box,
+  Button,
+  TextField,
 } from "@mui/material";
 import {
   Dashboard as DashboardIcon,
@@ -20,7 +22,10 @@ import {
   Settings as SettingsIcon,
   ExpandLess,
   ExpandMore,
+  Restaurant as RestaurantIcon,
+  Add as AddIcon,
   ExitToApp as LogoutIcon,
+  Search as SearchIcon,
 } from "@mui/icons-material";
 import garsLogo from "../../public/assets/images/logo.png";
 import Logo from "../../public/assets/images/8.webp";
@@ -31,11 +36,22 @@ import { sidebarHoverStyling, sidebarmenu } from "@/public/assets/static";
 
 const Sidebar = ({ children }) => {
   const [isOpen, setIsOpen] = useState(true);
+  const [restaurantOpen, setRestaurantOpen] = useState(true);
   const [settingsOpen, setSettingsOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const restaurants = ["Food"];
   const { push } = useRouter();
 
   const toggleDrawer = () => {
     setIsOpen(!isOpen);
+  };
+
+  const handleRestaurantToggle = () => {
+    setRestaurantOpen(!restaurantOpen);
+  };
+
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
   };
 
   const handleToggle = (item) => {
@@ -55,7 +71,7 @@ const Sidebar = ({ children }) => {
     };
 
     window.addEventListener("resize", handleResize);
-    handleResize(); // Call on mount to set initial state
+    handleResize();
 
     return () => {
       window.removeEventListener("resize", handleResize);
@@ -74,14 +90,15 @@ const Sidebar = ({ children }) => {
         variant="permanent"
         open={isOpen}
         sx={{
-          width: isOpen ? 200 : 60,
+          width: isOpen ? 209 : 60,
           "& .MuiDrawer-paper": {
-            width: isOpen ? 200 : 60,
+            width: isOpen ? 209 : 60,
             transition: "width 0.3s",
             position: "fixed",
             height: "100vh",
             top: 0,
             left: 0,
+            overflowY: "hidden",
           },
           "& .MuiListItemIcon-root svg": {
             flex: 1,
@@ -104,7 +121,113 @@ const Sidebar = ({ children }) => {
             style={{ transition: "width 0.3s", objectFit: "contain" }}
           />
         </div>
-
+        {/* Food Dropdown Below Logo */}
+        <ListItem
+          sx={sidebarHoverStyling}
+          button
+          onClick={handleRestaurantToggle}
+          style={{
+            marginTop: "10px",
+            backgroundColor: "#8338ec",
+            position: "relative",
+            top: "0px",
+            zIndex: "900",
+            color: "#fff",
+          }}
+        >
+          <ListItemIcon sx={{ minWidth: "30px", color: "#fff" }}>
+            <RestaurantIcon />
+          </ListItemIcon>
+          {isOpen && (
+            <ListItemText
+              primary="Food"
+              primaryTypographyProps={{ fontSize: 14 }}
+            />
+          )}
+          {isOpen && (restaurantOpen ? <ExpandLess /> : <ExpandMore />)}
+        </ListItem>
+        <Collapse in={restaurantOpen && isOpen} timeout="auto" unmountOnExit>
+          <Box
+            sx={{
+              backgroundColor: "#ffffff",
+              position: "absolute",
+              top: "90px",
+              zIndex: "100",
+              paddingBottom: "8px",
+              width: "209px",
+              boxShadow:
+                "rgba(0, 0, 0, 0.12) 0px 3px 6px -4px, rgba(0, 0, 0, 0.05) 0px 9px 28px 8px",
+            }}
+          >
+            <Box
+              sx={{
+                backgroundColor: "#ffffff",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                flexDirection: "column",
+                height: "auto",
+                maxHeight: "200px",
+                maxWidth: "200px",
+                width: "200px",
+                boxShadow:
+                  "rgba(0, 0, 0, 0.12) 0px 3px 6px -4px, rgba(0, 0, 0, 0.05) 0px 9px 28px 8px",
+                paddingBottom: "8px",
+              }}
+            >
+              <TextField
+                fullWidth
+                value={searchQuery}
+                onChange={handleSearchChange}
+                variant="outlined"
+                size="small"
+                InputProps={{
+                  endAdornment: <SearchIcon />,
+                }}
+                sx={{
+                  marginBottom: 2,
+                  backgroundColor: "#fff",
+                  marginTop: "20px",
+                  width: "176px",
+                }}
+              />
+              <List component="div" disablePadding>
+                {restaurants.length === 0 ? (
+                  <ListItem
+                    sx={{
+                      paddingLeft: 2,
+                      backgroundColor: "#F9F5FE",
+                      width: "100%",
+                    }}
+                  >
+                    <ListItemText primary="Food" />
+                  </ListItem>
+                ) : (
+                  restaurants.map((restaurant, index) => (
+                    <ListItem
+                      sx={{
+                        paddingLeft: 2,
+                        backgroundColor: "#F9F5FE",
+                        width: "100%",
+                      }}
+                      key={index}
+                    >
+                      <ListItemText primary={restaurant} />
+                    </ListItem>
+                  ))
+                )}
+              </List>
+            </Box>
+            <Button
+              fullWidth
+              variant="outlined"
+              startIcon={<AddIcon />}
+              sx={{ marginTop: 2, backgroundColor: "#f7f7f7" }}
+            >
+              Add new venue
+            </Button>
+          </Box>
+        </Collapse>
         <Divider />
 
         <List>
