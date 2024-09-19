@@ -38,6 +38,36 @@ export async function POST(req) {
   }
 }
 
+export async function GET(req) {
+  try {
+    // Extract the userId from the query string
+    const restaurantId = req.nextUrl.searchParams.get('restaurantId');
+
+    // Check if restaurantId is present, if not return 400 response
+    if (!restaurantId) {
+      return NextResponse.json(
+        { message: "Restaurant ID is required" },
+        { status: 400 }
+      );
+    }
+
+    await connectDB();
+
+          const menus = await Menu.find({ restaurant: restaurantId });
+
+
+    return NextResponse.json(
+      { message: "Menu fetched successfully", data: menus },
+      { status: 200 }
+    );
+  } catch (error) {
+    return NextResponse.json(
+      { message: error?.message || "Failed to fetch restaurants" },
+      { status: 500 }
+    );
+  }
+}
+
 
 
 // // Get all menus for a restaurant

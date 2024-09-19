@@ -30,16 +30,26 @@ import { useRouter } from "@/navigation";
 import { sidebarHoverStyling, sidebarmenu } from "@/public/assets/static";
 import { useGetAllRestaurentsQuery } from "@/redux/services/api/restaurentApis";
 
+import { useSession } from "next-auth/react";
+
+
 const Sidebar = ({ children }) => {
   const [isOpen, setIsOpen] = useState(true);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const { push } = useRouter();
-
-const userId = "66ebc27fca4cb5c1debc4d9e"
-  const { data, error, isLoading } = useGetAllRestaurentsQuery(userId);
+    const { data: session } = useSession();
 
 
-  console.log("dat>>>>>", data?.data[0]?.name)
+const userId = "66ec420b346ea4f06bdf87e5"
+
+
+const { data, error, isLoading } = useGetAllRestaurentsQuery(session?.user?._id, {
+  skip: !session?.user?._id, // Skip the query until user data is available
+});
+  // const { data, error, isLoading } = useGetAllRestaurentsQuery(userId);
+
+
+  console.log("dat>>>>>", data)
 
   const toggleDrawer = () => {
     setIsOpen(!isOpen);
@@ -113,7 +123,7 @@ const userId = "66ebc27fca4cb5c1debc4d9e"
         </div>
 
         <Divider />
-        {data?.data && data?.data[0]?.name}
+        { session?.user?.restaurants[0]?.name ?? "Finedine" }
 
 
         <List>

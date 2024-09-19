@@ -7,10 +7,10 @@ export async function POST(req) {
   console.log("Request received Section"); // Added log
   // return NextResponse.json({ message:"Restaurent Created successfully" }, { status: 201 });
 
-  const { name, menuId } = await req.json();
+  const { name, description, note, menuId } = await req.json();
   try {
     await connectDB();
-    if (![name, menuId].every(Boolean))
+    if (![name, description, note, menuId].every(Boolean))
       return NextResponse.json(
         { message: "Please fill all inputs!" },
         { status: 400 }
@@ -21,10 +21,15 @@ export async function POST(req) {
       return NextResponse.json({ message: "Menu not found" }, { status: 404 });
     }
 
-    const section = new Section({ name });
+    const section = new Section({
+      name,
+      description,
+      note,
+      menu: menuId,
+    });
     await section.save();
 
-    menu.items.push(section._id);
+    menu.sections.push(section._id);
     await menu.save();
     return NextResponse.json(
       { message: "Section Created successfully" },
@@ -38,11 +43,33 @@ export async function POST(req) {
   }
 }
 
+export async function GET(req) {
+  try {
+    // Extract the menuId from the query string
+    const menuId = req.nextUrl.searchParams.get("menuId");
 
+    if (!menuId) {
+      return NextResponse.json(
+        { message: "Menu ID is required" },
+        { status: 400 }
+      );
+    }
 
+    await connectDB();
 
+    const sections = await Section.find({ menu: menuId });
 
-
+    return NextResponse.json(
+      { message: "Sections fetched successfully", data: sections },
+      { status: 200 }
+    );
+  } catch (error) {
+    return NextResponse.json(
+      { message: error?.message || "Failed to fetch restaurants" },
+      { status: 500 }
+    );
+  }
+}
 
 // // Get all items for a menu
 // exports.getItemsForMenu = async (req, res) => {
@@ -53,7 +80,7 @@ export async function POST(req) {
 //       res.status(500).json({ error: 'Error fetching items' });
 //     }
 //   };
-  
+
 //   // Update an item
 //   exports.updateItem = async (req, res) => {
 //     try {
@@ -66,7 +93,7 @@ export async function POST(req) {
 //       res.status(500).json({ error: 'Error updating item' });
 //     }
 //   };
-  
+
 //   // Delete an item
 //   exports.deleteItem = async (req, res) => {
 //     try {

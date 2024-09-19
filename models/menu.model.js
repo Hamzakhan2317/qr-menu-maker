@@ -8,7 +8,7 @@ const menuSchema = new mongoose.Schema(
       ref: "Restaurant",
       required: true,
     }, // Reference to the restaurant
-    items: [{ type: mongoose.Schema.Types.ObjectId, ref: "Item" }], // Referencing items in the menu
+    sections: [{ type: mongoose.Schema.Types.ObjectId, ref: "Section" }], // Referencing items in the menu
   },
   { timestamps: true }
 );
