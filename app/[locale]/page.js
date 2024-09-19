@@ -15,6 +15,7 @@ import { Box, ThemeProvider } from "@mui/material";
 import Navbar from "../../components/Navbar/Navbar.jsx";
 import InputField from "@/components/ui/InputField.jsx";
 
+
 const Home = () => {
   const theme = createCustomTheme();
 

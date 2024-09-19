@@ -35,6 +35,8 @@ import InputField from "../ui/InputField";
 import ButtonComp from "../ui/button";
 import SignUpLogo from "/public/SignUpImg.webp";
 import SecondaryNavbar from "../Navbar/SecondaryNavbar";
+import { useRegisterMutation } from "@/redux/services/api/authApis";
+
 
 const LoginPage = () => {
   const pathname = usePathname();
@@ -45,33 +47,24 @@ const LoginPage = () => {
     setLang(event.target.value);
   };
   const router = useRouter();
-  const handelSignup = async ({ email, phone, password }) => {
-    const toastId = toast.loading("Registring user...");
+  const [register, { isLoading }] = useRegisterMutation();
 
+
+
+  const handelSignup = async (values) => {
     try {
-      const res = await fetch(`/api/register`, {
-        method: "POST",
-        body: JSON.stringify({
-          email,
-          phone: phone.replace("+", ""),
-          password,
-        }),
-      });
-      const result = await res.json();
-      if (!res.ok) {
-        toast.error(result?.message || "Failed to register user", {
-          id: toastId,
-        });
-      } else {
-        toast.success(result?.message || "User register successfully", {
-          id: toastId,
-        });
+      const resp = await register({
+      ...values,
+      phone: values?.phone.replace("+", ""),
+      }).unwrap();
+
+      console.log("resp>>>>>", resp)
+      if (resp) {
+        toast.success(resp?.message || "User register successfully");
         router.push("/login");
       }
     } catch (error) {
-      toast.error(error.message, {
-        id: toastId,
-      });
+      console.log("error>>>>>", error);
     }
   };
 

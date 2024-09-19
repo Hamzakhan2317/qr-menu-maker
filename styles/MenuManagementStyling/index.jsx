@@ -12,14 +12,14 @@ export const emptyPageWrapper = {
   flexDirection: "column",
   justifyContent: "center",
   alignItems: "center",
-  minHeight: "80vh",
+  // minHeight: "80vh",
 };
 export const emptyPageWrapperSvg = {
   marginTop: "10px",
 };
 export const menuManagementCardWrapper = {
   backgroundColor: "#F0F2F5",
-  minHeight: "80vh",
+  // minHeight: "80vh",
   padding: "10px 24px",
 };
 export const menuManagementCard = {

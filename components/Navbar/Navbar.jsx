@@ -1,4 +1,5 @@
 "use client";
+
 import { Link, usePathname, useRouter } from "@/navigation";
 import LogoSvg from "@/public/assets/svg/logoSvg";
 import { createCustomTheme } from "@/styles/theme";
@@ -23,8 +24,13 @@ import ButtonComp from "../ui/button";
 import trFlag from "../../public/assets/images/turkeyflag.jpg";
 import usaflag from "../../public/assets/images/usaflag.png";
 import logo from "../../public/assets/images/logo.png";
+// import {useGetPostsQuery} from "@/redux/apiSlice.js"
 
 function Navbar(props) {
+
+
+ 
+
   const theme = createCustomTheme();
   const router = useRouter();
   const pathname = usePathname();
@@ -47,6 +53,10 @@ function Navbar(props) {
     { name: t("NavItemAbout"), href: "/about-us" },
     { name: t("NavItemContact"), href: "/contact-us" },
   ];
+
+  // const { data: posts, error, isLoading } = useGetPostsQuery();
+  // if (isLoading) return <div>Loading...</div>;
+  // if (error) return <div>Error: {error.message}</div>;
 
   // Set drawer width and anchor based on screen size
   const drawerWidth = isSm ? "100%" : isXs ? "100%" : "defaultWidth"; // Set defaultWidth to fit your design

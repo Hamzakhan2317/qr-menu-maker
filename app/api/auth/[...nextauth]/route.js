@@ -232,11 +232,13 @@ export const authOptions = {
 
         if (credentials.email && credentials.password) {
           // Email and Password Login
-          const user = await User.findOne({ email: credentials.email });
+          const user = await User.findOne({ email: credentials.email }).populate("restaurants");
 
           if (!user || !(await user.matchesPassword(credentials.password)))
             throw new Error("Invalid email or password.");
 
+
+          console.log("user>>>>>>>>>>>>>>>>>>>>", user)
           // if (!user) {
           //   throw new Error("No user found with this email.");
           // }
