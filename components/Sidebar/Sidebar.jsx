@@ -35,10 +35,11 @@ const Sidebar = ({ children }) => {
   const [settingsOpen, setSettingsOpen] = useState(false);
   const { push } = useRouter();
 
-  const userId = "66ebc27fca4cb5c1debc4d9e";
+const userId = "66ebc27fca4cb5c1debc4d9e"
   const { data, error, isLoading } = useGetAllRestaurentsQuery(userId);
 
-  console.log("dat>>>>>", data?.data[0]?.name);
+
+  console.log("dat>>>>>", data?.data[0]?.name)
 
   const toggleDrawer = () => {
     setIsOpen(!isOpen);
@@ -113,54 +114,6 @@ const Sidebar = ({ children }) => {
 
         <Divider />
         {data?.data && data?.data[0]?.name}
-
-        <List>
-          {sidebarmenu.map((item, index) => (
-            <div key={index}>
-              <ListItem
-                sx={sidebarHoverStyling}
-                button
-                onClick={() => handleToggle(item)}
-              >
-                <ListItemIcon sx={{ minWidth: "30px" }}>
-                  {item.icon}
-                </ListItemIcon>
-                {isOpen && (
-                  <ListItemText
-                    primary={item.title}
-                    primaryTypographyProps={{ fontSize: 14 }}
-                  />
-                )}
-                {isOpen &&
-                  item.isCollapsible &&
-                  (settingsOpen ? <ExpandLess /> : <ExpandMore />)}
-              </ListItem>
-              {item.isCollapsible && (
-                <Collapse
-                  in={settingsOpen && isOpen}
-                  timeout="auto"
-                  unmountOnExit
-                >
-                  <List component="div" disablePadding>
-                    {item.subItems.map((subItem, subIndex) => (
-                      <ListItem
-                        sx={sidebarHoverStyling}
-                        button
-                        onClick={() => push(subItem.route)}
-                        key={subIndex}
-                      >
-                        <ListItemText
-                          primaryTypographyProps={{ fontSize: 14 }}
-                          primary={subItem.title}
-                        />
-                      </ListItem>
-                    ))}
-                  </List>
-                </Collapse>
-              )}
-            </div>
-          ))}
-        </List>
 
 
         <List>
