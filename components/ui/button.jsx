@@ -70,6 +70,14 @@ const ButtonComp = ({
         color: "#8338EC",
       },
     },
+    disabled: {
+      backgroundColor: "transparent",
+      color: "#8338EC",
+      "&:hover": {
+        backgroundColor: "transparent",
+        color: "#8338EC",
+      },
+    },
   };
 
   return (
