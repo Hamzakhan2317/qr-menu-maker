@@ -1,4 +1,5 @@
-import * as React from "react";
+"use client";
+
 import { useState } from "react";
 import Box from "@mui/material/Box";
 import { FormLabel, Grid, Input, Typography } from "@mui/material";
@@ -6,16 +7,55 @@ import InputField from "../ui/InputField";
 import CustomDropzone from "../ui/Dropzone/CustomDropzone";
 import CustomCheckbox from "../ui/CustomCheckbox/CustomCheckbox";
 import ButtonComp from "../ui/button";
+import { useRegisterSectionMutation } from "@/redux/services/api/sectionApis";
+import { sectionSchema } from "@/validations/section/sectionSchema";
+import { useFormik } from "formik";
+import { toast } from "sonner";
 
-export default function RightDrawerContent() {
+
+
+
+export default function RightDrawerContent({menuId}) {
   const [open, setOpen] = useState(false);
+  const [ registerSection ] = useRegisterSectionMutation();
+
 
   const handleDrawerToggle = () => {
     setOpen(!open);
   };
 
+  const handelRegisterSection = async (values) => {
+    try {
+      const resp = await registerSection({
+        menuId,
+       ...values
+      }).unwrap();
+
+      if (resp) {
+        toast.success(resp?.message || "Section Created successfully");
+      }
+    } catch (error) {
+      console.log("error>>>>>", error);
+    }
+  };
+
+  const formik = useFormik({
+    initialValues: {
+      name: "",
+      description: "",
+      note: "",
+    },
+    validationSchema: sectionSchema,
+    onSubmit: async (values) => {
+      // console.log("values>>>>>>>>>", values)
+      handelRegisterSection(values);
+    },
+  });
+
+
+
   return (
-    <Box sx={{ padding: "10px" }}>
+    <Box sx={{ padding: "10px" }} component="form" onSubmit={formik.handleSubmit}>
       <Typography color={"#8338ec"}>Overview</Typography>
       <Grid container spacing={2}>
         <InputField
@@ -24,6 +64,8 @@ export default function RightDrawerContent() {
           required
           Placeholder={"Pasta"}
           customHeight="40px"
+          name="name"
+          formik={formik}
         />
         <InputField
           cols={12}
@@ -33,12 +75,16 @@ export default function RightDrawerContent() {
           Placeholder={
             "All pasta dough is prepared daily by our Italian chefs."
           }
+          name="description"
+          formik={formik}
         />
         <InputField
           label={"Note"}
           Placeholder={"20% VAT included our prices."}
           cols={12}
           customHeight="40px"
+          name="note"
+          formik={formik}
         />
       </Grid>
       <Box marginTop="15px">
@@ -66,7 +112,7 @@ export default function RightDrawerContent() {
         </Box>
         <Box>
           <ButtonComp text="Cancel" padding="4px 11px" />
-          <ButtonComp text="Save" padding="4px 11px" />
+          <ButtonComp text="Save" padding="4px 11px" onClick={formik.handleSubmit}/>
         </Box>
       </Box>
     </Box>

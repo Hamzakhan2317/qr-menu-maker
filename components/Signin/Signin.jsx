@@ -25,15 +25,23 @@ import usaflag from "../../public/assets/images/usaflag.png";
 import InputField from "../ui/InputField";
 import ButtonComp from "../ui/button";
 import SecondaryNavbar from "../Navbar/SecondaryNavbar";
+import { useDispatch } from "react-redux";
+// import { useSession } from "next-auth/react";
+
 const LoginPage = () => {
+  // const { data: session } = useSession();
+
   const router = useRouter();
   const [passwordVisible, setPasswordVisible] = useState(false);
   const pathname = usePathname();
   const locale = useLocale();
+  const dispatch = useDispatch()
   const [lang, setLang] = useState(locale);
   const handleChange = (event) => {
     setLang(event.target.value);
   };
+
+  // console.log("session>>>>>>>", session)
 
   const handleLogin = async ({ email, password }) => {
     const toastId = toast.loading("Login user...");
@@ -46,12 +54,17 @@ const LoginPage = () => {
         // callbackUrl: process.env.NEXTAUTH_URL
       });
 
+      // console.log("Resp>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", res)
+
 
       if (res?.error) {
         toast.error("Invalid email or password", { id: toastId });
       }
       if (res?.ok) {
         toast.success("Login successfully", { id: toastId });
+
+        // dispatch()
+
         router.push("/venues/dashboard");
       }
     } catch (error) {
