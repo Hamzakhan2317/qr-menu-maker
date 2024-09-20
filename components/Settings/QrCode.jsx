@@ -3,9 +3,12 @@ import { Box, Grid, Typography } from "@mui/material";
 import React, { useState } from "react";
 import QRCode from "react-qr-code";
 import {
+  bgqrColorPicker,
   qrcodeBox,
   qrcodeBoxWrapper,
+  qrCodeHeader,
   qrcodeWrapper,
+  qrColorPicker,
   qrcopyLink,
   qrnote,
 } from "@/styles/DashboarStyling";
@@ -17,7 +20,7 @@ const QrCode = () => {
   const [isCopied, setIsCopied] = useState(false);
   const [qrColor, setQrColor] = useState("#A874F2");
   const [bgQrColor, setBgQrColor] = useState("#FFFFFF");
-  const qrCodeLink = "https://www.google.com/";
+  const qrCodeLink = "http://localhost:4000/en/garsonline-menu";
   const handleCopy = () => {
     navigator.clipboard.writeText(qrCodeLink).then(() => {
       setIsCopied(true);
@@ -25,18 +28,17 @@ const QrCode = () => {
     });
   };
   return (
-    <Box>
+    <Box sx={{ minHeight: "90vh" }}>
+      <Box sx={qrCodeHeader}>
+        <Typography
+          sx={{ fontSize: "20px", lineHeight: "32px", fontWeight: "600" }}
+        >
+          Qr Code
+        </Typography>
+      </Box>
       <Grid container spacing={2} mt={2}>
-        <Grid item xs={12} sm={12} md={6} sx={qrcodeWrapper}>
-          <Box
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              marginBottom: "40px",
-              borderBottom: "1px solid #0000000f",
-              paddingBottom: "40px",
-            }}
-          >
+        <Grid item xs={12} sm={10} md={6} sx={qrcodeWrapper}>
+          <Box sx={qrColorPicker}>
             <Box>
               <Typography
                 fontSize={"14px"}
@@ -47,7 +49,7 @@ const QrCode = () => {
               </Typography>
               <ColorPicker selectedColor={qrColor} onColorChange={setQrColor} />
             </Box>
-            <Box sx={{ marginLeft: "15px" }}>
+            <Box sx={bgqrColorPicker}>
               <Typography
                 fontSize={"14px"}
                 color={"#000000d9"}
@@ -76,7 +78,7 @@ const QrCode = () => {
                     maxWidth: "100%",
                     width: "100%",
                   }}
-                  value={"https://www.google.com/"}
+                  value={"http://localhost:4000/en/garsonline-menu"}
                   viewBox={`0 0 256 256`}
                 />
               </Box>

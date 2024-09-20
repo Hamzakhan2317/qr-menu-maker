@@ -3,7 +3,11 @@ export const qrcodeWrapper = {
   backgroundColor: "#ffffff !important",
   boxShadow: "rgba(0, 0, 0, 0.16) 0px 1px 4px;",
   padding: "15px",
-  marginLeft: "20px",
+  marginLeft: "40px",
+  marginBottom: "20px",
+  paddingRight: {
+    sm: "20px",
+  },
   borderRadius: "8px",
   minHeight: "350px",
 };
@@ -17,6 +21,27 @@ export const qrcodeBoxWrapper = {
   justifyContent: "center",
   alignItems: "center",
   marginTop: "10px",
+};
+export const qrColorPicker = {
+  display: "flex",
+  alignItems: "center",
+  flexWrap: "wrap",
+  marginBottom: "40px",
+  borderBottom: "1px solid #0000000f",
+  paddingBottom: "40px",
+};
+export const bgqrColorPicker = {
+  marginLeft: "15px",
+  [`@media (min-width: 280px) and (max-width:517px)`]: {
+    marginLeft: "0px",
+    marginTop: "10px",
+  },
+};
+export const qrCodeHeader = {
+  backgroundColor: "#ffffff",
+  padding: "10px 24px",
+  display: "flex",
+  alignItems: "center",
 };
 export const qrcodeBox = {
   width: "120px",
@@ -34,7 +59,13 @@ export const qrnote = {
 export const qrcopyLink = {
   width: "100%",
   display: "flex",
-  justifyContent: "space-between",
+  justifyContent: {
+    xl: "space-between",
+    lg: "space-between",
+    md: "space-between",
+    sm: "center",
+    xs: "center",
+  },
   alignItems: "center",
   flexWrap: "wrap",
   marginTop: "10px",

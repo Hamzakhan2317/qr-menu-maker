@@ -21,7 +21,7 @@ const Dashboard = () => {
   const router = useRouter();
   const [isCopied, setIsCopied] = useState(false);
   const [currentDateTime, setCurrentDateTime] = useState();
-  const qrCodeLink = "http://localhost:3000/en/garsonline-menu";
+  const qrCodeLink = "http://localhost:4000/en/garsonline-menu";
   const logout = async () => {
     await signOut({ redirect: false });
     router.push("/login");
@@ -38,7 +38,7 @@ const Dashboard = () => {
   };
 
   return (
-    <Box>
+    <Box sx={{ paddingLeft: "24px", marginTop: "20px", minHeight: "90vh" }}>
       <p>{currentDateTime}</p>
       <h3 color="#000000d9">Food , Welcome!</h3>
       <Grid container spacing={2} mt={2}>

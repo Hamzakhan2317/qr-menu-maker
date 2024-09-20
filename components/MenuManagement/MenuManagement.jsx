@@ -24,18 +24,20 @@ import SectionList from "./SectionList";
 import CloseIcon from "@mui/icons-material/Close";
 import InputField from "../ui/InputField";
 import RightDrawerContent from "./RightDrawerContent";
-import { useRegisterMenuMutation, useGetAllMenuQuery } from "@/redux/services/api/menuApis";
+import {
+  useRegisterMenuMutation,
+  useGetAllMenuQuery,
+} from "@/redux/services/api/menuApis";
 import { useSession, signOut } from "next-auth/react";
 import {toast} from "sonner"
 import {useEffect} from "react"
 import {useRouter} from "@/navigation"
 import { useParams } from 'next/navigation';
 
-
-
+import { BallTriangle } from "react-loader-spinner";
 
 const MenuManagement = () => {
-  const { data: session, status:sessionStatus } = useSession();
+  const { data: session, status: sessionStatus } = useSession();
   const [menuCreated, setMenuCreated] = useState(false);
   const [menuEdit, setMenuEdit] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -43,17 +45,17 @@ const MenuManagement = () => {
   const params = useParams();
   const { venueId} = params;
 
-
-  const [ registerMenu ] = useRegisterMenuMutation();
-  const { data:menuData, error, isLoading, refetch } = useGetAllMenuQuery(session?.user?.restaurants[0]?._id, {
+  const [registerMenu] = useRegisterMenuMutation();
+  const {
+    data: menuData,
+    error,
+    isLoading,
+    refetch,
+  } = useGetAllMenuQuery(session?.user?.restaurants[0]?._id, {
     skip: !session?.user?.restaurants[0]?._id, // Skip the query until user data is available
   });
 
   // const { data:menuData, error, isLoading } = useGetAllMenuQuery("66ec420b346ea4f06bdf87e7");
-
-  console.log("venueId>>>>>>>>>>>>>",venueId)
-
-
 
   const handleDrawerToggle = () => {
     setIsDrawerOpen((prevOpen) => !prevOpen);
@@ -63,25 +65,26 @@ const MenuManagement = () => {
   };
   const status = "Always";
 
-  const createMenu =  async() => {
+  const createMenu = async () => {
     // const handelregisterMenu = async (values) => {
-      { session?.user?.restaurants[0]?._id  }
+    {
+      session?.user?.restaurants[0]?._id;
+    }
 
-      try {
-        const resp = await registerMenu({
-          restaurantId:session?.user?.restaurants[0]?._id ,
-          name:"new menu"
-        }).unwrap();
-  
-        if (resp) {
-          setMenuCreated(true)
-          // toast.success(resp?.message || "Menu Created successfully");
-        }
-      } catch (error) {
-        console.log("error>>>>>", error);
+    try {
+      const resp = await registerMenu({
+        restaurantId: session?.user?.restaurants[0]?._id,
+        name: "new menu",
+      }).unwrap();
+
+      if (resp) {
+        setMenuCreated(true);
+        // toast.success(resp?.message || "Menu Created successfully");
       }
+    } catch (error) {
+      console.log("error>>>>>", error);
+    }
     // };
-
   };
 
   const cardLastRow = [
@@ -113,13 +116,12 @@ const MenuManagement = () => {
     if(menuData?.data?.length){
       setMenuCreated(true)
     }
-
-  },[menuData])
-//   useEffect(()=>{
-//     if(session?.user?.restaurants[0]?._id){
-// refetch()
-//     }
-//   },[session?.user])
+  }, [menuData]);
+  //   useEffect(()=>{
+  //     if(session?.user?.restaurants[0]?._id){
+  // refetch()
+  //     }
+  //   },[session?.user])
   return (
     <Box>
       <Box sx={MenuManagementHeader}>
@@ -155,7 +157,9 @@ const MenuManagement = () => {
                 <Box key={i} sx={menuManagementCardWrapper} onClick={()=> router.push(`/venues/${venueId}/menu-management/${menu?._id}/section`)}>
                   <Box sx={menuManagementCard}>
                     <Box>
-                      <Typography color="#00000073">Copy of Sample Menu</Typography>
+                      <Typography color="#00000073">
+                        Copy of Sample Menu
+                      </Typography>
                       <Typography color="#00000073" fontSize={"14px"}>
                         Your happy place!
                       </Typography>
@@ -224,36 +228,46 @@ const MenuManagement = () => {
                     </Box>
                   </Box>
                 </Box>
-              ))
-            }
+              ))}
             </>
-            
           ) : (
             <Box sx={emptyPageWrapper}>
-              {sessionStatus === "loading" || isLoading? <>Loading.........</>:
-              <>
-              <Box sx={emptyPageWrapperSvg}>
-              <EmptyPageSvg />
-            </Box>
-            <Typography sx={{ fontSize: "14px", marginTop: "10px" }}>
-              You don’t have any menu yet. Start creating one.
-            </Typography>
-            <ButtonComp
-              text="Create a Menu"
-              variants="purple"
-              padding="4px 15px"
-              marginTop="10px"
-              sx={{ height: "32px" }}
-              onClick={createMenu}
-            />
-            </>
-              }
-              
+              {sessionStatus === "loading" || isLoading ? (
+                <>
+                  <BallTriangle
+                    height={100}
+                    width={100}
+                    radius={5}
+                    color="#4fa94d"
+                    ariaLabel="ball-triangle-loading"
+                    wrapperStyle={{}}
+                    wrapperClass=""
+                    visible={true}
+                  />
+                </>
+              ) : (
+                <>
+                  <Box sx={emptyPageWrapperSvg}>
+                    <EmptyPageSvg />
+                  </Box>
+                  <Typography sx={{ fontSize: "14px", marginTop: "10px" }}>
+                    You don’t have any menu yet. Start creating one.
+                  </Typography>
+                  <ButtonComp
+                    text="Create a Menu"
+                    variants="purple"
+                    padding="4px 15px"
+                    marginTop="10px"
+                    sx={{ height: "32px" }}
+                    onClick={createMenu}
+                  />
+                </>
+              )}
             </Box>
           )}
         </>
       ) : (
-      <>section part</>
+        <>section part</>
       )}
     </Box>
   );

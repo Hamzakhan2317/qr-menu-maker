@@ -17,8 +17,7 @@ import { toast } from "sonner";
 
 export default function RightDrawerContent({menuId, onClose}) {
   const [open, setOpen] = useState(false);
-  const [ registerSection ] = useRegisterSectionMutation();
-
+  const [registerSection] = useRegisterSectionMutation();
 
   const handleDrawerToggle = () => {
     setOpen(!open);
@@ -28,7 +27,7 @@ export default function RightDrawerContent({menuId, onClose}) {
     try {
       const resp = await registerSection({
         menuId,
-       ...values
+        ...values,
       }).unwrap();
 
       if (resp) {
@@ -48,15 +47,16 @@ export default function RightDrawerContent({menuId, onClose}) {
     },
     validationSchema: sectionSchema,
     onSubmit: async (values) => {
-      // console.log("values>>>>>>>>>", values)
       handelRegisterSection(values);
     },
   });
 
-
-
   return (
-    <Box sx={{ padding: "10px" }} component="form" onSubmit={formik.handleSubmit}>
+    <Box
+      sx={{ padding: "10px" }}
+      component="form"
+      onSubmit={formik.handleSubmit}
+    >
       <Typography color={"#8338ec"}>Overview</Typography>
       <Grid container spacing={2}>
         <InputField
@@ -101,8 +101,8 @@ export default function RightDrawerContent({menuId, onClose}) {
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
-          // position: "fixed",
-          // bottom: "0",
+          position: "sticky",
+          bottom: "0",
           backgroundColor: "#fff",
           height: "60px",
           borderTop: "1px solid #E5E5E5",
@@ -112,8 +112,22 @@ export default function RightDrawerContent({menuId, onClose}) {
           <CustomCheckbox label="Save and add more" />
         </Box>
         <Box>
-          <ButtonComp text="Cancel" padding="4px 11px" />
-          <ButtonComp text="Save" padding="4px 11px" onClick={formik.handleSubmit}/>
+          <ButtonComp
+            text="Cancel"
+            padding="4px 20px"
+            marginRight="10px"
+            variant="transparent"
+            hoverBorder="1px solid #8338EC"
+            border="1px solid #d9d9d9"
+          />
+          <ButtonComp
+            text="Save"
+            padding="4px 20px"
+            variant="transparent"
+            hoverBorder="1px solid #8338EC"
+            border="1px solid #d9d9d9"
+            onClick={formik.handleSubmit}
+          />
         </Box>
       </Box>
     </Box>

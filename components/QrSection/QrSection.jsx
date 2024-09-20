@@ -9,85 +9,11 @@ import { useTranslations } from "next-intl";
 import Image from "next/image";
 import ButtonComp from "../../components/ui/button";
 import qrImage from "../../public/assets/images/qrimage.webp";
-import { useRegisterRestaurentMutation } from "@/redux/services/api/restaurentApis";
 import {toast} from "sonner"
-import { useRegisterMenuMutation } from "@/redux/services/api/menuApis";
-import { useRegisterItemMutation } from "@/redux/services/api/itemApis";
-import { useRegisterSectionMutation } from "@/redux/services/api/sectionApis";
+
 
 const QrSection = () => {
   const t = useTranslations("Home.Qr");
-
-  const [ registerRestaurent ] = useRegisterRestaurentMutation();
-  const [ registerMenu ] = useRegisterMenuMutation();
-  const [ registerSection ] = useRegisterSectionMutation();
-  const [ registerItem ] = useRegisterItemMutation();
-
-  const handelregisterRestaurent = async (values) => {
-    try {
-      const resp = await registerRestaurent({
-        userId:"66e99b463d977aa5b4bb3ef3",
-        restaurantName:"new resturant"
-      }).unwrap();
-
-      console.log("resp>>>>>", resp)
-      if (resp) {
-        toast.success(resp?.message || "User register successfully");
-      }
-    } catch (error) {
-      console.log("error>>>>>", error);
-    }
-  };
-
-  const handelregisterMenu = async (values) => {
-    try {
-      const resp = await registerMenu({
-        restaurantId:"66e96b49e1c80f4e6f4c1459",
-        name:"new menu"
-      }).unwrap();
-
-      console.log("resp>>>>>", resp)
-      if (resp) {
-        toast.success(resp?.message || "Menu register successfully");
-      }
-    } catch (error) {
-      console.log("error>>>>>", error);
-    }
-  };
-
-  const handelregisterItem = async (values) => {
-    try {
-      const resp = await registerItem({
-        sectionId:"66ed47d886193fb6e7eb5b0e",
-        name:"new item",
-        description:" new description",
-        price:20
-      }).unwrap();
-
-      if (resp) {
-        toast.success(resp?.message || "Menu register successfully");
-      }
-    } catch (error) {
-      console.log("error>>>>>", error);
-    }
-  };
-
-
-  const handelregisterSection = async (values) => {
-    try {
-      const resp = await registerSection({
-        menuId:"66e96fe9e1c80f4e6f4c1472",
-        name:"new Section",
-      }).unwrap();
-
-      if (resp) {
-        toast.success(resp?.message || "Section register successfully");
-      }
-    } catch (error) {
-      console.log("error>>>>>", error);
-    }
-  };
-
 
   
 
@@ -142,11 +68,6 @@ const QrSection = () => {
                     }}
                     text={t("Button")}
                   />
-                                          <ButtonComp text={"add resturent"} variant="blue" onClick={()=>handelregisterRestaurent()} />
-                                          <ButtonComp text={"add Menu"} variant="blue" onClick={()=>handelregisterMenu()} />
-                                          <ButtonComp text={"add section"} variant="blue" onClick={()=>handelregisterSection()} />
-                                          <ButtonComp text={"add Item"} variant="blue" onClick={()=>handelregisterItem()} />
-                                          
 
                 </Box>
               </Box>
