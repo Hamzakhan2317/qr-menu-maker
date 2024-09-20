@@ -233,6 +233,9 @@ const Sidebar = ({ children }) => {
                   marginTop: "20px",
                   padding: "5px 8px !important",
                   width: "176px",
+                  "& .MuiOutlinedInput-root": {
+                    paddingLeft: "0px",
+                  },
                 }}
               />
               <List

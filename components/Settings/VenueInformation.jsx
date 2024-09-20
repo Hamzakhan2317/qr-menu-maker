@@ -1,5 +1,5 @@
 "use client";
-import { Box, Grid } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import React from "react";
 import InputField from "../ui/InputField";
 import Input from "@mui/joy/Input";
@@ -11,10 +11,18 @@ import PhoneInput from "../ui/PhoneInput";
 import ButtonComp from "../ui/button";
 import Dropzone from "react-dropzone";
 import CustomDropzone from "../ui/Dropzone/CustomDropzone";
+import { OperatingHoursHeader } from "@/styles/common";
 
 const VenueInformation = () => {
   return (
     <Box sx={{ backgroundColor: "#F0F2F5", minHeight: "100vh" }}>
+      <Box sx={OperatingHoursHeader}>
+        <Typography
+          sx={{ fontSize: "20px", lineHeight: "32px", fontWeight: "600" }}
+        >
+          Venue Information
+        </Typography>
+      </Box>
       <Grid container spacing={2} sx={{ padding: "20px" }}>
         <Grid
           item
@@ -25,6 +33,8 @@ const VenueInformation = () => {
             backgroundColor: "#ffffff",
             borderRadius: "8px",
             padding: "20px",
+            marginLeft: "20px",
+            marginTop: "10px",
           }}
         >
           <Grid container>
@@ -40,7 +50,9 @@ const VenueInformation = () => {
               },
             }}
           >
-            <FormLabel>Venue ID</FormLabel>
+            <FormLabel sx={{ fontWeight: "400 !important" }}>
+              Venue ID
+            </FormLabel>
             <Input
               size="md"
               placeholder="TqUA1DNJA"
@@ -56,10 +68,20 @@ const VenueInformation = () => {
             />
           </FormControl>
           <Box sx={{ marginTop: "10px" }}>
-            <FormLabel sx={{ marginBottom: "10px" }}>Logo</FormLabel>
+            <FormLabel
+              sx={{ marginBottom: "10px", fontWeight: "400 !important" }}
+            >
+              Logo
+            </FormLabel>
             <CustomDropzone />
           </Box>
-          <FormLabel sx={{ marginTop: "25px", marginBottom: "25px" }}>
+          <FormLabel
+            sx={{
+              marginTop: "25px",
+              marginBottom: "25px",
+              fontWeight: "400 !important",
+            }}
+          >
             Address{" "}
             <span
               style={{
@@ -68,6 +90,7 @@ const VenueInformation = () => {
                 textDecoration: "underline",
                 marginLeft: "20px",
                 cursor: "pointer",
+                fontWeight: "400 !important",
               }}
             >
               Select from map

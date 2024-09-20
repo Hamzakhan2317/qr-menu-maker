@@ -14,7 +14,7 @@ import {
   menuSearch,
   menuWrapper,
 } from "@/styles/DashboarStyling";
-import { Box, Grid, Typography } from "@mui/material";
+import { Box, Drawer, Grid, IconButton, Typography } from "@mui/material";
 import LoginSharpIcon from "@mui/icons-material/LoginSharp";
 import InfoIcon from "@mui/icons-material/Info";
 import ButtonComp from "@/components/ui/button";
@@ -25,9 +25,14 @@ import InputField from "../ui/InputField";
 import Image from "next/image";
 import FoodTypeArray, { foodInfoArray } from "@/public/assets/static";
 import CustomAccordion from "../ui/Accordion/CustomAccordion";
+import CloseIcon from "@mui/icons-material/Close";
+import CustomModal from "../ui/CustomModal";
+import GarsOnlineModal from "./GarsOnlineModal";
 
 const GarsonlineMenu = () => {
-  const [isMenu, setIsMenu] = useState(true);
+  const [isMenu, setIsMenu] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [isgarsDrawerOpen, setIsgarsDrawerOpen] = useState(false);
   return (
     <Box sx={{ display: "flex", height: "100vh", color: "#130F40" }}>
       <Box sx={leftMobileViewGarsonline}>
@@ -78,8 +83,20 @@ const GarsonlineMenu = () => {
                 variant="lightPurple"
                 padding="6px 10px"
                 width={"80%"}
+                onClick={() => {
+                  setOpen(true);
+                }}
               />
             </Box>
+            <CustomModal
+              setOpen={setOpen}
+              open={open}
+              title={"Select Menu"}
+              width="auto"
+              maxWidth="md"
+            >
+              <GarsOnlineModal setIsMenu={setIsMenu} />
+            </CustomModal>
           </Box>
         ) : (
           <Box>
@@ -111,10 +128,49 @@ const GarsonlineMenu = () => {
                   cursor: "pointer",
                   marginTop: "2px",
                 }}
+                onClick={() => {
+                  setIsgarsDrawerOpen(true);
+                }}
               >
                 <MenuIcon />
               </Box>
             </Box>
+            <Drawer
+              anchor="left"
+              open={isgarsDrawerOpen}
+              onClose={() => {
+                setIsgarsDrawerOpen(false);
+              }}
+              sx={{
+                width: 400,
+                flexShrink: 0,
+                "& .MuiDrawer-paper": {
+                  width: 400,
+                  boxSizing: "border-box",
+                },
+              }}
+            >
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  padding: "10px",
+                  flexDirection: "row-reverse",
+                  justifyContent: "flex-end",
+                  borderBottom: "1px solid #ddd",
+                }}
+              >
+                <h3>Add New Item</h3>
+                <IconButton
+                  onClick={() => {
+                    setIsgarsDrawerOpen(false);
+                  }}
+                  marginRight="5px"
+                >
+                  <CloseIcon />
+                </IconButton>
+              </Box>
+            </Drawer>
             <Box sx={{ padding: "10px" }}>
               <Box sx={copyOfSampleMenu}>
                 <Typography

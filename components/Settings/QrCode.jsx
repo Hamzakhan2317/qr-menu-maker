@@ -20,7 +20,7 @@ const QrCode = () => {
   const [isCopied, setIsCopied] = useState(false);
   const [qrColor, setQrColor] = useState("#A874F2");
   const [bgQrColor, setBgQrColor] = useState("#FFFFFF");
-  const qrCodeLink = "https://www.google.com/";
+  const qrCodeLink = "http://localhost:4000/en/garsonline-menu";
   const handleCopy = () => {
     navigator.clipboard.writeText(qrCodeLink).then(() => {
       setIsCopied(true);
@@ -78,7 +78,7 @@ const QrCode = () => {
                     maxWidth: "100%",
                     width: "100%",
                   }}
-                  value={"https://www.google.com/"}
+                  value={"http://localhost:4000/en/garsonline-menu"}
                   viewBox={`0 0 256 256`}
                 />
               </Box>
