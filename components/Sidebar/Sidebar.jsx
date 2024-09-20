@@ -39,8 +39,11 @@ import { useGetAllRestaurentsQuery } from "@/redux/services/api/restaurentApis";
 import { useSession } from "next-auth/react";
 import { RestaurantSvg } from "@/public/assets/svg/Egg";
 import InputField from "../ui/InputField";
+import AddRestaurantsForm from "../AddRestaurants";
+import { set } from "mongoose";
 
 const Sidebar = ({ children }) => {
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(true);
   const [restaurantOpen, setRestaurantOpen] = useState(true);
   const [settingsOpen, setSettingsOpen] = useState(false);
@@ -48,47 +51,48 @@ const Sidebar = ({ children }) => {
   const restaurants = ["Food"];
   const { push } = useRouter();
   const { data: session } = useSession();
+  const [venues, setVenues] = useState([]);
 
-// Assuming you want to pass the first restaurant's ID
-const venueId = session?.user?.restaurants?.[0]?._id;
+  // Assuming you want to pass the first restaurant's ID
+  const venueId = session?.user?.restaurants?.[0]?._id;
 
-// Dynamic sidebarmenu with the actual restaurant id
-const sidebarmenu = [
-  {
-    title: "Dashboard",
-    icon: <DashboardIcon />,
-    route: `/venues/${venueId}/dashboard`,
-    isCollapsible: false,
-  },
-  {
-    title: "Menu Management",
-    icon: <MenuIcon />,
-    route: `/venues/${venueId}/menu-management`,
-    isCollapsible: false,
-  },
-  {
-    title: "Settings",
-    icon: <SettingsIcon />,
-    isCollapsible: true,
-    subItems: [
-      { title: "QR Code", route: `/venues/${venueId}/settings/qrcode` },
-      {
-        title: "Venue Information",
-        route: `/venues/${venueId}/settings/venue-information`,
-      },
-      {
-        title: "Operating Hours",
-        route: `/venues/${venueId}/settings/operating-hours`,
-      },
-    ],
-  },
-];
+  // Dynamic sidebarmenu with the actual restaurant id
+  const sidebarmenu = [
+    {
+      title: "Dashboard",
+      icon: <DashboardIcon />,
+      route: `/venues/${venueId}/dashboard`,
+      isCollapsible: false,
+    },
+    {
+      title: "Menu Management",
+      icon: <MenuIcon />,
+      route: `/venues/${venueId}/menu-management`,
+      isCollapsible: false,
+    },
+    {
+      title: "Settings",
+      icon: <SettingsIcon />,
+      isCollapsible: true,
+      subItems: [
+        { title: "QR Code", route: `/venues/${venueId}/settings/qrcode` },
+        {
+          title: "Venue Information",
+          route: `/venues/${venueId}/settings/venue-information`,
+        },
+        {
+          title: "Operating Hours",
+          route: `/venues/${venueId}/settings/operating-hours`,
+        },
+      ],
+    },
+  ];
 
+  const { data, error, isLoading, refetch: refetchRestaurants } = useGetAllRestaurentsQuery(session?.user?._id, {
+    skip: !session?.user?._id, // Skip the query until user data is available
+  });
 
-const { data, error, isLoading } = useGetAllRestaurentsQuery(session?.user?._id, {
-  skip: !session?.user?._id, // Skip the query until user data is available
-});
-
+  console.log("data", data);
 
   const toggleDrawer = () => {
     setIsOpen(!isOpen);
@@ -97,7 +101,7 @@ const { data, error, isLoading } = useGetAllRestaurentsQuery(session?.user?._id,
   const handleRestaurantToggle = () => {
     setRestaurantOpen(!restaurantOpen);
   };
-  console.log("restaurantOpen", restaurantOpen);
+  console.log("restaurantOpen", restaurantOpen, session?.user);
   const handleSearchChange = (e) => {
     setSearchQuery(e.target.value);
   };
@@ -107,7 +111,7 @@ const { data, error, isLoading } = useGetAllRestaurentsQuery(session?.user?._id,
       setSettingsOpen(!settingsOpen);
     } else {
       push(item.route);
-    
+
     }
   };
   useEffect(() => {
@@ -126,6 +130,10 @@ const { data, error, isLoading } = useGetAllRestaurentsQuery(session?.user?._id,
       window.removeEventListener("resize", handleResize);
     };
   }, [isOpen]);
+
+  useEffect(() => {
+    setVenues(data?.data);
+  }, [data]);
 
   return (
     <Box
@@ -276,10 +284,11 @@ const { data, error, isLoading } = useGetAllRestaurentsQuery(session?.user?._id,
                 disablePadding
                 sx={{ width: "100% !important" }}
               >
-                {session?.user?.restaurants?.length === 0 ? (
+                {venues?.length === 0 ? (
                   <ListItem
                     sx={{
                       // paddingLeft: 2,
+                      cursor: "pointer",
                       backgroundColor: "#F9F5FE",
                       width: "100% ",
                     }}
@@ -287,14 +296,16 @@ const { data, error, isLoading } = useGetAllRestaurentsQuery(session?.user?._id,
                     <ListItemText
                       sx={{ width: "100%" }}
                       primary={
-                        session?.user?.restaurants[0]?.name ?? "GarsOnline"
+                        venues?.[0]?.name ?? "GarsOnline"
                       }
                     />
                   </ListItem>
                 ) : (
-                  session?.user?.restaurants?.map((item, index) => (
+                  venues?.map((item, index) => (
                     <ListItem
+                      onClick={() => push(`/venues/${item._id}/dashboard`)}
                       sx={{
+                        cursor: "pointer",
                         paddingLeft: 2,
                         backgroundColor: "#F9F5FE",
                         width: "100% !important",
@@ -320,6 +331,7 @@ const { data, error, isLoading } = useGetAllRestaurentsQuery(session?.user?._id,
                 width: "90%",
                 marginLeft: "8px",
               }}
+              onClick={() => setIsDrawerOpen(true)}
             >
               Add new venue
             </Button>
@@ -429,6 +441,23 @@ const { data, error, isLoading } = useGetAllRestaurentsQuery(session?.user?._id,
           {children}
         </Box>
       </Box>
+
+      <Drawer
+        anchor="right"
+        open={isDrawerOpen}
+        onClose={() => setIsDrawerOpen(false)}
+        sx={{
+          width: 456,
+          flexShrink: 0,
+          "& .MuiDrawer-paper": {
+            width: 456,
+            boxSizing: "border-box",
+          },
+        }}
+        variant="persistent"
+      >
+        <AddRestaurantsForm refetchRestaurants={refetchRestaurants} userId={session?.user?._id} setIsDrawerOpen={setIsDrawerOpen} />
+      </Drawer>
     </Box>
   );
 };

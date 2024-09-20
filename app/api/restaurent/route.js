@@ -7,7 +7,7 @@ export async function POST(req) {
   console.log("Request received"); // Added log
   // return NextResponse.json({ message:"Restaurent Created successfully" }, { status: 201 });
 
-  const { userId, restaurantName } = await req.json();
+  const { owner: userId, name: restaurantName,address:resAddress } = await req.json();
   try {
     await connectDB();
     if (![userId, restaurantName].every(Boolean))
@@ -23,6 +23,7 @@ export async function POST(req) {
 
     const newRestaurent = new Restaurent({
       name: restaurantName,
+      address: resAddress ? resAddress : "",
       owner: userId,
     });
 

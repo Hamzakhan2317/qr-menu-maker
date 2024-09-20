@@ -13,7 +13,7 @@ const Section = () => {
   const params = useParams();
   const { menuId } = params;
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-const {data:sections, isLoading } = useGetAllSectionQuery(menuId)
+  const { data: sections, isLoading } = useGetAllSectionQuery(menuId)
 
 
   const handleDrawerToggle = () => {

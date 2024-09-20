@@ -4,8 +4,7 @@ import Section from '@/components/MenuManagement/Section'
 const page = () => {
   return (
     <>
-    
-    <Section/>
+      <Section />
     </>
   )
 }
