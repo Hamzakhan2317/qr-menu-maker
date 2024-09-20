@@ -200,7 +200,7 @@ const SectionList = ({ onAddClick }) => {
           sx={{
             minHeight: "23px",
             "& .MuiTabs-flexContainer": {
-              border: "1px solid #d9d9d9",
+              // border: "1px solid #d9d9d9",
               borderRadius: "30px",
               minHeight: "23px",
               "& .MuiButtonBase-root": {
@@ -223,28 +223,34 @@ const SectionList = ({ onAddClick }) => {
           <Tab
             label="All"
             sx={{
-              border: activeTab === 0 ? "1px solid #8338ec" : "",
+              border:
+                activeTab === 0 ? "1px solid #8338ec" : "1px solid #d9d9d9",
               color: activeTab === 0 ? "#8338ec" : "black",
               borderRadius: "8px 0 0 8px",
               padding: "1px 5px",
+              fontWeight: "400",
             }}
           />
           <Tab
             label="Active"
             sx={{
-              border: activeTab === 1 ? "1px solid #8338ec" : "",
+              border:
+                activeTab === 1 ? "1px solid #8338ec" : "1px solid #d9d9d9",
               color: activeTab === 1 ? "#8338ec" : "black",
               borderRadius: "0",
               padding: "1px 5px",
+              fontWeight: "400",
             }}
           />
           <Tab
             label="Inactive"
             sx={{
-              border: activeTab === 2 ? "1px solid #8338ec" : "",
+              border:
+                activeTab === 2 ? "1px solid #8338ec" : "1px solid #d9d9d9",
               color: activeTab === 2 ? "#8338ec" : "black",
               borderRadius: "0 8px 8px 0",
               padding: "1px 5px",
+              fontWeight: "400",
             }}
           />
         </Tabs>

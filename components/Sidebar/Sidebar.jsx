@@ -13,6 +13,8 @@ import {
   IconButton,
   Divider,
   Box,
+  Button,
+  TextField,
 } from "@mui/material";
 import {
   Dashboard as DashboardIcon,
@@ -20,7 +22,10 @@ import {
   Settings as SettingsIcon,
   ExpandLess,
   ExpandMore,
+  Restaurant as RestaurantIcon,
+  Add as AddIcon,
   ExitToApp as LogoutIcon,
+  Search as SearchIcon,
 } from "@mui/icons-material";
 import garsLogo from "../../public/assets/images/logo.png";
 import Logo from "../../public/assets/images/8.webp";
@@ -31,28 +36,38 @@ import { sidebarHoverStyling, sidebarmenu } from "@/public/assets/static";
 import { useGetAllRestaurentsQuery } from "@/redux/services/api/restaurentApis";
 
 import { useSession } from "next-auth/react";
-
+import { RestaurantSvg } from "@/public/assets/svg/Egg";
+import InputField from "../ui/InputField";
 
 const Sidebar = ({ children }) => {
   const [isOpen, setIsOpen] = useState(true);
+  const [restaurantOpen, setRestaurantOpen] = useState(true);
   const [settingsOpen, setSettingsOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const restaurants = ["Food"];
   const { push } = useRouter();
-    const { data: session } = useSession();
+  const { data: session } = useSession();
 
+  const userId = "66ec420b346ea4f06bdf87e5";
 
-const userId = "66ec420b346ea4f06bdf87e5"
-
-
-const { data, error, isLoading } = useGetAllRestaurentsQuery(session?.user?._id, {
-  skip: !session?.user?._id, // Skip the query until user data is available
-});
+  const { data, error, isLoading } = useGetAllRestaurentsQuery(
+    session?.user?._id,
+    {
+      skip: !session?.user?._id, // Skip the query until user data is available
+    }
+  );
   // const { data, error, isLoading } = useGetAllRestaurentsQuery(userId);
-
-
-  console.log("dat>>>>>", data)
 
   const toggleDrawer = () => {
     setIsOpen(!isOpen);
+  };
+
+  const handleRestaurantToggle = () => {
+    setRestaurantOpen(!restaurantOpen);
+  };
+  console.log("restaurantOpen", restaurantOpen);
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
   };
 
   const handleToggle = (item) => {
@@ -72,7 +87,7 @@ const { data, error, isLoading } = useGetAllRestaurentsQuery(session?.user?._id,
     };
 
     window.addEventListener("resize", handleResize);
-    handleResize(); // Call on mount to set initial state
+    handleResize();
 
     return () => {
       window.removeEventListener("resize", handleResize);
@@ -91,14 +106,15 @@ const { data, error, isLoading } = useGetAllRestaurentsQuery(session?.user?._id,
         variant="permanent"
         open={isOpen}
         sx={{
-          width: isOpen ? 200 : 60,
+          width: isOpen ? 209 : 60,
           "& .MuiDrawer-paper": {
-            width: isOpen ? 200 : 60,
+            width: isOpen ? 209 : 60,
             transition: "width 0.3s",
             position: "fixed",
             height: "100vh",
             top: 0,
             left: 0,
+            overflowY: "hidden",
           },
           "& .MuiListItemIcon-root svg": {
             flex: 1,
@@ -121,10 +137,159 @@ const { data, error, isLoading } = useGetAllRestaurentsQuery(session?.user?._id,
             style={{ transition: "width 0.3s", objectFit: "contain" }}
           />
         </div>
-
+        {/* Food Dropdown Below Logo */}
+        <ListItem
+          sx={sidebarHoverStyling}
+          button
+          onClick={handleRestaurantToggle}
+          style={{
+            marginTop: "10px",
+            backgroundColor: restaurantOpen ? "#8338ec" : "#F5F5F5",
+            position: "relative",
+            top: "0px",
+            zIndex: "900",
+            color: restaurantOpen ? "#fff" : "#000000",
+            "&:hover": {
+              color: restaurantOpen ? "#fff !important" : "#000000 !important",
+            },
+          }}
+        >
+          <ListItemIcon sx={{ minWidth: "30px", color: "#fff" }}>
+            <Box
+              sx={{
+                width: "24px",
+                height: "24px",
+                borderRadius: "100%",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                color: restaurantOpen
+                  ? "#000000 !important"
+                  : "#fff !important",
+                backgroundColor: restaurantOpen
+                  ? "#fff !important"
+                  : "#595959 !important",
+              }}
+            >
+              <RestaurantSvg />
+            </Box>
+          </ListItemIcon>
+          {isOpen && (
+            <ListItemText
+              primary="Food"
+              primaryTypographyProps={{ fontSize: 14 }}
+              sx={{
+                "&:hover": {
+                  color: restaurantOpen
+                    ? "#000000 !important"
+                    : "#fff !important",
+                },
+              }}
+            />
+          )}
+          {isOpen && (restaurantOpen ? <ExpandLess /> : <ExpandMore />)}
+        </ListItem>
+        <Collapse in={restaurantOpen && isOpen} timeout="auto" unmountOnExit>
+          <Box
+            sx={{
+              backgroundColor: "#ffffff",
+              position: "absolute",
+              top: "90px",
+              zIndex: "100",
+              paddingBottom: "8px",
+              width: "209px",
+              boxShadow:
+                "rgba(0, 0, 0, 0.12) 0px 3px 6px -4px, rgba(0, 0, 0, 0.05) 0px 9px 28px 8px",
+            }}
+          >
+            <Box
+              sx={{
+                backgroundColor: "#ffffff",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                flexDirection: "column",
+                height: "auto",
+                maxHeight: "200px",
+                maxWidth: "200px",
+                width: "200px",
+                boxShadow:
+                  "rgba(0, 0, 0, 0.12) 0px 3px 6px -4px, rgba(0, 0, 0, 0.05) 0px 9px 28px 8px",
+                paddingBottom: "8px",
+              }}
+            >
+              <InputField
+                fullWidth
+                value={searchQuery}
+                onChange={handleSearchChange}
+                icon={true}
+                searchIcon
+                variant="outlined"
+                size="small"
+                position="end"
+                sx={{
+                  marginBottom: 2,
+                  backgroundColor: "#fff",
+                  marginTop: "20px",
+                  padding: "5px 8px !important",
+                  width: "176px",
+                }}
+              />
+              <List
+                component="div"
+                disablePadding
+                sx={{ width: "100% !important" }}
+              >
+                {session?.user?.restaurants?.length === 0 ? (
+                  <ListItem
+                    sx={{
+                      // paddingLeft: 2,
+                      backgroundColor: "#F9F5FE",
+                      width: "100% ",
+                    }}
+                  >
+                    <ListItemText
+                      sx={{ width: "100%" }}
+                      primary={
+                        session?.user?.restaurants[0]?.name ?? "GarsOnline"
+                      }
+                    />
+                  </ListItem>
+                ) : (
+                  session?.user?.restaurants?.map((item, index) => (
+                    <ListItem
+                      sx={{
+                        paddingLeft: 2,
+                        backgroundColor: "#F9F5FE",
+                        width: "100% !important",
+                      }}
+                      key={index}
+                    >
+                      <ListItemText
+                        primary={item?.name}
+                        sx={{ width: "100%" }}
+                      />
+                    </ListItem>
+                  ))
+                )}
+              </List>
+            </Box>
+            <Button
+              fullWidth
+              variant="outlined"
+              startIcon={<AddIcon />}
+              sx={{
+                marginTop: 2,
+                backgroundColor: "#f7f7f7",
+                width: "90%",
+                marginLeft: "8px",
+              }}
+            >
+              Add new venue
+            </Button>
+          </Box>
+        </Collapse>
         <Divider />
-        { session?.user?.restaurants[0]?.name ?? "Finedine" }
-
 
         <List>
           {sidebarmenu.map((item, index) => (
