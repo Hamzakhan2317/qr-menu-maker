@@ -319,6 +319,34 @@ export function createCustomTheme(options = {}) {
           },
         },
       },
+      MuiDialog: {
+        styleOverrides: {
+          root: {
+            "& .MuiDialogTitle-root": {
+              background: "#9021FF !important",
+              color: "#FFFFFF",
+              fontSize: "14px",
+            },
+            "& .MuiDialog-container .dialogCoseButton": {
+              background: "#9021FF",
+              color: "#9021FF",
+              width: "40px !important",
+              height: "40px !important",
+              minWidth: "45px",
+              minHeight: "45px",
+              borderRadius: "100px ",
+              fontWeight: "600",
+              position: "absolute",
+              top: "0",
+              right: "0",
+              "&:hover": {
+                background: "#FFFFFF",
+                color: "#000000",
+              },
+            },
+          },
+        },
+      },
     },
     ...other,
   });
