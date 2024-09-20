@@ -3,8 +3,6 @@ export const qrcodeWrapper = {
   backgroundColor: "#ffffff !important",
   boxShadow: "rgba(0, 0, 0, 0.16) 0px 1px 4px;",
   padding: "15px",
-  marginLeft: "40px",
-  marginBottom: "20px",
   paddingRight: {
     sm: "20px",
   },

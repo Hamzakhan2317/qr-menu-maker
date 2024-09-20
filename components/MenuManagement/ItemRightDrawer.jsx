@@ -1,35 +1,30 @@
 "use client";
-
-import { useState } from "react";
 import Box from "@mui/material/Box";
-import { FormLabel, Grid, Input, Typography } from "@mui/material";
+import { FormLabel, Grid, Typography } from "@mui/material";
 import InputField from "../ui/InputField";
 import CustomDropzone from "../ui/Dropzone/CustomDropzone";
 import CustomCheckbox from "../ui/CustomCheckbox/CustomCheckbox";
 import ButtonComp from "../ui/button";
-import { useRegisterSectionMutation } from "@/redux/services/api/sectionApis";
 import { itemSchema } from "@/validations/section/itemSchema";
 import { useFormik } from "formik";
 import { toast } from "sonner";
 import { useRegisterItemMutation } from "@/redux/services/api/itemApis";
 
-
-
-
-export default function ItemRightDrawer({sectionId, onClose}) {
-  const [ registerItem ] = useRegisterItemMutation();
+export default function ItemRightDrawer({ sectionId, onClose }) {
+  const [registerItem] = useRegisterItemMutation();
 
   const handelregisterItem = async (values) => {
     try {
       const resp = await registerItem({
         sectionId,
-       ...values
+        ...values,
       }).unwrap();
 
       if (resp) {
         toast.success(resp?.message || "Item Created successfully");
-        onClose()
-        formik.resetForm()      }
+        onClose();
+        formik.resetForm();
+      }
     } catch (error) {
       console.log("error>>>>>", error);
     }
@@ -42,16 +37,17 @@ export default function ItemRightDrawer({sectionId, onClose}) {
     },
     validationSchema: itemSchema,
     onSubmit: async (values) => {
-      console.log("values>>>>>>>>>", values)
+      console.log("values>>>>>>>>>", values);
       handelregisterItem(values);
     },
   });
 
-
-
   return (
-    <Box sx={{ padding: "10px" }} component="form" onSubmit={formik.handleSubmit}>
-      <Typography color={"#8338ec"}>Overview</Typography>
+    <Box
+      sx={{ padding: "10px" }}
+      component="form"
+      onSubmit={formik.handleSubmit}
+    >
       <Grid container spacing={2}>
         <InputField
           cols={12}
@@ -106,8 +102,12 @@ export default function ItemRightDrawer({sectionId, onClose}) {
           <CustomCheckbox label="Save and add more" />
         </Box>
         <Box>
-          <ButtonComp text="Cancel" padding="4px 11px" />
-          <ButtonComp text="Save" padding="4px 11px" onClick={formik.handleSubmit}/>
+          <ButtonComp text="Cancel" padding="4px 11px" marginRight="10px" />
+          <ButtonComp
+            text="Save"
+            padding="4px 11px"
+            onClick={formik.handleSubmit}
+          />
         </Box>
       </Box>
     </Box>

@@ -1,6 +1,6 @@
 "use client";
 import { Box, Grid, Typography } from "@mui/material";
-import React, { useState } from "react";
+import { useState } from "react";
 import QRCode from "react-qr-code";
 import {
   bgqrColorPicker,
@@ -28,7 +28,7 @@ const QrCode = () => {
     });
   };
   return (
-    <Box sx={{ minHeight: "90vh" }}>
+    <Box sx={{ minHeight: "100vh" }}>
       <Box sx={qrCodeHeader}>
         <Typography
           sx={{ fontSize: "20px", lineHeight: "32px", fontWeight: "600" }}
@@ -36,7 +36,7 @@ const QrCode = () => {
           Qr Code
         </Typography>
       </Box>
-      <Grid container spacing={2} mt={2}>
+      <Grid container mt={2} padding={"20px 40px"}>
         <Grid item xs={12} sm={10} md={6} sx={qrcodeWrapper}>
           <Box sx={qrColorPicker}>
             <Box>
@@ -78,7 +78,7 @@ const QrCode = () => {
                     maxWidth: "100%",
                     width: "100%",
                   }}
-                  value={"http://localhost:4000/en/garsonline-menu"}
+                  value={"https://qr-menu-maker.vercel.app/en/garsonline-menu"}
                   viewBox={`0 0 256 256`}
                 />
               </Box>

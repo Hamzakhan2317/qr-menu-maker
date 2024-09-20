@@ -13,8 +13,7 @@ const Section = () => {
   const params = useParams();
   const { menuId } = params;
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const { data: sections, isLoading } = useGetAllSectionQuery(menuId)
-
+  const { data: sections, isLoading } = useGetAllSectionQuery(menuId);
 
   const handleDrawerToggle = () => {
     setIsDrawerOpen((prevOpen) => !prevOpen);
@@ -24,10 +23,22 @@ const Section = () => {
   };
   return (
     <div>
-      <Box sx={{ display: "flex", height: "100vh" }}>
-        <SectionList onAddClick={handleDrawerToggle} />
-        <Box sx={{ padding: "20px 40px", maxWidth: "850px", flex: 1 }}>
-          <MenuEditor sections={sections?.data} isLoading={isLoading} />
+      <Box
+        sx={{
+          display: "flex",
+          minHeight: "100vh",
+          padding: "20px 40px 20px 0px",
+        }}
+      >
+        <Box flex={1}>
+          <SectionList onAddClick={handleDrawerToggle} />
+        </Box>
+        <Box flex={4}>
+          <Box display="flex" justifyContent="center">
+            <Box maxWidth="800px" width="100%">
+              <MenuEditor sections={sections?.data} isLoading={isLoading} />
+            </Box>
+          </Box>
           <Drawer
             anchor="right"
             open={isDrawerOpen}

@@ -1,9 +1,8 @@
 "use client";
-
 import { useRouter } from "@/navigation";
-import { signOut, useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import QRCode from "react-qr-code";
-import { Box, Grid, IconButton, Typography } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import {
   qrcodeBox,
   qrcodeBoxWrapper,
@@ -13,7 +12,6 @@ import {
 } from "@/styles/DashboarStyling";
 import { formatDateTime } from "@/utils/formatDateTime";
 import ButtonComp from "../ui/button";
-import DownloadSvg from "@/public/assets/svg/DownloadSvg";
 import { useEffect, useState } from "react";
 
 const Dashboard = () => {
@@ -21,11 +19,8 @@ const Dashboard = () => {
   const router = useRouter();
   const [isCopied, setIsCopied] = useState(false);
   const [currentDateTime, setCurrentDateTime] = useState();
-  const qrCodeLink = "http://localhost:4000/en/garsonline-menu";
-  const logout = async () => {
-    await signOut({ redirect: false });
-    router.push("/login");
-  };
+  const qrCodeLink = "https://qr-menu-maker.vercel.app/en/garsonline-menu";
+
   useEffect(() => {
     const now = formatDateTime();
     setCurrentDateTime(now);
@@ -38,10 +33,12 @@ const Dashboard = () => {
   };
 
   return (
-    <Box sx={{ paddingLeft: "24px", marginTop: "20px", minHeight: "90vh" }}>
+    <Box sx={{ padding: "40px", height: "100vh" }}>
       <p>{currentDateTime}</p>
-      <h3 color="#000000d9">Food , Welcome!</h3>
-      <Grid container spacing={2} mt={2}>
+      <Typography color="#000000d9" mt={1} fontSize={18}>
+        <b>{session?.user?.restaurants?.[0]?.name}, Welcome</b>
+      </Typography>
+      <Grid container mt={2}>
         <Grid item xs={12} sm={12} md={4} sx={qrcodeWrapper}>
           <Box>
             <Typography fontSize="16px" fontWeight={600} color="#000000d9">
@@ -73,10 +70,14 @@ const Dashboard = () => {
               </Typography>
               <Box sx={qrcopyLink}>
                 <ButtonComp
-                  text={"Download"}
+                  text={"Preview Menu"}
                   variant="purple"
                   padding="4px 15px"
-                  startIcon={<DownloadSvg />}
+                  onClick={() =>
+                    router.push(
+                      "https://qr-menu-maker.vercel.app/en/garsonline-menu"
+                    )
+                  }
                 />
                 <ButtonComp
                   variant="transparent"

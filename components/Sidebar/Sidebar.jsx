@@ -1,6 +1,5 @@
 "use client";
-
-import React, { Children, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   AppBar,
   Toolbar,
@@ -14,7 +13,6 @@ import {
   Divider,
   Box,
   Button,
-  TextField,
 } from "@mui/material";
 import {
   Dashboard as DashboardIcon,
@@ -22,10 +20,7 @@ import {
   Settings as SettingsIcon,
   ExpandLess,
   ExpandMore,
-  Restaurant as RestaurantIcon,
   Add as AddIcon,
-  ExitToApp as LogoutIcon,
-  Search as SearchIcon,
 } from "@mui/icons-material";
 import garsLogo from "../../public/assets/images/logo.png";
 import Logo from "../../public/assets/images/8.webp";
@@ -33,8 +28,6 @@ import Image from "next/image";
 import MenuDropdown from "../ui/MenuDropdown";
 import { useRouter } from "@/navigation";
 import { sidebarHoverStyling } from "@/public/assets/static";
-// import { sidebarHoverStyling } from "@/public/assets/static";
-import { useGetAllRestaurentsQuery } from "@/redux/services/api/restaurentApis";
 
 import { useSession } from "next-auth/react";
 import { RestaurantSvg } from "@/public/assets/svg/Egg";
@@ -45,10 +38,9 @@ import { set } from "mongoose";
 const Sidebar = ({ children }) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(true);
-  const [restaurantOpen, setRestaurantOpen] = useState(true);
+  const [restaurantOpen, setRestaurantOpen] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
-  const restaurants = ["Food"];
   const { push } = useRouter();
   const { data: session } = useSession();
   const [venues, setVenues] = useState([]);
@@ -92,8 +84,6 @@ const Sidebar = ({ children }) => {
     skip: !session?.user?._id, // Skip the query until user data is available
   });
 
-  console.log("data", data);
-
   const toggleDrawer = () => {
     setIsOpen(!isOpen);
   };
@@ -101,7 +91,6 @@ const Sidebar = ({ children }) => {
   const handleRestaurantToggle = () => {
     setRestaurantOpen(!restaurantOpen);
   };
-  console.log("restaurantOpen", restaurantOpen, session?.user);
   const handleSearchChange = (e) => {
     setSearchQuery(e.target.value);
   };
@@ -111,7 +100,6 @@ const Sidebar = ({ children }) => {
       setSettingsOpen(!settingsOpen);
     } else {
       push(item.route);
-
     }
   };
   useEffect(() => {

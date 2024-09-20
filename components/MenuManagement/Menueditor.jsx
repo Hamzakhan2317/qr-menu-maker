@@ -1,32 +1,15 @@
-
 import React, { useState } from "react";
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-import Switch from "@mui/material/Switch";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import CustomizedSwitch from "../ui/CustomizeSwitch";
-import Image from "next/image";
-import Salads from "/public/assets/images/salads.webp";
-import deserts from "/public/assets/images/deserts.webp";
-import starters from "/public/assets/images/starters.webp";
-import mainCourse from "/public/assets/images/main-course.webp";
 import ItemRightDrawer from "./ItemRightDrawer";
 import { Box, Drawer, IconButton } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-
+import { BallTriangle } from "react-loader-spinner";
 
 const MenuEditor = ({ sections, isLoading }) => {
   const [openItemId, setOpenItemId] = useState(null);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-
-  // Handle drag end to reorder sections
-  const handleOnDragEnd = (result) => {
-    if (!result.destination) return;
-
-    const reorderedItems = Array.from(sections);
-    const [movedItem] = reorderedItems.splice(result.source.index, 1);
-    reorderedItems.splice(result.destination.index, 0, movedItem);
-  };
 
   // Handle item toggle for showing/hiding sub-div
   const handleClick = (itemId) => {
@@ -35,9 +18,6 @@ const MenuEditor = ({ sections, isLoading }) => {
 
   // Handle adding a new sub item to a section
   const handleAddSubItem = (sectionId) => {
-    // Logic to add a new sub item to a section
-    // You might want to update the sections state by adding a new sub item.
-    // console.log(`Add new item to section ${sectionId}`);
     handleDrawerToggle();
   };
 
@@ -48,231 +28,225 @@ const MenuEditor = ({ sections, isLoading }) => {
     setIsDrawerOpen(open);
   };
 
+  if (isLoading)
+    return (
+      <Box
+        height={"100vh"}
+        width={"80vw"}
+        justifyContent={"center"}
+        alignItems={"center"}
+        display={"flex"}
+      >
+        <BallTriangle
+          height={100}
+          width={100}
+          radius={5}
+          color="#4fa94d"
+          ariaLabel="ball-triangle-loading"
+          wrapperStyle={{
+            height: "100vh",
+          }}
+          wrapperClass=""
+          visible={true}
+        />
+      </Box>
+    );
+
+  if (sections?.length === 0) return <h1>No section found</h1>;
+
   return (
-    <>
-      {isLoading ? (
-        <h1>Loading...</h1>
-      ) : sections?.length === 0 ? (
-        <h1>No section found</h1>
-      ) : (
-        <>
-          <Drawer
-            anchor="right"
-            open={isDrawerOpen}
-            onClose={toggleDrawer(false)}
-            sx={{
-              width: 456,
-              flexShrink: 0,
-              "& .MuiDrawer-paper": {
-                width: 456,
-                boxSizing: "border-box",
-              },
-            }}
-            variant="persistent"
-          >
-            <Box
-              sx={{
+    <Box minHeight="100vh">
+      <Drawer
+        anchor="right"
+        open={isDrawerOpen}
+        onClose={toggleDrawer(false)}
+        sx={{
+          width: 456,
+          flexShrink: 0,
+          "& .MuiDrawer-paper": {
+            width: 456,
+            boxSizing: "border-box",
+          },
+        }}
+        variant="persistent"
+      >
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            padding: "10px",
+            flexDirection: "row-reverse",
+            justifyContent: "flex-end",
+            borderBottom: "1px solid #ddd",
+          }}
+        >
+          <h3>Add New Item</h3>
+          <IconButton onClick={toggleDrawer(false)} marginRight="5px">
+            <CloseIcon />
+          </IconButton>
+        </Box>
+
+        <ItemRightDrawer sectionId={openItemId} onClose={handleDrawerToggle} />
+      </Drawer>
+      <div>
+        {sections?.map((item, index) => (
+          <React.Fragment key={item.id}>
+            <div
+              style={{
+                backgroundColor: "white",
+                borderRadius: "10px",
+                width: "100%",
+                // height: "56px",
                 display: "flex",
+                justifyContent: "space-between",
                 alignItems: "center",
                 padding: "10px",
-                flexDirection: "row-reverse",
-                justifyContent: "flex-end",
-                borderBottom: "1px solid #ddd",
+                marginBottom: "10px",
+                boxShadow: "rgba(0, 0, 0, 0.16) 0px 1px 4px",
               }}
             >
-              <h3>Add New Item</h3>
-              <IconButton onClick={toggleDrawer(false)} marginRight="5px">
-                <CloseIcon />
-              </IconButton>
-            </Box>
+              <div style={{ display: "flex", alignItems: "center" }}>
+                <div
+                  style={{
+                    width: "40px",
+                    height: "40px",
+                    backgroundColor: "#f0f0f0",
+                    marginRight: "10px",
+                    borderRadius: "50%",
+                  }}
+                />
+                {/* Status Icon */}
+                <div
+                  style={{
+                    width: "8px",
+                    height: "8px",
+                    backgroundColor: "#52c41a",
+                    borderRadius: "50%",
+                    marginRight: "10px",
+                  }}
+                />
+                {/* Name */}
+                <div>{item.name}</div>
+              </div>
 
-            <ItemRightDrawer sectionId={openItemId} onClose={handleDrawerToggle} />
-          </Drawer>
-          <DragDropContext onDragEnd={handleOnDragEnd}>
-            <Droppable droppableId="menu-items">
-              {(provided) => (
-                <div {...provided.droppableProps} ref={provided.innerRef}>
-                  {sections?.map((item, index) => (
-                    <React.Fragment key={item.id}>
-                      <Draggable draggableId={item.id} index={index}>
-                        {(provided) => (
+              <div style={{ display: "flex", alignItems: "center" }}>
+                <CustomizedSwitch />
+                <span
+                  style={{
+                    marginLeft: "10px",
+                    cursor: "pointer",
+                  }}
+                  onClick={() => handleClick(item._id)}
+                >
+                  {openItemId === item._id ? (
+                    <KeyboardArrowUpIcon />
+                  ) : (
+                    <KeyboardArrowDownIcon />
+                  )}
+                </span>
+              </div>
+            </div>
+
+            {/* Sub-items or Add Item Button */}
+            {openItemId === item._id && (
+              <div style={{ marginLeft: "30px" }}>
+                {item.items.length > 0 && (
+                  <>
+                    {item.items.map((subItem, subIndex) => (
+                      <div
+                        key={subItem._id}
+                        style={{
+                          backgroundColor: "white",
+                          borderRadius: "8px",
+                          height: "60px",
+                          display: "flex",
+                          justifyContent: "space-between",
+                          alignItems: "center",
+                          padding: "10px",
+                          width: "100%",
+                          boxSizing: "border-box",
+                          marginBottom: "10px",
+                          border: "1px solid #ddd",
+                        }}
+                      >
+                        <div
+                          style={{
+                            display: "flex",
+                            alignItems: "center",
+                          }}
+                        >
                           <div
-                            ref={provided.innerRef}
-                            {...provided.draggableProps}
-                            {...provided.dragHandleProps}
                             style={{
-                              ...provided.draggableProps.style,
-                              backgroundColor: "white",
-                              borderRadius: "10px",
-                              width: "100%",
-                              // height: "56px",
-                              display: "flex",
-                              justifyContent: "space-between",
-                              alignItems: "center",
-                              padding: "10px",
-                              marginBottom: "10px",
-                              boxShadow: "rgba(0, 0, 0, 0.16) 0px 1px 4px",
+                              width: "40px",
+                              height: "40px",
+                              backgroundColor: "#f0f0f0",
+                              marginRight: "10px",
+                              borderRadius: "50%",
                             }}
-                          >
-                            <div
-                              style={{ display: "flex", alignItems: "center" }}
-                            >
-                              <Image
-                                style={{
-                                  width: "40px",
-                                  height: "40px",
-                                  marginRight: "10px",
-                                  borderRadius: "8%",
-                                }}
-                                src={item?.src}
-                                alt=""
-                              />
-                              {/* Status Icon */}
-                              <div
-                                style={{
-                                  width: "8px",
-                                  height: "8px",
-                                  backgroundColor: "#52c41a",
-                                  borderRadius: "50%",
-                                  marginRight: "10px",
-                                }}
-                              />
-                              {/* Name */}
-                              <div>{item.name}</div>
-                            </div>
-
-                            <div
-                              style={{ display: "flex", alignItems: "center" }}
-                            >
-                              <CustomizedSwitch  />
-                              <span
-                                style={{
-                                  marginLeft: "10px",
-                                  cursor: "pointer",
-                                }}
-                                onClick={() => handleClick(item._id)}
-                              >
-                                {openItemId === item._id ? (
-                                  <KeyboardArrowUpIcon />
-                                ) : (
-                                  <KeyboardArrowDownIcon />
-                                )}
-                              </span>
-                            </div>
-                          </div>
-                        )}
-                      </Draggable>
-
-                      {/* Sub-items or Add Item Button */}
-                      {openItemId === item._id && (
-                        <div style={{ marginLeft: "30px" }}>
-                          {item.items.length > 0 && 
-                            <>
-                              {item.items.map((subItem, subIndex) => (
-                                <div
-                                  key={subItem._id}
-                                  style={{
-                                    backgroundColor: "white",
-                                    borderRadius: "8px",
-                                    height: "60px",
-                                    display: "flex",
-                                    justifyContent: "space-between",
-                                    alignItems: "center",
-                                    padding: "10px",
-                                    width: "100%",
-                                    boxSizing: "border-box",
-                                    marginBottom: "10px",
-                                    border: "1px solid #ddd",
-                                  }}
-                                >
-                                  <div
-                                    style={{
-                                      display: "flex",
-                                      alignItems: "center",
-                                    }}
-                                  >
-                                    <div
-                                      style={{
-                                        width: "40px",
-                                        height: "40px",
-                                        backgroundColor: "#f0f0f0",
-                                        marginRight: "10px",
-                                        borderRadius: "50%",
-                                      }}
-                                    />
-                                    <div
-                                      style={{
-                                        width: "8px",
-                                        height: "8px",
-                                        // backgroundColor: subItem.available
-                                        //   ? "green"
-                                        //   : "red",
-                                        backgroundColor: "red",
-                                        borderRadius: "50%",
-                                        marginRight: "10px",
-                                      }}
-                                    />
-                                    <div>{subItem.name}</div>
-                                  </div>
-
-                                  <Switch defaultChecked={true} />
-                                </div>
-                              ))}
-                            </>
-                          }
-                          {/* Add item button */}
+                          />
                           <div
-                                  style={{
-                                    backgroundColor: "white",
-                                    borderRadius: "8px",
-                                    height: "60px",
-                                    display: "flex",
-                                    justifyContent: "space-between",
-                                    alignItems: "center",
-                                    padding: "10px",
-                                    width: "100%",
-                                    boxSizing: "border-box",
-                                    marginBottom: "10px",
-                                    border: "1px solid #ddd",
-                                  }}
-                                >
-                                  <div
-                                    style={{
-                                      display: "flex",
-                                      alignItems: "center",
-                                    }}
-                                  >
-                                   
-                                   
-                          <button
-                            onClick={() => handleAddSubItem()}
                             style={{
-                              padding: "10px",
-                              backgroundColor: "#1890ff",
-                              color: "white",
-                              border: "none",
-                              borderRadius: "5px",
-                              cursor: "pointer",
+                              width: "8px",
+                              height: "8px",
+                              // backgroundColor: subItem.available
+                              //   ? "green"
+                              //   : "red",
+                              backgroundColor: "red",
+                              borderRadius: "50%",
+                              marginRight: "10px",
                             }}
-                          >
-                           + Add New Item
-                          </button>                             
-                               </div>
-
-                                </div>
-                         
+                          />
+                          <div>{subItem.name}</div>
                         </div>
-                      )}
-                    </React.Fragment>
-                  ))}
-                  {provided.placeholder}
+
+                        <CustomizedSwitch />
+                      </div>
+                    ))}
+                  </>
+                )}
+                {/* Add item button */}
+                <div
+                  style={{
+                    backgroundColor: "white",
+                    borderRadius: "8px",
+                    height: "60px",
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    padding: "10px",
+                    width: "100%",
+                    boxSizing: "border-box",
+                    marginBottom: "10px",
+                    border: "1px solid #ddd",
+                  }}
+                >
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                    }}
+                  >
+                    <button
+                      onClick={() => handleAddSubItem()}
+                      style={{
+                        padding: "10px",
+                        backgroundColor: "#1890ff",
+                        color: "white",
+                        border: "none",
+                        borderRadius: "5px",
+                        cursor: "pointer",
+                      }}
+                    >
+                      + Add New Item
+                    </button>
+                  </div>
                 </div>
-              )}
-            </Droppable>
-          </DragDropContext>
-        </>
-      )}
-    </>
+              </div>
+            )}
+          </React.Fragment>
+        ))}
+      </div>
+    </Box>
   );
 };
 

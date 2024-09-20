@@ -1,5 +1,5 @@
 export const MenuManagementHeader = {
-  backgroundColor: "#ffffff",
+  backgroundColor: "#fff",
   padding: "0px 24px",
   display: "flex",
   justifyContent: "space-between",
@@ -19,14 +19,15 @@ export const emptyPageWrapperSvg = {
 };
 export const menuManagementCardWrapper = {
   backgroundColor: "#F0F2F5",
-  // minHeight: "80vh",
+  minHeight: "100vh",
   padding: "10px 24px",
 };
 export const menuManagementCard = {
   backgroundColor: "#ffffff",
   borderRadius: "8px",
-  padding: "16px 24px 16px 8px",
+  padding: "20px",
   display: "flex",
   justifyContent: "space-between",
   alignItems: "center",
+  margin: "10px 0px",
 };
