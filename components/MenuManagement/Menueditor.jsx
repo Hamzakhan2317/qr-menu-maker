@@ -9,6 +9,7 @@ import Salads from "/public/assets/images/salads.webp";
 import deserts from "/public/assets/images/deserts.webp";
 import starters from "/public/assets/images/starters.webp";
 import mainCourse from "/public/assets/images/main-course.webp";
+import MenuItem from "../MenuItem";
 
 const MenuEditor = () => {
   const [items, setItems] = useState([
@@ -46,6 +47,7 @@ const MenuEditor = () => {
   ]);
 
   const [openItemId, setOpenItemId] = useState(null);
+  const [itemDrawer, setItemDrawer] = useState(false);
 
   const handleOnDragEnd = (result) => {
     if (!result.destination) return;
@@ -146,7 +148,12 @@ const MenuEditor = () => {
 
                 {/* Sub-divs */}
                 {openItemId === item.id && item.children.length > 0 && (
-                  <div style={{ marginLeft: "30px" }}>
+                  <div
+                    style={{ marginLeft: "30px" }}
+                    onclick={() => {
+                      setItemDrawer(true);
+                    }}
+                  >
                     {item.children.map((subItem, subIndex) => (
                       <div
                         key={subItem.id}

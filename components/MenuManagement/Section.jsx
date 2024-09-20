@@ -6,17 +6,15 @@ import CloseIcon from "@mui/icons-material/Close";
 import RightDrawerContent from "./RightDrawerContent";
 import MenuEditor from "./Menueditor";
 import SectionList from "./SectionList";
-import { useParams } from 'next/navigation';
+import { useParams } from "next/navigation";
 import { useGetAllSectionQuery } from "@/redux/services/api/sectionApis";
 
-
 const Section = () => {
-    const params = useParams();
-    const { menuId } = params;
+  const params = useParams();
+  const { menuId } = params;
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-const {data, isLoading } = useGetAllSectionQuery(menuId)
-console.log("data section>>>>>>>>>>", data)
-
+  const { data, isLoading } = useGetAllSectionQuery(menuId);
+  console.log("data section>>>>>>>>>>", data);
 
   const handleDrawerToggle = () => {
     setIsDrawerOpen((prevOpen) => !prevOpen);
@@ -63,7 +61,7 @@ console.log("data section>>>>>>>>>>", data)
             <RightDrawerContent menuId={menuId} />
           </Drawer>
         </Box>
-      </Box>{" "}
+      </Box>
     </div>
   );
 };

@@ -36,7 +36,8 @@ import { sidebarHoverStyling, sidebarmenu } from "@/public/assets/static";
 import { useGetAllRestaurentsQuery } from "@/redux/services/api/restaurentApis";
 
 import { useSession } from "next-auth/react";
-
+import { RestaurantSvg } from "@/public/assets/svg/Egg";
+import InputField from "../ui/InputField";
 
 const Sidebar = ({ children }) => {
   const [isOpen, setIsOpen] = useState(true);
@@ -45,19 +46,17 @@ const Sidebar = ({ children }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const restaurants = ["Food"];
   const { push } = useRouter();
-    const { data: session } = useSession();
+  const { data: session } = useSession();
 
+  const userId = "66ec420b346ea4f06bdf87e5";
 
-const userId = "66ec420b346ea4f06bdf87e5"
-
-
-const { data, error, isLoading } = useGetAllRestaurentsQuery(session?.user?._id, {
-  skip: !session?.user?._id, // Skip the query until user data is available
-});
+  const { data, error, isLoading } = useGetAllRestaurentsQuery(
+    session?.user?._id,
+    {
+      skip: !session?.user?._id, // Skip the query until user data is available
+    }
+  );
   // const { data, error, isLoading } = useGetAllRestaurentsQuery(userId);
-
-
-  console.log("dat>>>>>", data)
 
   const toggleDrawer = () => {
     setIsOpen(!isOpen);
@@ -66,7 +65,7 @@ const { data, error, isLoading } = useGetAllRestaurentsQuery(session?.user?._id,
   const handleRestaurantToggle = () => {
     setRestaurantOpen(!restaurantOpen);
   };
-
+  console.log("restaurantOpen", restaurantOpen);
   const handleSearchChange = (e) => {
     setSearchQuery(e.target.value);
   };
@@ -145,20 +144,47 @@ const { data, error, isLoading } = useGetAllRestaurentsQuery(session?.user?._id,
           onClick={handleRestaurantToggle}
           style={{
             marginTop: "10px",
-            backgroundColor: "#8338ec",
+            backgroundColor: restaurantOpen ? "#8338ec" : "#F5F5F5",
             position: "relative",
             top: "0px",
             zIndex: "900",
-            color: "#fff",
+            color: restaurantOpen ? "#fff" : "#000000",
+            "&:hover": {
+              color: restaurantOpen ? "#fff !important" : "#000000 !important",
+            },
           }}
         >
           <ListItemIcon sx={{ minWidth: "30px", color: "#fff" }}>
-            <RestaurantIcon />
+            <Box
+              sx={{
+                width: "24px",
+                height: "24px",
+                borderRadius: "100%",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                color: restaurantOpen
+                  ? "#000000 !important"
+                  : "#fff !important",
+                backgroundColor: restaurantOpen
+                  ? "#fff !important"
+                  : "#595959 !important",
+              }}
+            >
+              <RestaurantSvg />
+            </Box>
           </ListItemIcon>
           {isOpen && (
             <ListItemText
               primary="Food"
               primaryTypographyProps={{ fontSize: 14 }}
+              sx={{
+                "&:hover": {
+                  color: restaurantOpen
+                    ? "#000000 !important"
+                    : "#fff !important",
+                },
+              }}
             />
           )}
           {isOpen && (restaurantOpen ? <ExpandLess /> : <ExpandMore />)}
@@ -192,44 +218,57 @@ const { data, error, isLoading } = useGetAllRestaurentsQuery(session?.user?._id,
                 paddingBottom: "8px",
               }}
             >
-              <TextField
+              <InputField
                 fullWidth
                 value={searchQuery}
                 onChange={handleSearchChange}
+                icon={true}
+                searchIcon
                 variant="outlined"
                 size="small"
-                InputProps={{
-                  endAdornment: <SearchIcon />,
-                }}
+                position="end"
                 sx={{
                   marginBottom: 2,
                   backgroundColor: "#fff",
                   marginTop: "20px",
+                  padding: "5px 8px !important",
                   width: "176px",
                 }}
               />
-              <List component="div" disablePadding>
-                {restaurants.length === 0 ? (
+              <List
+                component="div"
+                disablePadding
+                sx={{ width: "100% !important" }}
+              >
+                {session?.user?.restaurants?.length === 0 ? (
                   <ListItem
                     sx={{
-                      paddingLeft: 2,
+                      // paddingLeft: 2,
                       backgroundColor: "#F9F5FE",
-                      width: "100%",
+                      width: "100% ",
                     }}
                   >
-                    <ListItemText primary="Food" />
+                    <ListItemText
+                      sx={{ width: "100%" }}
+                      primary={
+                        session?.user?.restaurants[0]?.name ?? "GarsOnline"
+                      }
+                    />
                   </ListItem>
                 ) : (
-                  restaurants.map((restaurant, index) => (
+                  session?.user?.restaurants?.map((item, index) => (
                     <ListItem
                       sx={{
                         paddingLeft: 2,
                         backgroundColor: "#F9F5FE",
-                        width: "100%",
+                        width: "100% !important",
                       }}
                       key={index}
                     >
-                      <ListItemText primary={restaurant} />
+                      <ListItemText
+                        primary={item?.name}
+                        sx={{ width: "100%" }}
+                      />
                     </ListItem>
                   ))
                 )}
@@ -239,15 +278,18 @@ const { data, error, isLoading } = useGetAllRestaurentsQuery(session?.user?._id,
               fullWidth
               variant="outlined"
               startIcon={<AddIcon />}
-              sx={{ marginTop: 2, backgroundColor: "#f7f7f7" }}
+              sx={{
+                marginTop: 2,
+                backgroundColor: "#f7f7f7",
+                width: "90%",
+                marginLeft: "8px",
+              }}
             >
               Add new venue
             </Button>
           </Box>
         </Collapse>
         <Divider />
-        { session?.user?.restaurants[0]?.name ?? "Finedine" }
-
 
         <List>
           {sidebarmenu.map((item, index) => (

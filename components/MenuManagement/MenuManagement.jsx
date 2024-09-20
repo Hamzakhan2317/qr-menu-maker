@@ -32,6 +32,7 @@ import { useSession, signOut } from "next-auth/react";
 import { toast } from "sonner";
 import { useEffect } from "react";
 import { useRouter } from "@/navigation";
+import { BallTriangle } from "react-loader-spinner";
 
 const MenuManagement = () => {
   const { data: session, status: sessionStatus } = useSession();
@@ -237,7 +238,18 @@ const MenuManagement = () => {
           ) : (
             <Box sx={emptyPageWrapper}>
               {sessionStatus === "loading" || isLoading ? (
-                <>Loading.........</>
+                <>
+                  <BallTriangle
+                    height={100}
+                    width={100}
+                    radius={5}
+                    color="#4fa94d"
+                    ariaLabel="ball-triangle-loading"
+                    wrapperStyle={{}}
+                    wrapperClass=""
+                    visible={true}
+                  />
+                </>
               ) : (
                 <>
                   <Box sx={emptyPageWrapperSvg}>
