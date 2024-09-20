@@ -13,9 +13,17 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import VolumeUpOutlinedIcon from "@mui/icons-material/VolumeUpOutlined";
+import LogoutIcon from '@mui/icons-material/Logout';
 import { Box } from "@mui/material";
+import {useRouter} from "@/navigation"
+import {toast} from "sonner"
+import { useSession, signOut } from "next-auth/react";
+
+
 
 export default function MenuListComposition() {
+  const router = useRouter(); 
+
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
 
@@ -39,6 +47,20 @@ export default function MenuListComposition() {
       setOpen(false);
     }
   }
+  // Function to handle logout
+  const handleLogout = async () => {
+    const toastId = toast.loading("Please wait...");
+      await signOut({ redirect: false });
+      router.push("/login");
+      toast.success("Logout successfully", { id: toastId });
+
+
+    // Add your actual logout logic here, such as clearing user session or redirecting
+    // For example:
+    // authService.logout(); or navigate("/login");
+  };
+
+
   const navbarProfile = [
     {
       icon: <SettingsIcon fontSize="small" />,
@@ -55,6 +77,12 @@ export default function MenuListComposition() {
     {
       icon: <VolumeUpOutlinedIcon fontSize="small" />,
       txt: "Change Sound",
+    },
+    {
+      icon: <LogoutIcon fontSize="small" />,
+      txt: "Logout",
+      onClick: handleLogout, // Adding the logout handler
+
     },
   ];
 
@@ -108,7 +136,13 @@ export default function MenuListComposition() {
                     {navbarProfile?.map((item, index) => {
                       return (
                         <MenuItem
-                          onClick={handleClose}
+                          // onClick={handleClose}
+                          onClick={(event) => {
+                            handleClose(event);
+                            if (item.txt === "Logout") {
+                              handleLogout();
+                            }
+                          }}
                           key={index}
                           sx={{ alignItems: "center" }}
                         >

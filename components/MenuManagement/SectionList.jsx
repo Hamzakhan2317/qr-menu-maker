@@ -1,4 +1,7 @@
 "use client";
+
+import { useEffect } from "react";
+
 import { sectionsList } from "@/styles/common";
 import {
   Tabs,
@@ -20,6 +23,10 @@ import MuiAccordionSummary from "@mui/material/AccordionSummary";
 import MuiAccordionDetails from "@mui/material/AccordionDetails";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { PlusIconFine } from "@/public/assets/svg/ForkNknife";
+import { useParams } from 'next/navigation';
+import { useGetAllSectionQuery } from "@/redux/services/api/sectionApis";
+
+
 
 const initialMenuData = [
   { id: "1", name: "Salads", subItems: [] },
@@ -67,7 +74,14 @@ const CustomAccordionSummary = styled((props) => (
 const SectionList = ({ onAddClick }) => {
   const [activeTab, setActiveTab] = useState(0);
   const [expanded, setExpanded] = useState(false);
-  const [menuData, setMenuData] = useState(initialMenuData);
+  const [menuData, setMenuData] = useState(null);
+  // const [menuData, setMenuData] = useState(sections);
+
+  const params = useParams();
+  const { menuId } = params;
+
+  const {data:sections, isLoading } = useGetAllSectionQuery(menuId)
+
 
   const handleTabChange = (event, newValue) => {
     setActiveTab(newValue);
@@ -94,13 +108,18 @@ const SectionList = ({ onAddClick }) => {
     );
     setMenuData(reorderedData);
   };
+  useEffect(()=>{
+if(sections){
+  setMenuData(sections?.data)
+}
+  },[sections])
 
   const renderListItem = (item, index, provided) => (
     <Box
       ref={provided.innerRef}
       {...provided.draggableProps}
       {...provided.dragHandleProps}
-      key={item.id}
+      key={item._id}
       sx={{
         padding: "8px 0",
         marginBottom: "8px",
@@ -108,10 +127,10 @@ const SectionList = ({ onAddClick }) => {
         alignItems: "center",
       }}
     >
-      {item.subItems.length > 0 ? (
+      {item?.items?.length > 0 ? (
         <CustomAccordion
-          expanded={expanded === item.id}
-          onChange={handleAccordionChange(item.id)}
+          expanded={expanded === item._id}
+          onChange={handleAccordionChange(item._id)}
           sx={{
             width: "100%",
             boxShadow: "none",
@@ -133,7 +152,7 @@ const SectionList = ({ onAddClick }) => {
             </Typography>
           </CustomAccordionSummary>
           <AccordionDetails sx={{ padding: "10px 0px" }}>
-            {item.subItems.map((subItem, i) => (
+            {item?.items?.map((subItem, i) => (
               <Box
                 key={i}
                 sx={{
@@ -152,7 +171,7 @@ const SectionList = ({ onAddClick }) => {
                   }}
                 />
                 <Typography fontSize={"12px"} fontWeight={400} flex={1}>
-                  {subItem}
+                  {subItem?.name}
                 </Typography>
               </Box>
             ))}
@@ -179,7 +198,11 @@ const SectionList = ({ onAddClick }) => {
 
   return (
     <Box sx={sectionsList}>
-      <Box
+    
+    {isLoading ?  <>Loading.......</>
+  :
+  <>
+        <Box
         sx={{
           display: "flex",
           alignItems: "center",
@@ -271,10 +294,10 @@ const SectionList = ({ onAddClick }) => {
               <Droppable droppableId="menuItems">
                 {(provided) => (
                   <Box {...provided.droppableProps} ref={provided.innerRef}>
-                    {menuData.map((item, index) => (
+                    {menuData?.map((item, index) => (
                       <Draggable
                         key={item.id}
-                        draggableId={item.id}
+                        draggableId={item._id}
                         index={index}
                       >
                         {(provided) => renderListItem(item, index, provided)}
@@ -288,7 +311,17 @@ const SectionList = ({ onAddClick }) => {
           )}
         </Box>
       </Box>
+
+
+
+     
+    </>
+
+  }
+    
     </Box>
+   
+    
   );
 };
 

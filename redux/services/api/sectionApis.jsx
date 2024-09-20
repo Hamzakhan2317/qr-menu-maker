@@ -1,12 +1,12 @@
 import { api } from "../../api.jsx";
 
+// Section API
 const sectionApis = api.injectEndpoints({
   overrideExisting: false,
   endpoints: (builder) => ({
     registerSection: builder.mutation({
       query: (data) => ({ url: `/section`, method: "POST", body: data }),
-      invalidatesTags: [ 'section'],
-
+      invalidatesTags: ['section'],  // Invalidates 'section' tag on register
     }),
     getAllSection: builder.query({
       query: (menuId) => ({
@@ -14,10 +14,8 @@ const sectionApis = api.injectEndpoints({
         method: "GET",
         params: { menuId }, // Adds menuId as a query parameter
       }),
-      providesTags: [ 'section'],
-
+      providesTags: ['section'], // Provides 'section' tag
     }),
-    
   }),
 });
 

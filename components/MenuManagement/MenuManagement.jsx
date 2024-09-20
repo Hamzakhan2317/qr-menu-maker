@@ -29,9 +29,11 @@ import {
   useGetAllMenuQuery,
 } from "@/redux/services/api/menuApis";
 import { useSession, signOut } from "next-auth/react";
-import { toast } from "sonner";
-import { useEffect } from "react";
-import { useRouter } from "@/navigation";
+import {toast} from "sonner"
+import {useEffect} from "react"
+import {useRouter} from "@/navigation"
+import { useParams } from 'next/navigation';
+
 import { BallTriangle } from "react-loader-spinner";
 
 const MenuManagement = () => {
@@ -39,7 +41,9 @@ const MenuManagement = () => {
   const [menuCreated, setMenuCreated] = useState(false);
   const [menuEdit, setMenuEdit] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const router = useRouter();
+  const router = useRouter(); 
+  const params = useParams();
+  const { venueId} = params;
 
   const [registerMenu] = useRegisterMenuMutation();
   const {
@@ -107,14 +111,10 @@ const MenuManagement = () => {
       text: "Tablet",
     },
   ];
-  const logout = async () => {
-    await signOut({ redirect: false });
-    router.push("/login");
-  };
-  useEffect(() => {
-    // logout()
-    if (menuData?.data?.length) {
-      setMenuCreated(true);
+
+  useEffect(()=>{
+    if(menuData?.data?.length){
+      setMenuCreated(true)
     }
   }, [menuData]);
   //   useEffect(()=>{
@@ -152,14 +152,9 @@ const MenuManagement = () => {
         <>
           {menuCreated ? (
             <>
-              {menuData?.data?.map((menu, i) => (
-                <Box
-                  key={i}
-                  sx={menuManagementCardWrapper}
-                  onClick={() =>
-                    router.push(`/venues/menu-management/${menu?._id}/section`)
-                  }
-                >
+            {
+              menuData?.data?.map((menu,i)=>(
+                <Box key={i} sx={menuManagementCardWrapper} onClick={()=> router.push(`/venues/${venueId}/menu-management/${menu?._id}/section`)}>
                   <Box sx={menuManagementCard}>
                     <Box>
                       <Typography color="#00000073">
