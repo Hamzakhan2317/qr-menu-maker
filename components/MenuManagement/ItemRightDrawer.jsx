@@ -8,48 +8,42 @@ import CustomDropzone from "../ui/Dropzone/CustomDropzone";
 import CustomCheckbox from "../ui/CustomCheckbox/CustomCheckbox";
 import ButtonComp from "../ui/button";
 import { useRegisterSectionMutation } from "@/redux/services/api/sectionApis";
-import { sectionSchema } from "@/validations/section/sectionSchema";
+import { itemSchema } from "@/validations/section/itemSchema";
 import { useFormik } from "formik";
 import { toast } from "sonner";
+import { useRegisterItemMutation } from "@/redux/services/api/itemApis";
 
 
 
 
-export default function RightDrawerContent({menuId, onClose}) {
-  const [open, setOpen] = useState(false);
-  const [ registerSection ] = useRegisterSectionMutation();
+export default function ItemRightDrawer({sectionId, onClose}) {
+  const [ registerItem ] = useRegisterItemMutation();
 
-
-  const handleDrawerToggle = () => {
-    setOpen(!open);
-  };
-
-  const handelRegisterSection = async (values) => {
+  const handelregisterItem = async (values) => {
     try {
-      const resp = await registerSection({
-        menuId,
+      const resp = await registerItem({
+        sectionId,
        ...values
       }).unwrap();
 
       if (resp) {
-        onClose(false)
-        toast.success(resp?.message || "Section Created successfully");
-      }
+        toast.success(resp?.message || "Item Created successfully");
+        onClose()
+        formik.resetForm()      }
     } catch (error) {
       console.log("error>>>>>", error);
     }
   };
-
   const formik = useFormik({
     initialValues: {
       name: "",
       description: "",
-      note: "",
+      price: "",
     },
-    validationSchema: sectionSchema,
+    validationSchema: itemSchema,
     onSubmit: async (values) => {
-      // console.log("values>>>>>>>>>", values)
-      handelRegisterSection(values);
+      console.log("values>>>>>>>>>", values)
+      handelregisterItem(values);
     },
   });
 
@@ -80,11 +74,11 @@ export default function RightDrawerContent({menuId, onClose}) {
           formik={formik}
         />
         <InputField
-          label={"Note"}
+          label={"Price"}
           Placeholder={"20% VAT included our prices."}
           cols={12}
           customHeight="40px"
-          name="note"
+          name="price"
           formik={formik}
         />
       </Grid>

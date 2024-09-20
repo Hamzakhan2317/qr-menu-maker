@@ -1,6 +1,8 @@
 import connectDB from "@/db/mongodb";
 import Menu from "@/models/menu.model";
 import Section from "@/models/section.model";
+import Item from "@/models/item.model";
+
 import { NextResponse } from "next/server";
 
 export async function POST(req) {
@@ -47,6 +49,7 @@ export async function GET(req) {
   try {
     // Extract the menuId from the query string
     const menuId = req.nextUrl.searchParams.get("menuId");
+    console.log("menuId>>>>>>>", menuId)
 
     if (!menuId) {
       return NextResponse.json(
@@ -57,7 +60,10 @@ export async function GET(req) {
 
     await connectDB();
 
-    const sections = await Section.find({ menu: menuId });
+    const sections = await Section.find({ menu: "66ec4306346ea4f06bdf87ef" }).populate("items");
+
+
+console.log("sections>>>>>>>>>>>>>>>>>>>>>", sections)
 
     return NextResponse.json(
       { message: "Sections fetched successfully", data: sections },

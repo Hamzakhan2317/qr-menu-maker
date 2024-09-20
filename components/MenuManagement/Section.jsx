@@ -9,13 +9,12 @@ import SectionList from "./SectionList";
 import { useParams } from 'next/navigation';
 import { useGetAllSectionQuery } from "@/redux/services/api/sectionApis";
 
-
 const Section = () => {
     const params = useParams();
     const { menuId } = params;
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-const {data, isLoading } = useGetAllSectionQuery(menuId)
-console.log("data section>>>>>>>>>>", data)
+const {data:sections, isLoading } = useGetAllSectionQuery(menuId)
+// console.log("data section>>>>>>>>>>", sections?.data)
 
 
   const handleDrawerToggle = () => {
@@ -29,7 +28,7 @@ console.log("data section>>>>>>>>>>", data)
       <Box sx={{ display: "flex", height: "100vh" }}>
         <SectionList onAddClick={handleDrawerToggle} />
         <Box sx={{ padding: "20px 40px", maxWidth: "850px", flex: 1 }}>
-          <MenuEditor />
+          <MenuEditor sections={sections?.data} isLoading={isLoading} />
           <Drawer
             anchor="right"
             open={isDrawerOpen}
@@ -60,10 +59,10 @@ console.log("data section>>>>>>>>>>", data)
               </IconButton>
             </Box>
 
-            <RightDrawerContent menuId={menuId} />
+            <RightDrawerContent menuId={menuId} onClose={toggleDrawer} />
           </Drawer>
         </Box>
-      </Box>{" "}
+      </Box>
     </div>
   );
 };

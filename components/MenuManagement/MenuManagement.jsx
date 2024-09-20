@@ -29,6 +29,8 @@ import { useSession, signOut } from "next-auth/react";
 import {toast} from "sonner"
 import {useEffect} from "react"
 import {useRouter} from "@/navigation"
+import { useParams } from 'next/navigation';
+
 
 
 
@@ -38,6 +40,8 @@ const MenuManagement = () => {
   const [menuEdit, setMenuEdit] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const router = useRouter(); 
+  const params = useParams();
+  const { venueId} = params;
 
 
   const [ registerMenu ] = useRegisterMenuMutation();
@@ -47,8 +51,7 @@ const MenuManagement = () => {
 
   // const { data:menuData, error, isLoading } = useGetAllMenuQuery("66ec420b346ea4f06bdf87e7");
 
-  console.log("isLoading>>>>>>>>>>>>>",isLoading)
-  console.log("menuData>>>>>>>>>>>>>",menuData)
+  console.log("venueId>>>>>>>>>>>>>",venueId)
 
 
 
@@ -105,12 +108,8 @@ const MenuManagement = () => {
       text: "Tablet",
     },
   ];
-  const logout = async () => {
-    await signOut({ redirect: false });
-    router.push("/login");
-  };
+
   useEffect(()=>{
-    // logout()
     if(menuData?.data?.length){
       setMenuCreated(true)
     }
@@ -153,7 +152,7 @@ const MenuManagement = () => {
             <>
             {
               menuData?.data?.map((menu,i)=>(
-                <Box key={i} sx={menuManagementCardWrapper} onClick={()=> router.push(`/venues/menu-management/${menu?._id}/section`)}>
+                <Box key={i} sx={menuManagementCardWrapper} onClick={()=> router.push(`/venues/${venueId}/menu-management/${menu?._id}/section`)}>
                   <Box sx={menuManagementCard}>
                     <Box>
                       <Typography color="#00000073">Copy of Sample Menu</Typography>

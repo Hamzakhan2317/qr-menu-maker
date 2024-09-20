@@ -27,7 +27,8 @@ import Logo from "../../public/assets/images/8.webp";
 import Image from "next/image";
 import MenuDropdown from "../ui/MenuDropdown";
 import { useRouter } from "@/navigation";
-import { sidebarHoverStyling, sidebarmenu } from "@/public/assets/static";
+import { sidebarHoverStyling } from "@/public/assets/static";
+// import { sidebarHoverStyling } from "@/public/assets/static";
 import { useGetAllRestaurentsQuery } from "@/redux/services/api/restaurentApis";
 
 import { useSession } from "next-auth/react";
@@ -37,19 +38,50 @@ const Sidebar = ({ children }) => {
   const [isOpen, setIsOpen] = useState(true);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const { push } = useRouter();
-    const { data: session } = useSession();
+  const { data: session } = useSession();
 
+// Assuming you want to pass the first restaurant's ID
+const venueId = session?.user?.restaurants?.[0]?._id;
 
-const userId = "66ec420b346ea4f06bdf87e5"
+// Dynamic sidebarmenu with the actual restaurant id
+const sidebarmenu = [
+  {
+    title: "Dashboard",
+    icon: <DashboardIcon />,
+    route: `/venues/${venueId}/dashboard`,
+    isCollapsible: false,
+  },
+  {
+    title: "Menu Management",
+    icon: <MenuIcon />,
+    route: `/venues/${venueId}/menu-management`,
+    isCollapsible: false,
+  },
+  {
+    title: "Settings",
+    icon: <SettingsIcon />,
+    isCollapsible: true,
+    subItems: [
+      { title: "QR Code", route: `/venues/${venueId}/settings/qrcode` },
+      {
+        title: "Venue Information",
+        route: `/venues/${venueId}/settings/venue-information`,
+      },
+      {
+        title: "Operating Hours",
+        route: `/venues/${venueId}/settings/operating-hours`,
+      },
+    ],
+  },
+];
 
 
 const { data, error, isLoading } = useGetAllRestaurentsQuery(session?.user?._id, {
   skip: !session?.user?._id, // Skip the query until user data is available
 });
-  // const { data, error, isLoading } = useGetAllRestaurentsQuery(userId);
 
 
-  console.log("dat>>>>>", data)
+  console.log("session>>>>>", session)
 
   const toggleDrawer = () => {
     setIsOpen(!isOpen);
@@ -60,6 +92,7 @@ const { data, error, isLoading } = useGetAllRestaurentsQuery(session?.user?._id,
       setSettingsOpen(!settingsOpen);
     } else {
       push(item.route);
+    
     }
   };
   useEffect(() => {
@@ -127,7 +160,7 @@ const { data, error, isLoading } = useGetAllRestaurentsQuery(session?.user?._id,
 
 
         <List>
-          {sidebarmenu.map((item, index) => (
+          {sidebarmenu?.map((item, index) => (
             <div key={index}>
               <ListItem
                 sx={sidebarHoverStyling}

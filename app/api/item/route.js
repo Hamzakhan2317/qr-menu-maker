@@ -23,10 +23,10 @@ export async function POST(req) {
       return NextResponse.json({ message: "Section not found" }, { status: 404 });
     }
 
-    const item = new Item({ name, description, price, menu: sectionId });
+    const item = new Item({ name, description, price, section: sectionId });
     await item.save();
 
-    section.menus.push(item._id);
+    section.items.push(item._id);
     await section.save();
     return NextResponse.json(
       { message: "Item Created successfully" },

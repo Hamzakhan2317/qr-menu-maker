@@ -58,7 +58,7 @@ const QrSection = () => {
   const handelregisterItem = async (values) => {
     try {
       const resp = await registerItem({
-        menuId:"66e96fe9e1c80f4e6f4c1472",
+        sectionId:"66ed47d886193fb6e7eb5b0e",
         name:"new item",
         description:" new description",
         price:20
@@ -71,6 +71,7 @@ const QrSection = () => {
       console.log("error>>>>>", error);
     }
   };
+
 
   const handelregisterSection = async (values) => {
     try {
