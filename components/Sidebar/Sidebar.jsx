@@ -32,14 +32,18 @@ import { sidebarHoverStyling } from "@/public/assets/static";
 import { useSession } from "next-auth/react";
 import { RestaurantSvg } from "@/public/assets/svg/Egg";
 import InputField from "../ui/InputField";
+import AddRestaurantsForm from "../AddRestaurants";
+import { set } from "mongoose";
 
 const Sidebar = ({ children }) => {
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(true);
   const [restaurantOpen, setRestaurantOpen] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const { push } = useRouter();
   const { data: session } = useSession();
+  const [venues, setVenues] = useState([]);
 
   // Assuming you want to pass the first restaurant's ID
   const venueId = session?.user?.restaurants?.[0]?._id;
@@ -76,6 +80,10 @@ const Sidebar = ({ children }) => {
     },
   ];
 
+  const { data, error, isLoading, refetch: refetchRestaurants } = useGetAllRestaurentsQuery(session?.user?._id, {
+    skip: !session?.user?._id, // Skip the query until user data is available
+  });
+
   const toggleDrawer = () => {
     setIsOpen(!isOpen);
   };
@@ -110,6 +118,10 @@ const Sidebar = ({ children }) => {
       window.removeEventListener("resize", handleResize);
     };
   }, [isOpen]);
+
+  useEffect(() => {
+    setVenues(data?.data);
+  }, [data]);
 
   return (
     <Box
@@ -260,10 +272,11 @@ const Sidebar = ({ children }) => {
                 disablePadding
                 sx={{ width: "100% !important" }}
               >
-                {session?.user?.restaurants?.length === 0 ? (
+                {venues?.length === 0 ? (
                   <ListItem
                     sx={{
                       // paddingLeft: 2,
+                      cursor: "pointer",
                       backgroundColor: "#F9F5FE",
                       width: "100% ",
                     }}
@@ -271,14 +284,16 @@ const Sidebar = ({ children }) => {
                     <ListItemText
                       sx={{ width: "100%" }}
                       primary={
-                        session?.user?.restaurants[0]?.name ?? "GarsOnline"
+                        venues?.[0]?.name ?? "GarsOnline"
                       }
                     />
                   </ListItem>
                 ) : (
-                  session?.user?.restaurants?.map((item, index) => (
+                  venues?.map((item, index) => (
                     <ListItem
+                      onClick={() => push(`/venues/${item._id}/dashboard`)}
                       sx={{
+                        cursor: "pointer",
                         paddingLeft: 2,
                         backgroundColor: "#F9F5FE",
                         width: "100% !important",
@@ -304,6 +319,7 @@ const Sidebar = ({ children }) => {
                 width: "90%",
                 marginLeft: "8px",
               }}
+              onClick={() => setIsDrawerOpen(true)}
             >
               Add new venue
             </Button>
@@ -413,6 +429,23 @@ const Sidebar = ({ children }) => {
           {children}
         </Box>
       </Box>
+
+      <Drawer
+        anchor="right"
+        open={isDrawerOpen}
+        onClose={() => setIsDrawerOpen(false)}
+        sx={{
+          width: 456,
+          flexShrink: 0,
+          "& .MuiDrawer-paper": {
+            width: 456,
+            boxSizing: "border-box",
+          },
+        }}
+        variant="persistent"
+      >
+        <AddRestaurantsForm refetchRestaurants={refetchRestaurants} userId={session?.user?._id} setIsDrawerOpen={setIsDrawerOpen} />
+      </Drawer>
     </Box>
   );
 };
