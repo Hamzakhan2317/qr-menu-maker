@@ -13,6 +13,9 @@ import {
 import { formatDateTime } from "@/utils/formatDateTime";
 import ButtonComp from "../ui/button";
 import { useEffect, useState } from "react";
+import { useGetAllRestaurentsQuery } from "@/redux/services/api/restaurentApis";
+import { usePathname } from "next/navigation";
+import { BallTriangle } from "react-loader-spinner";
 
 const Dashboard = () => {
   const { data: session } = useSession();
@@ -20,6 +23,19 @@ const Dashboard = () => {
   const [isCopied, setIsCopied] = useState(false);
   const [currentDateTime, setCurrentDateTime] = useState();
   const qrCodeLink = "https://qr-menu-maker.vercel.app/en/garsonline-menu";
+  const pathname = usePathname();
+
+  // Use a regex to extract the ID from the pathname
+  const match = pathname.match(/\/venues\/([^\/]+)/);
+  const restaurantId = match ? match[1] : null; // Get the ID or null if not found
+
+  const { data, isLoading } = useGetAllRestaurentsQuery(session?.user?._id, {
+    skip: !session?.user?._id, // Skip the query until user data is available
+  });
+
+  const currentRestaurant = data?.data?.filter(
+    (item) => item._id === restaurantId
+  );
 
   useEffect(() => {
     const now = formatDateTime();
@@ -32,11 +48,35 @@ const Dashboard = () => {
     });
   };
 
+  if (isLoading) {
+    return (
+      <Box
+        height={"100vh"}
+        width={"80vw"}
+        justifyContent={"center"}
+        alignItems={"center"}
+        display={"flex"}
+      >
+        <BallTriangle
+          height={100}
+          width={100}
+          radius={5}
+          color="#4fa94d"
+          ariaLabel="ball-triangle-loading"
+          wrapperStyle={{
+            height: "100vh",
+          }}
+          wrapperClass=""
+          visible={true}
+        />
+      </Box>
+    );
+  }
   return (
     <Box sx={{ padding: "40px", height: "100vh" }}>
       <p>{currentDateTime}</p>
       <Typography color="#000000d9" mt={1} fontSize={18}>
-        <b>{session?.user?.restaurants?.[0]?.name}, Welcome</b>
+        <b>{currentRestaurant?.[0]?.name}, Welcome</b>
       </Typography>
       <Grid container mt={2}>
         <Grid item xs={12} sm={12} md={4} sx={qrcodeWrapper}>

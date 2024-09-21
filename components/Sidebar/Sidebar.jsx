@@ -93,12 +93,15 @@ const Sidebar = ({ children }) => {
 
   const {
     data,
-    error,
-    isLoading,
+
     refetch: refetchRestaurants,
   } = useGetAllRestaurentsQuery(session?.user?._id, {
     skip: !session?.user?._id, // Skip the query until user data is available
   });
+
+  const currentRestaurant = data?.data?.filter(
+    (item) => item._id === restaurantId
+  );
 
   const toggleDrawer = () => {
     setIsOpen(!isOpen);
@@ -221,7 +224,7 @@ const Sidebar = ({ children }) => {
           </ListItemIcon>
           {isOpen && (
             <ListItemText
-              primary="Food"
+              primary={currentRestaurant?.[0]?.name ?? "GarsOnline"}
               primaryTypographyProps={{ fontSize: 14 }}
               sx={{
                 "&:hover": {

@@ -18,7 +18,7 @@ import ColorPicker from "../ui/ColorPicker/ColorPicker";
 
 const QrCode = () => {
   const [isCopied, setIsCopied] = useState(false);
-  const [qrColor, setQrColor] = useState("#A874F2");
+  const [qrColor, setQrColor] = useState("#000");
   const [bgQrColor, setBgQrColor] = useState("#FFFFFF");
   const qrCodeLink = "https://qr-menu-maker.vercel.app/en/garsonline-menu";
   const handleCopy = () => {
