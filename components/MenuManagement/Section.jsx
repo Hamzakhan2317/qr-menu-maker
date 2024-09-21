@@ -1,13 +1,13 @@
 "use client";
-
 import { useState } from "react";
-import { Box, Drawer, IconButton } from "@mui/material";
+import { Box, Drawer, IconButton, Typography } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import RightDrawerContent from "./RightDrawerContent";
 import MenuEditor from "./Menueditor";
 import SectionList from "./SectionList";
 import { useParams } from "next/navigation";
 import { useGetAllSectionQuery } from "@/redux/services/api/sectionApis";
+import { MenuManagementHeader } from "@/styles/MenuManagementStyling";
 
 const Section = () => {
   const params = useParams();
@@ -18,13 +18,16 @@ const Section = () => {
   const handleDrawerToggle = () => {
     setIsDrawerOpen((prevOpen) => !prevOpen);
   };
-  const toggleDrawer = (open) => () => {
-    setIsDrawerOpen(open);
-  };
 
-  console.log("TOGLLE0", isDrawerOpen);
   return (
     <div>
+      <Box sx={{ ...MenuManagementHeader, padding: "10px 20px" }}>
+        <Typography
+          sx={{ fontSize: "20px", lineHeight: "32px", fontWeight: "600" }}
+        >
+          Menu
+        </Typography>
+      </Box>
       <Box
         sx={{
           display: "flex",
