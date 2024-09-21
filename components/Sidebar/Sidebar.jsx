@@ -34,7 +34,6 @@ import {
 
 import { useSession } from "next-auth/react";
 import { RestaurantSvg } from "@/public/assets/svg/Egg";
-import InputField from "../ui/InputField";
 import AddRestaurantsForm from "../AddRestaurants";
 import { useGetAllRestaurentsQuery } from "@/redux/services/api/restaurentApis";
 import RestaurantIcon from "@mui/icons-material/Restaurant";
@@ -49,13 +48,16 @@ const Sidebar = ({ children }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const { push } = useRouter();
   const pathname = usePathname();
+
+  // Use a regex to extract the ID from the pathname
+  const match = pathname.match(/\/venues\/([^\/]+)/);
+  const restaurantId = match ? match[1] : null; // Get the ID or null if not found
   const trimmedPathname = pathname.replace(/^\/en/, "");
   const { data: session } = useSession();
   const [venues, setVenues] = useState([]);
-  // Assuming you want to pass the first restaurant's ID
-  const venueId = session?.user?.restaurants?.[0]?._id;
 
-  console.log("S", pathname);
+  // Assuming you want to pass the first restaurant's ID
+  const venueId = restaurantId;
 
   // Dynamic sidebarmenu with the actual restaurant id
   const sidebarmenu = [
@@ -254,6 +256,7 @@ const Sidebar = ({ children }) => {
                 flexDirection: "column",
                 height: "auto",
                 maxHeight: "200px",
+                overflowY: "scroll",
                 maxWidth: "200px",
                 width: "200px",
                 boxShadow:
@@ -261,7 +264,7 @@ const Sidebar = ({ children }) => {
                 paddingBottom: "8px",
               }}
             >
-              <InputField
+              {/* <InputField
                 fullWidth
                 value={searchQuery}
                 onChange={handleSearchChange}
@@ -280,7 +283,7 @@ const Sidebar = ({ children }) => {
                     paddingLeft: "0px",
                   },
                 }}
-              />
+              /> */}
               <List
                 component="div"
                 disablePadding

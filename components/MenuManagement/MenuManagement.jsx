@@ -20,7 +20,7 @@ import {
 import { useSession } from "next-auth/react";
 import { useEffect } from "react";
 import { useRouter } from "@/navigation";
-import { useParams } from "next/navigation";
+import { useParams, usePathname } from "next/navigation";
 
 import { BallTriangle } from "react-loader-spinner";
 import EmptyPageSvg from "@/public/assets/svg/EmptyPageSvg";
@@ -38,25 +38,29 @@ const MenuManagement = () => {
   const [registerMenu] = useRegisterMenuMutation();
   const [deleteMenu] = useDeleteMenuMutation();
 
+  const pathname = usePathname();
+
+  // Use a regex to extract the ID from the pathname
+  const match = pathname.match(/\/venues\/([^\/]+)/);
+  const restaurantId = match ? match[1] : null; // Get the ID or null if not found
+
   const {
     data: menuData,
     error,
     isLoading,
     refetch: refetchMenus,
-  } = useGetAllMenuQuery(session?.user?.restaurants[0]?._id, {
-    skip: !session?.user?.restaurants[0]?._id, // Skip the query until user data is available
+  } = useGetAllMenuQuery(restaurantId, {
+    skip: !restaurantId, // Skip the query until user data is available
   });
 
   const status = "Always";
 
   const createMenu = async () => {
     setIsloading(true);
-    {
-      session?.user?.restaurants[0]?._id;
-    }
+
     try {
       const resp = await registerMenu({
-        restaurantId: session?.user?.restaurants[0]?._id,
+        restaurantId: restaurantId,
         name: "Menu " + Math.floor(Math.random() * 100) + 1,
       }).unwrap();
 
