@@ -351,7 +351,7 @@ const Sidebar = ({ children }) => {
               <div key={index}>
                 <ListItem
                   sx={
-                    trimmedPathname === item.route
+                    trimmedPathname.includes(item.route)
                       ? sidebarActiveStyling
                       : sidebarHoverStyling
                   }
@@ -382,7 +382,7 @@ const Sidebar = ({ children }) => {
                       {item.subItems.map((subItem, subIndex) => (
                         <ListItem
                           sx={
-                            trimmedPathname === subItem.route
+                            trimmedPathname.includes(subItem.route)
                               ? sidebarActiveStyling
                               : sidebarHoverStyling
                           }
