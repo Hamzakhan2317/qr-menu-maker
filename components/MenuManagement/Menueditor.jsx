@@ -30,13 +30,7 @@ const MenuEditor = ({ sections, isLoading }) => {
 
   if (isLoading)
     return (
-      <Box
-        height={"100vh"}
-        width={"80vw"}
-        justifyContent={"center"}
-        alignItems={"center"}
-        display={"flex"}
-      >
+      <Box justifyContent={"center"} alignItems={"center"} display={"flex"}>
         <BallTriangle
           height={100}
           width={100}

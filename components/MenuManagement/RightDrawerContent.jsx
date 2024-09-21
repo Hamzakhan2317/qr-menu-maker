@@ -22,6 +22,7 @@ export default function RightDrawerContent({ menuId, onClose }) {
 
       if (resp) {
         toast.success(resp?.message || "Section Created successfully");
+        formik.resetForm();
         onClose();
       }
     } catch (error) {
@@ -108,6 +109,7 @@ export default function RightDrawerContent({ menuId, onClose }) {
             variant="transparent"
             hoverBorder="1px solid #8338EC"
             border="1px solid #d9d9d9"
+            onClick={onClose}
           />
           <ButtonComp
             text="Save"

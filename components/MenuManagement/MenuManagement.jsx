@@ -2,7 +2,6 @@
 import { Box, Typography } from "@mui/material";
 import { useState } from "react";
 import ButtonComp from "../ui/button";
-import EmptyPageSvg from "@/public/assets/svg/EmptyPageSvg";
 import {
   emptyPageWrapper,
   emptyPageWrapperSvg,
@@ -10,11 +9,13 @@ import {
   menuManagementCardWrapper,
   MenuManagementHeader,
 } from "@/styles/MenuManagementStyling";
-import { EditSvg, SettingSvg } from "@/public/assets/svg/ForkNknife";
+import { EditSvg } from "@/public/assets/svg/ForkNknife";
+import DeleteIcon from "@mui/icons-material/Delete";
 import CustomizedSwitch from "../ui/CustomizeSwitch";
 import {
   useRegisterMenuMutation,
   useGetAllMenuQuery,
+  useDeleteMenuMutation,
 } from "@/redux/services/api/menuApis";
 import { useSession } from "next-auth/react";
 import { useEffect } from "react";
@@ -22,6 +23,7 @@ import { useRouter } from "@/navigation";
 import { useParams } from "next/navigation";
 
 import { BallTriangle } from "react-loader-spinner";
+import EmptyPageSvg from "@/public/assets/svg/EmptyPageSvg";
 
 const MenuManagement = () => {
   const { data: session, status: sessionStatus } = useSession();
@@ -34,6 +36,8 @@ const MenuManagement = () => {
   const { venueId } = params;
 
   const [registerMenu] = useRegisterMenuMutation();
+  const [deleteMenu] = useDeleteMenuMutation();
+
   const {
     data: menuData,
     error,
@@ -43,14 +47,6 @@ const MenuManagement = () => {
     skip: !session?.user?.restaurants[0]?._id, // Skip the query until user data is available
   });
 
-  // const { data:menuData, error, isLoading } = useGetAllMenuQuery("66ec420b346ea4f06bdf87e7");
-
-  const handleDrawerToggle = () => {
-    setIsDrawerOpen((prevOpen) => !prevOpen);
-  };
-  const toggleDrawer = (open) => () => {
-    setIsDrawerOpen(open);
-  };
   const status = "Always";
 
   const createMenu = async () => {
@@ -79,6 +75,18 @@ const MenuManagement = () => {
     }
   };
 
+  const deleteMenuRow = async (menuId) => {
+    try {
+      const resp = await deleteMenu(menuId).unwrap();
+
+      if (resp) {
+        // toast.success(resp?.message || "Menu Deleted successfully");
+        refetchMenus();
+      }
+    } catch (error) {
+      console.log("error>>>>>", error);
+    }
+  };
   const cardLastRow = [
     {
       text: "8 Sections, 35 Items -",
@@ -118,6 +126,48 @@ const MenuManagement = () => {
       </Box>
     );
 
+  if (!menuData?.data?.length)
+    return (
+      <>
+        <Box sx={MenuManagementHeader}>
+          <Typography
+            sx={{ fontSize: "20px", lineHeight: "32px", fontWeight: "600" }}
+          >
+            Menu Management
+          </Typography>
+          <Box>
+            <ButtonComp
+              isLoading={isloading}
+              variant="blue"
+              text="Create a Menu"
+              padding="4px 15px"
+              onClick={() => {
+                createMenu();
+              }}
+            />
+          </Box>
+        </Box>
+        <Box sx={emptyPageWrapper}>
+          <>
+            <Box sx={emptyPageWrapperSvg}>
+              <EmptyPageSvg />
+            </Box>
+            <Typography sx={{ fontSize: "14px", marginTop: "10px" }}>
+              You don’t have any menu yet. Start creating one.
+            </Typography>
+            <ButtonComp
+              text="Create a Menu"
+              variants="purple"
+              padding="4px 15px"
+              marginTop="10px"
+              sx={{ height: "32px" }}
+              onClick={createMenu}
+            />
+          </>
+        </Box>
+      </>
+    );
+
   return (
     <Box>
       <Box sx={MenuManagementHeader}>
@@ -139,7 +189,7 @@ const MenuManagement = () => {
         </Box>
       </Box>
       <>
-        {menuCreated ? (
+        {menuCreated && (
           <Box sx={menuManagementCardWrapper}>
             {menuData?.data?.map((menu, i) => {
               return (
@@ -225,30 +275,16 @@ const MenuManagement = () => {
                         )
                       }
                     />
-                    <SettingSvg />
+                    <Box sx={{ cursor: "pointer" }}>
+                      <DeleteIcon
+                        sx={{ fill: "#FF7F7F " }}
+                        onClick={() => deleteMenuRow(menu._id)}
+                      />
+                    </Box>
                   </Box>
                 </Box>
               );
             })}
-          </Box>
-        ) : (
-          <Box sx={emptyPageWrapper}>
-            <>
-              <Box sx={emptyPageWrapperSvg}>
-                <EmptyPageSvg />
-              </Box>
-              <Typography sx={{ fontSize: "14px", marginTop: "10px" }}>
-                You don’t have any menu yet. Start creating one.
-              </Typography>
-              <ButtonComp
-                text="Create a Menu"
-                variants="purple"
-                padding="4px 15px"
-                marginTop="10px"
-                sx={{ height: "32px" }}
-                onClick={createMenu}
-              />
-            </>
           </Box>
         )}
       </>
