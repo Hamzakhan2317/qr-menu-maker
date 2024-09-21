@@ -242,7 +242,7 @@ const Sidebar = ({ children }) => {
             sx={{
               backgroundColor: "#ffffff",
               position: "absolute",
-              top: "90px",
+              top: "100",
               zIndex: "100",
               paddingBottom: "8px",
               width: "209px",
