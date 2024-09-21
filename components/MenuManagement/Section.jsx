@@ -8,9 +8,13 @@ import SectionList from "./SectionList";
 import { useParams } from "next/navigation";
 import { useGetAllSectionQuery } from "@/redux/services/api/sectionApis";
 import { MenuManagementHeader } from "@/styles/MenuManagementStyling";
+import ButtonComp from "../ui/button";
+import { useRouter } from "@/navigation";
 
 const Section = () => {
   const params = useParams();
+  const router = useRouter();
+
   const { menuId } = params;
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const { data: sections, isLoading } = useGetAllSectionQuery(menuId);
@@ -27,6 +31,14 @@ const Section = () => {
         >
           Menu
         </Typography>
+        <ButtonComp
+          text={"Preview Menu"}
+          variant="purple"
+          padding="4px 15px"
+          onClick={() =>
+            router.push("https://qr-menu-maker.vercel.app/en/garsonline-menu")
+          }
+        />
       </Box>
       <Box
         sx={{
