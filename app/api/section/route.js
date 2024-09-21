@@ -60,7 +60,7 @@ export async function GET(req) {
 
     await connectDB();
 
-    const sections = await Section.find({ menu: "66ec4306346ea4f06bdf87ef" }).populate("items");
+    const sections = await Section.find({ menu: menuId }).populate("items");
 
 
 console.log("sections>>>>>>>>>>>>>>>>>>>>>", sections)
