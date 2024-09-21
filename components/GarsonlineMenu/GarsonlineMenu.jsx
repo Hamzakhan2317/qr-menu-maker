@@ -210,7 +210,7 @@ const GarsonlineMenu = () => {
                     sx={{ textAlign: "center" }}
                   >
                     <Box sx={{ marginTop: "10px", cursor: "pointer" }}>
-                      <Image src={item.src} alt="" />
+                      <Image src={item.src} alt="" objectFit="cover" />
                     </Box>
                     <Box sx={{ cursor: "pointer" }}>
                       <Typography fontSize={"14px"} fontWeight={600}>
@@ -281,6 +281,7 @@ const GarsonlineMenu = () => {
                                 src={innerItem?.cardPic}
                                 alt=""
                                 className="card-img"
+                                objectFit="cover"
                               />
                             </Box>
                           </Box>

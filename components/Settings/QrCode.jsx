@@ -20,7 +20,7 @@ const QrCode = () => {
   const [isCopied, setIsCopied] = useState(false);
   const [qrColor, setQrColor] = useState("#A874F2");
   const [bgQrColor, setBgQrColor] = useState("#FFFFFF");
-  const qrCodeLink = "http://localhost:4000/en/garsonline-menu";
+  const qrCodeLink = "https://qr-menu-maker.vercel.app/en/garsonline-menu";
   const handleCopy = () => {
     navigator.clipboard.writeText(qrCodeLink).then(() => {
       setIsCopied(true);
