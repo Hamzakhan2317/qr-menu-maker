@@ -102,7 +102,12 @@ export default function ItemRightDrawer({ sectionId, onClose }) {
           <CustomCheckbox label="Save and add more" />
         </Box>
         <Box>
-          <ButtonComp text="Cancel" padding="4px 11px" marginRight="10px" />
+          <ButtonComp
+            text="Cancel"
+            padding="4px 11px"
+            marginRight="10px"
+            onClick={onClose}
+          />
           <ButtonComp
             text="Save"
             padding="4px 11px"
