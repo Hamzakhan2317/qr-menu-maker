@@ -378,7 +378,7 @@ const Sidebar = ({ children }) => {
                     timeout="auto"
                     unmountOnExit
                   >
-                    <List component="div" sx={{ paddingLeft: "15px" }}>
+                    <List component="div">
                       {item.subItems.map((subItem, subIndex) => (
                         <ListItem
                           sx={
@@ -391,6 +391,7 @@ const Sidebar = ({ children }) => {
                           key={subIndex}
                         >
                           <ListItemText
+                            sx={{ paddingLeft: "20px" }}
                             primaryTypographyProps={{ fontSize: 14 }}
                             primary={subItem.title}
                           />
