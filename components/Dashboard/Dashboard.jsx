@@ -88,7 +88,7 @@ const Dashboard = () => {
               <Box sx={qrcodeBox}>
                 <QRCode
                   size={150}
-                  fgColor="#A874F2"
+                  fgColor="#000"
                   style={{
                     height: "auto",
                     maxWidth: "100%",
