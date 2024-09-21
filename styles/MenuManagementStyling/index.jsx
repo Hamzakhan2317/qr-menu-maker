@@ -10,9 +10,9 @@ export const MenuManagementHeader = {
 export const emptyPageWrapper = {
   display: "flex",
   flexDirection: "column",
-  justifyContent: "center",
+  justifyContent: "flex-start",
   alignItems: "center",
-  // minHeight: "80vh",
+  minHeight: "100vh",
 };
 export const emptyPageWrapperSvg = {
   marginTop: "10px",

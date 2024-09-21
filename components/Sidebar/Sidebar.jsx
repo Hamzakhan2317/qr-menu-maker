@@ -33,8 +33,8 @@ import { useSession } from "next-auth/react";
 import { RestaurantSvg } from "@/public/assets/svg/Egg";
 import InputField from "../ui/InputField";
 import AddRestaurantsForm from "../AddRestaurants";
-import { set } from "mongoose";
 import { useGetAllRestaurentsQuery } from "@/redux/services/api/restaurentApis";
+import RestaurantIcon from "@mui/icons-material/Restaurant";
 
 const Sidebar = ({ children }) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -53,19 +53,19 @@ const Sidebar = ({ children }) => {
   const sidebarmenu = [
     {
       title: "Dashboard",
-      icon: <DashboardIcon />,
+      icon: <DashboardIcon fontSize="18px" />,
       route: `/venues/${venueId}/dashboard`,
       isCollapsible: false,
     },
     {
       title: "Menu Management",
-      icon: <MenuIcon />,
+      icon: <RestaurantIcon fontSize="18px" />,
       route: `/venues/${venueId}/menu-management`,
       isCollapsible: false,
     },
     {
       title: "Settings",
-      icon: <SettingsIcon />,
+      icon: <SettingsIcon fontSize="18px" />,
       isCollapsible: true,
       subItems: [
         { title: "QR Code", route: `/venues/${venueId}/settings/qrcode` },
@@ -358,7 +358,7 @@ const Sidebar = ({ children }) => {
                   timeout="auto"
                   unmountOnExit
                 >
-                  <List component="div" disablePadding>
+                  <List component="div" sx={{ paddingLeft: "15px" }}>
                     {item.subItems.map((subItem, subIndex) => (
                       <ListItem
                         sx={sidebarHoverStyling}
