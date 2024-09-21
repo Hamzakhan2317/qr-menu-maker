@@ -27,7 +27,7 @@ const MenuManagement = () => {
   const { data: session, status: sessionStatus } = useSession();
   const [menuCreated, setMenuCreated] = useState(false);
   const [menuEdit, setMenuEdit] = useState(false);
-  const [isloading, setIsloading] = useState(false)
+  const [isloading, setIsloading] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const router = useRouter();
   const params = useParams();
@@ -38,7 +38,7 @@ const MenuManagement = () => {
     data: menuData,
     error,
     isLoading,
-    refetch:refetchMenus,
+    refetch: refetchMenus,
   } = useGetAllMenuQuery(session?.user?.restaurants[0]?._id, {
     skip: !session?.user?.restaurants[0]?._id, // Skip the query until user data is available
   });
@@ -54,7 +54,7 @@ const MenuManagement = () => {
   const status = "Always";
 
   const createMenu = async () => {
-    setIsloading(true)
+    setIsloading(true);
     {
       session?.user?.restaurants[0]?._id;
     }
@@ -65,16 +65,16 @@ const MenuManagement = () => {
       }).unwrap();
 
       if (resp) {
-        setIsloading(false)
+        setIsloading(false);
         setMenuCreated(true);
         refetchMenus();
         router.push(
           `/venues/${venueId}/menu-management/${resp?.menuId}/section`
-        )
+        );
         // toast.success(resp?.message || "Menu Created successfully");
       }
     } catch (error) {
-      setIsloading(false)
+      setIsloading(false);
       console.log("error>>>>>", error);
     }
   };
@@ -128,13 +128,6 @@ const MenuManagement = () => {
         </Typography>
         <Box>
           <ButtonComp
-            variant="light"
-            disabled
-            text="Improve Menu"
-            padding="4px 15px"
-            marginRight="10px"
-          />
-          <ButtonComp
             isLoading={isloading}
             variant="blue"
             text="Create a Menu"
@@ -147,99 +140,97 @@ const MenuManagement = () => {
       </Box>
       <>
         {menuCreated ? (
-          <>
+          <Box sx={menuManagementCardWrapper}>
             {menuData?.data?.map((menu, i) => {
               return (
-                <Box key={i} sx={menuManagementCardWrapper}>
-                  <Box sx={menuManagementCard}>
-                    <Box>
-                      <Typography
-                        color="#00000073"
-                        sx={{
-                          textTransform: "capitalize",
-                          fontWeight: 600,
-                          color: "#000",
-                        }}
-                      >
-                        {menu?.name}
-                      </Typography>
-                      <Typography color="#00000073" fontSize={"14px"}>
-                        Your happy place!
-                      </Typography>
-                      <Typography
-                        color="#00000073"
-                        fontSize={"14px"}
-                        marginTop={"10px"}
-                        fontWeight={600}
-                      >
-                        Availability: {status}
-                      </Typography>
-                      <Box
-                        sx={{
-                          display: "flex",
-                          alignItems: "center",
-                          flexWrap: "wrap",
-                          justifyContent: "flex-start",
-                          color: "#00000073",
-                          fontSize: "14px",
-                        }}
-                      >
-                        {cardLastRow?.map((item, index) => {
-                          return (
+                <Box sx={menuManagementCard} key={i}>
+                  <Box>
+                    <Typography
+                      color="#00000073"
+                      sx={{
+                        textTransform: "capitalize",
+                        fontWeight: 600,
+                        color: "#000",
+                      }}
+                    >
+                      {menu?.name}
+                    </Typography>
+                    <Typography color="#00000073" fontSize={"14px"}>
+                      Your happy place!
+                    </Typography>
+                    <Typography
+                      color="#00000073"
+                      fontSize={"14px"}
+                      marginTop={"10px"}
+                      fontWeight={600}
+                    >
+                      Availability: {status}
+                    </Typography>
+                    <Box
+                      sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        flexWrap: "wrap",
+                        justifyContent: "flex-start",
+                        color: "#00000073",
+                        fontSize: "14px",
+                      }}
+                    >
+                      {cardLastRow?.map((item, index) => {
+                        return (
+                          <span
+                            style={{
+                              display: "flex",
+
+                              alignItems: "center",
+                            }}
+                            key={index}
+                          >
                             <span
                               style={{
-                                display: "flex",
+                                display: "inline-block",
 
-                                alignItems: "center",
+                                "& svg": {
+                                  transform: "rotate(90deg) !important",
+                                },
                               }}
-                              key={index}
                             >
-                              <span
-                                style={{
-                                  display: "inline-block",
-
-                                  "& svg": {
-                                    transform: "rotate(90deg) !important",
-                                  },
-                                }}
-                              >
-                                {item.img}
-                              </span>
-
-                              <span
-                                style={{
-                                  display: "inline-block",
-                                  marginRight: "5px",
-                                }}
-                              >
-                                {item.text}
-                              </span>
+                              {item.img}
                             </span>
-                          );
-                        })}
-                      </Box>
+
+                            <span
+                              style={{
+                                display: "inline-block",
+                                marginRight: "5px",
+                              }}
+                            >
+                              {item.text}
+                            </span>
+                          </span>
+                        );
+                      })}
                     </Box>
-                    <Box display="flex" alignItems="center" flexWrap="wrap">
-                      <CustomizedSwitch />
-                      <ButtonComp
-                        text={"Edit Menu"}
-                        variant="blue"
-                        startIcon={<EditSvg />}
-                        padding="4px 15px"
-                        marginRight="20px"
-                        onClick={() =>
-                          router.push(
-                            `/venues/${venueId}/menu-management/${menu?._id}/section`
-                          )
-                        }
-                      />
-                      <SettingSvg />
-                    </Box>
+                  </Box>
+                  <Box display="flex" alignItems="center" flexWrap="wrap">
+                    <CustomizedSwitch />
+                    <ButtonComp
+                      text={"Edit Menu"}
+                      variant="blue"
+                      startIcon={<EditSvg />}
+                      padding="4px 15px"
+                      marginRight="20px"
+                      onClick={() =>
+                        router.push(
+                          `/venues/${venueId}/menu-management/${menu?._id}/section`
+                        )
+                      }
+                    />
+                    <SettingSvg />
                   </Box>
                 </Box>
               );
             })}
-          </>
+          </Box>
         ) : (
           <Box sx={emptyPageWrapper}>
             <>

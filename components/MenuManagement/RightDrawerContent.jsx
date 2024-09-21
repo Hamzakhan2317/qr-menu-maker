@@ -1,6 +1,4 @@
 "use client";
-
-import { useState } from "react";
 import Box from "@mui/material/Box";
 import { FormLabel, Grid, Typography } from "@mui/material";
 import InputField from "../ui/InputField";
@@ -13,7 +11,6 @@ import { useFormik } from "formik";
 import { toast } from "sonner";
 
 export default function RightDrawerContent({ menuId, onClose }) {
-  const [open, setOpen] = useState(false);
   const [registerSection] = useRegisterSectionMutation();
 
   const handelRegisterSection = async (values) => {
@@ -24,8 +21,8 @@ export default function RightDrawerContent({ menuId, onClose }) {
       }).unwrap();
 
       if (resp) {
-        onClose(false);
         toast.success(resp?.message || "Section Created successfully");
+        onClose();
       }
     } catch (error) {
       console.log("error>>>>>", error);

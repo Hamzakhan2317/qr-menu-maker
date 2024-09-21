@@ -21,6 +21,8 @@ const Section = () => {
   const toggleDrawer = (open) => () => {
     setIsDrawerOpen(open);
   };
+
+  console.log("TOGLLE0", isDrawerOpen);
   return (
     <div>
       <Box
@@ -42,7 +44,7 @@ const Section = () => {
           <Drawer
             anchor="right"
             open={isDrawerOpen}
-            onClose={toggleDrawer(false)}
+            onClose={() => setIsDrawerOpen(false)}
             sx={{
               width: 456,
               flexShrink: 0,
@@ -64,12 +66,18 @@ const Section = () => {
               }}
             >
               <h3>Add New Section</h3>
-              <IconButton onClick={toggleDrawer(false)} marginRight="5px">
+              <IconButton
+                onClick={() => setIsDrawerOpen(false)}
+                marginRight="5px"
+              >
                 <CloseIcon />
               </IconButton>
             </Box>
 
-            <RightDrawerContent menuId={menuId} onClose={toggleDrawer} />
+            <RightDrawerContent
+              menuId={menuId}
+              onClose={() => setIsDrawerOpen(false)}
+            />
           </Drawer>
         </Box>
       </Box>

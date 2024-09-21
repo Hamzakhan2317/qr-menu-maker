@@ -21,6 +21,9 @@ export const menuManagementCardWrapper = {
   backgroundColor: "#F0F2F5",
   minHeight: "100vh",
   padding: "10px 24px",
+  display: "flex",
+  justifyContent: "flex-start",
+  flexDirection: "column",
 };
 export const menuManagementCard = {
   backgroundColor: "#ffffff",

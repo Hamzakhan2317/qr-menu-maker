@@ -52,7 +52,10 @@ const MenuEditor = ({ sections, isLoading }) => {
       </Box>
     );
 
-  if (sections?.length === 0) return <h1>No section found</h1>;
+  if (sections?.length === 0)
+    return (
+      <h3 style={{ textAlign: "center" }}>The menu is currently empty!</h3>
+    );
 
   return (
     <Box minHeight="100vh">
