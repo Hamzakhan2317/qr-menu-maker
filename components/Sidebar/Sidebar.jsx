@@ -76,7 +76,7 @@ const Sidebar = ({ children }) => {
       icon: <SettingsIcon fontSize="18px" />,
       isCollapsible: true,
       subItems: [
-        { title: "QR Code", route: ` /venues/${venueId}/settings/qrcode` },
+        { title: "QR Code", route: `/venues/${venueId}/settings/qrcode` },
         {
           title: "Venue Information",
           route: `/venues/${venueId}/settings/venue-information`,
