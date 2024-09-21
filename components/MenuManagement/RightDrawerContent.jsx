@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Box from "@mui/material/Box";
-import { FormLabel, Grid, Input, Typography } from "@mui/material";
+import { FormLabel, Grid, Typography } from "@mui/material";
 import InputField from "../ui/InputField";
 import CustomDropzone from "../ui/Dropzone/CustomDropzone";
 import CustomCheckbox from "../ui/CustomCheckbox/CustomCheckbox";
@@ -12,16 +12,9 @@ import { sectionSchema } from "@/validations/section/sectionSchema";
 import { useFormik } from "formik";
 import { toast } from "sonner";
 
-
-
-
-export default function RightDrawerContent({menuId, onClose}) {
+export default function RightDrawerContent({ menuId, onClose }) {
   const [open, setOpen] = useState(false);
   const [registerSection] = useRegisterSectionMutation();
-
-  const handleDrawerToggle = () => {
-    setOpen(!open);
-  };
 
   const handelRegisterSection = async (values) => {
     try {
@@ -31,7 +24,7 @@ export default function RightDrawerContent({menuId, onClose}) {
       }).unwrap();
 
       if (resp) {
-        onClose(false)
+        onClose(false);
         toast.success(resp?.message || "Section Created successfully");
       }
     } catch (error) {
@@ -57,7 +50,6 @@ export default function RightDrawerContent({menuId, onClose}) {
       component="form"
       onSubmit={formik.handleSubmit}
     >
-      <Typography color={"#8338ec"}>Overview</Typography>
       <Grid container spacing={2}>
         <InputField
           cols={12}

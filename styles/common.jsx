@@ -36,7 +36,6 @@ export const datepickrInput = {
 
 export const sectionsList = {
   backgroundColor: "#ffffff",
-  marginTop: "20px",
   padding: "10px 20px",
   width: "206px",
   overflow: "hidden",

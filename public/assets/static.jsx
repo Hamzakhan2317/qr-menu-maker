@@ -13,7 +13,6 @@ import PhoneIcon from "@mui/icons-material/Phone";
 import blogImgOne from "../assets/images/blogimg1.webp";
 import blogImgTwo from "../assets/images/blogimg2.webp";
 import blogImgThree from "../assets/images/blogimg3.webp";
-import ceo1 from "../assets/images/ceo1.webp";
 import ceo2 from "../assets/images/ceo2.webp";
 import ceo3 from "../assets/images/ceo3.webp";
 import ceo4 from "../assets/images/ceo4.webp";
@@ -41,8 +40,7 @@ import saladsfullwidth from "/public/assets/images/saladsfullwidth.webp";
 import specialSalad from "/public/assets/images/special-salad.webp";
 import gazpacho from "/public/assets/images/gazpacho.webp";
 import startersfullwidth from "/public/assets/images/startersfullwidth.webp";
-import EggSvg, { sugarSvg, PineSvg } from "./svg/Egg";
-import RestaurantMenuIcon from "@mui/icons-material/RestaurantMenu";
+import EggSvg, { PineSvg } from "./svg/Egg";
 import DashboardIcon from "@/public/assets/svg/dashboard";
 import MenuManagementIcon from "@/public/assets/svg/menu-management";
 import SettingsIcon from "@/public/assets/svg/settings";
@@ -141,7 +139,10 @@ export const sidebarmenu = [
     isCollapsible: true,
     subItems: [
       { title: "QR Code", route: "/venues/settings/qrcode" },
-      { title: "Venue Information", route: "/venues/settings/venue-information" },
+      {
+        title: "Venue Information",
+        route: "/venues/settings/venue-information",
+      },
       { title: "Operating Hours", route: "/venues/settings/operating-hours" },
     ],
   },
@@ -295,7 +296,7 @@ export const blogCardData = [
   },
 ];
 
-export const sidebarHoverStyling = ()=>{
+export const sidebarHoverStyling = () => {
   return {
     "&:hover": {
       backgroundColor: "#f5e9fc",
@@ -306,8 +307,8 @@ export const sidebarHoverStyling = ()=>{
         color: "#A327F0",
       },
     },
-  }
-}
+  };
+};
 
 export const footerData = [
   {

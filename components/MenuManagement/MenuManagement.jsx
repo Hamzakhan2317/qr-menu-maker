@@ -1,6 +1,6 @@
 "use client";
-import { Box, Drawer, Grid, IconButton, Typography } from "@mui/material";
-import React, { useState } from "react";
+import { Box, Typography } from "@mui/material";
+import { useState } from "react";
 import ButtonComp from "../ui/button";
 import EmptyPageSvg from "@/public/assets/svg/EmptyPageSvg";
 import {
@@ -10,29 +10,16 @@ import {
   menuManagementCardWrapper,
   MenuManagementHeader,
 } from "@/styles/MenuManagementStyling";
-import ForkNknife, {
-  Delievery,
-  EditSvg,
-  Pickup,
-  PlusIcon,
-  SettingSvg,
-} from "@/public/assets/svg/ForkNknife";
-import { Tablet } from "@mui/icons-material";
+import { EditSvg, SettingSvg } from "@/public/assets/svg/ForkNknife";
 import CustomizedSwitch from "../ui/CustomizeSwitch";
-import MenuEditor from "./Menueditor";
-import SectionList from "./SectionList";
-import CloseIcon from "@mui/icons-material/Close";
-import InputField from "../ui/InputField";
-import RightDrawerContent from "./RightDrawerContent";
 import {
   useRegisterMenuMutation,
   useGetAllMenuQuery,
 } from "@/redux/services/api/menuApis";
-import { useSession, signOut } from "next-auth/react";
-import {toast} from "sonner"
-import {useEffect} from "react"
-import {useRouter} from "@/navigation"
-import { useParams } from 'next/navigation';
+import { useSession } from "next-auth/react";
+import { useEffect } from "react";
+import { useRouter } from "@/navigation";
+import { useParams } from "next/navigation";
 
 import { BallTriangle } from "react-loader-spinner";
 
@@ -41,9 +28,9 @@ const MenuManagement = () => {
   const [menuCreated, setMenuCreated] = useState(false);
   const [menuEdit, setMenuEdit] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const router = useRouter(); 
+  const router = useRouter();
   const params = useParams();
-  const { venueId} = params;
+  const { venueId } = params;
 
   const [registerMenu] = useRegisterMenuMutation();
   const {
@@ -92,36 +79,56 @@ const MenuManagement = () => {
       text: "8 Sections, 35 Items -",
     },
     {
-      text: "Last updated on Sep 16, 2024 -",
+      text: "Last updated on Sep 16, 2024",
     },
-    {
-      img: <ForkNknife />,
-      text: "Dine-in QR",
-    },
-    {
-      img: <Pickup />,
-      text: "Pick-Up",
-    },
-    {
-      img: <Delievery />,
-      text: "Delievery",
-    },
-    {
-      img: <Tablet marginRight="5px" />,
-      text: "Tablet",
-    },
+    // {
+    //   img: <ForkNknife />,
+    //   text: "Dine-in QR",
+    // },
+    // {
+    //   img: <Pickup />,
+    //   text: "Pick-Up",
+    // },
+    // {
+    //   img: <Delievery />,
+    //   text: "Delievery",
+    // },
+    // {
+    //   img: <Tablet marginRight="5px" />,
+    //   text: "Tablet",
+    // },
   ];
 
-  useEffect(()=>{
-    if(menuData?.data?.length){
-      setMenuCreated(true)
+  useEffect(() => {
+    if (menuData?.data?.length) {
+      setMenuCreated(true);
     }
   }, [menuData]);
-  //   useEffect(()=>{
-  //     if(session?.user?.restaurants[0]?._id){
-  // refetch()
-  //     }
-  //   },[session?.user])
+
+  if (sessionStatus === "loading" || isLoading)
+    return (
+      <Box
+        height={"100vh"}
+        width={"80vw"}
+        justifyContent={"center"}
+        alignItems={"center"}
+        display={"flex"}
+      >
+        <BallTriangle
+          height={100}
+          width={100}
+          radius={5}
+          color="#4fa94d"
+          ariaLabel="ball-triangle-loading"
+          wrapperStyle={{
+            height: "100vh",
+          }}
+          wrapperClass=""
+          visible={true}
+        />
+      </Box>
+    );
+
   return (
     <Box>
       <Box sx={MenuManagementHeader}>
@@ -148,17 +155,23 @@ const MenuManagement = () => {
           />
         </Box>
       </Box>
-      {!menuEdit ? (
-        <>
-          {menuCreated ? (
-            <>
-            {
-              menuData?.data?.map((menu,i)=>(
-                <Box key={i} sx={menuManagementCardWrapper} onClick={()=> router.push(`/venues/${venueId}/menu-management/${menu?._id}/section`)}>
+      <>
+        {menuCreated ? (
+          <>
+            {menuData?.data?.map((menu, i) => {
+              return (
+                <Box key={i} sx={menuManagementCardWrapper}>
                   <Box sx={menuManagementCard}>
                     <Box>
-                      <Typography color="#00000073">
-                        Copy of Sample Menu
+                      <Typography
+                        color="#00000073"
+                        sx={{
+                          textTransform: "capitalize",
+                          fontWeight: 600,
+                          color: "#000",
+                        }}
+                      >
+                        {menu?.name}
                       </Typography>
                       <Typography color="#00000073" fontSize={"14px"}>
                         Your happy place!
@@ -167,8 +180,9 @@ const MenuManagement = () => {
                         color="#00000073"
                         fontSize={"14px"}
                         marginTop={"10px"}
+                        fontWeight={600}
                       >
-                        Availability:{status}
+                        Availability: {status}
                       </Typography>
                       <Box
                         sx={{
@@ -193,7 +207,7 @@ const MenuManagement = () => {
                               <span
                                 style={{
                                   display: "inline-block",
-                                  marginRight: "5px",
+
                                   "& svg": {
                                     transform: "rotate(90deg) !important",
                                   },
@@ -223,52 +237,40 @@ const MenuManagement = () => {
                         startIcon={<EditSvg />}
                         padding="4px 15px"
                         marginRight="20px"
+                        onClick={() =>
+                          router.push(
+                            `/venues/${venueId}/menu-management/${menu?._id}/section`
+                          )
+                        }
                       />
                       <SettingSvg />
                     </Box>
                   </Box>
                 </Box>
-              ))}
+              );
+            })}
+          </>
+        ) : (
+          <Box sx={emptyPageWrapper}>
+            <>
+              <Box sx={emptyPageWrapperSvg}>
+                <EmptyPageSvg />
+              </Box>
+              <Typography sx={{ fontSize: "14px", marginTop: "10px" }}>
+                You don’t have any menu yet. Start creating one.
+              </Typography>
+              <ButtonComp
+                text="Create a Menu"
+                variants="purple"
+                padding="4px 15px"
+                marginTop="10px"
+                sx={{ height: "32px" }}
+                onClick={createMenu}
+              />
             </>
-          ) : (
-            <Box sx={emptyPageWrapper}>
-              {sessionStatus === "loading" || isLoading ? (
-                <>
-                  <BallTriangle
-                    height={100}
-                    width={100}
-                    radius={5}
-                    color="#4fa94d"
-                    ariaLabel="ball-triangle-loading"
-                    wrapperStyle={{}}
-                    wrapperClass=""
-                    visible={true}
-                  />
-                </>
-              ) : (
-                <>
-                  <Box sx={emptyPageWrapperSvg}>
-                    <EmptyPageSvg />
-                  </Box>
-                  <Typography sx={{ fontSize: "14px", marginTop: "10px" }}>
-                    You don’t have any menu yet. Start creating one.
-                  </Typography>
-                  <ButtonComp
-                    text="Create a Menu"
-                    variants="purple"
-                    padding="4px 15px"
-                    marginTop="10px"
-                    sx={{ height: "32px" }}
-                    onClick={createMenu}
-                  />
-                </>
-              )}
-            </Box>
-          )}
-        </>
-      ) : (
-        <>section part</>
-      )}
+          </Box>
+        )}
+      </>
     </Box>
   );
 };

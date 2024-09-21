@@ -83,3 +83,7 @@ p {
 }
 
 /* Time picker */
+
+.MuiListItem-root .MuiListItemText-root span {
+  color: #000 !important;
+}
