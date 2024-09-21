@@ -57,7 +57,7 @@ const MenuManagement = () => {
     try {
       const resp = await registerMenu({
         restaurantId: session?.user?.restaurants[0]?._id,
-        name: "new menu",
+        name: "Menu " + Math.floor(Math.random() * 100) + 1,
       }).unwrap();
 
       if (resp) {
