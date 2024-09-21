@@ -16,10 +16,6 @@ const AddRestaurantsForm = ({
   const [open, setOpen] = useState(false);
   const [registerRestaurent] = useRegisterRestaurentMutation();
 
-  const handleDrawerToggle = () => {
-    setOpen(!open);
-  };
-
   const handelRegisterSection = async (values) => {
     try {
       const resp = await registerRestaurent({
@@ -29,9 +25,8 @@ const AddRestaurantsForm = ({
 
       if (resp) {
         refetchRestaurants();
-        // useGetAllRestaurentsQuery
-        onClose(false);
-        toast.success(resp?.message || "Section Created successfully");
+
+        setIsDrawerOpen(false);
       }
     } catch (error) {
       console.log("error>>>>>", error);
@@ -115,6 +110,7 @@ const AddRestaurantsForm = ({
               variant="transparent"
               hoverBorder="1px solid #8338EC"
               border="1px solid #d9d9d9"
+              onClick={() => setIsDrawerOpen(false)}
             />
             <ButtonComp
               text="Save"
