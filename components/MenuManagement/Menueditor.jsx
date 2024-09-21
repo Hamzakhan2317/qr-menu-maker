@@ -87,7 +87,7 @@ const MenuEditor = ({ sections, isLoading }) => {
       </Drawer>
       <div>
         {sections?.map((item, index) => (
-          <React.Fragment key={item.id}>
+          <React.Fragment key={index}>
             <div
               style={{
                 backgroundColor: "white",
@@ -147,60 +147,55 @@ const MenuEditor = ({ sections, isLoading }) => {
             {/* Sub-items or Add Item Button */}
             {openItemId === item._id && (
               <div style={{ marginLeft: "30px" }}>
-                {item.items.length > 0 && (
-                  <>
-                    {item.items.map((subItem, subIndex) => (
+                {item.items.length > 0 &&
+                  item.items.map((subItem, subIndex) => (
+                    <div
+                      key={subItem._id}
+                      style={{
+                        backgroundColor: "white",
+                        borderRadius: "8px",
+                        height: "60px",
+                        display: "flex",
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                        padding: "10px",
+                        width: "100%",
+                        boxSizing: "border-box",
+                        marginBottom: "10px",
+                        border: "1px solid #ddd",
+                      }}
+                    >
                       <div
-                        key={subItem._id}
                         style={{
-                          backgroundColor: "white",
-                          borderRadius: "8px",
-                          height: "60px",
                           display: "flex",
-                          justifyContent: "space-between",
                           alignItems: "center",
-                          padding: "10px",
-                          width: "100%",
-                          boxSizing: "border-box",
-                          marginBottom: "10px",
-                          border: "1px solid #ddd",
                         }}
                       >
                         <div
                           style={{
-                            display: "flex",
-                            alignItems: "center",
+                            width: "40px",
+                            height: "40px",
+                            backgroundColor: "#f0f0f0",
+                            marginRight: "10px",
+                            borderRadius: "50%",
                           }}
-                        >
-                          <div
-                            style={{
-                              width: "40px",
-                              height: "40px",
-                              backgroundColor: "#f0f0f0",
-                              marginRight: "10px",
-                              borderRadius: "50%",
-                            }}
-                          />
-                          <div
-                            style={{
-                              width: "8px",
-                              height: "8px",
-                              // backgroundColor: subItem.available
-                              //   ? "green"
-                              //   : "red",
-                              backgroundColor: "red",
-                              borderRadius: "50%",
-                              marginRight: "10px",
-                            }}
-                          />
-                          <div>{subItem.name}</div>
-                        </div>
-
-                        <CustomizedSwitch />
+                        />
+                        <div
+                          style={{
+                            width: "8px",
+                            height: "8px",
+                            backgroundColor: "red",
+                            borderRadius: "50%",
+                            marginRight: "10px",
+                          }}
+                        />
+                        <div>{subItem.name}</div>
                       </div>
-                    ))}
-                  </>
-                )}
+
+                      <CustomizedSwitch />
+                    </div>
+                  ))}
+
                 {/* Add item button */}
                 <div
                   style={{

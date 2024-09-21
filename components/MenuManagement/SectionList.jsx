@@ -94,7 +94,6 @@ const SectionList = ({ onAddClick }) => {
       key={item._id}
       sx={{
         padding: "8px 0",
-        marginBottom: "8px",
         display: "flex",
         alignItems: "center",
       }}
@@ -119,16 +118,17 @@ const SectionList = ({ onAddClick }) => {
               padding: 0,
             }}
           >
-            <Typography fontSize={"12px"} fontWeight={400}>
+            <Typography fontSize={"14px"} fontWeight={400}>
               {item.name}
             </Typography>
           </CustomAccordionSummary>
-          <AccordionDetails sx={{ padding: "10px 0px" }}>
+          <AccordionDetails sx={{ padding: "5px 0px" }}>
             {item?.items?.map((subItem, i) => (
               <Box
                 key={i}
                 sx={{
-                  paddingLeft: "16px",
+                  paddingLeft: "20px",
+                  paddingTop: "5px",
                   display: "flex",
                   alignItems: "center",
                 }}
@@ -192,7 +192,6 @@ const SectionList = ({ onAddClick }) => {
             sx={{
               minHeight: "23px",
               "& .MuiTabs-flexContainer": {
-                // border: "1px solid #d9d9d9",
                 borderRadius: "30px",
                 minHeight: "23px",
                 "& .MuiButtonBase-root": {
@@ -219,7 +218,7 @@ const SectionList = ({ onAddClick }) => {
                   activeTab === 0 ? "1px solid #8338ec" : "1px solid #d9d9d9",
                 color: activeTab === 0 ? "#8338ec" : "black",
                 borderRadius: "8px 0 0 8px",
-                padding: "1px 5px",
+                padding: "10px",
                 fontWeight: "400",
               }}
             />
@@ -230,7 +229,7 @@ const SectionList = ({ onAddClick }) => {
                   activeTab === 1 ? "1px solid #8338ec" : "1px solid #d9d9d9",
                 color: activeTab === 1 ? "#8338ec" : "black",
                 borderRadius: "0",
-                padding: "1px 5px",
+                padding: "10px",
                 fontWeight: "400",
               }}
             />
@@ -241,7 +240,7 @@ const SectionList = ({ onAddClick }) => {
                   activeTab === 2 ? "1px solid #8338ec" : "1px solid #d9d9d9",
                 color: activeTab === 2 ? "#8338ec" : "black",
                 borderRadius: "0 8px 8px 0",
-                padding: "1px 5px",
+                padding: "10px",
                 fontWeight: "400",
               }}
             />
