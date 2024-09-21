@@ -307,6 +307,17 @@ export const sidebarHoverStyling = () => {
     },
   };
 };
+export const sidebarActiveStyling = () => {
+  return {
+    backgroundColor: "#f5e9fc",
+    "& .MuiListItemText-primary": {
+      color: "#A327F0",
+    },
+    "& .MuiListItemIcon-root": {
+      color: "#A327F0",
+    },
+  };
+};
 
 export const footerData = [
   {

@@ -27,7 +27,10 @@ import Logo from "../../public/assets/images/8.webp";
 import Image from "next/image";
 import MenuDropdown from "../ui/MenuDropdown";
 import { useRouter } from "@/navigation";
-import { sidebarHoverStyling } from "@/public/assets/static";
+import {
+  sidebarActiveStyling,
+  sidebarHoverStyling,
+} from "@/public/assets/static";
 
 import { useSession } from "next-auth/react";
 import { RestaurantSvg } from "@/public/assets/svg/Egg";
@@ -35,19 +38,24 @@ import InputField from "../ui/InputField";
 import AddRestaurantsForm from "../AddRestaurants";
 import { useGetAllRestaurentsQuery } from "@/redux/services/api/restaurentApis";
 import RestaurantIcon from "@mui/icons-material/Restaurant";
+import { usePathname } from "next/navigation";
 
 const Sidebar = ({ children }) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
   const [isOpen, setIsOpen] = useState(true);
   const [restaurantOpen, setRestaurantOpen] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const { push } = useRouter();
+  const pathname = usePathname();
+  const trimmedPathname = pathname.replace(/^\/en/, "");
   const { data: session } = useSession();
   const [venues, setVenues] = useState([]);
-
   // Assuming you want to pass the first restaurant's ID
   const venueId = session?.user?.restaurants?.[0]?._id;
+
+  console.log("S", pathname);
 
   // Dynamic sidebarmenu with the actual restaurant id
   const sidebarmenu = [
@@ -68,7 +76,7 @@ const Sidebar = ({ children }) => {
       icon: <SettingsIcon fontSize="18px" />,
       isCollapsible: true,
       subItems: [
-        { title: "QR Code", route: `/venues/${venueId}/settings/qrcode` },
+        { title: "QR Code", route: ` /venues/${venueId}/settings/qrcode` },
         {
           title: "Venue Information",
           route: `/venues/${venueId}/settings/venue-information`,
@@ -332,51 +340,68 @@ const Sidebar = ({ children }) => {
         <Divider />
 
         <List>
-          {sidebarmenu?.map((item, index) => (
-            <div key={index}>
-              <ListItem
-                sx={sidebarHoverStyling}
-                button
-                onClick={() => handleToggle(item)}
-              >
-                <ListItemIcon sx={{ minWidth: "30px" }}>
-                  {item.icon}
-                </ListItemIcon>
-                {isOpen && (
-                  <ListItemText
-                    primary={item.title}
-                    primaryTypographyProps={{ fontSize: 14 }}
-                  />
-                )}
-                {isOpen &&
-                  item.isCollapsible &&
-                  (settingsOpen ? <ExpandLess /> : <ExpandMore />)}
-              </ListItem>
-              {item.isCollapsible && (
-                <Collapse
-                  in={settingsOpen && isOpen}
-                  timeout="auto"
-                  unmountOnExit
+          {sidebarmenu?.map((item, index) => {
+            console.log(
+              "pathname === item.route",
+              trimmedPathname === item.route,
+              item.route,
+              pathname
+            );
+            return (
+              <div key={index}>
+                <ListItem
+                  sx={
+                    trimmedPathname === item.route
+                      ? sidebarActiveStyling
+                      : sidebarHoverStyling
+                  }
+                  backgroundColor="red"
+                  button
+                  onClick={() => handleToggle(item)}
                 >
-                  <List component="div" sx={{ paddingLeft: "15px" }}>
-                    {item.subItems.map((subItem, subIndex) => (
-                      <ListItem
-                        sx={sidebarHoverStyling}
-                        button
-                        onClick={() => push(subItem.route)}
-                        key={subIndex}
-                      >
-                        <ListItemText
-                          primaryTypographyProps={{ fontSize: 14 }}
-                          primary={subItem.title}
-                        />
-                      </ListItem>
-                    ))}
-                  </List>
-                </Collapse>
-              )}
-            </div>
-          ))}
+                  <ListItemIcon sx={{ minWidth: "30px" }}>
+                    {item.icon}
+                  </ListItemIcon>
+                  {isOpen && (
+                    <ListItemText
+                      primary={item.title}
+                      primaryTypographyProps={{ fontSize: 14 }}
+                    />
+                  )}
+                  {isOpen &&
+                    item.isCollapsible &&
+                    (settingsOpen ? <ExpandLess /> : <ExpandMore />)}
+                </ListItem>
+                {item.isCollapsible && (
+                  <Collapse
+                    in={settingsOpen && isOpen}
+                    timeout="auto"
+                    unmountOnExit
+                  >
+                    <List component="div" sx={{ paddingLeft: "15px" }}>
+                      {item.subItems.map((subItem, subIndex) => (
+                        <ListItem
+                          sx={
+                            trimmedPathname === subItem.route
+                              ? sidebarActiveStyling
+                              : sidebarHoverStyling
+                          }
+                          button
+                          onClick={() => push(subItem.route)}
+                          key={subIndex}
+                        >
+                          <ListItemText
+                            primaryTypographyProps={{ fontSize: 14 }}
+                            primary={subItem.title}
+                          />
+                        </ListItem>
+                      ))}
+                    </List>
+                  </Collapse>
+                )}
+              </div>
+            );
+          })}
         </List>
       </Drawer>
 
