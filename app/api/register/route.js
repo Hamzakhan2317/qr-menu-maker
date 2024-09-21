@@ -5,8 +5,7 @@ import { NextResponse } from "next/server";
 
 export async function POST(req) {
   const { email, phone, password } = await req.json();
-console.log("email>>>>", email)
-
+  console.log("email>>>>", email);
 
   try {
     await connectDB();
@@ -46,15 +45,18 @@ console.log("email>>>>", email)
       );
     }
     const newRestaurent = new Restaurent({
-      name: "FineDine",
+      name: "Garsonline",
       owner: savedUser._id,
     });
 
-    const savedRestaurent =  await newRestaurent.save();
-     savedUser.restaurants.push(savedRestaurent._id);
-     await savedUser.save();
-    
-    return NextResponse.json({ message:"User register successfully" }, { status: 201 });
+    const savedRestaurent = await newRestaurent.save();
+    savedUser.restaurants.push(savedRestaurent._id);
+    await savedUser.save();
+
+    return NextResponse.json(
+      { message: "User register successfully" },
+      { status: 201 }
+    );
   } catch (error) {
     return NextResponse.json(
       { message: error?.message || "Failed to connect to server" },
