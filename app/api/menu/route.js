@@ -29,7 +29,7 @@ export async function POST(req) {
   
       restaurant.menus.push(menu._id);
       await restaurant.save();
-    return NextResponse.json({ message:"Menu Created successfully" }, { status: 201 });
+    return NextResponse.json({ message:"Menu Created successfully",menuId:menu?._id }, { status: 201 });
   } catch (error) {
     return NextResponse.json(
       { message: error?.message || "Failed to connect to server" },

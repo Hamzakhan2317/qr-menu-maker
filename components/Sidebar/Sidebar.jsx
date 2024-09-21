@@ -34,6 +34,7 @@ import { RestaurantSvg } from "@/public/assets/svg/Egg";
 import InputField from "../ui/InputField";
 import AddRestaurantsForm from "../AddRestaurants";
 import { set } from "mongoose";
+import { useGetAllRestaurentsQuery } from "@/redux/services/api/restaurentApis";
 
 const Sidebar = ({ children }) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);

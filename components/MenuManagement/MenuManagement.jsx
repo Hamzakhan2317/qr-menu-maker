@@ -27,6 +27,7 @@ const MenuManagement = () => {
   const { data: session, status: sessionStatus } = useSession();
   const [menuCreated, setMenuCreated] = useState(false);
   const [menuEdit, setMenuEdit] = useState(false);
+  const [isloading, setIsloading] = useState(false)
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const router = useRouter();
   const params = useParams();
@@ -37,7 +38,7 @@ const MenuManagement = () => {
     data: menuData,
     error,
     isLoading,
-    refetch,
+    refetch:refetchMenus,
   } = useGetAllMenuQuery(session?.user?.restaurants[0]?._id, {
     skip: !session?.user?.restaurants[0]?._id, // Skip the query until user data is available
   });
@@ -53,11 +54,10 @@ const MenuManagement = () => {
   const status = "Always";
 
   const createMenu = async () => {
-    // const handelregisterMenu = async (values) => {
+    setIsloading(true)
     {
       session?.user?.restaurants[0]?._id;
     }
-
     try {
       const resp = await registerMenu({
         restaurantId: session?.user?.restaurants[0]?._id,
@@ -65,13 +65,18 @@ const MenuManagement = () => {
       }).unwrap();
 
       if (resp) {
+        setIsloading(false)
         setMenuCreated(true);
+        refetchMenus();
+        router.push(
+          `/venues/${venueId}/menu-management/${resp?.menuId}/section`
+        )
         // toast.success(resp?.message || "Menu Created successfully");
       }
     } catch (error) {
+      setIsloading(false)
       console.log("error>>>>>", error);
     }
-    // };
   };
 
   const cardLastRow = [
@@ -81,22 +86,6 @@ const MenuManagement = () => {
     {
       text: "Last updated on Sep 16, 2024",
     },
-    // {
-    //   img: <ForkNknife />,
-    //   text: "Dine-in QR",
-    // },
-    // {
-    //   img: <Pickup />,
-    //   text: "Pick-Up",
-    // },
-    // {
-    //   img: <Delievery />,
-    //   text: "Delievery",
-    // },
-    // {
-    //   img: <Tablet marginRight="5px" />,
-    //   text: "Tablet",
-    // },
   ];
 
   useEffect(() => {
@@ -146,11 +135,12 @@ const MenuManagement = () => {
             marginRight="10px"
           />
           <ButtonComp
+            isLoading={isloading}
             variant="blue"
             text="Create a Menu"
             padding="4px 15px"
             onClick={() => {
-              setMenuCreated(true);
+              createMenu();
             }}
           />
         </Box>
