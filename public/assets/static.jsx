@@ -32,8 +32,6 @@ import mainCourse from "/public/assets/images/main-course.webp";
 import Deserts from "/public/assets/images/deserts.webp";
 import Salads from "/public/assets/images/salads.webp";
 import starters from "/public/assets/images/starters.webp";
-import mainCourseFullWidth from "/public/assets/images/main-course-fullimg.webp";
-import chickenWraps from "/public/assets/images/chickenwraps.webp";
 import desertsFullwidth from "/public/assets/images/deserts-fullwidth.webp";
 import desertCardimg from "/public/assets/images/desert-cardimg.webp";
 import saladsfullwidth from "/public/assets/images/saladsfullwidth.webp";
@@ -773,61 +771,61 @@ export const contactUsCardsData = (t) => [
   },
 ];
 export const foodInfoArray = [
-  {
-    src: mainCourseFullWidth,
-    textHeading: "Main Courses",
-    infoText: "From the best chefs in the world",
-    accordionData: [
-      {
-        accordionHeading: "Wraps",
-        accordionTxtInfo: "Fresh ingredients wrapped in warm tortillas",
-        accordionCardHead: "Veggie Wrap",
-        accordionCardtxt:
-          "Lettuce, carrots, tomatoes, arugula, avocado puree and ranch dressing on tortilla ",
-        accordionPic: chickenWraps,
-        accordionFoodPrice: "$14.00 - $19.00",
-        icon1: <EggSvg />,
-        icon2: <PineSvg />,
-        icon3: <sugarSvg />,
-      },
-      {
-        accordionHeading: "Chicken",
-        accordionTxtInfo: "Fresh ingredients wrapped in warm tortillas",
-        accordionCardHead: "Veggie Wrap",
-        accordionCardtxt:
-          "Lettuce, carrots, tomatoes, arugula, avocado puree and ranch dressing on tortilla ",
-        accordionPic: chickenWraps,
-        accordionFoodPrice: "$14.00 - $19.00",
-        icon1: <EggSvg />,
-        icon2: <PineSvg />,
-        icon3: <sugarSvg />,
-      },
-      {
-        accordionHeading: "Burgers",
-        accordionTxtInfo: "Fresh ingredients wrapped in warm tortillas",
-        accordionCardHead: "Veggie Wrap",
-        accordionCardtxt:
-          "Lettuce, carrots, tomatoes, arugula, avocado puree and ranch dressing on tortilla ",
-        accordionPic: chickenWraps,
-        accordionFoodPrice: "$14.00 - $19.00",
-        icon1: <EggSvg />,
-        icon2: <PineSvg />,
-        icon3: <sugarSvg />,
-      },
-      {
-        accordionHeading: "Red Meats",
-        accordionTxtInfo: "Fresh ingredients wrapped in warm tortillas",
-        accordionCardHead: "Veggie Wrap",
-        accordionCardtxt:
-          "Lettuce, carrots, tomatoes, arugula, avocado puree and ranch dressing on tortilla ",
-        accordionPic: chickenWraps,
-        accordionFoodPrice: "$14.00 - $19.00",
-        icon1: <EggSvg />,
-        icon2: <PineSvg />,
-        icon3: <sugarSvg />,
-      },
-    ],
-  },
+  // {
+  //   src: mainCourseFullWidth,
+  //   textHeading: "Main Courses",
+  //   infoText: "From the best chefs in the world",
+  //   accordionData: [
+  //     {
+  //       accordionHeading: "Wraps",
+  //       accordionTxtInfo: "Fresh ingredients wrapped in warm tortillas",
+  //       accordionCardHead: "Veggie Wrap",
+  //       accordionCardtxt:
+  //         "Lettuce, carrots, tomatoes, arugula, avocado puree and ranch dressing on tortilla ",
+  //       accordionPic: chickenWraps,
+  //       accordionFoodPrice: "$14.00 - $19.00",
+  //       icon1: <EggSvg />,
+  //       icon2: <PineSvg />,
+  //       icon3: <sugarSvg />,
+  //     },
+  //     {
+  //       accordionHeading: "Chicken",
+  //       accordionTxtInfo: "Fresh ingredients wrapped in warm tortillas",
+  //       accordionCardHead: "Veggie Wrap",
+  //       accordionCardtxt:
+  //         "Lettuce, carrots, tomatoes, arugula, avocado puree and ranch dressing on tortilla ",
+  //       accordionPic: chickenWraps,
+  //       accordionFoodPrice: "$14.00 - $19.00",
+  //       icon1: <EggSvg />,
+  //       icon2: <PineSvg />,
+  //       icon3: <sugarSvg />,
+  //     },
+  //     {
+  //       accordionHeading: "Burgers",
+  //       accordionTxtInfo: "Fresh ingredients wrapped in warm tortillas",
+  //       accordionCardHead: "Veggie Wrap",
+  //       accordionCardtxt:
+  //         "Lettuce, carrots, tomatoes, arugula, avocado puree and ranch dressing on tortilla ",
+  //       accordionPic: chickenWraps,
+  //       accordionFoodPrice: "$14.00 - $19.00",
+  //       icon1: <EggSvg />,
+  //       icon2: <PineSvg />,
+  //       icon3: <sugarSvg />,
+  //     },
+  //     {
+  //       accordionHeading: "Red Meats",
+  //       accordionTxtInfo: "Fresh ingredients wrapped in warm tortillas",
+  //       accordionCardHead: "Veggie Wrap",
+  //       accordionCardtxt:
+  //         "Lettuce, carrots, tomatoes, arugula, avocado puree and ranch dressing on tortilla ",
+  //       accordionPic: chickenWraps,
+  //       accordionFoodPrice: "$14.00 - $19.00",
+  //       icon1: <EggSvg />,
+  //       icon2: <PineSvg />,
+  //       icon3: <sugarSvg />,
+  //     },
+  //   ],
+  // },
   {
     src: desertsFullwidth,
     textHeading: "Deserts",

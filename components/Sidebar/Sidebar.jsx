@@ -81,7 +81,12 @@ const Sidebar = ({ children }) => {
     },
   ];
 
-  const { data, error, isLoading, refetch: refetchRestaurants } = useGetAllRestaurentsQuery(session?.user?._id, {
+  const {
+    data,
+    error,
+    isLoading,
+    refetch: refetchRestaurants,
+  } = useGetAllRestaurentsQuery(session?.user?._id, {
     skip: !session?.user?._id, // Skip the query until user data is available
   });
 
@@ -284,9 +289,7 @@ const Sidebar = ({ children }) => {
                   >
                     <ListItemText
                       sx={{ width: "100%" }}
-                      primary={
-                        venues?.[0]?.name ?? "GarsOnline"
-                      }
+                      primary={venues?.[0]?.name ?? "GarsOnline"}
                     />
                   </ListItem>
                 ) : (
@@ -445,7 +448,11 @@ const Sidebar = ({ children }) => {
         }}
         variant="persistent"
       >
-        <AddRestaurantsForm refetchRestaurants={refetchRestaurants} userId={session?.user?._id} setIsDrawerOpen={setIsDrawerOpen} />
+        <AddRestaurantsForm
+          refetchRestaurants={refetchRestaurants}
+          userId={session?.user?._id}
+          setIsDrawerOpen={setIsDrawerOpen}
+        />
       </Drawer>
     </Box>
   );

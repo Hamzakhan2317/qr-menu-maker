@@ -3,7 +3,6 @@ import {
   customerSectionWrapper,
   customerTextStyles,
 } from "@/styles/CustomerSectionStyles/CustomerSectionStyles";
-import { createCustomTheme } from "@/styles/theme";
 import { Box, Container, Grid, Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
