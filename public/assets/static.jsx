@@ -296,6 +296,7 @@ export const blogCardData = [
 
 export const sidebarHoverStyling = () => {
   return {
+    cursor: "pointer",
     "&:hover": {
       backgroundColor: "#f5e9fc",
       "& .MuiListItemText-primary": {

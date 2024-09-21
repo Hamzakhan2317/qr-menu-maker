@@ -38,6 +38,7 @@ import AddRestaurantsForm from "../AddRestaurants";
 import { useGetAllRestaurentsQuery } from "@/redux/services/api/restaurentApis";
 import RestaurantIcon from "@mui/icons-material/Restaurant";
 import { usePathname } from "next/navigation";
+import { truncateText } from "@/utils/util.functions";
 
 const Sidebar = ({ children }) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -224,7 +225,9 @@ const Sidebar = ({ children }) => {
           </ListItemIcon>
           {isOpen && (
             <ListItemText
-              primary={currentRestaurant?.[0]?.name ?? "GarsOnline"}
+              primary={
+                truncateText(currentRestaurant?.[0]?.name) ?? "GarsOnline"
+              }
               primaryTypographyProps={{ fontSize: 14 }}
               sx={{
                 "&:hover": {
@@ -242,29 +245,27 @@ const Sidebar = ({ children }) => {
             sx={{
               backgroundColor: "#ffffff",
               position: "absolute",
-              top: "100",
+              top: 90,
               zIndex: "100",
-              paddingBottom: "8px",
               width: "209px",
               boxShadow:
                 "rgba(0, 0, 0, 0.12) 0px 3px 6px -4px, rgba(0, 0, 0, 0.05) 0px 9px 28px 8px",
+              padding: "20px 0px",
             }}
           >
             <Box
               sx={{
                 backgroundColor: "#ffffff",
                 display: "flex",
+
+                zIndex: 999,
+
                 justifyContent: "center",
                 alignItems: "center",
                 flexDirection: "column",
-                height: "auto",
-                maxHeight: "200px",
-                overflowY: "scroll",
                 maxWidth: "200px",
                 width: "200px",
-                boxShadow:
-                  "rgba(0, 0, 0, 0.12) 0px 3px 6px -4px, rgba(0, 0, 0, 0.05) 0px 9px 28px 8px",
-                paddingBottom: "8px",
+                overflowY: "auto",
               }}
             >
               {/* <InputField
@@ -297,7 +298,7 @@ const Sidebar = ({ children }) => {
                     sx={{
                       // paddingLeft: 2,
                       cursor: "pointer",
-                      backgroundColor: "#F9F5FE",
+
                       width: "100% ",
                     }}
                   >
@@ -310,12 +311,7 @@ const Sidebar = ({ children }) => {
                   venues?.map((item, index) => (
                     <ListItem
                       onClick={() => push(`/venues/${item._id}/dashboard`)}
-                      sx={{
-                        cursor: "pointer",
-                        paddingLeft: 2,
-                        backgroundColor: "#F9F5FE",
-                        width: "100% !important",
-                      }}
+                      sx={sidebarHoverStyling}
                       key={index}
                     >
                       <ListItemText
