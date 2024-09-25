@@ -1,7 +1,9 @@
 "use client";
-import { Box, Typography } from "@mui/material";
+import { Box, Chip, Drawer, Typography } from "@mui/material";
 import { useState } from "react";
 import ButtonComp from "../ui/button";
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import EditNoteIcon from '@mui/icons-material/EditNote';
 import {
   emptyPageWrapper,
   emptyPageWrapperSvg,
@@ -9,13 +11,12 @@ import {
   menuManagementCardWrapper,
   MenuManagementHeader,
 } from "@/styles/MenuManagementStyling";
-import { EditSvg } from "@/public/assets/svg/ForkNknife";
-import DeleteIcon from "@mui/icons-material/Delete";
 import CustomizedSwitch from "../ui/CustomizeSwitch";
 import {
   useRegisterMenuMutation,
   useGetAllMenuQuery,
   useDeleteMenuMutation,
+  useUpdateStatusMutation,
 } from "@/redux/services/api/menuApis";
 import { useSession } from "next-auth/react";
 import { useEffect } from "react";
@@ -24,11 +25,19 @@ import { useParams, usePathname } from "next/navigation";
 
 import { BallTriangle } from "react-loader-spinner";
 import EmptyPageSvg from "@/public/assets/svg/EmptyPageSvg";
+import editIcon from "../../public/assets/svg/editIcon.svg";
+import deleteIcon from "../../public/assets/svg/deleteIcon.svg";
+import Image from "next/image";
+import VerticalThreeDots from "@/public/assets/svg/verticalThreeDots";
+import PopUp from "../ui/PopUp";
+import EditMenuForm from "./EditMenuForm";
+import { set } from "mongoose";
 
 const MenuManagement = () => {
   const { data: session, status: sessionStatus } = useSession();
+  const [anchorEl, setAnchorEl] = useState(null);
   const [menuCreated, setMenuCreated] = useState(false);
-  const [menuEdit, setMenuEdit] = useState(false);
+  const [menuEditData, setMenuEditData] = useState(null);
   const [isloading, setIsloading] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const router = useRouter();
@@ -36,6 +45,7 @@ const MenuManagement = () => {
   const { venueId } = params;
 
   const [registerMenu] = useRegisterMenuMutation();
+  const [updateStatus] = useUpdateStatusMutation();
   const [deleteMenu] = useDeleteMenuMutation();
 
   const pathname = usePathname();
@@ -105,6 +115,31 @@ const MenuManagement = () => {
       setMenuCreated(true);
     }
   }, [menuData]);
+
+  const handleMenuOpen = (event, id) => {
+    setMenuEditData(menuData?.data?.find(menu => menu._id === id));
+    setAnchorEl(event?.currentTarget);
+  };
+
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleSwitchChange = async (event, statusMenuID, statusRestaurantID) => {
+    console.log(event.target.checked);
+    try {
+      const resp = await updateStatus({
+        status: event.target.checked ? '1' : '0',
+        restaurantId: statusRestaurantID,
+        menuId: statusMenuID,
+      });
+      if (resp) {
+        refetchMenus();
+      }
+    } catch (error) {
+      console.log("error>>>>>", error);
+    }
+  }
 
   if (sessionStatus === "loading" || isLoading)
     return (
@@ -207,10 +242,14 @@ const MenuManagement = () => {
                         color: "#000",
                       }}
                     >
-                      {menu?.name}
+                      {menu?.name} {
+                        menu?.status == 1 ?
+                          <span style={{ borderRadius: "6px", border: "1px solid rgb(154 233 112)", padding: "2px 10px", color: "#1a8a05", background: "#d2ffd6", fontSize: "10px" }}>live</span>
+                          : ""
+                      }
                     </Typography>
                     <Typography color="#00000073" fontSize={"14px"}>
-                      Your happy place!
+                      {menu?.description ?? "Your happy place"}
                     </Typography>
                     <Typography
                       color="#00000073"
@@ -266,11 +305,12 @@ const MenuManagement = () => {
                     </Box>
                   </Box>
                   <Box display="flex" alignItems="center" flexWrap="wrap">
-                    <CustomizedSwitch />
+                    <CustomizedSwitch value={menu?.status == 1 ? true : false} onChange={(e) => handleSwitchChange(e, menu?._id, menu?.restaurant)} />
                     <ButtonComp
+                      icon={<EditNoteIcon />}
+                      sx={{ fontSize: "14px !important", fontWeight: 400 }}
                       text={"Edit Menu"}
                       variant="blue"
-                      startIcon={<EditSvg />}
                       padding="4px 15px"
                       marginRight="20px"
                       onClick={() =>
@@ -279,12 +319,10 @@ const MenuManagement = () => {
                         )
                       }
                     />
-                    <Box sx={{ cursor: "pointer" }}>
-                      <DeleteIcon
-                        sx={{ fill: "#FF7F7F " }}
-                        onClick={() => deleteMenuRow(menu._id)}
-                      />
+                    <Box onClick={(e) => handleMenuOpen(e, menu?._id)} sx={{ cursor: "pointer" }}>
+                      <VerticalThreeDots />
                     </Box>
+
                   </Box>
                 </Box>
               );
@@ -292,6 +330,41 @@ const MenuManagement = () => {
           </Box>
         )}
       </>
+      <PopUp
+        handleMenuClose={handleMenuClose}
+        anchorEl={anchorEl}
+        menus={[
+          {
+            name: "Edit", icon: <EditNoteIcon />, func: () => {
+              setAnchorEl(null);
+              setIsDrawerOpen(true)
+            }
+          },
+          { name: "Delete", icon: <DeleteOutlineIcon />, func: () => deleteMenuRow(menu._id) },
+        ]}
+      />
+      <Drawer
+        anchor="right"
+        open={isDrawerOpen}
+        onClose={() => {
+          setMenuEditData(null)
+          setIsDrawerOpen(false)
+        }}
+        sx={{
+          width: 456,
+          flexShrink: 0,
+          "& .MuiDrawer-paper": {
+            width: 456,
+            boxSizing: "border-box",
+          },
+        }}
+        variant="persistent"
+      >
+        <EditMenuForm setMenuEditData={setMenuEditData} data={menuEditData} refetchMenus={refetchMenus} setIsDrawerOpen={() => {
+          setMenuEditData(null)
+          setIsDrawerOpen()
+        }} />
+      </Drawer>
     </Box>
   );
 };

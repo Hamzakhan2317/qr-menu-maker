@@ -24,7 +24,7 @@ export async function POST(req) {
       );
     }
 
-    const menu = new Menu({ name, restaurant: restaurantId });
+    const menu = new Menu({ name, description: "", note: "", restaurant: restaurantId });
     await menu.save();
 
     restaurant.menus.push(menu._id);
@@ -45,6 +45,7 @@ export async function GET(req) {
   try {
     // Extract the userId from the query string
     const restaurantId = req.nextUrl.searchParams.get("restaurantId");
+    const menuId = req.nextUrl.searchParams.get("menuId");
 
     // Check if restaurantId is present, if not return 400 response
     if (!restaurantId) {
@@ -56,7 +57,13 @@ export async function GET(req) {
 
     await connectDB();
 
-    const menus = await Menu.find({ restaurant: restaurantId });
+    let menus;
+    if (menuId && restaurantId) {
+      menus = await Menu.find({ restaurant: restaurantId, menuId: req.params.menuId })
+    } else {
+      menus = await Menu.find({ restaurant: restaurantId })
+    }
+    // .populate('items');
 
     return NextResponse.json(
       { message: "Menu fetched successfully", data: menus },
@@ -70,6 +77,8 @@ export async function GET(req) {
   }
 }
 
+
+
 // // Get all menus for a restaurant
 // exports.getMenusForRestaurant = async (req, res) => {
 //     try {
@@ -80,18 +89,56 @@ export async function GET(req) {
 //     }
 //   };
 
-//   // Update a menu
-//   exports.updateMenu = async (req, res) => {
-//     try {
-//       const menu = await Menu.findByIdAndUpdate(req.params.menuId, req.body, { new: true });
-//       if (!menu) {
-//         return res.status(404).json({ error: 'Menu not found' });
-//       }
-//       res.status(200).json({ message: 'Menu updated', menu });
-//     } catch (error) {
-//       res.status(500).json({ error: 'Error updating menu' });
-//     }
-//   };
+// Update a menu
+export async function PUT(req) {
+  console.log("Request received to update menu"); // Added log
+
+  const { name, description, note, menuId, restaurantId } = await req.json();
+
+  try {
+    await connectDB();
+
+    if (![name, menuId, restaurantId].every(Boolean)) {
+      return NextResponse.json(
+        { message: "Please fill all inputs!" },
+        { status: 400 }
+      );
+    }
+
+    const restaurant = await Restaurant.findById(restaurantId);
+    if (!restaurant) {
+      return NextResponse.json(
+        { message: "Restaurant not found" },
+        { status: 404 }
+      );
+    }
+
+    const menu = await Menu.findByIdAndUpdate(
+      menuId,
+      { name, description, note, restaurant: restaurantId },
+      { new: true }
+    );
+
+    if (!menu) {
+      return NextResponse.json(
+        { message: "Menu not found" },
+        { status: 404 }
+      );
+    }
+
+    return NextResponse.json(
+      { message: "Menu updated successfully", menu },
+      { status: 200 }
+    );
+  } catch (error) {
+    return NextResponse.json(
+      { message: error?.message || "Error updating menu" },
+      { status: 500 }
+    );
+  }
+}
+
+
 
 // Delete a menu
 export async function DELETE(req) {
