@@ -5,30 +5,23 @@ import {
     copyOfSampleMenu,
     foodMenuCard,
     leftMobileViewGarsonline,
-    leftViewGettingReady,
-    leftViewHeader,
     leftViewHeaderMenu,
     menuCardsWrapper,
     menuFoodTypes,
     menuFoodWrapper,
     menuSearch,
-    menuWrapper,
 } from "@/styles/DashboarStyling";
 import { Backdrop, Box, CircularProgress, Drawer, Grid, IconButton, Typography } from "@mui/material";
-import LoginSharpIcon from "@mui/icons-material/LoginSharp";
-import InfoIcon from "@mui/icons-material/Info";
-import ButtonComp from "@/components/ui/button";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useEffect, useState } from "react";
-import Image from "next/image";
-import FoodTypeArray, { foodInfoArray } from "@/public/assets/static";
 import CloseIcon from "@mui/icons-material/Close";
 import { useParams } from "next/navigation";
 import InputField from "@/components/ui/InputField";
 import { useGetAllSectionQuery } from "@/redux/services/api/sectionApis";
 import { useGetAllMenuQuery } from "@/redux/services/api/menuApis";
-const page = () => {
+import CustomAccordion from "@/components/ui/Accordion/CustomAccordion";
+const Page = () => {
     const [isMenu, setIsMenu] = useState(false);
     const { venueId, menuId } = useParams();
     const [open, setOpen] = useState(false);
@@ -279,4 +272,4 @@ const page = () => {
     )
 };
 
-export default page;
+export default Page;
