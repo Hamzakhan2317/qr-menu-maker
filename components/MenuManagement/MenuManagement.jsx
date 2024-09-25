@@ -32,6 +32,7 @@ import VerticalThreeDots from "@/public/assets/svg/verticalThreeDots";
 import PopUp from "../ui/PopUp";
 import EditMenuForm from "./EditMenuForm";
 import { set } from "mongoose";
+import { toast } from "sonner";
 
 const MenuManagement = () => {
   const { data: session, status: sessionStatus } = useSession();
@@ -89,13 +90,15 @@ const MenuManagement = () => {
     }
   };
 
-  const deleteMenuRow = async (menuId) => {
+  const deleteMenuRow = async () => {
     try {
-      const resp = await deleteMenu(menuId).unwrap();
+      const resp = await deleteMenu(menuEditData?._id).unwrap();
 
       if (resp) {
         // toast.success(resp?.message || "Menu Deleted successfully");
         refetchMenus();
+        setAnchorEl(null)
+        setMenuEditData(null)
       }
     } catch (error) {
       console.log("error>>>>>", error);
@@ -134,6 +137,7 @@ const MenuManagement = () => {
         menuId: statusMenuID,
       });
       if (resp) {
+        toast.success("Status Updated successfully");
         refetchMenus();
       }
     } catch (error) {
@@ -340,7 +344,7 @@ const MenuManagement = () => {
               setIsDrawerOpen(true)
             }
           },
-          { name: "Delete", icon: <DeleteOutlineIcon />, func: () => deleteMenuRow(menu._id) },
+          { name: "Delete", icon: <DeleteOutlineIcon />, func: () => deleteMenuRow() },
         ]}
       />
       <Drawer
