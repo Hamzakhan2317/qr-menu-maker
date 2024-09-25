@@ -14,7 +14,7 @@ import {
     menuSearch,
     menuWrapper,
 } from "@/styles/DashboarStyling";
-import { Box, Drawer, Grid, IconButton, Typography } from "@mui/material";
+import { Backdrop, Box, CircularProgress, Drawer, Grid, IconButton, Typography } from "@mui/material";
 import LoginSharpIcon from "@mui/icons-material/LoginSharp";
 import InfoIcon from "@mui/icons-material/Info";
 import ButtonComp from "@/components/ui/button";
@@ -46,15 +46,19 @@ const page = () => {
 
     useEffect(() => {
         if (menuData) {
-            console.log('menuData', menuData?.data?.find(menu => menu._id === menuId))
             setMenuDetails(menuData?.data?.find(menu => menu._id === menuId))
         }
     }, [menuData])
 
-    console.log('menuData', menuData?.data?.find(menu => menu._id === menuId))
-    console.log('sections', sections)
+
     return (
         <Box sx={{ display: "flex", height: "100vh", color: "#130F40" }}>
+            <Backdrop
+                sx={(theme) => ({ color: '#fff', zIndex: 987871 })}
+                open={isLoading || menuIsLoading}
+            >
+                <CircularProgress color="inherit" />
+            </Backdrop>
             <Box sx={leftMobileViewGarsonline}>
                 <Box>
                     <Box sx={leftViewHeaderMenu}>
@@ -183,7 +187,7 @@ const page = () => {
                             sections?.data?.map((item, index) => {
                                 return (
                                     <Box sx={menuFoodWrapper} key={index}>
-                                        <Box sx={{  cursor: "pointer", background: "#ccc", width: "459px", height: "152px", borderRadius: "12px" }}></Box>
+                                        <Box sx={{ cursor: "pointer", background: "#ccc", width: "459px", height: "152px", borderRadius: "12px" }}></Box>
                                         {/* <Image src={item.src} alt="" className="mainImage" /> */}
                                         <Typography
                                             textAlign={"center"}
