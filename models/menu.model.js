@@ -8,7 +8,10 @@ const menuSchema = new mongoose.Schema(
       ref: "Restaurant",
       required: true,
     }, // Reference to the restaurant
+    status: { type: String, default: "active" }, // New column for status
     sections: [{ type: mongoose.Schema.Types.ObjectId, ref: "Section" }], // Referencing items in the menu
+    note: { type: String }, // New column for notes
+    description: { type: String }, // New column for description
   },
   { timestamps: true }
 );

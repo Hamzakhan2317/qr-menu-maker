@@ -6,6 +6,12 @@ const menuApis = api.injectEndpoints({
     registerMenu: builder.mutation({
       query: (data) => ({ url: `/menu`, method: "POST", body: data }),
     }),
+    editMenu: builder.mutation({
+      query: (data) => ({ url: `/menu`, method: "PUT", body: data }),
+    }),
+    updateStatus: builder.mutation({
+      query: (data) => ({ url: `/menustatus`, method: "PUT", body: data }),
+    }),
 
     getAllMenu: builder.query({
       query: (restaurantId) => ({
@@ -30,6 +36,8 @@ const menuApis = api.injectEndpoints({
 
 export const {
   useRegisterMenuMutation,
+  useEditMenuMutation,
+  useUpdateStatusMutation,
   useGetAllMenuQuery,
   useDeleteMenuMutation,
 } = menuApis;

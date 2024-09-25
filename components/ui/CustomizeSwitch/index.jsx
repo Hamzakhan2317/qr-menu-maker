@@ -3,8 +3,6 @@ import { styled } from "@mui/material/styles";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Switch from "@mui/material/Switch";
-import Stack from "@mui/material/Stack";
-import Typography from "@mui/material/Typography";
 
 const CustomSwitch = styled((props) => (
   <Switch focusVisibleClassName=".Mui-focusVisible" disableRipple {...props} />
@@ -68,11 +66,11 @@ const CustomSwitch = styled((props) => (
   },
 }));
 
-export default function CustomizedSwitch() {
+export default function CustomizedSwitch({value = true, onChange}) {
   return (
     <FormGroup>
       <FormControlLabel
-        control={<CustomSwitch sx={{ m: 1 }} defaultChecked />}
+        control={<CustomSwitch checked={value} onChange={onChange} />}
       />
     </FormGroup>
   );
