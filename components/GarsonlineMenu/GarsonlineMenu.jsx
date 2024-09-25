@@ -28,76 +28,18 @@ import CustomAccordion from "../ui/Accordion/CustomAccordion";
 import CloseIcon from "@mui/icons-material/Close";
 import CustomModal from "../ui/CustomModal";
 import GarsOnlineModal from "./GarsOnlineModal";
+import { useParams } from "next/navigation";
 
 const GarsonlineMenu = () => {
   const [isMenu, setIsMenu] = useState(false);
+  const { venueId } = useParams();
   const [open, setOpen] = useState(false);
   const [isgarsDrawerOpen, setIsgarsDrawerOpen] = useState(false);
   return (
     <Box sx={{ display: "flex", height: "100vh", color: "#130F40" }}>
       <Box sx={leftMobileViewGarsonline}>
         {!isMenu ? (
-          <Box>
-            <Box sx={leftViewHeader}>
-              <Box
-                sx={{
-                  marginRight: "20px",
-                  display: "flex",
-                  alignItems: "center",
-                  cursor: "pointer",
-                }}
-              >
-                <LoginSharpIcon
-                  color="#fff"
-                  fontSize="15px"
-                  sx={{ marginRight: "5px", fontWeight: "700" }}
-                />{" "}
-                <Typography fontSize={"14px"} fontWeight={700} marginleft="5px">
-                  Login
-                </Typography>
-              </Box>
-            </Box>
-            <Box sx={leftViewGettingReady}>
-              <Box
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  marginLeft: "20px",
-                }}
-              >
-                <InfoIcon
-                  color="#fff"
-                  sx={{ marginRight: "12px", width: "20px", height: "20px" }}
-                />
-                <Typography fontSize={"14px"} fontWeight={700} marginleft="5px">
-                  Our menu is getting ready
-                </Typography>
-              </Box>
-            </Box>
-            <Box sx={menuWrapper}>
-              <Typography fontSize={"22px"} fontWeight={700}>
-                Food
-              </Typography>
-              <ButtonComp
-                text={"Go to Menu"}
-                variant="lightPurple"
-                padding="6px 10px"
-                width={"80%"}
-                onClick={() => {
-                  setOpen(true);
-                }}
-              />
-            </Box>
-            <CustomModal
-              setOpen={setOpen}
-              open={open}
-              title={"Select Menu"}
-              width="auto"
-              maxWidth="md"
-            >
-              <GarsOnlineModal setIsMenu={setIsMenu} />
-            </CustomModal>
-          </Box>
+          <>Box</>
         ) : (
           <Box>
             <Box sx={leftViewHeaderMenu}>

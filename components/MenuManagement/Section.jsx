@@ -15,7 +15,7 @@ const Section = () => {
   const params = useParams();
   const router = useRouter();
 
-  const { menuId } = params;
+  const { venueId,menuId } = params;
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const { data: sections, isLoading } = useGetAllSectionQuery(menuId);
 
@@ -36,7 +36,7 @@ const Section = () => {
           variant="purple"
           padding="4px 15px"
           onClick={() =>
-            router.push("https://qr-menu-maker.vercel.app/en/garsonline-menu")
+            router.push(`/garsonline-menu/${venueId}`)
           }
         />
       </Box>
