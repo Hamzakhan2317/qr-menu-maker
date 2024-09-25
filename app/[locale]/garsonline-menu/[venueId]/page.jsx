@@ -1,39 +1,26 @@
 "use client";
 
 import {
-  cardLeftside,
-  copyOfSampleMenu,
-  foodMenuCard,
   leftMobileViewGarsonline,
   leftViewGettingReady,
   leftViewHeader,
-  leftViewHeaderMenu,
-  menuCardsWrapper,
-  menuFoodTypes,
-  menuFoodWrapper,
-  menuSearch,
   menuWrapper,
 } from "@/styles/DashboarStyling";
-import { Box, Drawer, Grid, IconButton, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import LoginSharpIcon from "@mui/icons-material/LoginSharp";
 import InfoIcon from "@mui/icons-material/Info";
 import ButtonComp from "@/components/ui/button";
-import CloseIcon from "@mui/icons-material/Close";
 import { useParams, useRouter } from "next/navigation";
 import CustomModal from "@/components/ui/CustomModal";
 import GarsOnlineModal from "@/components/GarsonlineMenu/GarsOnlineModal";
 import { useSession } from "next-auth/react";
-import { useGetAllRestaurentsQuery } from "@/redux/services/api/restaurentApis";
 import { useState } from "react";
 import { useGetAllMenuQuery } from "@/redux/services/api/menuApis";
 
-const page = () => {
+const Page = () => {
   const [isMenu, setIsMenu] = useState(false);
   const { venueId } = useParams();
   const [open, setOpen] = useState(false);
-  const [isgarsDrawerOpen, setIsgarsDrawerOpen] = useState(false);
-  const { data: session } = useSession();
-  const router = useRouter();
   const {
     data: menuData,
     error,
@@ -113,4 +100,4 @@ const page = () => {
   )
 };
 
-export default page;
+export default Page;
