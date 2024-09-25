@@ -30,6 +30,7 @@ const EditMenuForm = ({
                 setIsDrawerOpen(false);
             }
         } catch (error) {
+            toast.success( "Menu Updated successfully");
             setMenuEditData(null);
             formik.resetForm();
             console.log("error>>>>>", error);
