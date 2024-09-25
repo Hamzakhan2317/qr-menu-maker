@@ -129,7 +129,6 @@ const MenuManagement = () => {
   };
 
   const handleSwitchChange = async (event, statusMenuID, statusRestaurantID) => {
-    console.log(event.target.checked);
     try {
       const resp = await updateStatus({
         status: event.target.checked ? '1' : '0',
