@@ -42,7 +42,7 @@ const Dashboard = () => {
     setCurrentDateTime(now);
   }, []);
   const handleCopy = () => {
-    navigator.clipboard.writeText(qrCodeLink).then(() => {
+    navigator.clipboard.writeText(window.location.origin +`/garsonline-menu/${currentRestaurant?.[0]?._id}`).then(() => {
       setIsCopied(true);
       setTimeout(() => setIsCopied(false), 2000);
     });
@@ -94,7 +94,7 @@ const Dashboard = () => {
                     maxWidth: "100%",
                     width: "100%",
                   }}
-                  value={qrCodeLink}
+                  value={window.location.origin + `/garsonline-menu/${currentRestaurant?.[0]?._id}`}
                   viewBox={`0 0 256 256`}
                 />
               </Box>
@@ -115,7 +115,7 @@ const Dashboard = () => {
                   padding="4px 15px"
                   onClick={() =>
                     router.push(
-                      "https://qr-menu-maker.vercel.app/en/garsonline-menu"
+                      window.location.origin + `/garsonline-menu/${currentRestaurant?.[0]?._id}`
                     )
                   }
                 />

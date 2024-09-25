@@ -15,14 +15,15 @@ import {
 import ButtonComp from "../ui/button";
 import DownloadSvg from "@/public/assets/svg/DownloadSvg";
 import ColorPicker from "../ui/ColorPicker/ColorPicker";
+import { useParams } from "next/navigation";
 
 const QrCode = () => {
+  const {venueId} = useParams();
   const [isCopied, setIsCopied] = useState(false);
   const [qrColor, setQrColor] = useState("#000");
   const [bgQrColor, setBgQrColor] = useState("#FFFFFF");
-  const qrCodeLink = "https://qr-menu-maker.vercel.app/en/garsonline-menu";
   const handleCopy = () => {
-    navigator.clipboard.writeText(qrCodeLink).then(() => {
+    navigator.clipboard.writeText(window.location.origin +`/garsonline-menu/${venueId}`).then(() => {
       setIsCopied(true);
       setTimeout(() => setIsCopied(false), 2000);
     });
@@ -78,7 +79,7 @@ const QrCode = () => {
                     maxWidth: "100%",
                     width: "100%",
                   }}
-                  value={"https://qr-menu-maker.vercel.app/en/garsonline-menu"}
+                  value={window.location.origin +`/garsonline-menu/${venueId}`}
                   viewBox={`0 0 256 256`}
                 />
               </Box>
