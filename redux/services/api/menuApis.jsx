@@ -31,6 +31,13 @@ const menuApis = api.injectEndpoints({
         console.error("Failed to delete menu:", error);
       },
     }),
+    // Fetch a specific menu by ID
+    getMenuById: builder.query({
+      query: (menuId) => ({
+        url: `/menu/${menuId}`,
+        method: "GET",
+      }),
+    }),
   }),
 });
 
@@ -40,4 +47,5 @@ export const {
   useUpdateStatusMutation,
   useGetAllMenuQuery,
   useDeleteMenuMutation,
+  useGetMenuByIdQuery,
 } = menuApis;
