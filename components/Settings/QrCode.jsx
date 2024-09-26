@@ -99,6 +99,7 @@ const QrCode = () => {
                   variant="purple"
                   padding="4px 15px"
                   startIcon={<DownloadSvg />}
+                  
                 />
                 <ButtonComp
                   variant="transparent"
