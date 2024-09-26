@@ -41,6 +41,7 @@ const Dashboard = () => {
         window.location.origin + `/garsonline-menu/${currentRestaurant?._id}`
       );
   }, [currentRestaurant]);
+
   useEffect(() => {
     if (!isLoading && data) {
       const currentRestaurant = data?.data?.filter(
@@ -49,6 +50,7 @@ const Dashboard = () => {
       setCurrentRestaurant(currentRestaurant[0]);
     }
   }, [data, isLoading]);
+
   const handleCopy = () => {
     navigator.clipboard.writeText(path).then(() => {
       setIsCopied(true);
