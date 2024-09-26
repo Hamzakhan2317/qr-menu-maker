@@ -49,7 +49,7 @@ const Dashboard = () => {
       );
       setCurrentRestaurant(currentRestaurant[0]);
     }
-  }, [data, isLoading]);
+  }, [data, isLoading, restaurantId]);
 
   const handleCopy = () => {
     navigator.clipboard.writeText(path).then(() => {
