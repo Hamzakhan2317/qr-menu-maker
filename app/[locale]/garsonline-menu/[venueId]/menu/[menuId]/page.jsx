@@ -2,7 +2,7 @@
 
 import CustomAccordion from "@/components/ui/Accordion/CustomAccordion";
 import InputField from "@/components/ui/InputField";
-import { useGetAllMenuQuery } from "@/redux/services/api/menuApis";
+import { useGetMenuByIdQuery } from "@/redux/services/api/menuApis";
 import { useGetRestaurentByIdQuery } from "@/redux/services/api/restaurentApis";
 import { useGetAllSectionQuery } from "@/redux/services/api/sectionApis";
 import {
@@ -29,28 +29,19 @@ import {
   Typography,
 } from "@mui/material";
 import { useParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 const Page = () => {
   const { venueId, menuId } = useParams();
-  const [menuDetails, setMenuDetails] = useState(null);
   const [isgarsDrawerOpen, setIsgarsDrawerOpen] = useState(false);
   const { data: sections, isLoading } = useGetAllSectionQuery(menuId);
   const {
     data: menuData,
     isLoading: menuIsLoading,
     refetch: refetchMenus,
-  } = useGetAllMenuQuery(venueId, {
-    skip: !venueId, // Skip the query until user data is available
-  });
+  } = useGetMenuByIdQuery(menuId);
 
   const { data } = useGetRestaurentByIdQuery(venueId);
   const currentRestaurant = data?.data;
-
-  useEffect(() => {
-    if (menuData) {
-      setMenuDetails(menuData?.data?.find((menu) => menu._id === menuId));
-    }
-  }, [menuData, menuId]);
 
   return (
     <Box sx={{ display: "flex", height: "100vh", color: "#130F40" }}>
@@ -81,7 +72,7 @@ const Page = () => {
             </Box>
             <Box>
               <Typography fontSize={"16px"} fontWeight={700} marginleft="5px">
-                {menuDetails?.name}
+                {menuData?.name}
               </Typography>
             </Box>
             <Box
@@ -141,11 +132,11 @@ const Page = () => {
                 marginTop={"30px"}
                 color="#000000d9"
               >
-                {menuDetails?.name}
+                {menuData?.name}
               </Typography>
-              <Typography> {menuDetails?.description}</Typography>
+              <Typography> {menuData?.description}</Typography>
               <Typography fontSize={"14px"} color={"#BCBBC8"}>
-                {menuDetails?.note}
+                {menuData?.note}
               </Typography>
             </Box>
             <Box sx={menuSearch}>
