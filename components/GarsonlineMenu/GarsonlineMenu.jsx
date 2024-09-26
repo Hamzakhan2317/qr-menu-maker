@@ -1,34 +1,26 @@
 "use client";
 
+import FoodTypeArray, { foodInfoArray } from "@/public/assets/static";
 import {
   cardLeftside,
   copyOfSampleMenu,
   foodMenuCard,
   leftMobileViewGarsonline,
-  leftViewGettingReady,
-  leftViewHeader,
   leftViewHeaderMenu,
   menuCardsWrapper,
   menuFoodTypes,
   menuFoodWrapper,
   menuSearch,
-  menuWrapper,
 } from "@/styles/DashboarStyling";
-import { Box, Drawer, Grid, IconButton, Typography } from "@mui/material";
-import LoginSharpIcon from "@mui/icons-material/LoginSharp";
-import InfoIcon from "@mui/icons-material/Info";
-import ButtonComp from "@/components/ui/button";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
-import MenuIcon from "@mui/icons-material/Menu";
-import { useState } from "react";
-import InputField from "../ui/InputField";
-import Image from "next/image";
-import FoodTypeArray, { foodInfoArray } from "@/public/assets/static";
-import CustomAccordion from "../ui/Accordion/CustomAccordion";
 import CloseIcon from "@mui/icons-material/Close";
-import CustomModal from "../ui/CustomModal";
-import GarsOnlineModal from "./GarsOnlineModal";
+import MenuIcon from "@mui/icons-material/Menu";
+import { Box, Drawer, Grid, IconButton, Typography } from "@mui/material";
+import Image from "next/image";
 import { useParams } from "next/navigation";
+import { useState } from "react";
+import CustomAccordion from "../ui/Accordion/CustomAccordion";
+import InputField from "../ui/InputField";
 
 const GarsonlineMenu = () => {
   const [isMenu, setIsMenu] = useState(false);

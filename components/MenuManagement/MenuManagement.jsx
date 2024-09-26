@@ -1,9 +1,11 @@
 "use client";
-import { Box, Chip, Drawer, Typography } from "@mui/material";
-import { useState } from "react";
-import ButtonComp from "../ui/button";
-import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
-import EditNoteIcon from '@mui/icons-material/EditNote';
+import { useRouter } from "@/navigation";
+import {
+  useDeleteMenuMutation,
+  useGetAllMenuQuery,
+  useRegisterMenuMutation,
+  useUpdateStatusMutation,
+} from "@/redux/services/api/menuApis";
 import {
   emptyPageWrapper,
   emptyPageWrapperSvg,
@@ -11,28 +13,21 @@ import {
   menuManagementCardWrapper,
   MenuManagementHeader,
 } from "@/styles/MenuManagementStyling";
-import CustomizedSwitch from "../ui/CustomizeSwitch";
-import {
-  useRegisterMenuMutation,
-  useGetAllMenuQuery,
-  useDeleteMenuMutation,
-  useUpdateStatusMutation,
-} from "@/redux/services/api/menuApis";
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import EditNoteIcon from "@mui/icons-material/EditNote";
+import { Box, Drawer, Typography } from "@mui/material";
 import { useSession } from "next-auth/react";
-import { useEffect } from "react";
-import { useRouter } from "@/navigation";
 import { useParams, usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
+import ButtonComp from "../ui/button";
+import CustomizedSwitch from "../ui/CustomizeSwitch";
 
-import { BallTriangle } from "react-loader-spinner";
 import EmptyPageSvg from "@/public/assets/svg/EmptyPageSvg";
-import editIcon from "../../public/assets/svg/editIcon.svg";
-import deleteIcon from "../../public/assets/svg/deleteIcon.svg";
-import Image from "next/image";
 import VerticalThreeDots from "@/public/assets/svg/verticalThreeDots";
+import { toast } from "sonner";
+import Loader from "../ui/Loader";
 import PopUp from "../ui/PopUp";
 import EditMenuForm from "./EditMenuForm";
-import { set } from "mongoose";
-import { toast } from "sonner";
 
 const MenuManagement = () => {
   const { data: session, status: sessionStatus } = useSession();
@@ -97,8 +92,8 @@ const MenuManagement = () => {
       if (resp) {
         // toast.success(resp?.message || "Menu Deleted successfully");
         refetchMenus();
-        setAnchorEl(null)
-        setMenuEditData(null)
+        setAnchorEl(null);
+        setMenuEditData(null);
       }
     } catch (error) {
       console.log("error>>>>>", error);
@@ -120,7 +115,7 @@ const MenuManagement = () => {
   }, [menuData]);
 
   const handleMenuOpen = (event, id) => {
-    setMenuEditData(menuData?.data?.find(menu => menu._id === id));
+    setMenuEditData(menuData?.data?.find((menu) => menu._id === id));
     setAnchorEl(event?.currentTarget);
   };
 
@@ -128,10 +123,14 @@ const MenuManagement = () => {
     setAnchorEl(null);
   };
 
-  const handleSwitchChange = async (event, statusMenuID, statusRestaurantID) => {
+  const handleSwitchChange = async (
+    event,
+    statusMenuID,
+    statusRestaurantID
+  ) => {
     try {
       const resp = await updateStatus({
-        status: event.target.checked ? '1' : '0',
+        status: event.target.checked ? "1" : "0",
         restaurantId: statusRestaurantID,
         menuId: statusMenuID,
       });
@@ -142,31 +141,9 @@ const MenuManagement = () => {
     } catch (error) {
       console.log("error>>>>>", error);
     }
-  }
+  };
 
-  if (sessionStatus === "loading" || isLoading)
-    return (
-      <Box
-        height={"100vh"}
-        width={"80vw"}
-        justifyContent={"center"}
-        alignItems={"center"}
-        display={"flex"}
-      >
-        <BallTriangle
-          height={100}
-          width={100}
-          radius={5}
-          color="#4fa94d"
-          ariaLabel="ball-triangle-loading"
-          wrapperStyle={{
-            height: "100vh",
-          }}
-          wrapperClass=""
-          visible={true}
-        />
-      </Box>
-    );
+  if (sessionStatus === "loading" || isLoading) return <Loader />;
 
   if (!menuData?.data?.length)
     return (
@@ -245,11 +222,23 @@ const MenuManagement = () => {
                         color: "#000",
                       }}
                     >
-                      {menu?.name} {
-                        menu?.status == 1 ?
-                          <span style={{ borderRadius: "6px", border: "1px solid rgb(154 233 112)", padding: "2px 10px", color: "#1a8a05", background: "#d2ffd6", fontSize: "10px" }}>live</span>
-                          : ""
-                      }
+                      {menu?.name}{" "}
+                      {menu?.status == 1 ? (
+                        <span
+                          style={{
+                            borderRadius: "6px",
+                            border: "1px solid rgb(154 233 112)",
+                            padding: "2px 10px",
+                            color: "#1a8a05",
+                            background: "#d2ffd6",
+                            fontSize: "10px",
+                          }}
+                        >
+                          live
+                        </span>
+                      ) : (
+                        ""
+                      )}
                     </Typography>
                     <Typography color="#00000073" fontSize={"14px"}>
                       {menu?.description ?? "Your happy place"}
@@ -308,7 +297,12 @@ const MenuManagement = () => {
                     </Box>
                   </Box>
                   <Box display="flex" alignItems="center" flexWrap="wrap">
-                    <CustomizedSwitch value={menu?.status == 1 ? true : false} onChange={(e) => handleSwitchChange(e, menu?._id, menu?.restaurant)} />
+                    <CustomizedSwitch
+                      value={menu?.status == 1 ? true : false}
+                      onChange={(e) =>
+                        handleSwitchChange(e, menu?._id, menu?.restaurant)
+                      }
+                    />
                     <ButtonComp
                       icon={<EditNoteIcon />}
                       sx={{ fontSize: "14px !important", fontWeight: 400 }}
@@ -322,10 +316,12 @@ const MenuManagement = () => {
                         )
                       }
                     />
-                    <Box onClick={(e) => handleMenuOpen(e, menu?._id)} sx={{ cursor: "pointer" }}>
+                    <Box
+                      onClick={(e) => handleMenuOpen(e, menu?._id)}
+                      sx={{ cursor: "pointer" }}
+                    >
                       <VerticalThreeDots />
                     </Box>
-
                   </Box>
                 </Box>
               );
@@ -338,20 +334,26 @@ const MenuManagement = () => {
         anchorEl={anchorEl}
         menus={[
           {
-            name: "Edit", icon: <EditNoteIcon />, func: () => {
+            name: "Edit",
+            icon: <EditNoteIcon />,
+            func: () => {
               setAnchorEl(null);
-              setIsDrawerOpen(true)
-            }
+              setIsDrawerOpen(true);
+            },
           },
-          { name: "Delete", icon: <DeleteOutlineIcon />, func: () => deleteMenuRow() },
+          {
+            name: "Delete",
+            icon: <DeleteOutlineIcon />,
+            func: () => deleteMenuRow(),
+          },
         ]}
       />
       <Drawer
         anchor="right"
         open={isDrawerOpen}
         onClose={() => {
-          setMenuEditData(null)
-          setIsDrawerOpen(false)
+          setMenuEditData(null);
+          setIsDrawerOpen(false);
         }}
         sx={{
           width: 456,
@@ -363,10 +365,15 @@ const MenuManagement = () => {
         }}
         variant="persistent"
       >
-        <EditMenuForm setMenuEditData={setMenuEditData} data={menuEditData} refetchMenus={refetchMenus} setIsDrawerOpen={() => {
-          setMenuEditData(null)
-          setIsDrawerOpen()
-        }} />
+        <EditMenuForm
+          setMenuEditData={setMenuEditData}
+          data={menuEditData}
+          refetchMenus={refetchMenus}
+          setIsDrawerOpen={() => {
+            setMenuEditData(null);
+            setIsDrawerOpen();
+          }}
+        />
       </Drawer>
     </Box>
   );

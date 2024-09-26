@@ -1,44 +1,47 @@
 "use client";
-import { useEffect, useState } from "react";
-import {
-  AppBar,
-  Toolbar,
-  Drawer,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-  Collapse,
-  IconButton,
-  Divider,
-  Box,
-  Button,
-} from "@mui/material";
-import {
-  Dashboard as DashboardIcon,
-  Menu as MenuIcon,
-  Settings as SettingsIcon,
-  ExpandLess,
-  ExpandMore,
-  Add as AddIcon,
-} from "@mui/icons-material";
-import garsLogo from "../../public/assets/images/logo.png";
-import Logo from "../../public/assets/images/8.webp";
-import Image from "next/image";
-import MenuDropdown from "../ui/MenuDropdown";
 import { useRouter } from "@/navigation";
 import {
   sidebarActiveStyling,
   sidebarHoverStyling,
 } from "@/public/assets/static";
+import {
+  Add as AddIcon,
+  Dashboard as DashboardIcon,
+  ExpandLess,
+  ExpandMore,
+  Menu as MenuIcon,
+  Settings as SettingsIcon,
+} from "@mui/icons-material";
+import {
+  AppBar,
+  Box,
+  Button,
+  Collapse,
+  Divider,
+  Drawer,
+  IconButton,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Toolbar,
+} from "@mui/material";
+import Image from "next/image";
+import { useEffect, useState } from "react";
+import Logo from "../../public/assets/images/8.webp";
+import garsLogo from "../../public/assets/images/logo.png";
+import MenuDropdown from "../ui/MenuDropdown";
 
-import { useSession } from "next-auth/react";
 import { RestaurantSvg } from "@/public/assets/svg/Egg";
-import AddRestaurantsForm from "../AddRestaurants";
-import { useGetAllRestaurentsQuery } from "@/redux/services/api/restaurentApis";
-import RestaurantIcon from "@mui/icons-material/Restaurant";
-import { usePathname } from "next/navigation";
+import {
+  useGetAllRestaurentsQuery,
+  useGetRestaurentByIdQuery,
+} from "@/redux/services/api/restaurentApis";
 import { truncateText } from "@/utils/util.functions";
+import RestaurantIcon from "@mui/icons-material/Restaurant";
+import { useSession } from "next-auth/react";
+import { useParams, usePathname } from "next/navigation";
+import AddRestaurantsForm from "../AddRestaurants";
 
 const Sidebar = ({ children }) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -46,19 +49,60 @@ const Sidebar = ({ children }) => {
   const [isOpen, setIsOpen] = useState(true);
   const [restaurantOpen, setRestaurantOpen] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
   const { push } = useRouter();
   const pathname = usePathname();
 
-  // Use a regex to extract the ID from the pathname
-  const match = pathname.match(/\/venues\/([^\/]+)/);
-  const restaurantId = match ? match[1] : null; // Get the ID or null if not found
+  const { venueId } = useParams();
+  const { data: restaurantById } = useGetRestaurentByIdQuery(venueId);
+  const currentRestaurant = restaurantById?.data;
+
   const trimmedPathname = pathname.replace(/^\/en/, "");
   const { data: session } = useSession();
   const [venues, setVenues] = useState([]);
 
-  // Assuming you want to pass the first restaurant's ID
-  const venueId = restaurantId;
+  const { data, refetch: refetchRestaurants } = useGetAllRestaurentsQuery(
+    session?.user?._id,
+    {
+      skip: !session?.user?._id, // Skip the query until user data is available
+    }
+  );
+
+  const toggleDrawer = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const handleRestaurantToggle = () => {
+    setRestaurantOpen(!restaurantOpen);
+  };
+
+  const handleToggle = (item) => {
+    if (item.isCollapsible) {
+      setSettingsOpen(!settingsOpen);
+    } else {
+      push(item.route);
+    }
+  };
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 992) {
+        setIsOpen(false);
+      } else {
+        setIsOpen(isOpen);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    handleResize();
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [isOpen]);
+
+  useEffect(() => {
+    setVenues(data?.data);
+  }, [data]);
 
   // Dynamic sidebarmenu with the actual restaurant id
   const sidebarmenu = [
@@ -91,57 +135,6 @@ const Sidebar = ({ children }) => {
       ],
     },
   ];
-
-  const {
-    data,
-
-    refetch: refetchRestaurants,
-  } = useGetAllRestaurentsQuery(session?.user?._id, {
-    skip: !session?.user?._id, // Skip the query until user data is available
-  });
-
-  const currentRestaurant = data?.data?.filter(
-    (item) => item._id === restaurantId
-  );
-
-  const toggleDrawer = () => {
-    setIsOpen(!isOpen);
-  };
-
-  const handleRestaurantToggle = () => {
-    setRestaurantOpen(!restaurantOpen);
-  };
-  const handleSearchChange = (e) => {
-    setSearchQuery(e.target.value);
-  };
-
-  const handleToggle = (item) => {
-    if (item.isCollapsible) {
-      setSettingsOpen(!settingsOpen);
-    } else {
-      push(item.route);
-    }
-  };
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth < 992) {
-        setIsOpen(false);
-      } else {
-        setIsOpen(isOpen);
-      }
-    };
-
-    window.addEventListener("resize", handleResize);
-    handleResize();
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, [isOpen]);
-
-  useEffect(() => {
-    setVenues(data?.data);
-  }, [data]);
 
   return (
     <Box
@@ -225,9 +218,7 @@ const Sidebar = ({ children }) => {
           </ListItemIcon>
           {isOpen && (
             <ListItemText
-              primary={
-                truncateText(currentRestaurant?.[0]?.name) ?? "GarsOnline"
-              }
+              primary={truncateText(currentRestaurant?.name) ?? "GarsOnline"}
               primaryTypographyProps={{ fontSize: 14 }}
               sx={{
                 "&:hover": {
@@ -268,26 +259,6 @@ const Sidebar = ({ children }) => {
                 overflowY: "auto",
               }}
             >
-              {/* <InputField
-                fullWidth
-                value={searchQuery}
-                onChange={handleSearchChange}
-                icon={true}
-                searchIcon
-                variant="outlined"
-                size="small"
-                position="end"
-                sx={{
-                  marginBottom: 2,
-                  backgroundColor: "#fff",
-                  marginTop: "20px",
-                  padding: "5px 8px !important",
-                  width: "176px",
-                  "& .MuiOutlinedInput-root": {
-                    paddingLeft: "0px",
-                  },
-                }}
-              /> */}
               <List
                 component="div"
                 disablePadding

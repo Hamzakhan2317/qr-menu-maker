@@ -1,21 +1,21 @@
 "use client";
 
+import GarsOnlineModal from "@/components/GarsonlineMenu/GarsOnlineModal";
+import ButtonComp from "@/components/ui/button";
+import CustomModal from "@/components/ui/CustomModal";
+import Loader from "@/components/ui/Loader";
+import { useGetAllMenuQuery } from "@/redux/services/api/menuApis";
 import {
   leftMobileViewGarsonline,
   leftViewGettingReady,
   leftViewHeader,
   menuWrapper,
 } from "@/styles/DashboarStyling";
-import { Box, Typography } from "@mui/material";
-import LoginSharpIcon from "@mui/icons-material/LoginSharp";
 import InfoIcon from "@mui/icons-material/Info";
-import ButtonComp from "@/components/ui/button";
-import { useParams, useRouter } from "next/navigation";
-import CustomModal from "@/components/ui/CustomModal";
-import GarsOnlineModal from "@/components/GarsonlineMenu/GarsOnlineModal";
-import { useSession } from "next-auth/react";
+import LoginSharpIcon from "@mui/icons-material/LoginSharp";
+import { Box, Typography } from "@mui/material";
+import { useParams } from "next/navigation";
 import { useState } from "react";
-import { useGetAllMenuQuery } from "@/redux/services/api/menuApis";
 
 const Page = () => {
   const [isMenu, setIsMenu] = useState(false);
@@ -30,7 +30,7 @@ const Page = () => {
     skip: !venueId, // Skip the query until user data is available
   });
 
-  console.log('menuData', menuData)
+  if (isLoading) return <Loader />;
   return (
     <Box sx={{ display: "flex", height: "100vh", color: "#130F40" }}>
       <Box sx={leftMobileViewGarsonline}>
@@ -97,7 +97,7 @@ const Page = () => {
         </Box>
       </Box>
     </Box>
-  )
+  );
 };
 
 export default Page;

@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import CloseIcon from "@mui/icons-material/Close";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import CustomizedSwitch from "../ui/CustomizeSwitch";
-import ItemRightDrawer from "./ItemRightDrawer";
 import { Box, Drawer, IconButton } from "@mui/material";
-import CloseIcon from "@mui/icons-material/Close";
-import { BallTriangle } from "react-loader-spinner";
+import React, { useState } from "react";
+import CustomizedSwitch from "../ui/CustomizeSwitch";
+import Loader from "../ui/Loader";
+import ItemRightDrawer from "./ItemRightDrawer";
 
 const MenuEditor = ({ sections, isLoading }) => {
   const [openItemId, setOpenItemId] = useState(null);
@@ -28,23 +28,7 @@ const MenuEditor = ({ sections, isLoading }) => {
     setIsDrawerOpen(open);
   };
 
-  if (isLoading)
-    return (
-      <Box justifyContent={"center"} alignItems={"center"} display={"flex"}>
-        <BallTriangle
-          height={100}
-          width={100}
-          radius={5}
-          color="#4fa94d"
-          ariaLabel="ball-triangle-loading"
-          wrapperStyle={{
-            height: "100vh",
-          }}
-          wrapperClass=""
-          visible={true}
-        />
-      </Box>
-    );
+  if (isLoading) return <Loader />;
 
   if (sections?.length === 0)
     return (

@@ -1,7 +1,6 @@
 "use client";
 
 import { Link, usePathname, useRouter } from "@/navigation";
-import LogoSvg from "@/public/assets/svg/logoSvg";
 import { createCustomTheme } from "@/styles/theme";
 import CloseIcon from "@mui/icons-material/Close";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -19,18 +18,13 @@ import ListItemText from "@mui/material/ListItemText";
 import Toolbar from "@mui/material/Toolbar";
 import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
-import React, { useState } from "react";
-import ButtonComp from "../ui/button";
+import React from "react";
+import logo from "../../public/assets/images/logo.png";
 import trFlag from "../../public/assets/images/turkeyflag.jpg";
 import usaflag from "../../public/assets/images/usaflag.png";
-import logo from "../../public/assets/images/logo.png";
-// import {useGetPostsQuery} from "@/redux/apiSlice.js"
+import ButtonComp from "../ui/button";
 
 function Navbar(props) {
-
-
- 
-
   const theme = createCustomTheme();
   const router = useRouter();
   const pathname = usePathname();
@@ -54,10 +48,6 @@ function Navbar(props) {
     { name: t("NavItemContact"), href: "/contact-us" },
   ];
 
-  // const { data: posts, error, isLoading } = useGetPostsQuery();
-  // if (isLoading) return <div>Loading...</div>;
-  // if (error) return <div>Error: {error.message}</div>;
-
   // Set drawer width and anchor based on screen size
   const drawerWidth = isSm ? "100%" : isXs ? "100%" : "defaultWidth"; // Set defaultWidth to fit your design
   const drawerAnchor = isXs ? "top" : "top"; // Use 'right' for medium and larger screens
@@ -74,13 +64,13 @@ function Navbar(props) {
         <Link href="/" style={{ width: "100%" }}>
           {/* <LogoSvg width="140" height="38" /> */}
           <Image
-                    alt="logo"
-                    src={logo}
-                    style={{
-                      width: "140px",
-                      height: "38px",
-                    }}
-                  />
+            alt="logo"
+            src={logo}
+            style={{
+              width: "140px",
+              height: "38px",
+            }}
+          />
         </Link>
         <Box
           sx={{

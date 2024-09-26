@@ -1,6 +1,6 @@
 "use client";
 import { useRouter } from "@/navigation";
-import { useGetAllRestaurentsQuery } from "@/redux/services/api/restaurentApis";
+import { useGetRestaurentByIdQuery } from "@/redux/services/api/restaurentApis";
 import {
   qrcodeBox,
   qrcodeBoxWrapper,
@@ -11,10 +11,11 @@ import {
 import { formatDateTime } from "@/utils/formatDateTime";
 import { Box, Grid, Typography } from "@mui/material";
 import { useSession } from "next-auth/react";
-import { usePathname } from "next/navigation";
+import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import QRCode from "react-qr-code";
 import ButtonComp from "../ui/button";
+import Loader from "../ui/Loader";
 
 const Dashboard = () => {
   const { data: session } = useSession();
@@ -22,16 +23,10 @@ const Dashboard = () => {
   const [isCopied, setIsCopied] = useState(false);
   const [currentDateTime, setCurrentDateTime] = useState();
   const [path, setPath] = useState("");
-  const [currentRestaurant, setCurrentRestaurant] = useState({});
-  const pathname = usePathname();
 
-  // Use a regex to extract the ID from the pathname
-  const match = pathname.match(/\/venues\/([^\/]+)/);
-  const restaurantId = match ? match[1] : null; // Get the ID or null if not found
-
-  const { data, isLoading } = useGetAllRestaurentsQuery(session?.user?._id, {
-    skip: !session?.user?._id, // Skip the query until user data is available
-  });
+  const { venueId } = useParams();
+  const { data, isLoading } = useGetRestaurentByIdQuery(venueId);
+  const currentRestaurant = data?.data;
 
   useEffect(() => {
     const now = formatDateTime();
@@ -42,15 +37,6 @@ const Dashboard = () => {
       );
   }, [currentRestaurant]);
 
-  useEffect(() => {
-    if (!isLoading && data) {
-      const currentRestaurant = data?.data?.filter(
-        (item) => item._id === restaurantId
-      );
-      setCurrentRestaurant(currentRestaurant[0]);
-    }
-  }, [data, isLoading, restaurantId]);
-
   const handleCopy = () => {
     navigator.clipboard.writeText(path).then(() => {
       setIsCopied(true);
@@ -58,6 +44,9 @@ const Dashboard = () => {
     });
   };
 
+  if (isLoading) {
+    return <Loader />;
+  }
   return (
     <Box sx={{ padding: "40px", height: "100vh" }}>
       <p>{currentDateTime}</p>
