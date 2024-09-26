@@ -1,6 +1,5 @@
 "use client";
 import { Link, usePathname, useRouter } from "@/navigation";
-import LogoSvg from "@/public/assets/svg/logoSvg";
 import { loginSchema } from "@/validations/login/loginSchema";
 import {
   Box,
@@ -9,24 +8,18 @@ import {
   Divider,
   FormControlLabel,
   Grid,
-  MenuItem,
-  Select,
   Typography,
 } from "@mui/material";
 import { useFormik } from "formik";
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import { useLocale } from "next-intl";
-import Image from "next/image";
 import NextLink from "next/link";
-import { useState,useEffect } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { toast } from "sonner";
-import trFlag from "../../public/assets/images/turkeyflag.jpg";
-import usaflag from "../../public/assets/images/usaflag.png";
+import SecondaryNavbar from "../Navbar/SecondaryNavbar";
 import InputField from "../ui/InputField";
 import ButtonComp from "../ui/button";
-import SecondaryNavbar from "../Navbar/SecondaryNavbar";
-import { useDispatch } from "react-redux";
-import { useSession } from "next-auth/react";
 
 const LoginPage = () => {
   const { data: session } = useSession();
@@ -35,14 +28,13 @@ const LoginPage = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const pathname = usePathname();
   const locale = useLocale();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const [lang, setLang] = useState(locale);
   const handleChange = (event) => {
     setLang(event.target.value);
   };
 
-
-  console.log(" LoginPage session>>>>>>>", session)
+  console.log(" LoginPage session>>>>>>>", session);
 
   const handleLogin = async ({ email, password }) => {
     const toastId = toast.loading("Login user...");
@@ -60,7 +52,7 @@ const LoginPage = () => {
         toast.error("Invalid email or password", { id: toastId });
       }
       if (res?.ok) {
-        console.log("session?.user?._id>>>>>", session?.user?._id)
+        console.log("session?.user?._id>>>>>", session?.user?._id);
         toast.success("Login successfully", { id: toastId });
       }
     } catch (error) {
@@ -78,11 +70,11 @@ const LoginPage = () => {
     },
   });
 
-  useEffect(()=>{
-    if(session?.user?._id){
-      router.push(`/venues/${session?.user?._id}/dashboard`);
+  useEffect(() => {
+    if (session?.user?._id) {
+      router.push(`/venues/${session?.user?.restaurants[0]?._id}/dashboard`);
     }
-  },[session?.user?._id])
+  }, [session?.user?._id]);
 
   return (
     <Box

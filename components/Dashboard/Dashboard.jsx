@@ -1,8 +1,6 @@
 "use client";
 import { useRouter } from "@/navigation";
-import { useSession } from "next-auth/react";
-import QRCode from "react-qr-code";
-import { Box, Grid, Typography } from "@mui/material";
+import { useGetAllRestaurentsQuery } from "@/redux/services/api/restaurentApis";
 import {
   qrcodeBox,
   qrcodeBoxWrapper,
@@ -11,18 +9,20 @@ import {
   qrnote,
 } from "@/styles/DashboarStyling";
 import { formatDateTime } from "@/utils/formatDateTime";
-import ButtonComp from "../ui/button";
-import { useEffect, useState } from "react";
-import { useGetAllRestaurentsQuery } from "@/redux/services/api/restaurentApis";
+import { Box, Grid, Typography } from "@mui/material";
+import { useSession } from "next-auth/react";
 import { usePathname } from "next/navigation";
-import { BallTriangle } from "react-loader-spinner";
+import { useEffect, useState } from "react";
+import QRCode from "react-qr-code";
+import ButtonComp from "../ui/button";
 
 const Dashboard = () => {
   const { data: session } = useSession();
   const router = useRouter();
   const [isCopied, setIsCopied] = useState(false);
   const [currentDateTime, setCurrentDateTime] = useState();
-  const qrCodeLink = "https://qr-menu-maker.vercel.app/en/garsonline-menu";
+  const [path, setPath] = useState("");
+  const [currentRestaurant, setCurrentRestaurant] = useState({});
   const pathname = usePathname();
 
   // Use a regex to extract the ID from the pathname
@@ -33,50 +33,34 @@ const Dashboard = () => {
     skip: !session?.user?._id, // Skip the query until user data is available
   });
 
-  const currentRestaurant = data?.data?.filter(
-    (item) => item._id === restaurantId
-  );
-
   useEffect(() => {
     const now = formatDateTime();
     setCurrentDateTime(now);
-  }, []);
+    currentRestaurant &&
+      setPath(
+        window.location.origin + `/garsonline-menu/${currentRestaurant?._id}`
+      );
+  }, [currentRestaurant]);
+  useEffect(() => {
+    if (!isLoading && data) {
+      const currentRestaurant = data?.data?.filter(
+        (item) => item._id === restaurantId
+      );
+      setCurrentRestaurant(currentRestaurant[0]);
+    }
+  }, [data, isLoading]);
   const handleCopy = () => {
-    navigator.clipboard.writeText(window.location.origin +`/garsonline-menu/${currentRestaurant?.[0]?._id}`).then(() => {
+    navigator.clipboard.writeText(path).then(() => {
       setIsCopied(true);
       setTimeout(() => setIsCopied(false), 2000);
     });
   };
 
-  if (isLoading) {
-    return (
-      <Box
-        height={"100vh"}
-        width={"80vw"}
-        justifyContent={"center"}
-        alignItems={"center"}
-        display={"flex"}
-      >
-        <BallTriangle
-          height={100}
-          width={100}
-          radius={5}
-          color="#4fa94d"
-          ariaLabel="ball-triangle-loading"
-          wrapperStyle={{
-            height: "100vh",
-          }}
-          wrapperClass=""
-          visible={true}
-        />
-      </Box>
-    );
-  }
   return (
     <Box sx={{ padding: "40px", height: "100vh" }}>
       <p>{currentDateTime}</p>
       <Typography color="#000000d9" mt={1} fontSize={18}>
-        <b>{currentRestaurant?.[0]?.name}, Welcome</b>
+        <b>{currentRestaurant?.name}, Welcome</b>
       </Typography>
       <Grid container mt={2}>
         <Grid item xs={12} sm={12} md={4} sx={qrcodeWrapper}>
@@ -94,7 +78,7 @@ const Dashboard = () => {
                     maxWidth: "100%",
                     width: "100%",
                   }}
-                  value={window.location.origin + `/garsonline-menu/${currentRestaurant?.[0]?._id}`}
+                  value={path}
                   viewBox={`0 0 256 256`}
                 />
               </Box>
@@ -113,11 +97,7 @@ const Dashboard = () => {
                   text={"Preview Menu"}
                   variant="purple"
                   padding="4px 15px"
-                  onClick={() =>
-                    router.push(
-                      window.location.origin + `/garsonline-menu/${currentRestaurant?.[0]?._id}`
-                    )
-                  }
+                  onClick={() => router.push(path)}
                 />
                 <ButtonComp
                   variant="transparent"
