@@ -105,33 +105,66 @@ const Page = () => {
               setIsgarsDrawerOpen(false);
             }}
             sx={{
-              width: 400,
+              width: 200,
               flexShrink: 0,
               "& .MuiDrawer-paper": {
                 width: 400,
                 boxSizing: "border-box",
+                position: "relative",
               },
             }}
           >
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                padding: "10px",
-                flexDirection: "row-reverse",
-                justifyContent: "flex-end",
-                borderBottom: "1px solid #ddd",
-              }}
-            >
-              <h3>The Cart is empty!</h3>
-              <IconButton
-                onClick={() => {
-                  setIsgarsDrawerOpen(false);
+            <Box>
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  padding: "10px",
+                  flexDirection: "row-reverse",
+                  justifyContent: "flex-end",
+                  borderBottom: "1px solid #ddd",
                 }}
-                marginRight="5px"
               >
-                <CloseIcon />
-              </IconButton>
+                <IconButton
+                  onClick={() => {
+                    setIsgarsDrawerOpen(false);
+                  }}
+                  marginRight="5px"
+                >
+                  <CloseIcon />
+                </IconButton>
+              </Box>
+
+              <Box
+                padding="20px"
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  height: "100%",
+                }}
+              >
+                <Box>
+                  <Typography
+                    fontSize={16}
+                    sx={{ fontWeight: 600, marginleft: "5" }}
+                  >
+                    Cart is Empty!
+                  </Typography>
+                </Box>
+                <Box position="absolute" bottom={10}>
+                  <Typography
+                    fontSize={16}
+                    sx={{
+                      fontWeight: 600,
+                      marginleft: "5",
+                      fontStyle: "italic",
+                      textWrap: "wrap",
+                    }}
+                  >
+                    Address: {currentRestaurant?.address}
+                  </Typography>
+                </Box>
+              </Box>
             </Box>
           </Drawer>
           <Box sx={{ padding: "10px" }}>
