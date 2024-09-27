@@ -1,10 +1,9 @@
 "use client";
-import { useState } from "react";
-import { Box, Grid, IconButton, Typography } from "@mui/material";
-import CloseIcon from "@mui/icons-material/Close";
-import { useFormik } from "formik";
 import { useRegisterRestaurentMutation } from "@/redux/services/api/restaurentApis";
-import CustomCheckbox from "./ui/CustomCheckbox/CustomCheckbox";
+import CloseIcon from "@mui/icons-material/Close";
+import { Box, Grid, IconButton, Typography } from "@mui/material";
+import { useFormik } from "formik";
+import * as yup from "yup";
 import ButtonComp from "./ui/button";
 import InputField from "./ui/InputField";
 
@@ -13,7 +12,6 @@ const AddRestaurantsForm = ({
   userId,
   setIsDrawerOpen,
 }) => {
-  const [open, setOpen] = useState(false);
   const [registerRestaurent] = useRegisterRestaurentMutation();
 
   const handelRegisterSection = async (values) => {
@@ -38,7 +36,10 @@ const AddRestaurantsForm = ({
       name: "",
       address: "",
     },
-    // validationSchema: sectionSchema,
+    validationSchema: yup.object().shape({
+      name: yup.string().required("Name is required"),
+      address: yup.string().required("Address is required"),
+    }),
     onSubmit: async (values) => {
       handelRegisterSection(values);
     },
@@ -97,11 +98,9 @@ const AddRestaurantsForm = ({
             backgroundColor: "#fff",
             height: "60px",
             borderTop: "1px solid #E5E5E5",
+            marginTop: "20px",
           }}
         >
-          <Box>
-            <CustomCheckbox label="Save and add more" />
-          </Box>
           <Box>
             <ButtonComp
               text="Cancel"

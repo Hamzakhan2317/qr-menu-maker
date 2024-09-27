@@ -1,15 +1,14 @@
+import SearchIcon from "@mui/icons-material/Search";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import { FormLabel } from "@mui/joy";
 import {
-  Box,
   FormControl,
   Grid,
   InputAdornment,
   TextField,
   Typography,
 } from "@mui/material";
-import SearchIcon from "@mui/icons-material/Search";
-import VisibilityIcon from "@mui/icons-material/Visibility";
-import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-import { FormLabel } from "@mui/joy";
 
 const InputField = ({
   label,
@@ -45,6 +44,7 @@ const InputField = ({
   fontLabelWeight = 600,
   labelFontSize = "14px",
   customBackgroundColor = "transparent",
+  marginTop = "0px",
   ...props
 }) => {
   const togglePasswordIcon = () => {
@@ -91,7 +91,7 @@ const InputField = ({
   };
 
   return (
-    <Grid item xs={12} sm={cols} md={cols} lg={cols}>
+    <Grid item xs={12} sm={cols} md={cols} lg={cols} marginTop={marginTop}>
       <FormControl
         fullWidth
         variant="outlined"

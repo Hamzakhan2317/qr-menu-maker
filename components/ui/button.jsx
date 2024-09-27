@@ -71,12 +71,9 @@ const ButtonComp = ({
       },
     },
     disabled: {
-      backgroundColor: "transparent",
-      color: "#8338EC",
-      "&:hover": {
-        backgroundColor: "transparent",
-        color: "#8338EC",
-      },
+      backgroundColor: "#8338EC",
+      color: "#fff!important",
+      opacity: 0.5,
     },
   };
 

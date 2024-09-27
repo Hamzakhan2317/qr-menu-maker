@@ -314,12 +314,6 @@ const Sidebar = ({ children }) => {
 
         <List>
           {sidebarmenu?.map((item, index) => {
-            console.log(
-              "pathname === item.route",
-              trimmedPathname === item.route,
-              item.route,
-              pathname
-            );
             return (
               <div key={index}>
                 <ListItem

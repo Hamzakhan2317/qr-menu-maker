@@ -1,19 +1,62 @@
 "use client";
-import { Box, Grid, Typography } from "@mui/material";
-import React from "react";
-import InputField from "../ui/InputField";
-import Input from "@mui/joy/Input";
+import {
+  useGetRestaurentByIdQuery,
+  useUpdateRestaurentByIdMutation,
+} from "@/redux/services/api/restaurentApis";
+import { OperatingHoursHeader } from "@/styles/common";
+import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import FormControl from "@mui/joy/FormControl";
 import FormLabel from "@mui/joy/FormLabel";
-import ContentCopyIcon from "@mui/icons-material/ContentCopy";
+import Input from "@mui/joy/Input";
+import { Box, Grid, Typography } from "@mui/material";
+import { useFormik } from "formik";
+import { useParams } from "next/navigation";
+import { useEffect, useState } from "react";
+import { toast } from "sonner";
+import * as yup from "yup";
 import CountrySelect from "../ui/CountrySelector/CountrySelector";
-import PhoneInput from "../ui/PhoneInput";
-import ButtonComp from "../ui/button";
-import Dropzone from "react-dropzone";
 import CustomDropzone from "../ui/Dropzone/CustomDropzone";
-import { OperatingHoursHeader } from "@/styles/common";
+import InputField from "../ui/InputField";
+import Loader from "../ui/Loader";
+import ButtonComp from "../ui/button";
 
 const VenueInformation = () => {
+  const { venueId } = useParams();
+  const { data, isLoading, refetch } = useGetRestaurentByIdQuery(venueId);
+  const [currentRestaurant, setCurrentRestaurant] = useState(data?.data);
+  const [updateRestaurentById] = useUpdateRestaurentByIdMutation();
+
+  useEffect(() => {
+    if (data && !isLoading) {
+      setCurrentRestaurant(data?.data);
+    }
+  }, [data]);
+
+  const formik = useFormik({
+    initialValues: {
+      name: currentRestaurant?.name ?? "",
+      address: currentRestaurant?.address ?? "",
+      city: currentRestaurant?.city ?? "",
+      country: currentRestaurant?.country ?? "",
+    },
+    validationSchema: yup.object().shape({
+      name: yup.string().required("Name is required"),
+      address: yup.string().required("Address is required"),
+      city: yup.string(),
+      country: yup.string(),
+    }),
+    onSubmit: async (values) => {
+      updateRestaurentById({ restaurantId: venueId, data: values }).then(() => {
+        refetch();
+        toast.success("Restaurant updated successfully!");
+      });
+    },
+    enableReinitialize: true,
+  });
+
+  console.log("AS", currentRestaurant);
+
+  if (isLoading) return <Loader />;
   return (
     <Box sx={{ backgroundColor: "#F0F2F5", minHeight: "100vh" }}>
       <Box sx={OperatingHoursHeader}>
@@ -38,7 +81,13 @@ const VenueInformation = () => {
           }}
         >
           <Grid container>
-            <InputField cols={9} customHeight="36px" label={"Venue Name"} />
+            <InputField
+              cols={9}
+              customHeight="36px"
+              label={"Venue Name"}
+              name="name"
+              formik={formik}
+            />
           </Grid>
 
           <FormControl
@@ -55,8 +104,9 @@ const VenueInformation = () => {
             </FormLabel>
             <Input
               size="md"
-              placeholder="TqUA1DNJA"
+              placeholder={currentRestaurant?._id}
               endDecorator={<ContentCopyIcon sx={{ cursor: "pointer" }} />}
+              readOnly
               sx={{
                 borderRadius: "8px",
                 height: "32px",
@@ -75,43 +125,37 @@ const VenueInformation = () => {
             </FormLabel>
             <CustomDropzone />
           </Box>
-          <FormLabel
-            sx={{
-              marginTop: "25px",
-              marginBottom: "25px",
-              fontWeight: "400 !important",
-            }}
-          >
-            Address{" "}
-            <span
-              style={{
-                color: "#8338ec",
-                display: "inline-block",
-                textDecoration: "underline",
-                marginLeft: "20px",
-                cursor: "pointer",
-                fontWeight: "400 !important",
-              }}
-            >
-              Select from map
-            </span>
-          </FormLabel>
+
           <Grid container>
-            <InputField type={"textarea"} rows={3} cols={9} multiline />
+            <InputField
+              label="Address"
+              type={"textarea"}
+              rows={3}
+              cols={9}
+              multiline
+              marginTop="20px"
+              name="address"
+              formik={formik}
+            />
           </Grid>
           <Grid container spacing={2} marginTop={"10px"}>
-            <InputField label={"City"} customHeight="37px" padding="6px 15px" />
-            <CountrySelect />
-            <InputField label={"State"} customHeight="37px" />
-            <InputField label={"Zip Code"} customHeight="37px" />
-            {/* <PhoneInput cols={12} /> */}
+            <InputField
+              label={"City"}
+              customHeight="37px"
+              padding="6px 15px"
+              name="city"
+              formik={formik}
+            />
+            <CountrySelect formik={formik} />
           </Grid>
           <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
             <ButtonComp
               text={"Save"}
-              variant="blue"
+              variant={!formik.dirty ? "disabled" : "blue"}
               padding="4px 15px"
               marginTop="10px"
+              onClick={formik.handleSubmit}
+              disabled={!formik.dirty}
             />
           </Box>
         </Grid>
