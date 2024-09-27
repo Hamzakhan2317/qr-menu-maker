@@ -10,7 +10,6 @@ import {
 } from "@/styles/DashboarStyling";
 import { formatDateTime } from "@/utils/formatDateTime";
 import { Box, Grid, Typography } from "@mui/material";
-import { useSession } from "next-auth/react";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import QRCode from "react-qr-code";
@@ -18,7 +17,6 @@ import ButtonComp from "../ui/button";
 import Loader from "../ui/Loader";
 
 const Dashboard = () => {
-  const { data: session } = useSession();
   const router = useRouter();
   const [isCopied, setIsCopied] = useState(false);
   const [currentDateTime, setCurrentDateTime] = useState();
@@ -50,7 +48,12 @@ const Dashboard = () => {
   return (
     <Box sx={{ padding: "40px", height: "100vh" }}>
       <p>{currentDateTime}</p>
-      <Typography color="#000000d9" mt={1} fontSize={18}>
+      <Typography
+        color="#000000d9"
+        mt={1}
+        fontSize={18}
+        textTransform="capitalize"
+      >
         <b>{currentRestaurant?.name}, Welcome</b>
       </Typography>
       <Grid container mt={2}>

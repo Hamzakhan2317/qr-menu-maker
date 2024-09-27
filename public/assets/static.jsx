@@ -7,6 +7,9 @@ const { default: Signuplogo5 } = require("./svg/signuplogo5");
 const { default: Signuplogo6 } = require("./svg/signuplogo6");
 const { default: Signuplogo7 } = require("./svg/signuplogo7");
 const { default: Signuplogo8 } = require("./svg/signuplogo8");
+import DashboardIcon from "@/public/assets/svg/dashboard";
+import MenuManagementIcon from "@/public/assets/svg/menu-management";
+import SettingsIcon from "@/public/assets/svg/settings";
 import EmailIcon from "@mui/icons-material/Email";
 import LocationIcon from "@mui/icons-material/LocationOn";
 import PhoneIcon from "@mui/icons-material/Phone";
@@ -28,20 +31,17 @@ import sliderimage3 from "../assets/images/sliderimage3.webp";
 import sliderimage4 from "../assets/images/sliderimage4.webp";
 import sliderimage5 from "../assets/images/sliderimage5.webp";
 import rating from "../assets/images/star.webp";
-import mainCourse from "/public/assets/images/main-course.webp";
-import Deserts from "/public/assets/images/deserts.webp";
-import Salads from "/public/assets/images/salads.webp";
-import starters from "/public/assets/images/starters.webp";
-import desertsFullwidth from "/public/assets/images/deserts-fullwidth.webp";
+import EggSvg, { PineSvg } from "./svg/Egg";
 import desertCardimg from "/public/assets/images/desert-cardimg.webp";
+import desertsFullwidth from "/public/assets/images/deserts-fullwidth.webp";
+import Deserts from "/public/assets/images/deserts.webp";
+import gazpacho from "/public/assets/images/gazpacho.webp";
+import mainCourse from "/public/assets/images/main-course.webp";
+import Salads from "/public/assets/images/salads.webp";
 import saladsfullwidth from "/public/assets/images/saladsfullwidth.webp";
 import specialSalad from "/public/assets/images/special-salad.webp";
-import gazpacho from "/public/assets/images/gazpacho.webp";
+import starters from "/public/assets/images/starters.webp";
 import startersfullwidth from "/public/assets/images/startersfullwidth.webp";
-import EggSvg, { PineSvg } from "./svg/Egg";
-import DashboardIcon from "@/public/assets/svg/dashboard";
-import MenuManagementIcon from "@/public/assets/svg/menu-management";
-import SettingsIcon from "@/public/assets/svg/settings";
 export const logoComponents = [
   Signuplogo1,
   Signuplogo2,
@@ -296,6 +296,7 @@ export const blogCardData = [
 
 export const sidebarHoverStyling = () => {
   return {
+    textTransform: "capitalize",
     cursor: "pointer",
     "&:hover": {
       backgroundColor: "#f5e9fc",

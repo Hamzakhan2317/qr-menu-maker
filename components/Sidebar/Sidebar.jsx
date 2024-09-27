@@ -221,6 +221,7 @@ const Sidebar = ({ children }) => {
               primary={truncateText(currentRestaurant?.name) ?? "GarsOnline"}
               primaryTypographyProps={{ fontSize: 14 }}
               sx={{
+                textTransform: "capitalize",
                 "&:hover": {
                   color: restaurantOpen
                     ? "#000000 !important"
@@ -248,9 +249,7 @@ const Sidebar = ({ children }) => {
               sx={{
                 backgroundColor: "#ffffff",
                 display: "flex",
-
                 zIndex: 999,
-
                 justifyContent: "center",
                 alignItems: "center",
                 flexDirection: "column",
@@ -267,9 +266,7 @@ const Sidebar = ({ children }) => {
                 {venues?.length === 0 ? (
                   <ListItem
                     sx={{
-                      // paddingLeft: 2,
                       cursor: "pointer",
-
                       width: "100% ",
                     }}
                   >

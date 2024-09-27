@@ -28,7 +28,8 @@ import {
   IconButton,
   Typography,
 } from "@mui/material";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
+
 import { useState } from "react";
 const Page = () => {
   const { venueId, menuId } = useParams();
@@ -42,6 +43,11 @@ const Page = () => {
 
   const { data } = useGetRestaurentByIdQuery(venueId);
   const currentRestaurant = data?.data;
+  const router = useRouter();
+
+  const handleGoBack = () => {
+    router.back(); // Navigates to the previous page in the history
+  };
 
   return (
     <Box sx={{ display: "flex", height: "100vh", color: "#130F40" }}>
@@ -68,11 +74,12 @@ const Page = () => {
                   fontSize: "18px !important",
                   marginTop: "5px",
                 }}
+                onClick={handleGoBack}
               />
             </Box>
             <Box>
               <Typography fontSize={"16px"} fontWeight={700} marginleft="5px">
-                {menuData?.name}
+                {menuData?.data?.name}
               </Typography>
             </Box>
             <Box
@@ -132,11 +139,11 @@ const Page = () => {
                 marginTop={"30px"}
                 color="#000000d9"
               >
-                {menuData?.name}
+                {menuData?.data?.name}
               </Typography>
-              <Typography> {menuData?.description}</Typography>
+              <Typography> {menuData?.data?.description}</Typography>
               <Typography fontSize={"14px"} color={"#BCBBC8"}>
-                {menuData?.note}
+                {menuData?.data?.note}
               </Typography>
             </Box>
             <Box sx={menuSearch}>
