@@ -12,7 +12,6 @@ import {
   leftMobileViewGarsonline,
   leftViewHeaderMenu,
   menuCardsWrapper,
-  menuFoodTypes,
   menuFoodWrapper,
   menuSearch,
 } from "@/styles/DashboarStyling";
@@ -24,7 +23,6 @@ import {
   Box,
   CircularProgress,
   Drawer,
-  Grid,
   IconButton,
   Typography,
 } from "@mui/material";
@@ -78,8 +76,13 @@ const Page = () => {
               />
             </Box>
             <Box>
-              <Typography fontSize={"16px"} fontWeight={700} marginleft="5px">
-                {menuData?.data?.name}
+              <Typography
+                fontSize={"16px"}
+                fontWeight={700}
+                marginleft="5px"
+                textTransform="capitalize"
+              >
+                {currentRestaurant?.name}
               </Typography>
             </Box>
             <Box
@@ -120,7 +123,7 @@ const Page = () => {
                 borderBottom: "1px solid #ddd",
               }}
             >
-              <h3>Add New Item</h3>
+              <h3>The Cart is empty!</h3>
               <IconButton
                 onClick={() => {
                   setIsgarsDrawerOpen(false);
@@ -141,7 +144,10 @@ const Page = () => {
               >
                 {menuData?.data?.name}
               </Typography>
-              <Typography> {menuData?.data?.description}</Typography>
+              <Typography lineHeight={1.2}>
+                {" "}
+                {menuData?.data?.description}
+              </Typography>
               <Typography fontSize={"14px"} color={"#BCBBC8"}>
                 {menuData?.data?.note}
               </Typography>
@@ -159,38 +165,45 @@ const Page = () => {
               />
             </Box>
           </Box>
-          <Grid container spacing={1 / 5} sx={menuFoodTypes}>
+          <Box
+            display="flex"
+            flexDirection="row"
+            justifyContent="flex-start"
+            padding="0 10px"
+            overflow="auto"
+          >
             {sections?.data?.map((item, index) => {
               return (
-                <Grid
-                  item
-                  xs={6}
-                  sm={3}
+                <Box
                   key={index}
-                  sx={{ textAlign: "center" }}
+                  display="flex"
+                  flexDirection="column"
+                  justifyContent="center"
+                  margin="5px"
+                  maxWidth="100px"
+                  minWidth="100px"
+                  textAlign="center"
                 >
                   <Box
                     sx={{
-                      marginTop: "10px",
-                      marginLeft: "10px",
                       cursor: "pointer",
                       background: "#ccc",
-                      width: "107px",
-                      height: "78px",
+                      width: "100%",
+                      height: "80px",
                       borderRadius: "12px",
                     }}
                   >
                     {/* <Image src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQD4qmuiXoOrmp-skck7b7JjHA8Ry4TZyPHkw&s"} height={100}  width={100} alt="" objectFit="cover" /> */}
                   </Box>
                   <Box sx={{ cursor: "pointer" }}>
-                    <Typography fontSize={"14px"} fontWeight={600}>
+                    <Typography fontSize={"14px"} mt="3px" fontWeight={600}>
                       {item.name}
                     </Typography>
                   </Box>
-                </Grid>
+                </Box>
               );
             })}
-          </Grid>
+          </Box>
           <Box sx={menuCardsWrapper}>
             {sections?.data?.map((item, index) => {
               return (
@@ -199,9 +212,11 @@ const Page = () => {
                     sx={{
                       cursor: "pointer",
                       background: "#ccc",
-                      width: "459px",
+                      maxWidth: "459px",
+                      width: "100%",
                       height: "152px",
                       borderRadius: "12px",
+                      marginTop: "20px",
                     }}
                   ></Box>
                   {/* <Image src={item.src} alt="" className="mainImage" /> */}
@@ -209,6 +224,7 @@ const Page = () => {
                     textAlign={"center"}
                     fontSize={"20px"}
                     fontWeight={700}
+                    marginTop={2}
                   >
                     {item?.name}
                   </Typography>
@@ -253,11 +269,12 @@ const Page = () => {
                               marginLeft: "10px",
                               cursor: "pointer",
                               background: "#ccc",
-                              width: "100px",
-                              height: "100px",
+                              minWidth: "100px",
+                              minHeight: "100px",
+                              maxHeight: "100px",
                               borderRadius: "12px",
                             }}
-                          ></Box>
+                          />
                           {/* <Box>
                                                             <Image
                                                                 src={innerItem?.cardPic}

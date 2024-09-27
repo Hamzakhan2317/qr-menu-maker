@@ -114,6 +114,7 @@ export const copyOfSampleMenu = {
   flexDirection: "column",
   justifyContent: "center",
   alignItems: "center",
+  textAlign: "center",
 };
 export const menuSearch = {
   marginTop: "20px",
@@ -143,7 +144,6 @@ export const menuFoodWrapper = {
     objectFit: "contain",
     borderRadius: "8px",
     marginBottom: "10px",
-    marginTop: "20px",
   },
 };
 export const foodMenuCard = {
@@ -164,6 +164,7 @@ export const foodMenuCard = {
     objectFit: "cover!important",
   },
 };
+
 export const cardLeftside = {
   display: "flex",
   justifyContent: "flex-start",
