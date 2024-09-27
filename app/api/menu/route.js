@@ -4,7 +4,6 @@ import Restaurant from "@/models/restaurent.model";
 import { NextResponse } from "next/server";
 
 export async function POST(req) {
-  console.log("Request received menu"); // Added log
   // return NextResponse.json({ message:"Restaurent Created successfully" }, { status: 201 });
 
   const { name, restaurantId } = await req.json();
@@ -24,7 +23,12 @@ export async function POST(req) {
       );
     }
 
-    const menu = new Menu({ name, description: "", note: "", restaurant: restaurantId });
+    const menu = new Menu({
+      name,
+      description: "",
+      note: "",
+      restaurant: restaurantId,
+    });
     await menu.save();
 
     restaurant.menus.push(menu._id);
@@ -59,11 +63,13 @@ export async function GET(req) {
 
     let menus;
     if (menuId && restaurantId) {
-      menus = await Menu.find({ restaurant: restaurantId, menuId: req.params.menuId })
+      menus = await Menu.find({
+        restaurant: restaurantId,
+        menuId: req.params.menuId,
+      });
     } else {
-      menus = await Menu.find({ restaurant: restaurantId })
+      menus = await Menu.find({ restaurant: restaurantId });
     }
-    // .populate('items');
 
     return NextResponse.json(
       { message: "Menu fetched successfully", data: menus },
@@ -76,8 +82,6 @@ export async function GET(req) {
     );
   }
 }
-
-
 
 // // Get all menus for a restaurant
 // exports.getMenusForRestaurant = async (req, res) => {
@@ -120,10 +124,7 @@ export async function PUT(req) {
     );
 
     if (!menu) {
-      return NextResponse.json(
-        { message: "Menu not found" },
-        { status: 404 }
-      );
+      return NextResponse.json({ message: "Menu not found" }, { status: 404 });
     }
 
     return NextResponse.json(
@@ -137,8 +138,6 @@ export async function PUT(req) {
     );
   }
 }
-
-
 
 // Delete a menu
 export async function DELETE(req) {

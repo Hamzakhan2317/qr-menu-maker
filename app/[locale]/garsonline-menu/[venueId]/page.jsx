@@ -5,6 +5,7 @@ import ButtonComp from "@/components/ui/button";
 import CustomModal from "@/components/ui/CustomModal";
 import Loader from "@/components/ui/Loader";
 import { useGetAllMenuQuery } from "@/redux/services/api/menuApis";
+import { useGetRestaurentByIdQuery } from "@/redux/services/api/restaurentApis";
 import {
   leftMobileViewGarsonline,
   leftViewGettingReady,
@@ -29,6 +30,10 @@ const Page = () => {
   } = useGetAllMenuQuery(venueId, {
     skip: !venueId, // Skip the query until user data is available
   });
+  const { data } = useGetRestaurentByIdQuery(venueId);
+  const currentRestaurant = data?.data;
+
+  console.log("menuData", menuData);
 
   if (isLoading) return <Loader />;
   return (
@@ -72,8 +77,12 @@ const Page = () => {
             </Box>
           </Box>
           <Box sx={menuWrapper}>
-            <Typography fontSize={"22px"} fontWeight={700}>
-              Food
+            <Typography
+              fontSize={"22px"}
+              fontWeight={700}
+              textTransform="capitalize"
+            >
+              {currentRestaurant?.name}
             </Typography>
             <ButtonComp
               text={"Go to Menu"}
