@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const restaurantSchema = new mongoose.Schema(
   {
     name: { type: String, required: true },
-    address: { type: String, required: true },
+    address: { type: String },
     city: { type: String },
     country: { type: String },
     owner: {

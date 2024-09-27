@@ -90,7 +90,7 @@ const MenuManagement = () => {
       const resp = await deleteMenu(menuEditData?._id).unwrap();
 
       if (resp) {
-        // toast.success(resp?.message || "Menu Deleted successfully");
+        toast.success(resp?.message || "Menu Deleted successfully");
         refetchMenus();
         setAnchorEl(null);
         setMenuEditData(null);
