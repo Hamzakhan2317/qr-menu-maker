@@ -227,7 +227,7 @@ export const authOptions = {
         phone: { label: "Phone", type: "text" },
         otp: { label: "OTP", type: "text" },
       },
-      async authorize(credentials, req) {
+      async authorize(credentials) {
         await connectDB();
 
         if (credentials.email && credentials.password) {
@@ -237,8 +237,7 @@ export const authOptions = {
           if (!user || !(await user.matchesPassword(credentials.password)))
             throw new Error("Invalid email or password.");
 
-
-          console.log("user>>>>>>>>>>>>>>>>>>>>", user)
+          console.log("user>>>>>>>>>>>>>>>>>>>>", user);
           // if (!user) {
           //   throw new Error("No user found with this email.");
           // }
@@ -263,11 +262,7 @@ export const authOptions = {
 
           if (credentials.otp) {
             // Verify OTP
-            const isValidOTP = await verifyOTP(
-              credentials.phone,
-              credentials.otp
-            );
-
+            const isValidOTP = await verifyOTP(credentials.phone, credentials.otp);
 
             if (!isValidOTP) {
               throw new Error("Invalid OTP.");
@@ -282,7 +277,7 @@ export const authOptions = {
               JSON.stringify({
                 status: "otp_sent",
                 message: "OTP sent. Please verify.",
-              })
+              }),
             );
 
             // return { status: "otp_sent", message: "OTP sent. Please verify." };

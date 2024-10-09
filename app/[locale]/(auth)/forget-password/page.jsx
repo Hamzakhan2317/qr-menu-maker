@@ -1,33 +1,32 @@
 "use client";
 import InputField from "@/components/ui/InputField";
 import ButtonComp from "@/components/ui/button";
-import { Link, usePathname } from "@/navigation";
-import trFlag from "@/public/assets/images/turkeyflag.jpg";
-import usaflag from "@/public/assets/images/usaflag.png";
-import LogoSvg from "@/public/assets/svg/logoSvg";
+// import { usePathname } from "@/navigation";
+// import trFlag from "@/public/assets/images/turkeyflag.jpg";
+// import usaflag from "@/public/assets/images/usaflag.png";
+// import LogoSvg from "@/public/assets/svg/logoSvg";
 import {
   Box,
   Container,
   Divider,
-  MenuItem,
-  Select,
+  //  MenuItem, Select,
   Typography,
 } from "@mui/material";
-import { useLocale } from "next-intl";
-import Image from "next/image";
-import NextLink from "next/link";
+// import { useLocale } from "next-intl";
+// import Image from "next/image";
+// import NextLink from "next/link";
 import { useRouter } from "@/navigation";
 
-import { useState } from "react";
+// import { useState } from "react";
 import SecondaryNavbar from "@/components/Navbar/SecondaryNavbar";
 
 const ForgetPassword = () => {
-  const pathname = usePathname();
-  const locale = useLocale();
-  const [lang, setLang] = useState(locale);
-  const handleChange = (event) => {
-    setLang(event.target.value);
-  };
+  // const pathname = usePathname();
+  // const locale = useLocale();
+  // const [lang, setLang] = useState(locale);
+  // const handleChange = (event) => {
+  //   setLang(event.target.value);
+  // };
 
   const { push } = useRouter();
 
@@ -37,8 +36,7 @@ const ForgetPassword = () => {
         minHeight: "100vh",
         background:
           "linear-gradient(to left, rgba(255, 255, 255, 0.7), rgba(200, 170, 230, 0.5), rgba(220, 190, 240, 0.9), rgba(255, 255, 255, 0))",
-      }}
-    >
+      }}>
       <SecondaryNavbar />
       <Container maxWidth="sm">
         <Box
@@ -47,8 +45,7 @@ const ForgetPassword = () => {
             justifyContent: "center",
             alignItems: "center",
             marginTop: "10%",
-          }}
-        >
+          }}>
           <Box
             component="main"
             sx={{
@@ -62,24 +59,21 @@ const ForgetPassword = () => {
                 "0 9px 28px 8px rgba(0, 0, 0, 0.05), 0 6px 16px rgba(0, 0, 0, 0.08), 0 3px 6px -4px rgba(0, 0, 0, 0.12)",
               position: "relative",
               zIndex: 1,
-            }}
-          >
+            }}>
             <Box
               sx={{
                 marginBottom: 3,
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
-              }}
-            >
+              }}>
               <Typography
                 sx={{
                   fontSize: "1.5rem",
                   fontWeight: "700",
                   mb: 2,
                   fontFamily: "Nunito Sans",
-                }}
-              >
+                }}>
                 Forgot Password
               </Typography>
               <Typography
@@ -89,10 +83,8 @@ const ForgetPassword = () => {
                   textAlign: "center",
                   color: "#757575",
                   fontFamily: "Nunito Sans",
-                }}
-              >
-                Enter your email, and we’ll send you instructions on how to
-                reset your password.
+                }}>
+                Enter your email, and we’ll send you instructions on how to reset your password.
               </Typography>
             </Box>
             <Box component="form">
@@ -133,8 +125,7 @@ const ForgetPassword = () => {
             textAlign: "center",
             paddingBottom: "20px",
             marginTop: "10px",
-          }}
-        >
+          }}>
           <Typography
             color="#8338EC"
             variant="body2"
@@ -142,15 +133,10 @@ const ForgetPassword = () => {
               mx: 2,
               fontSize: "12px",
               fontFamily: "Nunito Sans",
-            }}
-          >
+            }}>
             Terms of Service
           </Typography>
-          <Divider
-            orientation="vertical"
-            flexItem
-            sx={{ borderColor: "#ccc", mx: 1 }}
-          />
+          <Divider orientation="vertical" flexItem sx={{ borderColor: "#ccc", mx: 1 }} />
           <Typography
             color="#8338EC"
             variant="body2"
@@ -158,8 +144,7 @@ const ForgetPassword = () => {
               mx: 2,
               fontSize: "12px",
               fontFamily: "Nunito Sans",
-            }}
-          >
+            }}>
             Privacy Policy
           </Typography>
         </Box>

@@ -7,7 +7,7 @@ import InputField from "@/components/ui/InputField";
 import ButtonComp from "@/components/ui/button";
 import ContactUsBanner from "@/public/assets/images/ContactUsBanner.jpeg";
 import { contactUsCardsData } from "@/public/assets/static";
-import { mainHeadingStyle } from "@/styles/AboutStyles/AboutStyles";
+// import { mainHeadingStyle } from "@/styles/AboutStyles/AboutStyles";
 import { createCustomTheme } from "@/styles/theme";
 
 import {
@@ -15,7 +15,7 @@ import {
   Card,
   CardContent,
   Container,
-  Divider,
+  // Divider,
   Grid,
   ThemeProvider,
   Typography,
@@ -38,12 +38,11 @@ const ContactUs = () => {
         sx={{
           backgroundImage: `url(${ContactUsBanner.src})`,
           backgroundSize: "cover",
-            backgroundPosition: "center",
-            width: "100%",  // Ensures 100% width across all screen sizes
-            // aspectRatio: "1320 / 250",  // Maintain the aspect ratio of the image
-            height: { xs: "auto", sm: "auto", md: "250px" },  // Responsive height; fixed height on medium screens
-        }}
-      >
+          backgroundPosition: "center",
+          width: "100%", // Ensures 100% width across all screen sizes
+          // aspectRatio: "1320 / 250",  // Maintain the aspect ratio of the image
+          height: { xs: "auto", sm: "auto", md: "250px" }, // Responsive height; fixed height on medium screens
+        }}>
         {/* <Box
           sx={{
             backgroundColor: "#000",
@@ -69,58 +68,43 @@ const ContactUs = () => {
       </Box>
       <Container maxWidth="xl" sx={{ my: 4 }}>
         <Grid container spacing={4} justifyContent="center" my={"5%"}>
-          {contactUsCardsDataDetail?.map(
-            ({ icon: IconComponent, info1, info2, title }, ind) => (
-              <Grid item xs={12} sm={6} md={4} lg={4} key={ind}>
-                <Card
-                  sx={{
-                    minHeight: 280,
-                    boxShadow: "none",
-                    borderRadius: "0rem",
-                    background: "#F6F5F3",
-                  }}
-                >
-                  <CardContent sx={{ padding: "40px 70px 20px 30px" }}>
-                    <Box
-                      sx={{
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "start",
-                        mb: 5,
-                      }}
-                    >
-                      <IconComponent sx={{ fontSize: 40, color: "#A327F0" }} />
-                    </Box>
-                    <Typography
-                      fontSize="24px"
-                      fontWeight="800"
-                      align="start"
-                      gutterBottom
-                      color="#000"
-                    >
-                      {title}
-                    </Typography>
-                    <Typography
-                      fontSize="18px"
-                      fontWeight="600"
-                      align="start"
-                      marginTop="15px"
-                    >
-                      {info1}
-                    </Typography>
-                    <Typography
-                      fontSize="18px"
-                      fontWeight="600"
-                      align="start"
-                      gutterBottom
-                    >
-                      {info2}
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </Grid>
-            )
-          )}
+          {contactUsCardsDataDetail?.map(({ icon: IconComponent, info1, info2, title }, ind) => (
+            <Grid item xs={12} sm={6} md={4} lg={4} key={ind}>
+              <Card
+                sx={{
+                  minHeight: 280,
+                  boxShadow: "none",
+                  borderRadius: "0rem",
+                  background: "#F6F5F3",
+                }}>
+                <CardContent sx={{ padding: "40px 70px 20px 30px" }}>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "start",
+                      mb: 5,
+                    }}>
+                    <IconComponent sx={{ fontSize: 40, color: "#A327F0" }} />
+                  </Box>
+                  <Typography
+                    fontSize="24px"
+                    fontWeight="800"
+                    align="start"
+                    gutterBottom
+                    color="#000">
+                    {title}
+                  </Typography>
+                  <Typography fontSize="18px" fontWeight="600" align="start" marginTop="15px">
+                    {info1}
+                  </Typography>
+                  <Typography fontSize="18px" fontWeight="600" align="start" gutterBottom>
+                    {info2}
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          ))}
         </Grid>
       </Container>
       <Container maxWidth="xl">
@@ -131,8 +115,7 @@ const ContactUs = () => {
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
-              }}
-            >
+              }}>
               <MapComponent />
             </Box>
           </Grid>
@@ -144,44 +127,32 @@ const ContactUs = () => {
                 justifyContent: "center",
                 alignItems: "center",
                 height: "100%",
-              }}
-            >
+              }}>
               <Box
                 component="main"
                 sx={{
                   width: "100%",
                   backgroundColor: "white",
                   padding: "2rem",
-                }}
-              >
+                }}>
                 <Box
                   sx={{
                     marginBottom: 3,
                     display: "flex",
                     flexDirection: "column",
                     alignItems: "center",
-                  }}
-                >
+                  }}>
                   <CustomHeading text={t("FormHeading.Heading")} />
                 </Box>
 
                 <Grid container spacing={2}>
                   <InputField placeholder={t("FormFields.Name")} name="name" />
 
-                  <InputField
-                    placeholder={t("FormFields.Email")}
-                    name="email"
-                  />
+                  <InputField placeholder={t("FormFields.Email")} name="email" />
 
-                  <InputField
-                    placeholder={t("FormFields.Company")}
-                    name="company"
-                  />
+                  <InputField placeholder={t("FormFields.Company")} name="company" />
 
-                  <InputField
-                    placeholder={t("FormFields.Phone")}
-                    name="phone"
-                  />
+                  <InputField placeholder={t("FormFields.Phone")} name="phone" />
 
                   <InputField
                     placeholder={t("FormFields.Message")}

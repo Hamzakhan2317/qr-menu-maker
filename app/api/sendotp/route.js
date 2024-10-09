@@ -27,15 +27,15 @@
 
 import connectDB from "@/db/mongodb";
 import User from "@/models/user.model";
-import { sendOTP } from "@/utils/otpService/sendOTP";
+// import { sendOTP } from "@/utils/otpService/sendOTP";
 import { NextResponse } from "next/server";
 import twilio from "twilio";
 
 const {
-  VERIFICATION_SECRET,
+  // VERIFICATION_SECRET,
   TWILIO_ACCOUNT_SID,
   TWILIO_AUTH_TOKEN,
-  TWILIO_SMS_SERVICE,
+  // TWILIO_SMS_SERVICE,
 } = process.env;
 
 export const client = twilio(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN);
@@ -45,16 +45,10 @@ export async function POST(req) {
   try {
     await connectDB();
     if (![phone].every(Boolean))
-      return NextResponse.json(
-        { message: "Please enter phone" },
-        { status: 400 }
-      );
+      return NextResponse.json({ message: "Please enter phone" }, { status: 400 });
     const user = await User.findOne({ phone });
     if (!user) {
-      return NextResponse.json(
-        { message: "Phone number not found" },
-        { status: 400 }
-      );
+      return NextResponse.json({ message: "Phone number not found" }, { status: 400 });
     }
 
     // const otpSent = await sendOTP(phone);
@@ -109,13 +103,10 @@ export async function POST(req) {
     //     );
     //   });
 
-    const verification = await client.verify.v2
-      .services(TWILIO_SMS_SERVICE)
-      .verifications.create({
-        channel: "sms",
-        to: `+${phone}`,
-      });
-
+    // const verification = await client.verify.v2.services(TWILIO_SMS_SERVICE).verifications.create({
+    //   channel: "sms",
+    //   to: `+${phone}`,
+    // });
 
     // console.log("verification>>>>>>>>", verification);
     // const service = await client.verify.v2.services.create({
@@ -137,14 +128,11 @@ export async function POST(req) {
     user.otpExpiry = Date.now() + 10 * 60 * 1000; // 10 minutes from now
     await user.save();
 
-    return NextResponse.json(
-      { message: "OTP send seccessfully" },
-      { status: 201 }
-    );
+    return NextResponse.json({ message: "OTP send seccessfully" }, { status: 201 });
   } catch (error) {
     return NextResponse.json(
       { message: error?.message || "Failed to connect to server" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

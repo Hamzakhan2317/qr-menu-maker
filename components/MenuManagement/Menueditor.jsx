@@ -18,7 +18,7 @@ const MenuEditor = ({ sections, isLoading }) => {
 
   // Handle adding a new sub item to a section
   const handleAddSubItem = (sectionId) => {
-    handleDrawerToggle();
+    handleDrawerToggle(sectionId);
   };
 
   const handleDrawerToggle = () => {
@@ -31,9 +31,7 @@ const MenuEditor = ({ sections, isLoading }) => {
   if (isLoading) return <Loader />;
 
   if (sections?.length === 0)
-    return (
-      <h3 style={{ textAlign: "center" }}>The menu is currently empty!</h3>
-    );
+    return <h3 style={{ textAlign: "center" }}>The menu is currently empty!</h3>;
 
   return (
     <Box minHeight="100vh">
@@ -49,8 +47,7 @@ const MenuEditor = ({ sections, isLoading }) => {
             boxSizing: "border-box",
           },
         }}
-        variant="persistent"
-      >
+        variant="persistent">
         <Box
           sx={{
             display: "flex",
@@ -59,8 +56,7 @@ const MenuEditor = ({ sections, isLoading }) => {
             flexDirection: "row-reverse",
             justifyContent: "flex-end",
             borderBottom: "1px solid #ddd",
-          }}
-        >
+          }}>
           <h3>Add New Item</h3>
           <IconButton onClick={toggleDrawer(false)} marginRight="5px">
             <CloseIcon />
@@ -84,8 +80,7 @@ const MenuEditor = ({ sections, isLoading }) => {
                 padding: "10px",
                 marginBottom: "10px",
                 boxShadow: "rgba(0, 0, 0, 0.16) 0px 1px 4px",
-              }}
-            >
+              }}>
               <div style={{ display: "flex", alignItems: "center" }}>
                 <div
                   style={{
@@ -117,13 +112,8 @@ const MenuEditor = ({ sections, isLoading }) => {
                     marginLeft: "10px",
                     cursor: "pointer",
                   }}
-                  onClick={() => handleClick(item._id)}
-                >
-                  {openItemId === item._id ? (
-                    <KeyboardArrowUpIcon />
-                  ) : (
-                    <KeyboardArrowDownIcon />
-                  )}
+                  onClick={() => handleClick(item._id)}>
+                  {openItemId === item._id ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
                 </span>
               </div>
             </div>
@@ -132,7 +122,7 @@ const MenuEditor = ({ sections, isLoading }) => {
             {openItemId === item._id && (
               <div style={{ marginLeft: "30px" }}>
                 {item.items.length > 0 &&
-                  item.items.map((subItem, subIndex) => (
+                  item.items.map((subItem) => (
                     <div
                       key={subItem._id}
                       style={{
@@ -147,14 +137,12 @@ const MenuEditor = ({ sections, isLoading }) => {
                         boxSizing: "border-box",
                         marginBottom: "10px",
                         border: "1px solid #ddd",
-                      }}
-                    >
+                      }}>
                       <div
                         style={{
                           display: "flex",
                           alignItems: "center",
-                        }}
-                      >
+                        }}>
                         <div
                           style={{
                             width: "40px",
@@ -194,14 +182,12 @@ const MenuEditor = ({ sections, isLoading }) => {
                     boxSizing: "border-box",
                     marginBottom: "10px",
                     border: "1px solid #ddd",
-                  }}
-                >
+                  }}>
                   <div
                     style={{
                       display: "flex",
                       alignItems: "center",
-                    }}
-                  >
+                    }}>
                     <button
                       onClick={() => handleAddSubItem()}
                       style={{
@@ -211,8 +197,7 @@ const MenuEditor = ({ sections, isLoading }) => {
                         border: "none",
                         borderRadius: "5px",
                         cursor: "pointer",
-                      }}
-                    >
+                      }}>
                       + Add New Item
                     </button>
                   </div>

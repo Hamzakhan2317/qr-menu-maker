@@ -1,7 +1,7 @@
 import connectDB from "@/db/mongodb";
 import Item from "@/models/item.model";
-import Menu from "@/models/menu.model";
-import Restaurant from "@/models/restaurent.model";
+// import Menu from "@/models/menu.model";
+// import Restaurant from "@/models/restaurent.model";
 import Section from "@/models/section.model";
 import { NextResponse } from "next/server";
 
@@ -13,10 +13,7 @@ export async function POST(req) {
   try {
     await connectDB();
     if (![name, description, price, sectionId].every(Boolean))
-      return NextResponse.json(
-        { message: "Please fill all inputs!" },
-        { status: 400 }
-      );
+      return NextResponse.json({ message: "Please fill all inputs!" }, { status: 400 });
 
     const section = await Section.findById(sectionId);
     if (!section) {
@@ -28,23 +25,14 @@ export async function POST(req) {
 
     section.items.push(item._id);
     await section.save();
-    return NextResponse.json(
-      { message: "Item Created successfully" },
-      { status: 201 }
-    );
+    return NextResponse.json({ message: "Item Created successfully" }, { status: 201 });
   } catch (error) {
     return NextResponse.json(
       { message: error?.message || "Failed to connect to server" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
-
-
-
-
-
-
 
 // // Get all items for a menu
 // exports.getItemsForMenu = async (req, res) => {
@@ -55,7 +43,7 @@ export async function POST(req) {
 //       res.status(500).json({ error: 'Error fetching items' });
 //     }
 //   };
-  
+
 //   // Update an item
 //   exports.updateItem = async (req, res) => {
 //     try {
@@ -68,7 +56,7 @@ export async function POST(req) {
 //       res.status(500).json({ error: 'Error updating item' });
 //     }
 //   };
-  
+
 //   // Delete an item
 //   exports.deleteItem = async (req, res) => {
 //     try {

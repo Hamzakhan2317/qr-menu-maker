@@ -5,7 +5,7 @@ import InputField from "./ui/InputField";
 import { FormLabel } from "@mui/joy";
 import CustomDropzone from "./ui/Dropzone/CustomDropzone";
 
-const MenuItem = () => {
+const MenuItem = ({ isDrawerOpen, toggleDrawer }) => {
   return (
     <Drawer
       anchor="right"
@@ -19,8 +19,7 @@ const MenuItem = () => {
           boxSizing: "border-box",
         },
       }}
-      variant="persistent"
-    >
+      variant="persistent">
       <Box
         sx={{
           display: "flex",
@@ -29,8 +28,7 @@ const MenuItem = () => {
           flexDirection: "row-reverse",
           justifyContent: "flex-end",
           borderBottom: "1px solid #ddd",
-        }}
-      >
+        }}>
         <h3>Add New Item</h3>
         <IconButton onClick={toggleDrawer(false)} marginRight="5px">
           <CloseIcon />
@@ -45,9 +43,8 @@ const MenuItem = () => {
           <CustomDropzone />
         </Box>
         <Typography color="#9E978C" marginTop="20px" fontSize="14px">
-          Recommended resolution is for landscape 1536x1024px, square
-          1536x1536px or portrait 1536x2304 or bigger with a file size of less
-          than 10MB.
+          Recommended resolution is for landscape 1536x1024px, square 1536x1536px or portrait
+          1536x2304 or bigger with a file size of less than 10MB.
         </Typography>
       </Box>
     </Drawer>

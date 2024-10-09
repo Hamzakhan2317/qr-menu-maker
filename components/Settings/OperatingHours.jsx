@@ -5,13 +5,7 @@ import {
   opetatingHoursFlex,
   opetatingHoursWrapper,
 } from "@/styles/common";
-import {
-  Box,
-  Checkbox,
-  FormControlLabel,
-  Grid,
-  Typography,
-} from "@mui/material";
+import { Box, Checkbox, FormControlLabel, Grid, Typography } from "@mui/material";
 import React from "react";
 import CustomTimePicker from "../ui/CustomTimePicker";
 
@@ -42,9 +36,7 @@ const OperatingHours = () => {
   return (
     <Box>
       <Box sx={OperatingHoursHeader}>
-        <Typography
-          sx={{ fontSize: "20px", lineHeight: "32px", fontWeight: "600" }}
-        >
+        <Typography sx={{ fontSize: "20px", lineHeight: "32px", fontWeight: "600" }}>
           Operating Hours
         </Typography>
       </Box>

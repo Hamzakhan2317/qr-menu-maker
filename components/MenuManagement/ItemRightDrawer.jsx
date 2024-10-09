@@ -43,11 +43,7 @@ export default function ItemRightDrawer({ sectionId, onClose }) {
   });
 
   return (
-    <Box
-      sx={{ padding: "10px" }}
-      component="form"
-      onSubmit={formik.handleSubmit}
-    >
+    <Box sx={{ padding: "10px" }} component="form" onSubmit={formik.handleSubmit}>
       <Grid container spacing={2}>
         <InputField
           cols={12}
@@ -63,9 +59,7 @@ export default function ItemRightDrawer({ sectionId, onClose }) {
           label={"Description"}
           multiline={true}
           rows={2}
-          Placeholder={
-            "All pasta dough is prepared daily by our Italian chefs."
-          }
+          Placeholder={"All pasta dough is prepared daily by our Italian chefs."}
           name="description"
           formik={formik}
         />
@@ -83,8 +77,8 @@ export default function ItemRightDrawer({ sectionId, onClose }) {
         <CustomDropzone />
       </Box>
       <Typography color="#9E978C" marginTop="20px" fontSize="14px">
-        Recommended resolution is for section image 1536x1152px, square
-        1536x1536px (4:3), or bigger with a file size of less than 10MB
+        Recommended resolution is for section image 1536x1152px, square 1536x1536px (4:3), or bigger
+        with a file size of less than 10MB
       </Typography>
       <Box
         sx={{
@@ -96,23 +90,13 @@ export default function ItemRightDrawer({ sectionId, onClose }) {
           backgroundColor: "#fff",
           height: "60px",
           borderTop: "1px solid #E5E5E5",
-        }}
-      >
+        }}>
         <Box>
           <CustomCheckbox label="Save and add more" />
         </Box>
         <Box>
-          <ButtonComp
-            text="Cancel"
-            padding="4px 11px"
-            marginRight="10px"
-            onClick={onClose}
-          />
-          <ButtonComp
-            text="Save"
-            padding="4px 11px"
-            onClick={formik.handleSubmit}
-          />
+          <ButtonComp text="Cancel" padding="4px 11px" marginRight="10px" onClick={onClose} />
+          <ButtonComp text="Save" padding="4px 11px" onClick={formik.handleSubmit} />
         </Box>
       </Box>
     </Box>

@@ -1,13 +1,17 @@
 import {
-  videoCaptionStyles,
-  videoContainer,
+  // videoCaptionStyles,
+  // videoContainer,
   videoHeadingBoxStyles,
   videoSectionContainer,
   videoSectionHeadingStyles,
-  videoTextContainer,
-  videoTextStyles,
+  // videoTextContainer,
+  // videoTextStyles,
 } from "@/styles/VidepSectionStyling/VidepSectionStyling";
-import { Box, Container, Grid, Typography } from "@mui/material";
+import {
+  Box,
+  // Container, Grid,
+  Typography,
+} from "@mui/material";
 import { useTranslations } from "next-intl";
 import CardSection from "./CardSection";
 
@@ -63,8 +67,7 @@ const VideoSection = () => {
             xxl: "block",
             xs: "none",
           },
-        }}
-      >
+        }}>
         <CardSection />
       </Box>
     </Box>

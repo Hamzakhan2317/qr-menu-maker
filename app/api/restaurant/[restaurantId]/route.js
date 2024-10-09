@@ -9,28 +9,22 @@ export async function GET(req, { params }) {
 
     const { restaurantId } = params; // Access dynamic route parameter
     if (!restaurantId) {
-      return NextResponse.json(
-        { message: "Restaurant ID is required" },
-        { status: 400 }
-      );
+      return NextResponse.json({ message: "Restaurant ID is required" }, { status: 400 });
     }
 
     const restaurant = await Restaurent.findById(restaurantId);
     if (!restaurant) {
-      return NextResponse.json(
-        { message: "Restaurant not found" },
-        { status: 404 }
-      );
+      return NextResponse.json({ message: "Restaurant not found" }, { status: 404 });
     }
 
     return NextResponse.json(
       { message: "Restaurant fetched successfully", data: restaurant },
-      { status: 200 }
+      { status: 200 },
     );
   } catch (error) {
     return NextResponse.json(
       { message: error.message || "Failed to fetch restaurant" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -43,26 +37,21 @@ export async function PUT(req, { params }) {
     const { restaurantId } = params;
     const updateData = await req.json();
 
-    const updatedRestaurant = await Restaurent.findByIdAndUpdate(
-      restaurantId,
-      updateData,
-      { new: true }
-    );
+    const updatedRestaurant = await Restaurent.findByIdAndUpdate(restaurantId, updateData, {
+      new: true,
+    });
     if (!updatedRestaurant) {
-      return NextResponse.json(
-        { message: "Restaurant not found" },
-        { status: 404 }
-      );
+      return NextResponse.json({ message: "Restaurant not found" }, { status: 404 });
     }
 
     return NextResponse.json(
       { message: "Restaurant updated successfully", data: updatedRestaurant },
-      { status: 200 }
+      { status: 200 },
     );
   } catch (error) {
     return NextResponse.json(
       { message: error.message || "Failed to update restaurant" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -76,20 +65,14 @@ export async function DELETE(req, { params }) {
 
     const deletedRestaurant = await Restaurent.findByIdAndDelete(restaurantId);
     if (!deletedRestaurant) {
-      return NextResponse.json(
-        { message: "Restaurant not found" },
-        { status: 404 }
-      );
+      return NextResponse.json({ message: "Restaurant not found" }, { status: 404 });
     }
 
-    return NextResponse.json(
-      { message: "Restaurant deleted successfully" },
-      { status: 200 }
-    );
+    return NextResponse.json({ message: "Restaurant deleted successfully" }, { status: 200 });
   } catch (error) {
     return NextResponse.json(
       { message: error.message || "Failed to delete restaurant" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

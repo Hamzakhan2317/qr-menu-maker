@@ -1,9 +1,6 @@
 "use client";
 import { useRouter } from "@/navigation";
-import {
-  sidebarActiveStyling,
-  sidebarHoverStyling,
-} from "@/public/assets/static";
+import { sidebarActiveStyling, sidebarHoverStyling } from "@/public/assets/static";
 import {
   Add as AddIcon,
   Dashboard as DashboardIcon,
@@ -60,12 +57,9 @@ const Sidebar = ({ children }) => {
   const { data: session } = useSession();
   const [venues, setVenues] = useState([]);
 
-  const { data, refetch: refetchRestaurants } = useGetAllRestaurentsQuery(
-    session?.user?._id,
-    {
-      skip: !session?.user?._id, // Skip the query until user data is available
-    }
-  );
+  const { data, refetch: refetchRestaurants } = useGetAllRestaurentsQuery(session?.user?._id, {
+    skip: !session?.user?._id, // Skip the query until user data is available
+  });
 
   const toggleDrawer = () => {
     setIsOpen(!isOpen);
@@ -142,8 +136,7 @@ const Sidebar = ({ children }) => {
         display: "grid",
         gridTemplateColumns: isOpen ? "200px auto" : "60px auto",
         transition: "grid-template-columns 0.3s ease",
-      }}
-    >
+      }}>
       <Drawer
         variant="permanent"
         open={isOpen}
@@ -161,16 +154,14 @@ const Sidebar = ({ children }) => {
           "& .MuiListItemIcon-root svg": {
             flex: 1,
           },
-        }}
-      >
+        }}>
         <div
           style={{
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
             height: "48px",
-          }}
-        >
+          }}>
           <Image
             src={isOpen ? garsLogo : Logo}
             alt="Logo"
@@ -194,8 +185,7 @@ const Sidebar = ({ children }) => {
             "&:hover": {
               color: restaurantOpen ? "#fff !important" : "#000000 !important",
             },
-          }}
-        >
+          }}>
           <ListItemIcon sx={{ minWidth: "30px", color: "#fff" }}>
             <Box
               sx={{
@@ -205,14 +195,9 @@ const Sidebar = ({ children }) => {
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
-                color: restaurantOpen
-                  ? "#000000 !important"
-                  : "#fff !important",
-                backgroundColor: restaurantOpen
-                  ? "#fff !important"
-                  : "#595959 !important",
-              }}
-            >
+                color: restaurantOpen ? "#000000 !important" : "#fff !important",
+                backgroundColor: restaurantOpen ? "#fff !important" : "#595959 !important",
+              }}>
               <RestaurantSvg />
             </Box>
           </ListItemIcon>
@@ -223,9 +208,7 @@ const Sidebar = ({ children }) => {
               sx={{
                 textTransform: "capitalize",
                 "&:hover": {
-                  color: restaurantOpen
-                    ? "#000000 !important"
-                    : "#fff !important",
+                  color: restaurantOpen ? "#000000 !important" : "#fff !important",
                 },
               }}
             />
@@ -243,8 +226,7 @@ const Sidebar = ({ children }) => {
               boxShadow:
                 "rgba(0, 0, 0, 0.12) 0px 3px 6px -4px, rgba(0, 0, 0, 0.05) 0px 9px 28px 8px",
               padding: "20px 0px",
-            }}
-          >
+            }}>
             <Box
               sx={{
                 backgroundColor: "#ffffff",
@@ -256,20 +238,14 @@ const Sidebar = ({ children }) => {
                 maxWidth: "200px",
                 width: "200px",
                 overflowY: "auto",
-              }}
-            >
-              <List
-                component="div"
-                disablePadding
-                sx={{ width: "100% !important" }}
-              >
+              }}>
+              <List component="div" disablePadding sx={{ width: "100% !important" }}>
                 {venues?.length === 0 ? (
                   <ListItem
                     sx={{
                       cursor: "pointer",
                       width: "100% ",
-                    }}
-                  >
+                    }}>
                     <ListItemText
                       sx={{ width: "100%" }}
                       primary={venues?.[0]?.name ?? "GarsOnline"}
@@ -280,12 +256,8 @@ const Sidebar = ({ children }) => {
                     <ListItem
                       onClick={() => push(`/venues/${item._id}/dashboard`)}
                       sx={sidebarHoverStyling}
-                      key={index}
-                    >
-                      <ListItemText
-                        primary={item?.name}
-                        sx={{ width: "100%" }}
-                      />
+                      key={index}>
+                      <ListItemText primary={item?.name} sx={{ width: "100%" }} />
                     </ListItem>
                   ))
                 )}
@@ -301,8 +273,7 @@ const Sidebar = ({ children }) => {
                 width: "90%",
                 marginLeft: "8px",
               }}
-              onClick={() => setIsDrawerOpen(true)}
-            >
+              onClick={() => setIsDrawerOpen(true)}>
               Add new venue
             </Button>
           </Box>
@@ -321,27 +292,15 @@ const Sidebar = ({ children }) => {
                   }
                   backgroundColor="red"
                   button
-                  onClick={() => handleToggle(item)}
-                >
-                  <ListItemIcon sx={{ minWidth: "30px" }}>
-                    {item.icon}
-                  </ListItemIcon>
+                  onClick={() => handleToggle(item)}>
+                  <ListItemIcon sx={{ minWidth: "30px" }}>{item.icon}</ListItemIcon>
                   {isOpen && (
-                    <ListItemText
-                      primary={item.title}
-                      primaryTypographyProps={{ fontSize: 14 }}
-                    />
+                    <ListItemText primary={item.title} primaryTypographyProps={{ fontSize: 14 }} />
                   )}
-                  {isOpen &&
-                    item.isCollapsible &&
-                    (settingsOpen ? <ExpandLess /> : <ExpandMore />)}
+                  {isOpen && item.isCollapsible && (settingsOpen ? <ExpandLess /> : <ExpandMore />)}
                 </ListItem>
                 {item.isCollapsible && (
-                  <Collapse
-                    in={settingsOpen && isOpen}
-                    timeout="auto"
-                    unmountOnExit
-                  >
+                  <Collapse in={settingsOpen && isOpen} timeout="auto" unmountOnExit>
                     <List component="div">
                       {item.subItems.map((subItem, subIndex) => (
                         <ListItem
@@ -352,8 +311,7 @@ const Sidebar = ({ children }) => {
                           }
                           button
                           onClick={() => push(subItem.route)}
-                          key={subIndex}
-                        >
+                          key={subIndex}>
                           <ListItemText
                             sx={{ paddingLeft: "20px" }}
                             primaryTypographyProps={{ fontSize: 14 }}
@@ -378,8 +336,7 @@ const Sidebar = ({ children }) => {
           "& .MuiToolbar-root.MuiToolbar-gutters": {
             minHeight: "48px !important",
           },
-        }}
-      >
+        }}>
         <AppBar
           position="fixed"
           sx={{
@@ -391,23 +348,20 @@ const Sidebar = ({ children }) => {
             transition: "width 0.3s, left 0.3s",
             boxShadow: "none",
             borderBottom: "1px solid #E0E0E0",
-          }}
-        >
+          }}>
           <Toolbar
             sx={{
               minHeight: "48px !important",
               display: "flex",
               justifyContent: "space-between",
             }}
-            className="nav-toolbar"
-          >
+            className="nav-toolbar">
             <IconButton
               edge="start"
               color="inherit"
               aria-label="menu"
               onClick={toggleDrawer}
-              sx={{ marginRight: 2, color: "#222222" }}
-            >
+              sx={{ marginRight: 2, color: "#222222" }}>
               <MenuIcon />
             </IconButton>
             <MenuDropdown />
@@ -418,8 +372,7 @@ const Sidebar = ({ children }) => {
         <Box
           sx={{
             transition: "width 0.3s",
-          }}
-        >
+          }}>
           {children}
         </Box>
       </Box>
@@ -436,8 +389,7 @@ const Sidebar = ({ children }) => {
             boxSizing: "border-box",
           },
         }}
-        variant="persistent"
-      >
+        variant="persistent">
         <AddRestaurantsForm
           refetchRestaurants={refetchRestaurants}
           userId={session?.user?._id}

@@ -28,9 +28,7 @@ export default function CountrySelect({ cols = 6, formik }) {
           },
         }}
         options={countries}
-        value={countries.find(
-          (option) => option.label === formik.values?.country
-        )} // Bind the value to Formik's current value
+        value={countries.find((option) => option.label === formik.values?.country)} // Bind the value to Formik's current value
         onChange={(event, newValue) => {
           if (newValue) {
             formik.setFieldValue("country", newValue.label);

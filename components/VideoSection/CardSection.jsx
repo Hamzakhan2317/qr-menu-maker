@@ -65,52 +65,41 @@ const CardSection = () => {
     <Box sx={{ color: "#fff", width: "100%", display: "flex" }}>
       <marquee>
         <Box sx={{ display: "flex", width: "100%" }}>
-          {feedbackCardDetails?.map(
-            ({ text, starImage, ceoImage, ceoName, companyName }, ind) => (
-              <Box sx={{ display: "flex", marginRight: "20px" }} key={ind}>
-                <Card sx={{ ...marqueeCards }}>
-                  <Box>
-                    <Box sx={{ mt: "10px" }}>
-                      {[...Array(5)].map((_, i) => (
-                        <Image
-                          key={i}
-                          src={starImage}
-                          alt="starImage"
-                          style={{ width: "30px", height: "30px" }}
-                        />
-                      ))}
-                    </Box>
-                    <Typography
-                      sx={{
-                        lineHeight: "1.5rem",
-                        fontSize: "1rem",
-                        margin: "20px 0px",
-                      }}
-                    >
-                      {text}
-                    </Typography>
-                  </Box>
-                  <Box sx={{ display: "flex", alignItems: "center" }}>
-                    {ceoImage && (
+          {feedbackCardDetails?.map(({ text, starImage, ceoImage, ceoName, companyName }, ind) => (
+            <Box sx={{ display: "flex", marginRight: "20px" }} key={ind}>
+              <Card sx={{ ...marqueeCards }}>
+                <Box>
+                  <Box sx={{ mt: "10px" }}>
+                    {[...Array(5)].map((_, i) => (
                       <Image
-                        alt={ceoName}
-                        src={ceoImage}
-                        style={{ width: "60px", height: "60px" }}
+                        key={i}
+                        src={starImage}
+                        alt="starImage"
+                        style={{ width: "30px", height: "30px" }}
                       />
-                    )}
-                    <Box sx={{ marginLeft: "10px" }}>
-                      <Typography sx={{ fontSize: "14px" }}>
-                        {ceoName}
-                      </Typography>
-                      <Typography sx={{ fontSize: "14px" }}>
-                        {companyName}
-                      </Typography>
-                    </Box>
+                    ))}
                   </Box>
-                </Card>
-              </Box>
-            )
-          )}
+                  <Typography
+                    sx={{
+                      lineHeight: "1.5rem",
+                      fontSize: "1rem",
+                      margin: "20px 0px",
+                    }}>
+                    {text}
+                  </Typography>
+                </Box>
+                <Box sx={{ display: "flex", alignItems: "center" }}>
+                  {ceoImage && (
+                    <Image alt={ceoName} src={ceoImage} style={{ width: "60px", height: "60px" }} />
+                  )}
+                  <Box sx={{ marginLeft: "10px" }}>
+                    <Typography sx={{ fontSize: "14px" }}>{ceoName}</Typography>
+                    <Typography sx={{ fontSize: "14px" }}>{companyName}</Typography>
+                  </Box>
+                </Box>
+              </Card>
+            </Box>
+          ))}
         </Box>
       </marquee>
     </Box>

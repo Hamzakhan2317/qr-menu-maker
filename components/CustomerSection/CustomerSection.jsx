@@ -24,8 +24,7 @@ const CustomerSection = () => {
               sm: "row",
               lg: "row",
             },
-          }}
-        >
+          }}>
           <Grid item lg={6} md={6} sm={6} xs={12}>
             <Box
               sx={{
@@ -34,8 +33,7 @@ const CustomerSection = () => {
                 alignItems: "start", // Corrected typo
                 flexDirection: "column",
                 height: "100%",
-              }}
-            >
+              }}>
               <Typography sx={customerHeadingStyles}>{t("Title")}</Typography>
               <Typography sx={customerTextStyles}>{t("Subtitle")}</Typography>
             </Box>
@@ -47,8 +45,7 @@ const CustomerSection = () => {
                 justifyContent: "center",
                 alignItems: "center",
                 width: "center",
-              }}
-            >
+              }}>
               <Box
                 sx={{
                   display: "flex",
@@ -66,8 +63,7 @@ const CustomerSection = () => {
                     sm: "250px",
                     md: "500px",
                   },
-                }}
-              >
+                }}>
                 <Image
                   src={customerImage}
                   alt="customerImage"

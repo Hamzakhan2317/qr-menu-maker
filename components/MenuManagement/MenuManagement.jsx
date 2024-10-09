@@ -30,7 +30,10 @@ import PopUp from "../ui/PopUp";
 import EditMenuForm from "./EditMenuForm";
 
 const MenuManagement = () => {
-  const { data: session, status: sessionStatus } = useSession();
+  const {
+    // data: session,
+    status: sessionStatus,
+  } = useSession();
   const [anchorEl, setAnchorEl] = useState(null);
   const [menuCreated, setMenuCreated] = useState(false);
   const [menuEditData, setMenuEditData] = useState(null);
@@ -47,12 +50,13 @@ const MenuManagement = () => {
   const pathname = usePathname();
 
   // Use a regex to extract the ID from the pathname
+  // eslint-disable-next-line no-useless-escape
   const match = pathname.match(/\/venues\/([^\/]+)/);
   const restaurantId = match ? match[1] : null; // Get the ID or null if not found
 
   const {
     data: menuData,
-    error,
+    // error,
     isLoading,
     refetch: refetchMenus,
   } = useGetAllMenuQuery(restaurantId, {
@@ -74,9 +78,7 @@ const MenuManagement = () => {
         setIsloading(false);
         setMenuCreated(true);
         refetchMenus();
-        router.push(
-          `/venues/${venueId}/menu-management/${resp?.menuId}/section`
-        );
+        router.push(`/venues/${venueId}/menu-management/${resp?.menuId}/section`);
         // toast.success(resp?.message || "Menu Created successfully");
       }
     } catch (error) {
@@ -123,11 +125,7 @@ const MenuManagement = () => {
     setAnchorEl(null);
   };
 
-  const handleSwitchChange = async (
-    event,
-    statusMenuID,
-    statusRestaurantID
-  ) => {
+  const handleSwitchChange = async (event, statusMenuID, statusRestaurantID) => {
     try {
       const resp = await updateStatus({
         status: event.target.checked ? "1" : "0",
@@ -149,9 +147,7 @@ const MenuManagement = () => {
     return (
       <>
         <Box sx={MenuManagementHeader}>
-          <Typography
-            sx={{ fontSize: "20px", lineHeight: "32px", fontWeight: "600" }}
-          >
+          <Typography sx={{ fontSize: "20px", lineHeight: "32px", fontWeight: "600" }}>
             Menu Management
           </Typography>
           <Box>
@@ -190,9 +186,7 @@ const MenuManagement = () => {
   return (
     <Box>
       <Box sx={MenuManagementHeader}>
-        <Typography
-          sx={{ fontSize: "20px", lineHeight: "32px", fontWeight: "600" }}
-        >
+        <Typography sx={{ fontSize: "20px", lineHeight: "32px", fontWeight: "600" }}>
           Menu Management
         </Typography>
         <Box>
@@ -220,8 +214,7 @@ const MenuManagement = () => {
                         textTransform: "capitalize",
                         fontWeight: 600,
                         color: "#000",
-                      }}
-                    >
+                      }}>
                       {menu?.name}{" "}
                       {menu?.status == 1 ? (
                         <span
@@ -232,8 +225,7 @@ const MenuManagement = () => {
                             color: "#1a8a05",
                             background: "#d2ffd6",
                             fontSize: "10px",
-                          }}
-                        >
+                          }}>
                           live
                         </span>
                       ) : (
@@ -247,8 +239,7 @@ const MenuManagement = () => {
                       color="#00000073"
                       fontSize={"14px"}
                       marginTop={"10px"}
-                      fontWeight={600}
-                    >
+                      fontWeight={600}>
                       Availability: {status}
                     </Typography>
                     <Box
@@ -259,8 +250,7 @@ const MenuManagement = () => {
                         justifyContent: "flex-start",
                         color: "#00000073",
                         fontSize: "14px",
-                      }}
-                    >
+                      }}>
                       {cardLastRow?.map((item, index) => {
                         return (
                           <span
@@ -269,8 +259,7 @@ const MenuManagement = () => {
 
                               alignItems: "center",
                             }}
-                            key={index}
-                          >
+                            key={index}>
                             <span
                               style={{
                                 display: "inline-block",
@@ -278,8 +267,7 @@ const MenuManagement = () => {
                                 "& svg": {
                                   transform: "rotate(90deg) !important",
                                 },
-                              }}
-                            >
+                              }}>
                               {item.img}
                             </span>
 
@@ -287,8 +275,7 @@ const MenuManagement = () => {
                               style={{
                                 display: "inline-block",
                                 marginRight: "5px",
-                              }}
-                            >
+                              }}>
                               {item.text}
                             </span>
                           </span>
@@ -299,9 +286,7 @@ const MenuManagement = () => {
                   <Box display="flex" alignItems="center" flexWrap="wrap">
                     <CustomizedSwitch
                       value={menu?.status == 1 ? true : false}
-                      onChange={(e) =>
-                        handleSwitchChange(e, menu?._id, menu?.restaurant)
-                      }
+                      onChange={(e) => handleSwitchChange(e, menu?._id, menu?.restaurant)}
                     />
                     <ButtonComp
                       icon={<EditNoteIcon />}
@@ -311,15 +296,10 @@ const MenuManagement = () => {
                       padding="4px 15px"
                       marginRight="20px"
                       onClick={() =>
-                        router.push(
-                          `/venues/${venueId}/menu-management/${menu?._id}/section`
-                        )
+                        router.push(`/venues/${venueId}/menu-management/${menu?._id}/section`)
                       }
                     />
-                    <Box
-                      onClick={(e) => handleMenuOpen(e, menu?._id)}
-                      sx={{ cursor: "pointer" }}
-                    >
+                    <Box onClick={(e) => handleMenuOpen(e, menu?._id)} sx={{ cursor: "pointer" }}>
                       <VerticalThreeDots />
                     </Box>
                   </Box>
@@ -363,8 +343,7 @@ const MenuManagement = () => {
             boxSizing: "border-box",
           },
         }}
-        variant="persistent"
-      >
+        variant="persistent">
         <EditMenuForm
           setMenuEditData={setMenuEditData}
           data={menuEditData}

@@ -51,8 +51,7 @@ function CustomTabPanel(props) {
       hidden={value !== index}
       id={`simple-tabpanel-${index}`}
       aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
+      {...other}>
       {value === index && (
         <Box sx={{ p: 3 }}>
           <Typography>{children}</Typography>
@@ -90,8 +89,7 @@ const TabPill = ({ childrenArray = [], defaultValue = 0 }) => {
           onChange={handleChange}
           orientation="horizontal"
           aria-label="Tabs"
-          className={classes.tab_list}
-        >
+          className={classes.tab_list}>
           {childrenArray.map(({ title }, index) => (
             <Tab
               key={index}
@@ -112,12 +110,7 @@ const TabPill = ({ childrenArray = [], defaultValue = 0 }) => {
         </TabList>
       </Box>
       {childrenArray.map(({ tab }, index) => (
-        <CustomTabPanel
-          key={index}
-          value={value}
-          index={index}
-          className={classes.tabPanel}
-        >
+        <CustomTabPanel key={index} value={value} index={index} className={classes.tabPanel}>
           {tab}
         </CustomTabPanel>
       ))}

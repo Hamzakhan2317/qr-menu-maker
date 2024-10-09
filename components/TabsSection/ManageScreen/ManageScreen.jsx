@@ -21,21 +21,18 @@ const ManageScreen = () => {
               alignItems: "center",
               justifyContent: "center",
               flexDirection: "column",
-            }}
-          >
+            }}>
             <Box sx={{ width: "100%", mb: "20px" }}>
               <Typography sx={displaySectionTextHeadingStyles}>
-                Introducing the Garsonline Power Management Suite: Take Control
-                of Your Restaurant&apos;s Success
+                Introducing the Garsonline Power Management Suite: Take Control of Your
+                Restaurant&apos;s Success
               </Typography>
               <Typography sx={displaySectionTextStyles}>
-                Give your restaurant a boost with an advanced suite of tools to
-                manage all operations easily. Leverage online reservation
-                management to assign tables and collect reservations, reports,
-                and analytics to provide insights and drive data-backed
-                decision-making, easy-to-use role management to streamline your
-                team’s workflow, and feedback collection to improve customer
-                satisfaction.
+                Give your restaurant a boost with an advanced suite of tools to manage all
+                operations easily. Leverage online reservation management to assign tables and
+                collect reservations, reports, and analytics to provide insights and drive
+                data-backed decision-making, easy-to-use role management to streamline your team’s
+                workflow, and feedback collection to improve customer satisfaction.
               </Typography>
             </Box>
             <Box
@@ -45,8 +42,7 @@ const ManageScreen = () => {
                 flexWrap: "wrap",
                 my: "20px",
                 paddingRight: "80px",
-              }}
-            >
+              }}>
               <Box
                 sx={{
                   marginRight: "10px",
@@ -56,14 +52,9 @@ const ManageScreen = () => {
                     md: "0px",
                     sx: "0px",
                   },
-                }}
-              >
+                }}>
                 {" "}
-                <ButtonComp
-                  marginTop={"0px"}
-                  variant="light"
-                  text={"Report & Analytics →"}
-                />
+                <ButtonComp marginTop={"0px"} variant="light" text={"Report & Analytics →"} />
               </Box>
               <Box
                 sx={{
@@ -74,14 +65,9 @@ const ManageScreen = () => {
                     md: "0px",
                     sx: "0px",
                   },
-                }}
-              >
+                }}>
                 {" "}
-                <ButtonComp
-                  marginTop={"0px"}
-                  variant="light"
-                  text={"Feedback Collection →"}
-                />
+                <ButtonComp marginTop={"0px"} variant="light" text={"Feedback Collection →"} />
               </Box>
               <Box
                 sx={{
@@ -92,14 +78,9 @@ const ManageScreen = () => {
                     md: "0px",
                     sx: "0px",
                   },
-                }}
-              >
+                }}>
                 {" "}
-                <ButtonComp
-                  marginTop={"0px"}
-                  variant="light"
-                  text={"Reservation →"}
-                />
+                <ButtonComp marginTop={"0px"} variant="light" text={"Reservation →"} />
               </Box>
             </Box>
           </Box>

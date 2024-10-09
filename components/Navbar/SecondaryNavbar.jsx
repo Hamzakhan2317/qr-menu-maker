@@ -1,6 +1,6 @@
 "use client";
 import { Link, usePathname, useRouter } from "@/navigation";
-import LogoSvg from "@/public/assets/svg/logoSvg";
+// import LogoSvg from "@/public/assets/svg/logoSvg";
 import { createCustomTheme } from "@/styles/theme";
 import CloseIcon from "@mui/icons-material/Close";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -12,20 +12,19 @@ import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
 import Toolbar from "@mui/material/Toolbar";
-import { useLocale, useTranslations } from "next-intl";
+import { useLocale } from "next-intl";
 import Image from "next/image";
-import React, { useState } from "react";
+import React from "react";
 import trFlag from "../../public/assets/images/turkeyflag.jpg";
 import usaflag from "../../public/assets/images/usaflag.png";
 import logo from "../../public/assets/images/logo.png";
-
 
 function SecondaryNavbar(props) {
   const theme = createCustomTheme();
   const router = useRouter();
   const pathname = usePathname();
   const locale = useLocale();
-  const t = useTranslations("Home.NavSection");
+  // const t = useTranslations("Home.NavSection");
 
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -50,18 +49,17 @@ function SecondaryNavbar(props) {
           justifyContent: "space-between",
           alignItems: "center",
           padding: "20px 24px",
-        }}
-      >
+        }}>
         <Link href="/" style={{ width: "100%" }}>
           {/* <LogoSvg width="140" height="38" /> */}
           <Image
-                    alt="logo"
-                    src={logo}
-                    style={{
-                      width: "140px",
-                      height: "38px",
-                    }}
-                  />
+            alt="logo"
+            src={logo}
+            style={{
+              width: "140px",
+              height: "38px",
+            }}
+          />
         </Link>
         <Box
           sx={{
@@ -69,8 +67,7 @@ function SecondaryNavbar(props) {
             alignItems: "center",
             display: "flex",
             justifyContent: "center",
-          }}
-        >
+          }}>
           <IconButton color="inherit" sx={{ display: { sm: "none" } }}>
             <CloseIcon style={{ color: theme.palette.primary.main }} />
           </IconButton>
@@ -98,8 +95,7 @@ function SecondaryNavbar(props) {
             "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
               borderColor: "#ccc",
             },
-          }}
-        >
+          }}>
           <MenuItem value={"en"}>
             <Link
               style={{
@@ -109,8 +105,7 @@ function SecondaryNavbar(props) {
                 fontFamily: "Nunito Sans",
               }}
               href={pathname}
-              locale="en"
-            >
+              locale="en">
               <Box sx={{ display: "flex", alignItems: "center" }}>
                 <Image
                   alt="usaflag"
@@ -134,8 +129,7 @@ function SecondaryNavbar(props) {
                 fontFamily: "Nunito Sans",
               }}
               href={pathname}
-              locale="tr"
-            >
+              locale="tr">
               <Box sx={{ display: "flex", alignItems: "center" }}>
                 <Image
                   alt="trFlag"
@@ -156,8 +150,7 @@ function SecondaryNavbar(props) {
     </Box>
   );
 
-  const container =
-    window !== undefined ? () => window().document.body : undefined;
+  const container = window !== undefined ? () => window().document.body : undefined;
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -169,15 +162,13 @@ function SecondaryNavbar(props) {
           background: "#fff",
           boxShadow: "rgba(0, 0, 0, 0.05) 0px 0px 0px 1px",
           padding: "15px 0px",
-        }}
-      >
+        }}>
         <Toolbar
           sx={{
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-          }}
-        >
+          }}>
           <Grid container justifyContent={"space-between"}>
             <Grid item lg={2} md={9} xs={12} sm={9}>
               <Box
@@ -196,12 +187,8 @@ function SecondaryNavbar(props) {
                     md: "0px",
                     sm: "0px",
                   },
-                }}
-              >
-                <Link
-                  href="/"
-                  style={{ display: "flex", alignItems: "center" }}
-                >
+                }}>
+                <Link href="/" style={{ display: "flex", alignItems: "center" }}>
                   {/* <LogoSvg width="158px" height="36" /> */}
                   <Image
                     alt="logo"
@@ -225,16 +212,14 @@ function SecondaryNavbar(props) {
                   },
                   alignItems: "center",
                   height: "100%",
-                }}
-              >
+                }}>
                 <Box
                   sx={{
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
                     height: "100%",
-                  }}
-                >
+                  }}>
                   <Box
                     sx={{
                       width: "100%",
@@ -243,8 +228,7 @@ function SecondaryNavbar(props) {
                         lg: "flex",
                         xs: "none",
                       },
-                    }}
-                  >
+                    }}>
                     <Box sx={{ ml: "10px" }}>
                       <Select
                         value={locale}
@@ -265,8 +249,7 @@ function SecondaryNavbar(props) {
                           "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
                             borderColor: "#ccc",
                           },
-                        }}
-                      >
+                        }}>
                         <MenuItem value={"en"}>
                           <Link
                             style={{
@@ -276,8 +259,7 @@ function SecondaryNavbar(props) {
                               fontFamily: "Nunito Sans",
                             }}
                             href={pathname}
-                            locale="en"
-                          >
+                            locale="en">
                             <Box sx={{ display: "flex", alignItems: "center" }}>
                               <Image
                                 alt="usaflag"
@@ -301,8 +283,7 @@ function SecondaryNavbar(props) {
                               fontFamily: "Nunito Sans",
                             }}
                             href={pathname}
-                            locale="tr"
-                          >
+                            locale="tr">
                             <Box sx={{ display: "flex", alignItems: "center" }}>
                               <Image
                                 alt="trFlag"
@@ -327,15 +308,13 @@ function SecondaryNavbar(props) {
                     display: "flex",
                     justifyContent: "end",
                     alignItems: "center",
-                  }}
-                >
+                  }}>
                   <IconButton
                     color="inherit"
                     aria-label="open drawer"
                     edge="start"
                     onClick={handleDrawerToggle}
-                    sx={{ display: { sm: "block", md: "block", lg: "none" } }}
-                  >
+                    sx={{ display: { sm: "block", md: "block", lg: "none" } }}>
                     <MenuIcon style={{ color: "#1f2937" }} />
                   </IconButton>
                 </Box>
@@ -359,8 +338,7 @@ function SecondaryNavbar(props) {
               width: drawerWidth,
               height: "100%",
             },
-          }}
-        >
+          }}>
           {drawer}
         </Drawer>
       </nav>

@@ -10,10 +10,10 @@ const CustomTimePicker = () => {
     setSelectedHour(hour);
   };
 
-  const handleOk = () => {
-    console.log(`Selected hour: ${selectedHour}`);
-  };
-
+  // const handleOk = () => {
+  //   console.log(`Selected hour: ${selectedHour}`);
+  // };
+  console.log(`Selected hour: ${selectedHour}`);
   return (
     <div style={{ display: "flex", alignItems: "center" }}>
       <div style={{ marginRight: "10px" }}>

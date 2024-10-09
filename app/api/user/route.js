@@ -8,24 +8,15 @@ export async function POST(req) {
     await connectDB();
     const isExistUser = await User.findOne({ email });
     if (isExistUser) {
-      return NextResponse.json(
-        { message: "User already exists" },
-        { status: 400 }
-      );
+      return NextResponse.json({ message: "User already exists" }, { status: 400 });
     }
     const newUser = await User.create({ email, name, image, username });
     if (!newUser) {
-      return NextResponse.json(
-        { message: "Failed to create user" },
-        { status: 400 }
-      );
+      return NextResponse.json({ message: "Failed to create user" }, { status: 400 });
     }
     return NextResponse.json({ user: newUser }, { status: 201 });
   } catch (error) {
-    return NextResponse.json(
-      { message: "Failed to connect to server" },
-      { status: 500 }
-    );
+    return NextResponse.json({ message: "Failed to connect to server" }, { status: 500 });
   }
 }
 

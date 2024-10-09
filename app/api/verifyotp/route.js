@@ -27,12 +27,11 @@
 
 import connectDB from "@/db/mongodb";
 import User from "@/models/user.model";
-import { sendOTP } from "@/utils/otpService/sendOTP";
+// import { sendOTP } from "@/utils/otpService/sendOTP";
 import { NextResponse } from "next/server";
 import twilio from "twilio";
 
-const { TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_SMS_SERVICE } =
-  process.env;
+const { TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_SMS_SERVICE } = process.env;
 
 export const client = twilio(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN);
 
@@ -42,22 +41,16 @@ export async function POST(req) {
   try {
     await connectDB();
     if (![phone, otp].every(Boolean))
-      return NextResponse.json(
-        { message: "Please enter phone and otp" },
-        { status: 400 }
-      );
+      return NextResponse.json({ message: "Please enter phone and otp" }, { status: 400 });
     const user = await User.findOne({ phone });
     if (!user) {
-      return NextResponse.json(
-        { message: "Phone number not found" },
-        { status: 400 }
-      );
+      return NextResponse.json({ message: "Phone number not found" }, { status: 400 });
     }
 
     if (user.isOTPExpired()) {
       return NextResponse.json(
         { message: "OTP has expired. Please request a new one." },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -69,21 +62,15 @@ export async function POST(req) {
       });
 
     if (!verificationCheck) {
-      return NextResponse.json(
-        { message: "an error occured while verify otp" },
-        { status: 201 }
-      );
+      return NextResponse.json({ message: "an error occured while verify otp" }, { status: 201 });
     }
     await user?.updateOne({ isPhoneVerified: true, otpExpiry: undefined });
 
-    return NextResponse.json(
-      { message: "OTP verified seccessfully" },
-      { status: 201 }
-    );
+    return NextResponse.json({ message: "OTP verified seccessfully" }, { status: 201 });
   } catch (error) {
     return NextResponse.json(
       { message: error?.message || "Failed to connect to server" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

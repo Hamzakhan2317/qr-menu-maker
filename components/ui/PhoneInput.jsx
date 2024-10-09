@@ -17,9 +17,7 @@ const countryOptions = [
 ];
 
 const PhoneInput = ({ cols = 6 }) => {
-  const [selectedCountry, setSelectedCountry] = useState(
-    countryOptions[0].code
-  );
+  const [selectedCountry, setSelectedCountry] = useState(countryOptions[0].code);
   const [phoneNumber, setPhoneNumber] = useState("");
 
   const handleCountryChange = (event) => {
@@ -38,8 +36,7 @@ const PhoneInput = ({ cols = 6 }) => {
           value={selectedCountry}
           onChange={handleCountryChange}
           inputProps={{ "aria-label": "Country Select" }}
-          sx={{ width: "120px", height: "37px" }}
-        >
+          sx={{ width: "120px", height: "37px" }}>
           {countryOptions.map((country) => (
             <MenuItem key={country.code} value={country.code}>
               <div style={{ display: "flex", alignItems: "center" }}>
@@ -63,12 +60,7 @@ const PhoneInput = ({ cols = 6 }) => {
             startAdornment: (
               <InputAdornment position="start">
                 <span>
-                  +
-                  {
-                    countryOptions.find(
-                      (country) => country.code === selectedCountry
-                    ).code
-                  }
+                  +{countryOptions.find((country) => country.code === selectedCountry).code}
                 </span>
               </InputAdornment>
             ),

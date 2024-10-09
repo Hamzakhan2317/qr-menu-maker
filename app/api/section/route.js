@@ -1,7 +1,7 @@
 import connectDB from "@/db/mongodb";
 import Menu from "@/models/menu.model";
 import Section from "@/models/section.model";
-import Item from "@/models/item.model";
+// import Item from "@/models/item.model";
 
 import { NextResponse } from "next/server";
 
@@ -13,10 +13,7 @@ export async function POST(req) {
   try {
     await connectDB();
     if (![name, description, note, menuId].every(Boolean))
-      return NextResponse.json(
-        { message: "Please fill all inputs!" },
-        { status: 400 }
-      );
+      return NextResponse.json({ message: "Please fill all inputs!" }, { status: 400 });
 
     const menu = await Menu.findById(menuId);
     if (!menu) {
@@ -33,14 +30,11 @@ export async function POST(req) {
 
     menu.sections.push(section._id);
     await menu.save();
-    return NextResponse.json(
-      { message: "Section Created successfully" },
-      { status: 201 }
-    );
+    return NextResponse.json({ message: "Section Created successfully" }, { status: 201 });
   } catch (error) {
     return NextResponse.json(
       { message: error?.message || "Failed to connect to server" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -49,30 +43,26 @@ export async function GET(req) {
   try {
     // Extract the menuId from the query string
     const menuId = req.nextUrl.searchParams.get("menuId");
-    console.log("menuId>>>>>>>", menuId)
+    console.log("menuId>>>>>>>", menuId);
 
     if (!menuId) {
-      return NextResponse.json(
-        { message: "Menu ID is required" },
-        { status: 400 }
-      );
+      return NextResponse.json({ message: "Menu ID is required" }, { status: 400 });
     }
 
     await connectDB();
 
     const sections = await Section.find({ menu: menuId }).populate("items");
 
-
-console.log("sections>>>>>>>>>>>>>>>>>>>>>", sections)
+    console.log("sections>>>>>>>>>>>>>>>>>>>>>", sections);
 
     return NextResponse.json(
       { message: "Sections fetched successfully", data: sections },
-      { status: 200 }
+      { status: 200 },
     );
   } catch (error) {
     return NextResponse.json(
       { message: error?.message || "Failed to fetch restaurants" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

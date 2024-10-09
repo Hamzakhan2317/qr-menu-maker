@@ -24,16 +24,16 @@ const Page = () => {
   const [open, setOpen] = useState(false);
   const {
     data: menuData,
-    error,
+    // error,
     isLoading,
-    refetch: refetchMenus,
+    // refetch: refetchMenus,
   } = useGetAllMenuQuery(venueId, {
     skip: !venueId, // Skip the query until user data is available
   });
   const { data } = useGetRestaurentByIdQuery(venueId);
   const currentRestaurant = data?.data;
 
-  console.log("menuData", menuData);
+  console.log("menuData", menuData, isMenu);
 
   if (isLoading) return <Loader />;
   return (
@@ -47,8 +47,7 @@ const Page = () => {
                 display: "flex",
                 alignItems: "center",
                 cursor: "pointer",
-              }}
-            >
+              }}>
               <LoginSharpIcon
                 color="#fff"
                 fontSize="15px"
@@ -65,23 +64,15 @@ const Page = () => {
                 display: "flex",
                 alignItems: "center",
                 marginLeft: "20px",
-              }}
-            >
-              <InfoIcon
-                color="#fff"
-                sx={{ marginRight: "12px", width: "20px", height: "20px" }}
-              />
+              }}>
+              <InfoIcon color="#fff" sx={{ marginRight: "12px", width: "20px", height: "20px" }} />
               <Typography fontSize={"14px"} fontWeight={700} marginleft="5px">
                 Our menu is getting ready
               </Typography>
             </Box>
           </Box>
           <Box sx={menuWrapper}>
-            <Typography
-              fontSize={"22px"}
-              fontWeight={700}
-              textTransform="capitalize"
-            >
+            <Typography fontSize={"22px"} fontWeight={700} textTransform="capitalize">
               {currentRestaurant?.name}
             </Typography>
             <ButtonComp
@@ -99,8 +90,7 @@ const Page = () => {
             open={open}
             title={"Select Menu"}
             width="auto"
-            maxWidth="md"
-          >
+            maxWidth="md">
             <GarsOnlineModal menuData={menuData?.data} setIsMenu={setIsMenu} />
           </CustomModal>
         </Box>

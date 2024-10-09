@@ -1,6 +1,5 @@
 "use client"; // Ensure this is a client-side component in Next.js
 
-import { useState } from "react";
 import { Box, TextField } from "@mui/material";
 
 export default function ColorPicker({ selectedColor, onColorChange }) {
@@ -22,8 +21,7 @@ export default function ColorPicker({ selectedColor, onColorChange }) {
         border: "1px solid #e0e0e0",
         borderRadius: "8px",
         overflow: "hidden",
-      }}
-    >
+      }}>
       {/* Color Picker */}
       <Box
         component="input"

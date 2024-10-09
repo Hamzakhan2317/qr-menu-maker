@@ -18,14 +18,7 @@ import {
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import CloseIcon from "@mui/icons-material/Close";
 import MenuIcon from "@mui/icons-material/Menu";
-import {
-  Backdrop,
-  Box,
-  CircularProgress,
-  Drawer,
-  IconButton,
-  Typography,
-} from "@mui/material";
+import { Backdrop, Box, CircularProgress, Drawer, IconButton, Typography } from "@mui/material";
 import { useParams, useRouter } from "next/navigation";
 
 import { useState } from "react";
@@ -36,7 +29,7 @@ const Page = () => {
   const {
     data: menuData,
     isLoading: menuIsLoading,
-    refetch: refetchMenus,
+    // refetch: refetchMenus,
   } = useGetMenuByIdQuery(menuId);
 
   const { data } = useGetRestaurentByIdQuery(venueId);
@@ -49,10 +42,7 @@ const Page = () => {
 
   return (
     <Box sx={{ display: "flex", height: "100vh", color: "#130F40" }}>
-      <Backdrop
-        sx={(theme) => ({ color: "#fff", zIndex: 987871 })}
-        open={isLoading || menuIsLoading}
-      >
+      <Backdrop sx={() => ({ color: "#fff", zIndex: 987871 })} open={isLoading || menuIsLoading}>
         <CircularProgress color="inherit" />
       </Backdrop>
       <Box sx={leftMobileViewGarsonline}>
@@ -62,8 +52,7 @@ const Page = () => {
               sx={{
                 marginLeft: "20px",
                 cursor: "pointer",
-              }}
-            >
+              }}>
               <ArrowBackIosIcon
                 color="#fff"
                 sx={{
@@ -80,8 +69,7 @@ const Page = () => {
                 fontSize={"16px"}
                 fontWeight={700}
                 marginleft="5px"
-                textTransform="capitalize"
-              >
+                textTransform="capitalize">
                 {currentRestaurant?.name}
               </Typography>
             </Box>
@@ -93,8 +81,7 @@ const Page = () => {
               }}
               onClick={() => {
                 setIsgarsDrawerOpen(true);
-              }}
-            >
+              }}>
               <MenuIcon />
             </Box>
           </Box>
@@ -112,8 +99,7 @@ const Page = () => {
                 boxSizing: "border-box",
                 position: "relative",
               },
-            }}
-          >
+            }}>
             <Box>
               <Box
                 sx={{
@@ -123,14 +109,12 @@ const Page = () => {
                   flexDirection: "row-reverse",
                   justifyContent: "flex-end",
                   borderBottom: "1px solid #ddd",
-                }}
-              >
+                }}>
                 <IconButton
                   onClick={() => {
                     setIsgarsDrawerOpen(false);
                   }}
-                  marginRight="5px"
-                >
+                  marginRight="5px">
                   <CloseIcon />
                 </IconButton>
               </Box>
@@ -141,13 +125,9 @@ const Page = () => {
                   display: "flex",
                   flexDirection: "column",
                   height: "100%",
-                }}
-              >
+                }}>
                 <Box>
-                  <Typography
-                    fontSize={16}
-                    sx={{ fontWeight: 600, marginleft: "5" }}
-                  >
+                  <Typography fontSize={16} sx={{ fontWeight: 600, marginleft: "5" }}>
                     Cart is Empty!
                   </Typography>
                 </Box>
@@ -159,8 +139,7 @@ const Page = () => {
                       marginleft: "5",
                       fontStyle: "italic",
                       textWrap: "wrap",
-                    }}
-                  >
+                    }}>
                     Address: {currentRestaurant?.address}
                   </Typography>
                 </Box>
@@ -169,18 +148,10 @@ const Page = () => {
           </Drawer>
           <Box sx={{ padding: "10px" }}>
             <Box sx={copyOfSampleMenu}>
-              <Typography
-                fontSize={"20px"}
-                fontWeight={700}
-                marginTop={"30px"}
-                color="#000000d9"
-              >
+              <Typography fontSize={"20px"} fontWeight={700} marginTop={"30px"} color="#000000d9">
                 {menuData?.data?.name}
               </Typography>
-              <Typography lineHeight={1.2}>
-                {" "}
-                {menuData?.data?.description}
-              </Typography>
+              <Typography lineHeight={1.2}> {menuData?.data?.description}</Typography>
               <Typography fontSize={"14px"} color={"#BCBBC8"}>
                 {menuData?.data?.note}
               </Typography>
@@ -203,8 +174,7 @@ const Page = () => {
             flexDirection="row"
             justifyContent="flex-start"
             padding="0 10px"
-            overflow="auto"
-          >
+            overflow="auto">
             {sections?.data?.map((item, index) => {
               return (
                 <Box
@@ -215,8 +185,7 @@ const Page = () => {
                   margin="5px"
                   maxWidth="100px"
                   minWidth="100px"
-                  textAlign="center"
-                >
+                  textAlign="center">
                   <Box
                     sx={{
                       cursor: "pointer",
@@ -224,8 +193,7 @@ const Page = () => {
                       width: "100%",
                       height: "80px",
                       borderRadius: "12px",
-                    }}
-                  >
+                    }}>
                     {/* <Image src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQD4qmuiXoOrmp-skck7b7JjHA8Ry4TZyPHkw&s"} height={100}  width={100} alt="" objectFit="cover" /> */}
                   </Box>
                   <Box sx={{ cursor: "pointer" }}>
@@ -250,39 +218,25 @@ const Page = () => {
                       height: "152px",
                       borderRadius: "12px",
                       marginTop: "20px",
-                    }}
-                  ></Box>
+                    }}></Box>
                   {/* <Image src={item.src} alt="" className="mainImage" /> */}
-                  <Typography
-                    textAlign={"center"}
-                    fontSize={"20px"}
-                    fontWeight={700}
-                    marginTop={2}
-                  >
+                  <Typography textAlign={"center"} fontSize={"20px"} fontWeight={700} marginTop={2}>
                     {item?.name}
                   </Typography>
-                  <Typography textAlign={"center"}>
-                    {item?.description}
-                  </Typography>
+                  <Typography textAlign={"center"}>{item?.description}</Typography>
                   {item?.accordionData ? (
                     <CustomAccordion
-                      accordionArray={item.accordionData.map(
-                        (accordionItem) => ({
-                          accordionHeading: accordionItem.accordionHeading,
-                          bodyText: accordionItem.accordionTxtInfo,
-                        })
-                      )}
+                      accordionArray={item.accordionData.map((accordionItem) => ({
+                        accordionHeading: accordionItem.accordionHeading,
+                        bodyText: accordionItem.accordionTxtInfo,
+                      }))}
                     />
                   ) : (
                     item?.items?.map((innerItem, innerIndex) => {
                       return (
                         <Box sx={foodMenuCard} key={innerIndex}>
                           <Box sx={cardLeftside}>
-                            <Typography
-                              fontSize="16px"
-                              fontWeight="700"
-                              marginBottom={"10px"}
-                            >
+                            <Typography fontSize="16px" fontWeight="700" marginBottom={"10px"}>
                               {innerItem?.name}
                             </Typography>
                             <Typography fontSize="16px" marginBottom={"10px"}>
@@ -292,8 +246,7 @@ const Page = () => {
                               color={"#A874F2"}
                               fontSize="16px"
                               fontWeight="700"
-                              marginBottom={"10px"}
-                            >
+                              marginBottom={"10px"}>
                               ₤{innerItem?.price}
                             </Typography>
                           </Box>
@@ -337,8 +290,7 @@ const Page = () => {
           "@media (max-width: 992px)": {
             display: "none",
           },
-        }}
-      >
+        }}>
         <Typography variant="h4" textTransform="capitalize">
           {currentRestaurant?.name}
         </Typography>

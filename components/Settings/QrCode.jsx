@@ -18,22 +18,22 @@ import ColorPicker from "../ui/ColorPicker/ColorPicker";
 import { useParams } from "next/navigation";
 
 const QrCode = () => {
-  const {venueId} = useParams();
+  const { venueId } = useParams();
   const [isCopied, setIsCopied] = useState(false);
   const [qrColor, setQrColor] = useState("#000");
   const [bgQrColor, setBgQrColor] = useState("#FFFFFF");
   const handleCopy = () => {
-    navigator.clipboard.writeText(window.location.origin +`/garsonline-menu/${venueId}`).then(() => {
-      setIsCopied(true);
-      setTimeout(() => setIsCopied(false), 2000);
-    });
+    navigator.clipboard
+      .writeText(window.location.origin + `/garsonline-menu/${venueId}`)
+      .then(() => {
+        setIsCopied(true);
+        setTimeout(() => setIsCopied(false), 2000);
+      });
   };
   return (
     <Box sx={{ minHeight: "100vh" }}>
       <Box sx={qrCodeHeader}>
-        <Typography
-          sx={{ fontSize: "20px", lineHeight: "32px", fontWeight: "600" }}
-        >
+        <Typography sx={{ fontSize: "20px", lineHeight: "32px", fontWeight: "600" }}>
           Qr Code
         </Typography>
       </Box>
@@ -41,27 +41,16 @@ const QrCode = () => {
         <Grid item xs={12} sm={10} md={6} sx={qrcodeWrapper}>
           <Box sx={qrColorPicker}>
             <Box>
-              <Typography
-                fontSize={"14px"}
-                color={"#000000d9"}
-                marginBottom={"10px"}
-              >
+              <Typography fontSize={"14px"} color={"#000000d9"} marginBottom={"10px"}>
                 QR Color
               </Typography>
               <ColorPicker selectedColor={qrColor} onColorChange={setQrColor} />
             </Box>
             <Box sx={bgqrColorPicker}>
-              <Typography
-                fontSize={"14px"}
-                color={"#000000d9"}
-                marginBottom={"10px"}
-              >
+              <Typography fontSize={"14px"} color={"#000000d9"} marginBottom={"10px"}>
                 Background Color
               </Typography>
-              <ColorPicker
-                selectedColor={bgQrColor}
-                onColorChange={setBgQrColor}
-              />
+              <ColorPicker selectedColor={bgQrColor} onColorChange={setBgQrColor} />
             </Box>
           </Box>
           <Box>
@@ -79,14 +68,13 @@ const QrCode = () => {
                     maxWidth: "100%",
                     width: "100%",
                   }}
-                  value={window.location.origin +`/garsonline-menu/${venueId}`}
+                  value={window.location.origin + `/garsonline-menu/${venueId}`}
                   viewBox={`0 0 256 256`}
                 />
               </Box>
               <Box sx={qrnote}>
                 <Typography fontSize="14px" color="#000000d9">
-                  QR Code is very hard to read. Please increase the contrast by
-                  changing the colors.
+                  QR Code is very hard to read. Please increase the contrast by changing the colors.
                 </Typography>
               </Box>
 
@@ -107,8 +95,7 @@ const QrCode = () => {
                   marginLeft="10px"
                   fontSize="14px"
                   padding="4px 15px"
-                  sx={{ textTransform: "none" }}
-                >
+                  sx={{ textTransform: "none" }}>
                   Copy QR Link
                 </ButtonComp>
                 {isCopied && (
