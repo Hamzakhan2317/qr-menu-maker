@@ -42,13 +42,11 @@ export default function CustomAccordion({ accordionArray = [] }) {
                       display: "none",
                     },
                   },
-            ]}
-          >
+            ]}>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel1-content"
-              id="panel1-header"
-            >
+              id="panel1-header">
               <Typography>{item?.accordionHeading}</Typography>
             </AccordionSummary>
             <AccordionDetails>

@@ -36,14 +36,9 @@ const DiscoverSection = () => {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-          }}
-        >
+          }}>
           <Box sx={discoverImageStyles}>
-            <Image
-              alt=""
-              src={discoverImg}
-              style={{ width: "100%", height: "100%" }}
-            />
+            <Image alt="" src={discoverImg} style={{ width: "100%", height: "100%" }} />
           </Box>
         </Grid>
       </Grid>

@@ -21,8 +21,7 @@ const MainSection = () => {
                 alignItemsCenter: "center",
                 flexDirection: "column",
                 height: "100%",
-              }}
-            >
+              }}>
               <Box sx={ButtonGroupStyles}>
                 <Box>
                   <ButtonComp
@@ -55,16 +54,15 @@ const MainSection = () => {
               </Box>
               <Box>
                 <Typography sx={mainSectionParagraphStyle}>
-                  From speedy payments to smooth reservations, Garsonline is
-                  your all-in-one restaurant management solution.
+                  From speedy payments to smooth reservations, Garsonline is your all-in-one
+                  restaurant management solution.
                 </Typography>
               </Box>
               <Box sx={{ display: "flex", flexWrap: "wrap" }}>
                 <Box
                   sx={{
                     width: { xs: "100%", lg: "auto", sm: "auto" },
-                  }}
-                >
+                  }}>
                   <ButtonComp
                     sx={{
                       width: {
@@ -99,8 +97,7 @@ const MainSection = () => {
                       sm: "0px",
                     },
                     width: { xs: "100%", lg: "auto", sm: "auto" },
-                  }}
-                >
+                  }}>
                   <ButtonComp
                     sx={{
                       width: {
@@ -134,8 +131,7 @@ const MainSection = () => {
                   md: "block",
                   lg: "block",
                 },
-              }}
-            >
+              }}>
               <video
                 src="/assets/video/samplevideo.mp4"
                 autoPlay

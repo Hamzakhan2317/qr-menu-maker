@@ -1,7 +1,10 @@
 import { Box, Typography } from "@mui/material";
 import { useParams, useRouter } from "next/navigation";
 
-const GarsOnlineModal = ({ menuData, setIsMenu }) => {
+const GarsOnlineModal = ({
+  menuData,
+  // setIsMenu
+}) => {
   const { venueId } = useParams();
   const router = useRouter();
   return (
@@ -19,8 +22,7 @@ const GarsOnlineModal = ({ menuData, setIsMenu }) => {
             }}
             onClick={() => {
               router.push(`/garsonline-menu/${venueId}/menu/${menu._id}`);
-            }}
-          >
+            }}>
             <Typography color={"#130F40"}>{menu.name}</Typography>
           </Box>
         ))}

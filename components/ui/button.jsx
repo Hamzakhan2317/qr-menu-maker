@@ -17,12 +17,12 @@ const ButtonComp = ({
   marginLeft = "",
   marginBottom = "10px",
   textTransform = "none",
-  hoverColor,
-  hoverBorder,
+  // hoverColor,
+  // hoverBorder,
   fontSize = "16px",
   maxHeight = "50px",
   variant = "purple",
-  startIcon = { icon },
+  // startIcon = { icon },
   ...sx
 }) => {
   const variants = {
@@ -103,8 +103,7 @@ const ButtonComp = ({
       onClick={onClick}
       loading={isLoading}
       disabled={disabled || isLoading}
-      startIcon={icon}
-    >
+      startIcon={icon}>
       {text}
     </LoadingButton>
   );
@@ -112,14 +111,7 @@ const ButtonComp = ({
 
 ButtonComp.propTypes = {
   text: PropTypes.string.isRequired,
-  variant: PropTypes.oneOf([
-    "red",
-    "purple",
-    "lightPurple",
-    "blue",
-    "light",
-    "transparent",
-  ]),
+  variant: PropTypes.oneOf(["red", "purple", "lightPurple", "blue", "light", "transparent"]),
 };
 
 ButtonComp.defaultProps = {

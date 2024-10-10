@@ -30,9 +30,7 @@ const Dashboard = () => {
     const now = formatDateTime();
     setCurrentDateTime(now);
     currentRestaurant &&
-      setPath(
-        window.location.origin + `/garsonline-menu/${currentRestaurant?._id}`
-      );
+      setPath(window.location.origin + `/garsonline-menu/${currentRestaurant?._id}`);
   }, [currentRestaurant]);
 
   const handleCopy = () => {
@@ -48,12 +46,7 @@ const Dashboard = () => {
   return (
     <Box sx={{ padding: "40px", height: "100vh" }}>
       <p>{currentDateTime}</p>
-      <Typography
-        color="#000000d9"
-        mt={1}
-        fontSize={18}
-        textTransform="capitalize"
-      >
+      <Typography color="#000000d9" mt={1} fontSize={18} textTransform="capitalize">
         <b>{currentRestaurant?.name}, Welcome</b>
       </Typography>
       <Grid container mt={2}>
@@ -78,8 +71,7 @@ const Dashboard = () => {
               </Box>
               <Box sx={qrnote}>
                 <Typography fontSize="14px" color="#000000d9">
-                  QR Code is very hard to read. Please increase the contrast by
-                  changing the colors.
+                  QR Code is very hard to read. Please increase the contrast by changing the colors.
                 </Typography>
               </Box>
 
@@ -100,8 +92,7 @@ const Dashboard = () => {
                   marginLeft="10px"
                   fontSize="14px"
                   padding="4px 15px"
-                  sx={{ textTransform: "none" }}
-                >
+                  sx={{ textTransform: "none" }}>
                   Copy QR Link
                 </ButtonComp>
                 {isCopied && (

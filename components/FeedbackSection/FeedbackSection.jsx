@@ -30,8 +30,7 @@ const FeedBackSection = () => {
               lg: "row",
               md: "row",
             },
-          }}
-        >
+          }}>
           <Grid item lg={6} md={6} sm={12}>
             <Box
               sx={{
@@ -39,8 +38,7 @@ const FeedBackSection = () => {
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "start",
-              }}
-            >
+              }}>
               <Box>
                 {feedbackCardDetails?.map(({ heading, text }, ind) => (
                   <Box
@@ -58,8 +56,7 @@ const FeedBackSection = () => {
                         xl: "row",
                         xxl: "row",
                       },
-                    }}
-                  >
+                    }}>
                     <Box sx={feedbackIconStyles}>
                       <CheckIcon
                         sx={{
@@ -82,16 +79,14 @@ const FeedBackSection = () => {
                           xl: "15px",
                           xxl: "15px",
                         },
-                      }}
-                    >
+                      }}>
                       <Typography
                         sx={{
                           color: "#fff",
                           fontSize: "1.15rem",
                           lineHeight: "1.75rem",
                           fontWeight: "600",
-                        }}
-                      >
+                        }}>
                         {heading}
                       </Typography>
                       <Typography
@@ -101,8 +96,7 @@ const FeedBackSection = () => {
                           lineHeight: "1.725rem",
                           fontWeight: "400",
                           mt: "10px",
-                        }}
-                      >
+                        }}>
                         {text}
                       </Typography>
                     </Box>
@@ -118,14 +112,13 @@ const FeedBackSection = () => {
                 justifyContent: "center",
                 alignItems: "center",
                 height: "100%",
-              }}
-            >
+              }}>
               <Box
                 sx={{
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
-                  height: "100%",
+                  // height: "100%",
                   width: {
                     xs: "100%",
                     lg: "100%",
@@ -138,8 +131,7 @@ const FeedBackSection = () => {
                     sm: "450px",
                     md: "100%",
                   },
-                }}
-              >
+                }}>
                 <Image
                   src={feedbackImage}
                   alt="feedbackImage"

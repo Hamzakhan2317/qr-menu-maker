@@ -5,7 +5,6 @@ import {
   imageTextStyles,
   numberTextStyles,
 } from "@/styles/ImageSectionStyles/ImageSectionStyles";
-import { createCustomTheme } from "@/styles/theme";
 import { Box, Container, Grid, Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
@@ -24,8 +23,7 @@ const ImagesSection = () => {
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
-              }}
-            >
+              }}>
               <Box sx={imageSectionImageStyling}>
                 <Image
                   src={imgSection1}
@@ -44,8 +42,7 @@ const ImagesSection = () => {
                 alignItems: "center",
                 flexDirection: "column",
                 height: "100%",
-              }}
-            >
+              }}>
               <Box sx={{ textAlign: "center" }}>
                 <Typography sx={imageTextStyles}>{t("Title")}</Typography>
               </Box>
@@ -55,12 +52,9 @@ const ImagesSection = () => {
                     sx={{
                       mb: "20px",
                       textAlign: "center",
-                    }}
-                  >
+                    }}>
                     <Typography sx={numberTextStyles}>0%</Typography>
-                    <Typography sx={imagesHeadingTextStyles}>
-                      {t("CommissionRate")}
-                    </Typography>
+                    <Typography sx={imagesHeadingTextStyles}>{t("CommissionRate")}</Typography>
                   </Box>
                 </Grid>
                 <Grid item lg={6} sm={6} xs={6}>
@@ -68,36 +62,27 @@ const ImagesSection = () => {
                     sx={{
                       mb: "20px",
                       textAlign: "center",
-                    }}
-                  >
+                    }}>
                     <Typography sx={numberTextStyles}>+30 %</Typography>
-                    <Typography sx={imagesHeadingTextStyles}>
-                      {t("CheckSize")}
-                    </Typography>
+                    <Typography sx={imagesHeadingTextStyles}>{t("CheckSize")}</Typography>
                   </Box>
                 </Grid>
                 <Grid item lg={6} sm={6} xs={6}>
                   <Box
                     sx={{
                       textAlign: "center",
-                    }}
-                  >
+                    }}>
                     <Typography sx={numberTextStyles}>-25%</Typography>
-                    <Typography sx={imagesHeadingTextStyles}>
-                      {t("LaborCosts")}
-                    </Typography>
+                    <Typography sx={imagesHeadingTextStyles}>{t("LaborCosts")}</Typography>
                   </Box>
                 </Grid>
                 <Grid item lg={6} sm={6} xs={6}>
                   <Box
                     sx={{
                       textAlign: "center",
-                    }}
-                  >
+                    }}>
                     <Typography sx={numberTextStyles}>4x</Typography>
-                    <Typography sx={imagesHeadingTextStyles}>
-                      {t("ConversionRate")}
-                    </Typography>
+                    <Typography sx={imagesHeadingTextStyles}>{t("ConversionRate")}</Typography>
                   </Box>
                 </Grid>
               </Grid>

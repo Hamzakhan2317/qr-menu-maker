@@ -2,13 +2,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { FormLabel } from "@mui/joy";
-import {
-  FormControl,
-  Grid,
-  InputAdornment,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { FormControl, Grid, InputAdornment, TextField, Typography } from "@mui/material";
 
 const InputField = ({
   label,
@@ -31,10 +25,10 @@ const InputField = ({
   multiline,
   searchIcon,
   passwordVisible,
-  backgroundColor = "transparent",
+  // backgroundColor = "transparent",
   setPasswordVisible,
   rows,
-  height = "auto",
+  // height = "auto",
   paddingLeft = "",
   padding = "",
   iconPadding = "",
@@ -64,9 +58,7 @@ const InputField = ({
       value = value.replace(/\D/g, "");
       const match = value.match(/^(\d{3})(\d{0,3})(\d{0,4})$/);
       if (match) {
-        const formatted = [match[1], match[2], match[3]]
-          .filter((group) => !!group)
-          .join(" ");
+        const formatted = [match[1], match[2], match[3]].filter((group) => !!group).join(" ");
         event.target.value = formatted;
       }
     }
@@ -106,8 +98,10 @@ const InputField = ({
             "& input": {
               padding: padding,
             },
-            "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
-              { border: border, outline: "none" },
+            "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
+              border: border,
+              outline: "none",
+            },
             "&.MuiOutlinedInput-root:hover  .MuiOutlinedInput-notchedOutline": {
               outline: "none",
               borderColor: "#E1E1E1 !important",
@@ -127,16 +121,14 @@ const InputField = ({
               },
             },
           },
-        }}
-      >
+        }}>
         {label && (
           <FormLabel>
             <Typography
               variant="body2"
               fontWeight={fontLabelWeight}
               fontSize={labelFontSize}
-              marginBottom={"5px"}
-            >
+              marginBottom={"5px"}>
               {label} {required && <span style={{ color: "red" }}>*</span>}
             </Typography>
           </FormLabel>
@@ -157,8 +149,7 @@ const InputField = ({
                   cursor: "pointer",
                   color: "#89879F",
                 }}
-                onClick={togglePasswordIcon}
-              >
+                onClick={togglePasswordIcon}>
                 {searchIcon === true ? (
                   <SearchIcon />
                 ) : passwordVisible ? (

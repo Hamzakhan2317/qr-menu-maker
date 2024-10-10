@@ -60,9 +60,7 @@ const VenueInformation = () => {
   return (
     <Box sx={{ backgroundColor: "#F0F2F5", minHeight: "100vh" }}>
       <Box sx={OperatingHoursHeader}>
-        <Typography
-          sx={{ fontSize: "20px", lineHeight: "32px", fontWeight: "600" }}
-        >
+        <Typography sx={{ fontSize: "20px", lineHeight: "32px", fontWeight: "600" }}>
           Venue Information
         </Typography>
       </Box>
@@ -78,8 +76,7 @@ const VenueInformation = () => {
             padding: "20px",
             marginLeft: "20px",
             marginTop: "10px",
-          }}
-        >
+          }}>
           <Grid container>
             <InputField
               cols={9}
@@ -97,11 +94,8 @@ const VenueInformation = () => {
               "& .MuiInput-variantOutlined": {
                 "--Input-focusedHighlight": "none",
               },
-            }}
-          >
-            <FormLabel sx={{ fontWeight: "400 !important" }}>
-              Venue ID
-            </FormLabel>
+            }}>
+            <FormLabel sx={{ fontWeight: "400 !important" }}>Venue ID</FormLabel>
             <Input
               size="md"
               placeholder={currentRestaurant?._id}
@@ -118,11 +112,7 @@ const VenueInformation = () => {
             />
           </FormControl>
           <Box sx={{ marginTop: "10px" }}>
-            <FormLabel
-              sx={{ marginBottom: "10px", fontWeight: "400 !important" }}
-            >
-              Logo
-            </FormLabel>
+            <FormLabel sx={{ marginBottom: "10px", fontWeight: "400 !important" }}>Logo</FormLabel>
             <CustomDropzone />
           </Box>
 

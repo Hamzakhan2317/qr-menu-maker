@@ -16,7 +16,7 @@ import { useGetAllSectionQuery } from "@/redux/services/api/sectionApis";
 
 const CustomAccordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
-))(({ theme }) => ({
+))(() => ({
   "&:not(:last-child)": {
     borderBottom: 0,
   },
@@ -53,7 +53,10 @@ const SectionList = ({ onAddClick }) => {
   const params = useParams();
   const { menuId } = params;
 
-  const { data: sections, isLoading } = useGetAllSectionQuery(menuId);
+  const {
+    data: sections,
+    //  isLoading
+  } = useGetAllSectionQuery(menuId);
 
   const handleTabChange = (event, newValue) => {
     setActiveTab(newValue);
@@ -73,11 +76,7 @@ const SectionList = ({ onAddClick }) => {
   const onDragEnd = (result) => {
     if (!result.destination) return;
 
-    const reorderedData = reorder(
-      menuData,
-      result.source.index,
-      result.destination.index
-    );
+    const reorderedData = reorder(menuData, result.source.index, result.destination.index);
     setMenuData(reorderedData);
   };
   useEffect(() => {
@@ -96,8 +95,7 @@ const SectionList = ({ onAddClick }) => {
         padding: "8px 0",
         display: "flex",
         alignItems: "center",
-      }}
-    >
+      }}>
       {item?.items?.length > 0 ? (
         <CustomAccordion
           expanded={expanded === item._id}
@@ -108,16 +106,14 @@ const SectionList = ({ onAddClick }) => {
             borderBottomLeftRadius: "0px !important",
             borderBottomRightRadius: "0px !important",
           }}
-          className="list-accordion"
-        >
+          className="list-accordion">
           <CustomAccordionSummary
             expandIcon={<ExpandMoreIcon />}
             sx={{
               display: "flex",
               alignItems: "center",
               padding: 0,
-            }}
-          >
+            }}>
             <Typography fontSize={"14px"} fontWeight={400}>
               {item.name}
             </Typography>
@@ -131,8 +127,7 @@ const SectionList = ({ onAddClick }) => {
                   paddingTop: "5px",
                   display: "flex",
                   alignItems: "center",
-                }}
-              >
+                }}>
                 <Box
                   style={{
                     width: "8px",
@@ -178,8 +173,7 @@ const SectionList = ({ onAddClick }) => {
             justifyContent: "space-between",
             flexWrap: "wrap",
             marginBottom: "15px",
-          }}
-        >
+          }}>
           <Typography fontSize="14px">Section</Typography>
           <Box sx={{ cursor: "pointer" }} onClick={onAddClick}>
             <PlusIconFine sx={{ "&:hover": { color: "#8338ec" } }} />
@@ -209,13 +203,11 @@ const SectionList = ({ onAddClick }) => {
                 background: "transparent",
               },
             }}
-            className="list-tabs"
-          >
+            className="list-tabs">
             <Tab
               label="All"
               sx={{
-                border:
-                  activeTab === 0 ? "1px solid #8338ec" : "1px solid #d9d9d9",
+                border: activeTab === 0 ? "1px solid #8338ec" : "1px solid #d9d9d9",
                 color: activeTab === 0 ? "#8338ec" : "black",
                 borderRadius: "8px 0 0 8px",
                 padding: "10px",
@@ -225,8 +217,7 @@ const SectionList = ({ onAddClick }) => {
             <Tab
               label="Active"
               sx={{
-                border:
-                  activeTab === 1 ? "1px solid #8338ec" : "1px solid #d9d9d9",
+                border: activeTab === 1 ? "1px solid #8338ec" : "1px solid #d9d9d9",
                 color: activeTab === 1 ? "#8338ec" : "black",
                 borderRadius: "0",
                 padding: "10px",
@@ -236,8 +227,7 @@ const SectionList = ({ onAddClick }) => {
             <Tab
               label="Inactive"
               sx={{
-                border:
-                  activeTab === 2 ? "1px solid #8338ec" : "1px solid #d9d9d9",
+                border: activeTab === 2 ? "1px solid #8338ec" : "1px solid #d9d9d9",
                 color: activeTab === 2 ? "#8338ec" : "black",
                 borderRadius: "0 8px 8px 0",
                 padding: "10px",
@@ -255,19 +245,14 @@ const SectionList = ({ onAddClick }) => {
                   margin: "0px",
                 },
               },
-            }}
-          >
+            }}>
             {activeTab === 0 && (
               <DragDropContext onDragEnd={onDragEnd}>
                 <Droppable droppableId="menuItems">
                   {(provided) => (
                     <Box {...provided.droppableProps} ref={provided.innerRef}>
                       {menuData?.map((item, index) => (
-                        <Draggable
-                          key={item.id}
-                          draggableId={item._id}
-                          index={index}
-                        >
+                        <Draggable key={item.id} draggableId={item._id} index={index}>
                           {(provided) => renderListItem(item, index, provided)}
                         </Draggable>
                       ))}

@@ -15,7 +15,7 @@ const Section = () => {
   const params = useParams();
   const router = useRouter();
 
-  const { venueId,menuId } = params;
+  const { venueId, menuId } = params;
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const { data: sections, isLoading } = useGetAllSectionQuery(menuId);
 
@@ -26,18 +26,14 @@ const Section = () => {
   return (
     <div>
       <Box sx={{ ...MenuManagementHeader, padding: "10px 20px" }}>
-        <Typography
-          sx={{ fontSize: "20px", lineHeight: "32px", fontWeight: "600" }}
-        >
+        <Typography sx={{ fontSize: "20px", lineHeight: "32px", fontWeight: "600" }}>
           Menu
         </Typography>
         <ButtonComp
           text={"Preview Menu"}
           variant="purple"
           padding="4px 15px"
-          onClick={() =>
-            router.push(`/garsonline-menu/${venueId}`)
-          }
+          onClick={() => router.push(`/garsonline-menu/${venueId}`)}
         />
       </Box>
       <Box
@@ -45,8 +41,7 @@ const Section = () => {
           display: "flex",
           minHeight: "100vh",
           padding: "20px 40px 20px 0px",
-        }}
-      >
+        }}>
         <Box flex={1}>
           <SectionList onAddClick={handleDrawerToggle} />
         </Box>
@@ -68,8 +63,7 @@ const Section = () => {
                 boxSizing: "border-box",
               },
             }}
-            variant="persistent"
-          >
+            variant="persistent">
             <Box
               sx={{
                 display: "flex",
@@ -78,21 +72,14 @@ const Section = () => {
                 flexDirection: "row-reverse",
                 justifyContent: "flex-end",
                 borderBottom: "1px solid #ddd",
-              }}
-            >
+              }}>
               <h3>Add New Section</h3>
-              <IconButton
-                onClick={() => setIsDrawerOpen(false)}
-                marginRight="5px"
-              >
+              <IconButton onClick={() => setIsDrawerOpen(false)} marginRight="5px">
                 <CloseIcon />
               </IconButton>
             </Box>
 
-            <RightDrawerContent
-              menuId={menuId}
-              onClose={() => setIsDrawerOpen(false)}
-            />
+            <RightDrawerContent menuId={menuId} onClose={() => setIsDrawerOpen(false)} />
           </Drawer>
         </Box>
       </Box>

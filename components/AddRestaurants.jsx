@@ -7,11 +7,7 @@ import * as yup from "yup";
 import ButtonComp from "./ui/button";
 import InputField from "./ui/InputField";
 
-const AddRestaurantsForm = ({
-  refetchRestaurants,
-  userId,
-  setIsDrawerOpen,
-}) => {
+const AddRestaurantsForm = ({ refetchRestaurants, userId, setIsDrawerOpen }) => {
   const [registerRestaurent] = useRegisterRestaurentMutation();
 
   const handelRegisterSection = async (values) => {
@@ -55,18 +51,13 @@ const AddRestaurantsForm = ({
           flexDirection: "row-reverse",
           justifyContent: "flex-end",
           borderBottom: "1px solid #ddd",
-        }}
-      >
+        }}>
         <h3>Add New Venue</h3>
         <IconButton onClick={() => setIsDrawerOpen(false)} marginRight="5px">
           <CloseIcon />
         </IconButton>
       </Box>
-      <Box
-        sx={{ padding: "10px" }}
-        component="form"
-        onSubmit={formik.handleSubmit}
-      >
+      <Box sx={{ padding: "10px" }} component="form" onSubmit={formik.handleSubmit}>
         <Typography color={"#8338ec"}>Overview</Typography>
         <Grid container spacing={2}>
           <InputField
@@ -99,8 +90,7 @@ const AddRestaurantsForm = ({
             height: "60px",
             borderTop: "1px solid #E5E5E5",
             marginTop: "20px",
-          }}
-        >
+          }}>
           <Box>
             <ButtonComp
               text="Cancel"

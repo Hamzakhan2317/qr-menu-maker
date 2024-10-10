@@ -33,8 +33,7 @@ const Footer = () => {
                 fontWeight: "600",
                 fontSize: "0.9rem",
                 marginBottom: "8px",
-              }}
-            >
+              }}>
               {title}
             </Typography>
             {listData?.map(({ name }, subInd) => (
@@ -45,8 +44,7 @@ const Footer = () => {
                       "&:hover": {
                         color: "#fff",
                       },
-                    }}
-                  >
+                    }}>
                     {name}
                   </Box>
                 </Link>
@@ -64,8 +62,7 @@ const Footer = () => {
               sm: "column-reverse",
               lg: "row",
             },
-          }}
-        >
+          }}>
           <Grid item lg={6} xs={12} md={6} sm={6}>
             <Box sx={copyRightTextStyle}>{t("CopyRightText")}</Box>
           </Grid>
@@ -77,8 +74,7 @@ const Footer = () => {
                     "&:hover": {
                       color: "#fff",
                     },
-                  }}
-                >
+                  }}>
                   <FBSvg />
                 </Box>
               </Link>
@@ -88,8 +84,7 @@ const Footer = () => {
                     "&:hover": {
                       color: "#fff",
                     },
-                  }}
-                >
+                  }}>
                   <InstagramSvg />
                 </Box>
               </Link>
@@ -99,8 +94,7 @@ const Footer = () => {
                     "&:hover": {
                       color: "#fff",
                     },
-                  }}
-                >
+                  }}>
                   <TwitterSvg />
                 </Box>
               </Link>
@@ -110,8 +104,7 @@ const Footer = () => {
                     "&:hover": {
                       color: "#fff",
                     },
-                  }}
-                >
+                  }}>
                   <LinkedInSvg />
                 </Box>
               </Link>
@@ -121,8 +114,7 @@ const Footer = () => {
                     "&:hover": {
                       color: "#fff",
                     },
-                  }}
-                >
+                  }}>
                   <YoutubeSvg />
                 </Box>
               </Link>
@@ -137,11 +129,8 @@ const Footer = () => {
               "&:hover": {
                 color: "#fff",
               },
-            }}
-          >
-            <Typography sx={privaryPolicyLinkStyle}>
-              {t("PrivacyPolicyText")}
-            </Typography>
+            }}>
+            <Typography sx={privaryPolicyLinkStyle}>{t("PrivacyPolicyText")}</Typography>
           </Box>
         </Link>
       </Box>

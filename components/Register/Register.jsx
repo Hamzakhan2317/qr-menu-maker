@@ -1,7 +1,6 @@
 "use client";
-import { Link, usePathname, useRouter } from "@/navigation";
+import { Link, useRouter } from "@/navigation";
 import { logoComponents } from "@/public/assets/static";
-import LogoSvg from "@/public/assets/svg/logoSvg";
 import {
   containerFlexStyle,
   formStyle,
@@ -10,55 +9,40 @@ import {
   termsOfServiceBoxStyle,
   termsOfServiceTextStyle,
 } from "@/styles/SignupStyles/SignupStyles";
-import { createCustomTheme } from "@/styles/theme";
 import { signupSchema } from "@/validations/signup/signupSchema";
-import {
-  Box,
-  Container,
-  Grid,
-  MenuItem,
-  Rating,
-  Select,
-  Typography,
-} from "@mui/material";
+import { Box, Container, Grid, Rating, Typography } from "@mui/material";
 import { useFormik } from "formik";
-import { useLocale } from "next-intl";
 import Image from "next/image";
 import NextLink from "next/link";
 import { useState } from "react";
 import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import { toast } from "sonner";
-import trFlag from "../../public/assets/images/turkeyflag.jpg";
-import usaflag from "../../public/assets/images/usaflag.png";
 import InputField from "../ui/InputField";
 import ButtonComp from "../ui/button";
 import SignUpLogo from "/public/SignUpImg.webp";
 import SecondaryNavbar from "../Navbar/SecondaryNavbar";
 import { useRegisterMutation } from "@/redux/services/api/authApis";
 
-
 const LoginPage = () => {
-  const pathname = usePathname();
+  // const pathname = usePathname();
   const [passwordVisible, setPasswordVisible] = useState(false);
-  const locale = useLocale();
-  const [lang, setLang] = useState(locale);
-  const handleChange = (event) => {
-    setLang(event.target.value);
-  };
+  // const locale = useLocale();
+  // const [lang, setLang] = useState(locale);
+  // const handleChange = (event) => {
+  //   setLang(event.target.value);
+  // };
   const router = useRouter();
-  const [register, { isLoading }] = useRegisterMutation();
-
-
+  const [register] = useRegisterMutation();
 
   const handelSignup = async (values) => {
     try {
       const resp = await register({
-      ...values,
-      phone: values?.phone.replace("+", ""),
+        ...values,
+        phone: values?.phone.replace("+", ""),
       }).unwrap();
 
-      console.log("resp>>>>>", resp)
+      console.log("resp>>>>>", resp);
       if (resp) {
         toast.success(resp?.message || "User register successfully");
         router.push("/login");
@@ -90,20 +74,14 @@ const LoginPage = () => {
         minHeight: "100vh",
         background:
           "linear-gradient(to left, rgba(255, 255, 255, 0.7), rgba(200, 170, 230, 0.5), rgba(220, 190, 240, 0.9), rgba(255, 255, 255, 0))",
-      }}
-    >
+      }}>
       <SecondaryNavbar />
       <Container component="main">
         <Grid container sx={containerFlexStyle} marginTop="5%">
           <Grid item xs={12} sm={12} md={6} lg={7}>
             <Box sx={imageTextStyle}>
               <Box>
-                <Image
-                  src={SignUpLogo}
-                  alt="Top Image"
-                  width={125}
-                  height={125}
-                />
+                <Image src={SignUpLogo} alt="Top Image" width={125} height={125} />
               </Box>
               <Box sx={{ marginLeft: "1rem" }}>
                 <Rating name="read-only" value={5} readOnly />
@@ -114,11 +92,9 @@ const LoginPage = () => {
                     fontSize: "20px",
                     fontWeight: 400,
                     fontFamily: "Nunito Sans",
-                  }}
-                >
-                  “Our sales and tips increased by 20%-30% using Garsonline.
-                  Some days I don&apos;t understand how I get through without
-                  Garsonline...”
+                  }}>
+                  “Our sales and tips increased by 20%-30% using Garsonline. Some days I don&apos;t
+                  understand how I get through without Garsonline...”
                 </Typography>
                 <Typography
                   variant="h6"
@@ -126,8 +102,7 @@ const LoginPage = () => {
                     marginTop: "0.5rem",
                     fontSize: "14px",
                     fontFamily: "Nunito Sans",
-                  }}
-                >
+                  }}>
                   CHRIS GIA
                 </Typography>
                 <Typography
@@ -136,8 +111,7 @@ const LoginPage = () => {
                     fontSize: "14px",
                     color: "#ADADAE",
                     fontFamily: "Nunito Sans",
-                  }}
-                >
+                  }}>
                   Cafe Sanuki, Manager
                 </Typography>
               </Box>
@@ -159,8 +133,7 @@ const LoginPage = () => {
                   flexDirection: "column",
                   gap: "0.4rem",
                   padding: "1rem",
-                }}
-              >
+                }}>
                 <Typography
                   sx={{
                     fontSize: "1.2rem",
@@ -168,8 +141,7 @@ const LoginPage = () => {
                     justifyContent: "center",
                     textAlign: "center",
                     fontFamily: "Nunito Sans",
-                  }}
-                >
+                  }}>
                   Create Your Free Account
                 </Typography>
                 <Typography
@@ -180,8 +152,7 @@ const LoginPage = () => {
                     color: "#757575",
                     fontFamily: "Nunito Sans",
                     mb: 1,
-                  }}
-                >
+                  }}>
                   No credit card required.
                 </Typography>
                 <InputField
@@ -225,9 +196,7 @@ const LoginPage = () => {
                     background: "#fff",
                     outline: "none",
                     color: "black",
-                    border: `1px solid ${
-                      formik.errors.phone ? "red" : "#C4C4C4"
-                    }`,
+                    border: `1px solid ${formik.errors.phone ? "red" : "#C4C4C4"}`,
                     // border: "1px solid #C4C4C4" ,
                     padding: "8px",
                     borderRadius: "4px",
@@ -242,8 +211,7 @@ const LoginPage = () => {
                       fontSize: "12px",
                       ml: 2,
                       mb: 0.5,
-                    }}
-                  >
+                    }}>
                     {formik.errors.phone}
                   </Typography>
                 )}
@@ -274,11 +242,7 @@ const LoginPage = () => {
                   formik={formik}
                 />
 
-                <ButtonComp
-                  width="100%"
-                  text="Create Account"
-                  onClick={formik.handleSubmit}
-                />
+                <ButtonComp width="100%" text="Create Account" onClick={formik.handleSubmit} />
               </Box>
               <Box
                 sx={{
@@ -288,15 +252,13 @@ const LoginPage = () => {
                   borderBottomLeftRadius: "8px",
                   borderBottomRightRadius: "8px",
                   zIndex: 1,
-                }}
-              >
+                }}>
                 <Typography
                   variant="body2"
                   color="#605F62"
                   sx={{
                     fontFamily: "Nunito Sans",
-                  }}
-                >
+                  }}>
                   Already have an account?{" "}
                   <Link
                     component={NextLink}
@@ -306,8 +268,7 @@ const LoginPage = () => {
                       color: "#cb6fe5",
                       textDecoration: "none",
                       fontFamily: "Nunito Sans",
-                    }}
-                  >
+                    }}>
                     Log in
                   </Link>
                 </Typography>
@@ -321,14 +282,9 @@ const LoginPage = () => {
                 textAlign: "center",
                 width: "100%",
                 marginTop: "2rem",
-              }}
-            >
+              }}>
               <Box sx={termsOfServiceBoxStyle}>
-                <Typography
-                  color="#ADADAE"
-                  variant="body2"
-                  sx={termsOfServiceTextStyle}
-                >
+                <Typography color="#ADADAE" variant="body2" sx={termsOfServiceTextStyle}>
                   By signing up, you agree to the{" "}
                   <Link
                     href="#"
@@ -337,8 +293,7 @@ const LoginPage = () => {
                       color: "#8338EC",
                       textDecoration: "none",
                       fontFamily: "Nunito Sans",
-                    }}
-                  >
+                    }}>
                     Terms of Service
                   </Link>{" "}
                   and{" "}
@@ -349,12 +304,11 @@ const LoginPage = () => {
                       color: "#8338EC",
                       textDecoration: "none",
                       fontFamily: "Nunito Sans",
-                    }}
-                  >
+                    }}>
                     Privacy Policy
                   </Link>
-                  . You also agree to receive marketing e-mails from Garsonline
-                  which you can unsubscribe anytime.
+                  . You also agree to receive marketing e-mails from Garsonline which you can
+                  unsubscribe anytime.
                 </Typography>
               </Box>
             </Box>

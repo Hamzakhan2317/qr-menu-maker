@@ -13,16 +13,17 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import VolumeUpOutlinedIcon from "@mui/icons-material/VolumeUpOutlined";
-import LogoutIcon from '@mui/icons-material/Logout';
+import LogoutIcon from "@mui/icons-material/Logout";
 import { Box } from "@mui/material";
-import {useRouter} from "@/navigation"
-import {toast} from "sonner"
-import { useSession, signOut } from "next-auth/react";
-
-
+import { useRouter } from "@/navigation";
+import { toast } from "sonner";
+import {
+  //  useSession,
+  signOut,
+} from "next-auth/react";
 
 export default function MenuListComposition() {
-  const router = useRouter(); 
+  const router = useRouter();
 
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
@@ -50,16 +51,14 @@ export default function MenuListComposition() {
   // Function to handle logout
   const handleLogout = async () => {
     const toastId = toast.loading("Please wait...");
-      await signOut({ redirect: false });
-      router.push("/login");
-      toast.success("Logout successfully", { id: toastId });
-
+    await signOut({ redirect: false });
+    router.push("/login");
+    toast.success("Logout successfully", { id: toastId });
 
     // Add your actual logout logic here, such as clearing user session or redirecting
     // For example:
     // authService.logout(); or navigate("/login");
   };
-
 
   const navbarProfile = [
     {
@@ -82,7 +81,6 @@ export default function MenuListComposition() {
       icon: <LogoutIcon fontSize="small" />,
       txt: "Logout",
       onClick: handleLogout, // Adding the logout handler
-
     },
   ];
 
@@ -105,8 +103,7 @@ export default function MenuListComposition() {
           aria-controls={open ? "composition-menu" : undefined}
           aria-expanded={open ? "true" : undefined}
           aria-haspopup="true"
-          onClick={handleToggle}
-        >
+          onClick={handleToggle}>
           <Avatar sx={{ width: 32, height: 32 }}>W</Avatar>
         </IconButton>
         <Popper
@@ -115,24 +112,20 @@ export default function MenuListComposition() {
           role={undefined}
           placement="bottom-start"
           transition
-          disablePortal
-        >
+          disablePortal>
           {({ TransitionProps, placement }) => (
             <Grow
               {...TransitionProps}
               style={{
-                transformOrigin:
-                  placement === "bottom-start" ? "left top" : "left bottom",
-              }}
-            >
+                transformOrigin: placement === "bottom-start" ? "left top" : "left bottom",
+              }}>
               <Paper>
                 <ClickAwayListener onClickAway={handleClose}>
                   <MenuList
                     autoFocusItem={open}
                     id="composition-menu"
                     aria-labelledby="composition-button"
-                    onKeyDown={handleListKeyDown}
-                  >
+                    onKeyDown={handleListKeyDown}>
                     {navbarProfile?.map((item, index) => {
                       return (
                         <MenuItem
@@ -144,11 +137,8 @@ export default function MenuListComposition() {
                             }
                           }}
                           key={index}
-                          sx={{ alignItems: "center" }}
-                        >
-                          <Box sx={{ marginRight: "5px", marginTop: "5px" }}>
-                            {item.icon}
-                          </Box>
+                          sx={{ alignItems: "center" }}>
+                          <Box sx={{ marginRight: "5px", marginTop: "5px" }}>{item.icon}</Box>
                           <Box>{item.txt}</Box>
                         </MenuItem>
                       );

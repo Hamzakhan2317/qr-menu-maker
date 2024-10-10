@@ -27,7 +27,6 @@ export function MapComponent() {
       sx={{
         height: "450px",
         width: "100%",
-      }}
-    ></Box>
+      }}></Box>
   );
 }

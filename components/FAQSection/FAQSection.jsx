@@ -1,7 +1,5 @@
-import {
-  faqHeadingStyle,
-  faqWrapper,
-} from "@/styles/FAQSectionStyles/FAQSectionStyles";
+/* eslint-disable react/no-unknown-property */
+import { faqHeadingStyle, faqWrapper } from "@/styles/FAQSectionStyles/FAQSectionStyles";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { Box, Container, Grid, Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
@@ -48,8 +46,7 @@ const FeatureSection = () => {
             justifyContent: "center",
             alignItems: "center",
             width: "100%",
-          }}
-        >
+          }}>
           <Grid item lg={12} xs={12} md={12} sm={12}>
             <Box sx={{ textAlign: "center" }}>
               <Typography sx={faqHeadingStyle}>{t("MainHeading")}</Typography>

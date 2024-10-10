@@ -1,5 +1,5 @@
 "use client";
-import { Link, usePathname, useRouter } from "@/navigation";
+import { Link, useRouter } from "@/navigation";
 import { loginSchema } from "@/validations/login/loginSchema";
 import {
   Box,
@@ -12,10 +12,10 @@ import {
 } from "@mui/material";
 import { useFormik } from "formik";
 import { signIn, useSession } from "next-auth/react";
-import { useLocale } from "next-intl";
+// import { useLocale } from "next-intl";
 import NextLink from "next/link";
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
 import { toast } from "sonner";
 import SecondaryNavbar from "../Navbar/SecondaryNavbar";
 import InputField from "../ui/InputField";
@@ -26,13 +26,13 @@ const LoginPage = () => {
 
   const router = useRouter();
   const [passwordVisible, setPasswordVisible] = useState(false);
-  const pathname = usePathname();
-  const locale = useLocale();
-  const dispatch = useDispatch();
-  const [lang, setLang] = useState(locale);
-  const handleChange = (event) => {
-    setLang(event.target.value);
-  };
+  // const pathname = usePathname();
+  // const locale = useLocale();
+  // const dispatch = useDispatch();
+  // const [lang, setLang] = useState(locale);
+  // const handleChange = (event) => {
+  //   setLang(event.target.value);
+  // };
 
   console.log(" LoginPage session>>>>>>>", session);
 
@@ -80,10 +80,8 @@ const LoginPage = () => {
     <Box
       sx={{
         minHeight: "100vh",
-        background:
-          "linear-gradient(to left, rgba(235, 210, 250, 0.3), rgba(245, 235, 250, 0.2))",
-      }}
-    >
+        background: "linear-gradient(to left, rgba(235, 210, 250, 0.3), rgba(245, 235, 250, 0.2))",
+      }}>
       <SecondaryNavbar />
       <Container maxWidth="sm">
         <Box
@@ -92,8 +90,7 @@ const LoginPage = () => {
             justifyContent: "center",
             alignItems: "center",
             marginTop: "10%",
-          }}
-        >
+          }}>
           <Box
             sx={{
               marginTop: "1rem",
@@ -106,24 +103,21 @@ const LoginPage = () => {
                 "0 9px 28px 8px rgba(0, 0, 0, 0.05), 0 6px 16px rgba(0, 0, 0, 0.08), 0 3px 6px -4px rgba(0, 0, 0, 0.12)",
               position: "relative",
               zIndex: 1,
-            }}
-          >
+            }}>
             <Box
               sx={{
                 marginBottom: 3,
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
-              }}
-            >
+              }}>
               <Typography
                 sx={{
                   fontSize: "1.5rem",
                   fontWeight: "700",
                   mb: 2,
                   fontFamily: "Nunito Sans",
-                }}
-              >
+                }}>
                 Log in to your account
               </Typography>
             </Box>
@@ -193,8 +187,7 @@ const LoginPage = () => {
                     label={
                       <Typography
                         color="#757575"
-                        sx={{ fontSize: "0.875rem", fontFamily: "Nunito Sans" }}
-                      >
+                        sx={{ fontSize: "0.875rem", fontFamily: "Nunito Sans" }}>
                         remember me
                       </Typography>
                     }
@@ -211,17 +204,12 @@ const LoginPage = () => {
                       "&:hover": {
                         color: "#AE83EA",
                       },
-                    }}
-                  >
+                    }}>
                     Forgot Password?
                   </Link>
                 </Grid>
               </Grid>
-              <ButtonComp
-                onClick={formik.handleSubmit}
-                width="100%"
-                text="Login"
-              />
+              <ButtonComp onClick={formik.handleSubmit} width="100%" text="Login" />
             </Box>
             <Box sx={{ display: "flex", alignItems: "center", mb: 2.5 }}>
               <Divider sx={{ flex: 1 }} />
@@ -233,8 +221,7 @@ const LoginPage = () => {
                   textDecoration: "none",
                   padding: "0 5px",
                   fontSize: "14px",
-                }}
-              >
+                }}>
                 Login with phone
               </Link>
               <Divider sx={{ flex: 1 }} />
@@ -251,13 +238,8 @@ const LoginPage = () => {
                 left: 0,
                 right: 0,
                 zIndex: 1,
-              }}
-            >
-              <Typography
-                variant="body2"
-                color="#605F62"
-                sx={{ fontFamily: "Nunito Sans" }}
-              >
+              }}>
+              <Typography variant="body2" color="#605F62" sx={{ fontFamily: "Nunito Sans" }}>
                 Don&apos;t have an account?{" "}
                 <Link
                   component={NextLink}
@@ -267,8 +249,7 @@ const LoginPage = () => {
                     color: "#cb6fe5",
                     textDecoration: "none",
                     fontFamily: "Nunito Sans",
-                  }}
-                >
+                  }}>
                   Sign up
                 </Link>
               </Typography>
@@ -281,25 +262,18 @@ const LoginPage = () => {
             justifyContent: "center",
             textAlign: "center",
             paddingBottom: "0px",
-          }}
-        >
+          }}>
           <Typography
             color="#cb6fe5"
             variant="body2"
-            sx={{ mx: 2, fontSize: "12px", fontFamily: "Nunito Sans" }}
-          >
+            sx={{ mx: 2, fontSize: "12px", fontFamily: "Nunito Sans" }}>
             Terms of Service
           </Typography>
-          <Divider
-            orientation="vertical"
-            flexItem
-            sx={{ borderColor: "#ccc", mx: 1 }}
-          />
+          <Divider orientation="vertical" flexItem sx={{ borderColor: "#ccc", mx: 1 }} />
           <Typography
             color="#cb6fe5"
             variant="body2"
-            sx={{ mx: 2, fontSize: "12px", fontFamily: "Nunito Sans" }}
-          >
+            sx={{ mx: 2, fontSize: "12px", fontFamily: "Nunito Sans" }}>
             Privacy Policy
           </Typography>
         </Box>

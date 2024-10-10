@@ -23,8 +23,7 @@ const DisplayScreen = () => {
             sm: "column-reverse",
             lg: "row",
           },
-        }}
-      >
+        }}>
         <Grid item lg={6} sm={12} xs={12}>
           <Box
             sx={{
@@ -33,17 +32,15 @@ const DisplayScreen = () => {
               alignItems: "center",
               justifyContent: "center",
               flexDirection: "column",
-            }}
-          >
+            }}>
             <Box sx={{ width: "100%", mb: "20px" }}>
               <Typography sx={displaySectionTextHeadingStyles}>
                 Transform Your Guests’ Experience
               </Typography>
               <Typography sx={displaySectionTextStyles}>
-                Enhance the visual appeal of your restaurant with our exquisite
-                and fully customizable menu solutions. Create a delightful
-                dining experience that excites your diners and brings your
-                culinary vision and brand to life
+                Enhance the visual appeal of your restaurant with our exquisite and fully
+                customizable menu solutions. Create a delightful dining experience that excites your
+                diners and brings your culinary vision and brand to life
               </Typography>
             </Box>
             <Box sx={{ width: "100%" }}>
@@ -51,10 +48,9 @@ const DisplayScreen = () => {
                 Promote Guest Well-Being and Drive Value
               </Typography>
               <Typography sx={displaySectionTextStyles}>
-                You can take further steps to protect your guests using
-                Garsonline. Provide them with allergen, calorie, and nutritional
-                information for each dish to assist them in choosing safely.
-                Combine aesthetics with information to drive up to 40% in order
+                You can take further steps to protect your guests using Garsonline. Provide them
+                with allergen, calorie, and nutritional information for each dish to assist them in
+                choosing safely. Combine aesthetics with information to drive up to 40% in order
                 value.
               </Typography>
             </Box>
@@ -64,8 +60,7 @@ const DisplayScreen = () => {
                 display: "flex",
                 my: "20px",
                 flexWrap: "wrap",
-              }}
-            >
+              }}>
               <Box
                 sx={{
                   marginRight: {
@@ -78,8 +73,7 @@ const DisplayScreen = () => {
                     md: "0px",
                     sx: "0px",
                   },
-                }}
-              >
+                }}>
                 <ButtonComp variant="light" text={"Dine-in QR Menu →"} />
               </Box>
               <Box>
@@ -96,8 +90,7 @@ const DisplayScreen = () => {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-            }}
-          >
+            }}>
             <Box sx={tabSectionImageStyles}>
               <Image
                 src={displayImage}

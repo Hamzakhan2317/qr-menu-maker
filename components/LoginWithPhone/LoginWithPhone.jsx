@@ -1,14 +1,7 @@
 "use client";
 
-import {
-  Box,
-  Container,
-  Divider,
-  MenuItem,
-  Select,
-  Typography,
-} from "@mui/material";
-import { useFormik } from "formik";
+import { Box, Container, Divider, Typography } from "@mui/material";
+// import { useFormik } from "formik";
 import { signIn } from "next-auth/react";
 import NextLink from "next/link";
 // import { useRouter } from "next/navigation";
@@ -16,29 +9,33 @@ import { useState } from "react";
 import { toast } from "sonner";
 import ButtonComp from "../ui/button";
 
-import { Link, usePathname, useRouter } from "@/navigation";
-import { useLocale } from "next-intl";
-import Image from "next/image";
+import {
+  Link,
+  // usePathname,
+  useRouter,
+} from "@/navigation";
+// import { useLocale } from "next-intl";
+// import Image from "next/image";
 import AuthCode from "react-auth-code-input";
 import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
 import "react-phone-number-input/style.css";
-import trFlag from "../../public/assets/images/turkeyflag.jpg";
-import usaflag from "../../public/assets/images/usaflag.png";
+// import trFlag from "../../public/assets/images/turkeyflag.jpg";
+// import usaflag from "../../public/assets/images/usaflag.png";
 import SecondaryNavbar from "../Navbar/SecondaryNavbar";
 
 const LoginWithPhone = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [phone, setPhone] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
+  // const [phone, setPhone] = useState("");
   const [otp, setOTP] = useState("");
   const [isOTPSent, setIsOTPSent] = useState(false);
-  const [usePhoneLogin, setUsePhoneLogin] = useState(false);
-  const pathname = usePathname();
-  const locale = useLocale();
-  const [lang, setLang] = useState(locale);
-  const handleChange = (event) => {
-    setLang(event.target.value);
-  };
+  // const [usePhoneLogin, setUsePhoneLogin] = useState(false);
+  // const pathname = usePathname();
+  // const locale = useLocale();
+  // const [lang, setLang] = useState(locale);
+  // const handleChange = (event) => {
+  //   setLang(event.target.value);
+  // };
 
   const [number, setNumber] = useState("");
 
@@ -92,7 +89,6 @@ const LoginWithPhone = () => {
       otp,
     });
 
-
     if (result.error) {
       toast.error(result.error, { id: toastId });
     } else {
@@ -102,15 +98,15 @@ const LoginWithPhone = () => {
     }
   };
 
-  const formik = useFormik({
-    initialValues: {
-      email: "",
-      password: "",
-    },
-    onSubmit: async (values) => {
-      handleLogin(values);
-    },
-  });
+  // const formik = useFormik({
+  //   initialValues: {
+  //     email: "",
+  //     password: "",
+  //   },
+  //   onSubmit: async (values) => {
+  //     handleLogin(values);
+  //   },
+  // });
   const handleOnOtpChange = (otp) => {
     setOTP(otp);
   };
@@ -119,10 +115,8 @@ const LoginWithPhone = () => {
     <Box
       sx={{
         minHeight: "100vh",
-        background:
-          "linear-gradient(to left, rgba(235, 210, 250, 0.3), rgba(245, 235, 250, 0.2))",
-      }}
-    >
+        background: "linear-gradient(to left, rgba(235, 210, 250, 0.3), rgba(245, 235, 250, 0.2))",
+      }}>
       <SecondaryNavbar />
       <Container maxWidth="sm">
         <Box
@@ -131,8 +125,7 @@ const LoginWithPhone = () => {
             justifyContent: "center",
             alignItems: "center",
             marginTop: "10%",
-          }}
-        >
+          }}>
           <Box
             component="main"
             sx={{
@@ -146,33 +139,27 @@ const LoginWithPhone = () => {
                 "0 9px 28px 8px rgba(0, 0, 0, 0.05), 0 6px 16px rgba(0, 0, 0, 0.08), 0 3px 6px -4px rgba(0, 0, 0, 0.12)",
               position: "relative",
               zIndex: 1,
-            }}
-          >
+            }}>
             <Box
               sx={{
                 marginBottom: 3,
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
-              }}
-            >
+              }}>
               <Typography
                 sx={{
                   fontSize: "1.5rem",
                   fontWeight: "700",
                   mb: 2,
                   fontFamily: "Nunito Sans",
-                }}
-              >
+                }}>
                 Log in to your account
               </Typography>
             </Box>
 
             <Box component="form">
-              <Typography
-                variant="body2"
-                sx={{ marginBottom: "10px", fontFamily: "Nunito Sans" }}
-              >
+              <Typography variant="body2" sx={{ marginBottom: "10px", fontFamily: "Nunito Sans" }}>
                 Enter your phone number:
               </Typography>
               <PhoneInput
@@ -189,7 +176,7 @@ const LoginWithPhone = () => {
                 }}
                 disabled={isOTPSent}
                 style={{
-                  border: "none",
+                  // border: "none",
                   outline: "none",
                   color: "black",
                   border: "1px solid #cb6fe5",
@@ -204,8 +191,7 @@ const LoginWithPhone = () => {
                   mt: 1,
                   fontFamily: "Nunito Sans",
                   fontSize: "12px",
-                }}
-              >
+                }}>
                 {number
                   ? isValidPhoneNumber(number)
                     ? undefined
@@ -214,10 +200,7 @@ const LoginWithPhone = () => {
               </Typography>
               {isOTPSent && (
                 <>
-                  <Typography
-                    variant="body2"
-                    sx={{ marginTop: "20px", marginBottom: "10px" }}
-                  >
+                  <Typography variant="body2" sx={{ marginTop: "20px", marginBottom: "10px" }}>
                     Enter OTP Here:
                   </Typography>
                   <AuthCode
@@ -238,12 +221,7 @@ const LoginWithPhone = () => {
                   marginBottom="2.4rem"
                 />
               ) : (
-                <ButtonComp
-                  onClick={sendOTP}
-                  width="100%"
-                  text="Send Otp"
-                  marginBottom="1.5rem"
-                />
+                <ButtonComp onClick={sendOTP} width="100%" text="Send Otp" marginBottom="1.5rem" />
               )}
             </Box>
             <Box sx={{ display: "flex", alignItems: "center", mb: 2.5 }}>
@@ -256,8 +234,7 @@ const LoginWithPhone = () => {
                   textDecoration: "none",
                   padding: "0 5px",
                   fontSize: "14px",
-                }}
-              >
+                }}>
                 Login with email
               </Link>
               <Divider sx={{ flex: 1 }} />
@@ -274,13 +251,8 @@ const LoginWithPhone = () => {
                 left: 0,
                 right: 0,
                 zIndex: 1,
-              }}
-            >
-              <Typography
-                variant="body2"
-                color="#605F62"
-                sx={{ fontFamily: "Nunito Sans" }}
-              >
+              }}>
+              <Typography variant="body2" color="#605F62" sx={{ fontFamily: "Nunito Sans" }}>
                 Don&apos;t have an account?{" "}
                 <Link
                   component={NextLink}
@@ -290,8 +262,7 @@ const LoginWithPhone = () => {
                     color: "#cb6fe5",
                     textDecoration: "none",
                     fontFamily: "Nunito Sans",
-                  }}
-                >
+                  }}>
                   Sign up
                 </Link>
               </Typography>
@@ -305,25 +276,18 @@ const LoginWithPhone = () => {
             alignItems: "center",
             textAlign: "center",
             paddingBottom: "20px",
-          }}
-        >
+          }}>
           <Typography
             color="#cb6fe5"
             variant="body2"
-            sx={{ mx: 2, fontSize: "12px", fontFamily: "Nunito Sans" }}
-          >
+            sx={{ mx: 2, fontSize: "12px", fontFamily: "Nunito Sans" }}>
             Terms of Service
           </Typography>
-          <Divider
-            orientation="vertical"
-            flexItem
-            sx={{ borderColor: "#ccc", mx: 1 }}
-          />
+          <Divider orientation="vertical" flexItem sx={{ borderColor: "#ccc", mx: 1 }} />
           <Typography
             color="#cb6fe5"
             variant="body2"
-            sx={{ mx: 2, fontSize: "12px", fontFamily: "Nunito Sans" }}
-          >
+            sx={{ mx: 2, fontSize: "12px", fontFamily: "Nunito Sans" }}>
             Privacy Policy
           </Typography>
         </Box>

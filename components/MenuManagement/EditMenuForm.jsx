@@ -8,12 +8,7 @@ import { useEffect } from "react";
 import InputField from "../ui/InputField";
 import ButtonComp from "../ui/button";
 
-const EditMenuForm = ({
-  data,
-  refetchMenus,
-  setMenuEditData,
-  setIsDrawerOpen,
-}) => {
+const EditMenuForm = ({ data, refetchMenus, setMenuEditData, setIsDrawerOpen }) => {
   const [editMenu] = useEditMenuMutation();
 
   const handelEditMenu = async (values) => {
@@ -71,8 +66,7 @@ const EditMenuForm = ({
           flexDirection: "row-reverse",
           justifyContent: "flex-end",
           borderBottom: "1px solid #ddd",
-        }}
-      >
+        }}>
         <h3>Edit Menu</h3>
         <IconButton
           color="#000"
@@ -81,16 +75,11 @@ const EditMenuForm = ({
             setIsDrawerOpen(false);
             setMenuEditData(null);
           }}
-          marginRight="5px"
-        >
+          marginRight="5px">
           <CloseIcon />
         </IconButton>
       </Box>
-      <Box
-        sx={{ padding: "10px" }}
-        component="form"
-        onSubmit={formik.handleSubmit}
-      >
+      <Box sx={{ padding: "10px" }} component="form" onSubmit={formik.handleSubmit}>
         <Typography color={"#8338ec"}>Overview</Typography>
         <Grid container spacing={2}>
           <InputField
@@ -131,8 +120,7 @@ const EditMenuForm = ({
             backgroundColor: "#fff",
             height: "60px",
             borderTop: "1px solid #E5E5E5",
-          }}
-        >
+          }}>
           <Box>
             <ButtonComp
               text="Cancel"

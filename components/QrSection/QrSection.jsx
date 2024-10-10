@@ -9,17 +9,12 @@ import { useTranslations } from "next-intl";
 import Image from "next/image";
 import ButtonComp from "../../components/ui/button";
 import qrImage from "../../public/assets/images/qrimage.webp";
-import {toast} from "sonner"
-
 
 const QrSection = () => {
   const t = useTranslations("Home.Qr");
 
-  
-
   return (
     <Box sx={QrSectionWrapper}>
-
       <Container maxWidth="xl">
         <Grid container spacing={3} sx={{ height: "100%" }}>
           <Grid item lg={6} md={6} sm={12} xs={12}>
@@ -30,8 +25,7 @@ const QrSection = () => {
                 alignItemsCenter: "center",
                 flexDirection: "column",
                 height: "100%",
-              }}
-            >
+              }}>
               <Box sx={ButtonGroupStyles}>
                 <Box>
                   <ButtonComp text={"New Product"} variant="blue" />
@@ -44,16 +38,13 @@ const QrSection = () => {
                 <Typography sx={mainSectionTextStyle}>{t("Title")}</Typography>
               </Box>
               <Box>
-                <Typography sx={mainSectionParagraphStyle}>
-                  {t("Subtitle")}
-                </Typography>
+                <Typography sx={mainSectionParagraphStyle}>{t("Subtitle")}</Typography>
               </Box>
               <Box sx={{ display: "flex" }}>
                 <Box
                   sx={{
                     width: { xs: "100%", lg: "auto", sm: "auto" },
-                  }}
-                >
+                  }}>
                   <ButtonComp
                     sx={{
                       width: {
@@ -68,7 +59,6 @@ const QrSection = () => {
                     }}
                     text={t("Button")}
                   />
-
                 </Box>
               </Box>
             </Box>
@@ -86,8 +76,7 @@ const QrSection = () => {
                   xl: "500px",
                   sm: "500px",
                 },
-              }}
-            >
+              }}>
               <Image
                 alt="qrImage"
                 src={qrImage}

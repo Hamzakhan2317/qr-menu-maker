@@ -59,8 +59,7 @@ function Navbar(props) {
           justifyContent: "space-between",
           alignItems: "center",
           padding: "20px 24px",
-        }}
-      >
+        }}>
         <Link href="/" style={{ width: "100%" }}>
           {/* <LogoSvg width="140" height="38" /> */}
           <Image
@@ -78,8 +77,7 @@ function Navbar(props) {
             alignItems: "center",
             display: "flex",
             justifyContent: "center",
-          }}
-        >
+          }}>
           <IconButton color="inherit" sx={{ display: { sm: "none" } }}>
             <CloseIcon style={{ color: theme.palette.primary.main }} />
           </IconButton>
@@ -95,8 +93,7 @@ function Navbar(props) {
                 fontFamily: "Nunito Sans",
               }}
               component={Link}
-              href={item.href}
-            >
+              href={item.href}>
               <ListItemText primary={item.name} />
             </ListItemButton>
           </ListItem>
@@ -122,8 +119,7 @@ function Navbar(props) {
               "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
                 borderColor: "#ccc",
               },
-            }}
-          >
+            }}>
             <MenuItem value={"en"}>
               <Link
                 style={{
@@ -133,8 +129,7 @@ function Navbar(props) {
                   fontFamily: "Nunito Sans",
                 }}
                 href={pathname}
-                locale="en"
-              >
+                locale="en">
                 <Box sx={{ display: "flex", alignItems: "center" }}>
                   <Image
                     alt="usaflag"
@@ -158,8 +153,7 @@ function Navbar(props) {
                   fontFamily: "Nunito Sans",
                 }}
                 href={pathname}
-                locale="tr"
-              >
+                locale="tr">
                 <Box sx={{ display: "flex", alignItems: "center" }}>
                   <Image
                     alt="trFlag"
@@ -194,8 +188,7 @@ function Navbar(props) {
     </Box>
   );
 
-  const container =
-    window !== undefined ? () => window().document.body : undefined;
+  const container = window !== undefined ? () => window().document.body : undefined;
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -207,15 +200,13 @@ function Navbar(props) {
           background: "#fff",
           boxShadow: "rgba(0, 0, 0, 0.05) 0px 0px 0px 1px",
           padding: "15px 0px",
-        }}
-      >
+        }}>
         <Toolbar
           sx={{
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-          }}
-        >
+          }}>
           <Grid container>
             <Grid item lg={2} md={9} xs={12} sm={9}>
               <Box
@@ -234,12 +225,8 @@ function Navbar(props) {
                     md: "0px",
                     sm: "0px",
                   },
-                }}
-              >
-                <Link
-                  href="/"
-                  style={{ display: "flex", alignItems: "center" }}
-                >
+                }}>
+                <Link href="/" style={{ display: "flex", alignItems: "center" }}>
                   {/* <LogoSvg width="158px" height="36" /> */}
                   <Image
                     alt="logo"
@@ -257,16 +244,14 @@ function Navbar(props) {
               lg={7}
               sx={{
                 display: { xs: "none", sm: "none", md: "none", lg: "block" },
-              }}
-            >
+              }}>
               <Box
                 sx={{
                   display: "flex",
                   justifyContent: "start",
                   alignItems: "center",
                   height: "100%",
-                }}
-              >
+                }}>
                 <Box>
                   {navItems.map((item) => (
                     <Link
@@ -281,8 +266,7 @@ function Navbar(props) {
                         fontWeight: "600",
                         fontSize: "16px",
                         padding: "0px 10px",
-                      }}
-                    >
+                      }}>
                       {item.name}
                     </Link>
                   ))}
@@ -299,16 +283,14 @@ function Navbar(props) {
                   },
                   alignItems: "center",
                   height: "100%",
-                }}
-              >
+                }}>
                 <Box
                   sx={{
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
                     height: "100%",
-                  }}
-                >
+                  }}>
                   <Box
                     sx={{
                       width: "100%",
@@ -317,8 +299,7 @@ function Navbar(props) {
                         lg: "flex",
                         xs: "none",
                       },
-                    }}
-                  >
+                    }}>
                     <Box sx={{ marginRight: "10px" }}>
                       <ButtonComp
                         onClick={() => router.push("/login")}
@@ -355,8 +336,7 @@ function Navbar(props) {
                           "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
                             borderColor: "#ccc",
                           },
-                        }}
-                      >
+                        }}>
                         <MenuItem value={"en"}>
                           <Link
                             style={{
@@ -366,8 +346,7 @@ function Navbar(props) {
                               fontFamily: "Nunito Sans",
                             }}
                             href={pathname}
-                            locale="en"
-                          >
+                            locale="en">
                             <Box sx={{ display: "flex", alignItems: "center" }}>
                               <Image
                                 alt="usaflag"
@@ -391,8 +370,7 @@ function Navbar(props) {
                               fontFamily: "Nunito Sans",
                             }}
                             href={pathname}
-                            locale="tr"
-                          >
+                            locale="tr">
                             <Box sx={{ display: "flex", alignItems: "center" }}>
                               <Image
                                 alt="trFlag"
@@ -417,15 +395,13 @@ function Navbar(props) {
                     display: "flex",
                     justifyContent: "end",
                     alignItems: "center",
-                  }}
-                >
+                  }}>
                   <IconButton
                     color="inherit"
                     aria-label="open drawer"
                     edge="start"
                     onClick={handleDrawerToggle}
-                    sx={{ display: { sm: "block", md: "block", lg: "none" } }}
-                  >
+                    sx={{ display: { sm: "block", md: "block", lg: "none" } }}>
                     <MenuIcon style={{ color: "#1f2937" }} />
                   </IconButton>
                 </Box>
@@ -449,8 +425,7 @@ function Navbar(props) {
               width: drawerWidth,
               height: "100%",
             },
-          }}
-        >
+          }}>
           {drawer}
         </Drawer>
       </nav>

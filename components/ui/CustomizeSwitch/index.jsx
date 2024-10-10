@@ -66,12 +66,10 @@ const CustomSwitch = styled((props) => (
   },
 }));
 
-export default function CustomizedSwitch({value = true, onChange}) {
+export default function CustomizedSwitch({ value = true, onChange }) {
   return (
     <FormGroup>
-      <FormControlLabel
-        control={<CustomSwitch checked={value} onChange={onChange} />}
-      />
+      <FormControlLabel control={<CustomSwitch checked={value} onChange={onChange} />} />
     </FormGroup>
   );
 }

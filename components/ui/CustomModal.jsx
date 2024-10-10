@@ -1,5 +1,5 @@
 import CloseIcon from "@mui/icons-material/Close";
-import { Box, IconButton, Slide, useTheme } from "@mui/material";
+import { Box, IconButton, Slide } from "@mui/material";
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
@@ -19,7 +19,7 @@ const CustomModal = ({
   maxWidth = "md",
   fullWidth = false,
 }) => {
-  const theme = useTheme();
+  // const theme = useTheme();
   const handleClose = () => {
     setOpen(false);
   };
@@ -40,8 +40,7 @@ const CustomModal = ({
           borderTopLeftRadius: "8px",
           borderTopRightRadius: "8px",
         },
-      }}
-    >
+      }}>
       <DialogTitle
         id="scroll-dialog-title"
         sx={{
@@ -53,8 +52,7 @@ const CustomModal = ({
           fontWeight: "500",
           borderTopLeftRadius: "8px",
           borderTopRightRadius: "8px",
-        }}
-      >
+        }}>
         {title}
         <Box
           onClick={handleClose}
@@ -65,8 +63,7 @@ const CustomModal = ({
             cursor: "pointer",
             backgroundColor: "#ffffff",
             borderRadius: "100px",
-          }}
-        >
+          }}>
           <IconButton onClick={handleClose} marginRight="5px">
             <CloseIcon />
           </IconButton>
@@ -79,8 +76,7 @@ const CustomModal = ({
           padding: "1px 10px",
           minWidth: 500,
           minHeight: { minHeight },
-        }}
-      >
+        }}>
         <Box p={1}>{children}</Box>
       </DialogContent>
     </Dialog>
