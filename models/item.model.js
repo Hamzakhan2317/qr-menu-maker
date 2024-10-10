@@ -7,7 +7,7 @@ const itemSchema = new mongoose.Schema(
     price: { type: Number, required: true },
     section: { type: mongoose.Schema.Types.ObjectId, ref: "Section", required: true }, // Reference to the menu
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 const Item = mongoose.models.Item || mongoose.model("Item", itemSchema);
