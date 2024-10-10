@@ -8,11 +8,12 @@ import ButtonComp from "../ui/button";
 import { itemSchema } from "@/validations/section/itemSchema";
 import { useFormik } from "formik";
 import { toast } from "sonner";
-import { useRegisterItemMutation } from "@/redux/services/api/itemApis";
+import { useEditItemMutation, useRegisterItemMutation } from "@/redux/services/api/itemApis";
 
-export default function ItemRightDrawer({ sectionId, onClose }) {
+export default function ItemRightDrawer({ sectionId, onClose, itemData }) {
   const [registerItem] = useRegisterItemMutation();
-
+  const [editItem] = useEditItemMutation();
+  const isEdit = Object.keys(itemData).length !== 0;
   const handelregisterItem = async (values) => {
     try {
       const resp = await registerItem({
@@ -29,17 +30,35 @@ export default function ItemRightDrawer({ sectionId, onClose }) {
       console.log("error>>>>>", error);
     }
   };
+
+  const handleItemUpdate = async (values) => {
+    try {
+      const resp = await editItem({
+        item_id: itemData.item_id,
+        ...values,
+      }).unwrap();
+
+      if (resp) {
+        toast.success(resp?.message || "Item Updated successfully");
+        onClose();
+        formik.resetForm();
+      }
+    } catch (error) {
+      console.log("error>>>>>", error);
+    }
+  };
+
   const formik = useFormik({
     initialValues: {
-      name: "",
-      description: "",
-      price: "",
+      name: itemData?.name || "",
+      description: itemData?.description || "",
+      price: itemData?.price || "",
     },
     validationSchema: itemSchema,
     onSubmit: async (values) => {
-      console.log("values>>>>>>>>>", values);
-      handelregisterItem(values);
+      isEdit ? handleItemUpdate(values) : handelregisterItem(values);
     },
+    enableReinitialize: true,
   });
 
   return (

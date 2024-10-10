@@ -6,9 +6,13 @@ const itemApis = api.injectEndpoints({
   endpoints: (builder) => ({
     registerItem: builder.mutation({
       query: (data) => ({ url: `/item`, method: "POST", body: data }),
-      invalidatesTags: ['section'], // Invalidates 'section' when a new item is added
+      invalidatesTags: ["section"], // Invalidates 'section' when a new item is added
     }),
+    editItem: builder.mutation({
+      query: (data) => ({ url: `/item`, method: "PUT", body: data }),
+    }),
+    // updates
   }),
 });
 
-export const { useRegisterItemMutation } = itemApis;
+export const { useRegisterItemMutation, useEditItemMutation } = itemApis;

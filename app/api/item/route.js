@@ -34,6 +34,29 @@ export async function POST(req) {
     );
   }
 }
+export async function PUT(req) {
+  console.log("Request received to update item"); // Added log
+
+  const { name, description, price, itemId } = await req.json();
+
+  try {
+    await connectDB();
+
+    if (![name, price, itemId].every(Boolean)) {
+      return NextResponse.json({ message: "Please fill all inputs!" }, { status: 400 });
+    }
+
+    const item = await Menu.findByIdAndUpdate(itemId, { name, description, price });
+
+    if (!item) {
+      return NextResponse.json({ message: "Menu not found" }, { status: 404 });
+    }
+
+    return NextResponse.json({ message: "Menu updated successfully", item }, { status: 200 });
+  } catch (error) {
+    return NextResponse.json({ message: error?.message || "Error updating menu" }, { status: 500 });
+  }
+}
 
 // // Get all items for a menu
 // exports.getItemsForMenu = async (req, res) => {
