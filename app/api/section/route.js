@@ -1,7 +1,8 @@
+/* eslint-disable no-unused-vars */
 import connectDB from "@/db/mongodb";
 import Menu from "@/models/menu.model";
 import Section from "@/models/section.model";
-// import Item from "@/models/item.model";
+import Item from "@/models/item.model";
 
 import { NextResponse } from "next/server";
 
