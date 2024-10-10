@@ -34,8 +34,6 @@ const LoginPage = () => {
   //   setLang(event.target.value);
   // };
 
-  console.log(" LoginPage session>>>>>>>", session);
-
   const handleLogin = async ({ email, password }) => {
     const toastId = toast.loading("Login user...");
 
@@ -47,12 +45,10 @@ const LoginPage = () => {
         // callbackUrl: process.env.NEXTAUTH_URL
       });
 
-      // console.log("Resp>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", res)
       if (res?.error) {
         toast.error("Invalid email or password", { id: toastId });
       }
       if (res?.ok) {
-        console.log("session?.user?._id>>>>>", session?.user?._id);
         toast.success("Login successfully", { id: toastId });
       }
     } catch (error) {

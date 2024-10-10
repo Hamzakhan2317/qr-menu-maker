@@ -204,9 +204,10 @@
 // const handler = NextAuth(authOptions);
 
 // export { handler as GET, handler as POST };
-
+/* eslint-disable no-unused-vars */
 import connectDB from "@/db/mongodb";
 import User from "@/models/user.model";
+import Restaurant from "@/models/restaurent.model";
 import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
 // import { sendOTP, verifyOTP } from "@/utils/twilio";
@@ -237,7 +238,6 @@ export const authOptions = {
           if (!user || !(await user.matchesPassword(credentials.password)))
             throw new Error("Invalid email or password.");
 
-          console.log("user>>>>>>>>>>>>>>>>>>>>", user);
           // if (!user) {
           //   throw new Error("No user found with this email.");
           // }
