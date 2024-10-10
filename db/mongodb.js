@@ -23,7 +23,7 @@ const connectDB = async () => {
     console.error("Error connecting to MongoDB:", error.message);
     if (error.message.includes("ETIMEOUT")) {
       console.error(
-        "The connection attempt timed out. This might be due to network issues or incorrect MongoDB URI."
+        "The connection attempt timed out. This might be due to network issues or incorrect MongoDB URI.",
       );
     }
     throw new Error("MongoDB connection failed");

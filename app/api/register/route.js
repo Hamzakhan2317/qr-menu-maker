@@ -2,6 +2,7 @@ import connectDB from "@/db/mongodb";
 import User from "@/models/user.model";
 import Restaurent from "@/models/restaurent.model";
 import { NextResponse } from "next/server";
+import { sendOTP } from "@/utils/otpService/sendOTP";
 
 export async function POST(req) {
   const { email, phone, password } = await req.json();
@@ -32,6 +33,8 @@ export async function POST(req) {
     if (!savedUser) {
       return NextResponse.json({ message: "Failed to create user" }, { status: 400 });
     }
+    console.log("usercreateda");
+    await sendOTP(phone);
     const newRestaurent = new Restaurent({
       name: "Garsonline",
       owner: savedUser._id,

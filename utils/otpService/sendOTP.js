@@ -22,30 +22,29 @@ export async function sendOTP(phone) {
   //   // Throw a new error with a custom message or use the error from Twilio
   //   throw new Error(error.message || "Failed to send OTP. Please try again.");
   // }
-
+  console.log("useris here in otp");
   try {
     const otp = Math.floor(100000 + Math.random() * 900000).toString();
     // Call to Verimor SMS API to send the OTP
-     await axios.post(
-      "https://sms.verimor.com.tr/v2/send.json",
-      {
-        username: "908502419412",
-        password: "muzaffertest",
-        source_addr: "08502419412", 
-        messages: [
-          {
-            msg: `Your OTP is: ${otp}`,
-            dest: phone,
-          },
-        ],
-      }
-    );
-
+    console.log("sending topt", otp);
+    await axios.post("https://sms.verimor.com.tr/v2/send.json", {
+      username: "908502419412",
+      password: "muzaffertest",
+      source_addr: "08502419412",
+      messages: [
+        {
+          msg: `Your OTP is: ${otp}`,
+          dest: phone,
+        },
+      ],
+    });
+    console.log("sentotp");
     const updated = await User.findOneAndUpdate(
       { phone },
       { otpCode: otp, otpExpiry: Date.now() + 5 * 60 * 1000 },
-      { new: true }
+      { new: true },
     );
+    console.log("updated otpuser");
     if (!updated) throw new Error("An error occured while updating data ");
     // return response;
     return true;

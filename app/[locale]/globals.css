@@ -32,6 +32,11 @@ p {
   justify-content: space-between;
   margin: 0 100px;
 }
+
+.signupotp {
+  margin-bottom: 10px;
+}
+
 .otpinput {
   width: 25px;
   height: 25px;
@@ -86,4 +91,9 @@ p {
 
 .MuiListItem-root .MuiListItemText-root span {
   color: #000 !important;
+}
+
+.react-international-phone-country-selector-button {
+  border: none !important;
+  background-color: transparent !important;
 }

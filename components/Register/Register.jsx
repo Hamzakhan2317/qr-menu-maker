@@ -15,18 +15,25 @@ import { useFormik } from "formik";
 import Image from "next/image";
 import NextLink from "next/link";
 import { useState } from "react";
-import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
-import "react-phone-number-input/style.css";
+import { PhoneInput } from "react-international-phone";
+import "react-international-phone/style.css";
 import { toast } from "sonner";
 import InputField from "../ui/InputField";
 import ButtonComp from "../ui/button";
 import SignUpLogo from "/public/SignUpImg.webp";
 import SecondaryNavbar from "../Navbar/SecondaryNavbar";
-import { useRegisterMutation } from "@/redux/services/api/authApis";
+import {
+  useRegisterMutation,
+  useResendOTPMutation,
+  useVerifyOTPMutation,
+} from "@/redux/services/api/authApis";
+import AuthCode from "react-auth-code-input";
 
 const LoginPage = () => {
   // const pathname = usePathname();
   const [passwordVisible, setPasswordVisible] = useState(false);
+  const [otpValue, setOTPValue] = useState("");
+  const [isOTPSent, setIsOTPSent] = useState(true);
   // const locale = useLocale();
   // const [lang, setLang] = useState(locale);
   // const handleChange = (event) => {
@@ -34,18 +41,28 @@ const LoginPage = () => {
   // };
   const router = useRouter();
   const [register] = useRegisterMutation();
+  const [verifyOTP] = useVerifyOTPMutation();
+  const [resendOTP] = useResendOTPMutation();
 
   const handelSignup = async (values) => {
     try {
+      // const toastId = toast.loading("Please wait...");
       const resp = await register({
         ...values,
         phone: values?.phone.replace("+", ""),
       }).unwrap();
 
       console.log("resp>>>>>", resp);
+      // if (errorData.status === "otp_sent") {
+      //   setIsOTPSent(true);
+      //   toast.success(errorData.message, { id: toastId });
+      // } else {
+      //   console.error(errorData.message);
+      //   toast.error(errorData.message, { id: toastId });
+      // }
       if (resp) {
         toast.success(resp?.message || "User register successfully");
-        router.push("/login");
+        setIsOTPSent(true);
       }
     } catch (error) {
       console.log("error>>>>>", error);
@@ -59,15 +76,48 @@ const LoginPage = () => {
       password: "",
     },
     validationSchema: signupSchema,
-    onSubmit: async (values) => {
-      const isValidPhone = isValidPhoneNumber(values?.phone);
-      if (isValidPhone) {
-        handelSignup(values);
-      } else {
-        toast.error("Invalid phone number");
-      }
-    },
+    onSubmit: async (values) => handelSignup(values),
   });
+  const handleVerifyOTP = async () => {
+    const phoneValue = formik?.values?.phone;
+    try {
+      if (phoneValue) {
+        const resp = await verifyOTP({
+          phone: phoneValue.replace("+", ""), // Send phone and OTP for verification
+          otp: otpValue,
+        }).unwrap();
+
+        console.log("OTP verification response>>>>>", resp);
+        if (resp) {
+          // toast.success(resp?.message || "OTP verified. Registration complete.");
+          router.push("/login");
+        }
+      }
+    } catch (error) {
+      // console.log("OTP verification error>>>>>", error);
+      // toast.error(error?.message || "OTP verification failed. Please try again.");
+    }
+  };
+  const handleResendOTP = async () => {
+    const phoneValue = formik?.values?.phone;
+    try {
+      if (phoneValue) {
+        const resp = await resendOTP({
+          phone: phoneValue.replace("+", ""), // Send phone and OTP for verification
+          otp: otpValue,
+        }).unwrap();
+
+        console.log("OTP verification response>>>>>", resp);
+        if (resp) {
+          // toast.success(resp?.message || "OTP verified. Registration complete.");
+          router.push("/login");
+        }
+      }
+    } catch (error) {
+      // console.log("OTP verification error>>>>>", error);
+      // toast.error(error?.message || "OTP verification failed. Please try again.");
+    }
+  };
   return (
     <Box
       sx={{
@@ -155,94 +205,130 @@ const LoginPage = () => {
                   }}>
                   No credit card required.
                 </Typography>
-                <InputField
-                  sx={{
-                    marginBottom: "5px",
-                    "& .MuiOutlinedInput-root": {
-                      "&:hover fieldset": {
-                        borderColor: "#cb6fe5",
-                      },
-                      "&.Mui-focused fieldset": {
-                        borderColor: "#cb6fe5",
-                      },
-                    },
-                  }}
-                  Placeholder="E-Mail"
-                  height="2.5rem"
-                  cols="12"
-                  paddingLeft="7px"
-                  backgroundColor="#fff"
-                  variant="outlined"
-                  name="email"
-                  formik={formik}
-                />
+                {isOTPSent ? (
+                  <>
+                    <Typography variant="body2" sx={{ paddingBottom: "10px" }}>
+                      Enter OTP Here:
+                    </Typography>
+                    <AuthCode
+                      allowedCharacters="numeric"
+                      onChange={(otp) => setOTPValue(otp)}
+                      inputClassName="otpinput"
+                      containerClassName="otpcontainer signupotp"
+                      length={6}
+                    />
+                    <Typography
+                      variant="body2"
+                      color="#605F62"
+                      sx={{
+                        fontFamily: "Nunito Sans",
+                        textAlign: "right",
+                      }}>
+                      OTP Expired?{" "}
+                      <span
+                        style={{ color: "#cb6fe5", cursor: "pointer" }}
+                        onClick={handleResendOTP}>
+                        {" "}
+                        Request a New One.
+                      </span>
+                    </Typography>
+                  </>
+                ) : (
+                  <>
+                    <InputField
+                      sx={{
+                        marginBottom: "5px",
+                        "& .MuiOutlinedInput-root": {
+                          "&:hover fieldset": {
+                            borderColor: "#cb6fe5",
+                          },
+                          "&.Mui-focused fieldset": {
+                            borderColor: "#cb6fe5",
+                          },
+                        },
+                      }}
+                      Placeholder="E-Mail"
+                      height="2.5rem"
+                      cols="12"
+                      paddingLeft="7px"
+                      backgroundColor="#fff"
+                      variant="outlined"
+                      name="email"
+                      formik={formik}
+                    />
 
-                <PhoneInput
-                  className="enter-phone-input-class"
-                  value={formik.values.phone}
-                  onChange={(value) => {
-                    formik.setFieldValue("phone", value);
-                  }}
-                  placeholder="Enter phone number"
-                  required
-                  international
-                  defaultCountry="TR"
-                  inputExtraProps={{
-                    name: "phone",
-                    required: true,
-                    autoFocus: true,
-                  }}
-                  style={{
-                    background: "#fff",
-                    outline: "none",
-                    color: "black",
-                    border: `1px solid ${formik.errors.phone ? "red" : "#C4C4C4"}`,
-                    // border: "1px solid #C4C4C4" ,
-                    padding: "8px",
-                    borderRadius: "4px",
-                    marginBottom: "5px",
-                  }}
-                />
-                {formik.errors.phone && (
-                  <Typography
-                    sx={{
-                      mt: -1,
-                      color: "red",
-                      fontSize: "12px",
-                      ml: 2,
-                      mb: 0.5,
-                    }}>
-                    {formik.errors.phone}
-                  </Typography>
+                    <PhoneInput
+                      value={formik.values.phone}
+                      onChange={(value) => {
+                        formik.setFieldValue("phone", value);
+                      }}
+                      onBlur={formik.handleBlur}
+                      placeholder="Enter phone number"
+                      required
+                      name="phone"
+                      defaultCountry="tr"
+                      style={{
+                        background: "none",
+                        outline: "none",
+                        color: "black",
+                        border: `1px solid ${formik.touched.phone && formik.errors.phone ? "red" : "#C4C4C4"}`,
+                        borderRadius: "4px",
+                        marginBottom: "5px",
+                        height: "56px",
+                        padding: "10px",
+                        alignItems: "center",
+                      }}
+                      inputStyle={{
+                        width: "100%",
+                        border: "none",
+                        fontSize: "16px",
+                        background: "none",
+                      }}
+                    />
+                    {formik.touched.phone && formik.errors.phone && (
+                      <Typography
+                        sx={{
+                          mt: -1,
+                          color: "red",
+                          fontSize: "12px",
+                          ml: 2,
+                          mb: 0.5,
+                        }}>
+                        {formik.errors.phone}
+                      </Typography>
+                    )}
+                    <InputField
+                      sx={{
+                        marginBottom: "15px",
+                        paddingLeft: "0px",
+                        "& .MuiOutlinedInput-root": {
+                          "&:hover fieldset": {
+                            borderColor: "#cb6fe5",
+                          },
+                          "&.Mui-focused fieldset": {
+                            borderColor: "#cb6fe5",
+                          },
+                        },
+                      }}
+                      Placeholder="Password"
+                      height="2.5rem"
+                      backgroundColor="#fff"
+                      cols="12"
+                      icon
+                      type={passwordVisible ? "text" : "password"}
+                      passwordVisible={passwordVisible}
+                      setPasswordVisible={setPasswordVisible}
+                      variant="outlined"
+                      name="password"
+                      formik={formik}
+                    />
+                  </>
                 )}
-
-                <InputField
-                  sx={{
-                    marginBottom: "15px",
-                    paddingLeft: "0px",
-                    "& .MuiOutlinedInput-root": {
-                      "&:hover fieldset": {
-                        borderColor: "#cb6fe5",
-                      },
-                      "&.Mui-focused fieldset": {
-                        borderColor: "#cb6fe5",
-                      },
-                    },
-                  }}
-                  Placeholder="Password"
-                  height="2.5rem"
-                  backgroundColor="#fff"
-                  cols="12"
-                  icon
-                  type={passwordVisible ? "text" : "password"}
-                  passwordVisible={passwordVisible}
-                  setPasswordVisible={setPasswordVisible}
-                  variant="outlined"
-                  name="password"
-                  formik={formik}
+                <ButtonComp
+                  width="100%"
+                  text={isOTPSent ? "Verify OTP" : "Create Account"}
+                  onClick={isOTPSent ? handleVerifyOTP : formik.handleSubmit}
                 />
-
-                <ButtonComp width="100%" text="Create Account" onClick={formik.handleSubmit} />
               </Box>
               <Box
                 sx={{
